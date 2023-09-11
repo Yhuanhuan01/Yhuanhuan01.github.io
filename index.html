@@ -1,0 +1,936 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="java,git,springcloud" />
+
+
+<link rel="canonical" href="http://example.com/">
+
+
+
+  <title>yhuanhuan =  = 不在能知，乃在能行</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+            <a href="/" class="logo" rel="start"><p class="artboard">yhuanhuan</p>
+              <h1 itemprop="name headline" class="title"></h1>
+            </a>
+            <p class="meta" itemprop="description">= 不在能知，乃在能行 =</p>
+          
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">yhuanhuan</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jdv5X4QVKxMklgB.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/8XHxYgIEC6JWoSP.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/qoxySlnh7UTYwsD.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PeCrlT1WzSygfaB.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/c8LzaYO7NRj2Gmi.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jDNXms1oWOKuYIM.png"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="index wrap">
+    <h2 class="divider">文章列表</h2>
+    <div class="segments posts">
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/09/10/sictf-wp/" itemprop="url" title="sictf_wp"><img data-src="https://s2.loli.net/2023/08/03/HAYmvDsoGfbIVl3.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-09-10 19:48:34">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-09-10T19:48:34+08:00">2023-09-10</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>15k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>13 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/09/10/sictf-wp/" itemprop="url" title="sictf_wp">sictf_wp</a></h3>
+    <div class="excerpt">
+        # MISC
+# 签到] Welcome
+
+# Pixel_art
+from PIL import Image
+image = Image.open(&#39;image.png&#39;)
+width, height = image.size
+for y in range(height):
+for x in range(width):
+r, g, b = image.getpixel((x, y))
+if r == 46:
+print(&#39;.&#39;,end=&amp;quot;&amp;quot;)
+elif r ==...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Write-up/" itemprop="url" title="Write_up"><i class="ic i-flag"></i>Write_up</a>
+      </span>
+    </div>
+    <a href="/2023/09/10/sictf-wp/" itemprop="url" title="sictf_wp" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/24/web-new/" itemprop="url" title="web_new"><img data-src="https://s2.loli.net/2023/08/03/HAYmvDsoGfbIVl3.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-24 23:55:12">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-24T23:55:12+08:00">2023-08-24</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>11k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>10 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/24/web-new/" itemprop="url" title="web_new">web_new</a></h3>
+    <div class="excerpt">
+        # web 新手：
+攻防世界 WEB 区复现：
+# robots:&amp;gt;
+
+robots.txt 文件是一个文本文件，使用任何一个常见的文本编辑器，比如 Windows 系统安装了 Notepad，就可以创建和编辑它
+robots.txt 是一个协议，而不是一个命令。robots.txt 是搜索引擎中访问网站的时候要查看的第一个文件。robots.txt 文件告诉蜘蛛程序在服务器上什么文件是可以被查看的。
+当一个搜索蜘蛛访问一个站点时，它会首先检查该站点根目录下是否存在...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" itemprop="url" title="wp"><i class="ic i-flag"></i>wp</a>
+      </span>
+    </div>
+    <a href="/2023/08/24/web-new/" itemprop="url" title="web_new" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/13/Nep-wp/" itemprop="url" title="Nep__wp"><img data-src="https://s2.loli.net/2023/08/03/jdv5X4QVKxMklgB.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-13 21:28:56">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-13T21:28:56+08:00">2023-08-13</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>3.8k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/13/Nep-wp/" itemprop="url" title="Nep__wp">Nep__wp</a></h3>
+    <div class="excerpt">
+        # NepCTF wp
+第一次大型比赛，得到这个成绩也不错了。
+
+{ = 空格
+
+# 1. misc:
+# 1.codes:
+环境env要
+en&#92;
+v绕过下
+
+#include &amp;lt;stdio.h&gt;extern char **en&#92;viron;int main()&amp;#123; int i = 0; while (en&#92;viron[i] != NULL) &amp;#123; printf(&quot;%s&#92;n&quot;, en&#92;viron[i]); i++; &amp;#125; return 0;&amp;#125;
+#...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Write-up/" itemprop="url" title="Write_up"><i class="ic i-flag"></i>Write_up</a>
+      </span>
+    </div>
+    <a href="/2023/08/13/Nep-wp/" itemprop="url" title="Nep__wp" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/11/unlink/" itemprop="url" title="unlink"><img data-src="https://s2.loli.net/2023/08/03/xABdev7CEF4h3sR.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-11 13:56:52">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-11T13:56:52+08:00">2023-08-11</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>3.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>4 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/11/unlink/" itemprop="url" title="unlink">unlink</a></h3>
+    <div class="excerpt">
+        # PWN_unlink 了解学习
+# 原理：
+我们在利用 unlink 所造成的漏洞时，其实就是对 chunk 进行内存布局，然后借助 unlink 操作来达成修改指针的效果。
+注意这里的是修改指针
+简单的介绍下 unlink，其实 ctfwiki 有介绍，这里简单介绍下：
+1. 首先找到要进行unlink的chunk(这里记为P)的前后堆块，
+FD = P-&amp;gt;fd, BK = P-&amp;gt;bk。
+	
+2. 进行安全检查，glibc2.23的潦草判断条件如下
+FD-&amp;gt;bk == P, BK-&amp;gt;fd == P。
+
+3....
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" itemprop="url" title="技巧"><i class="ic i-flag"></i>技巧</a>
+      </span>
+    </div>
+    <a href="/2023/08/11/unlink/" itemprop="url" title="unlink" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/10/uaf/" itemprop="url" title="uaf"><img data-src="https://s2.loli.net/2023/08/03/PeCrlT1WzSygfaB.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-10 09:18:39">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-10T09:18:39+08:00">2023-08-10</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>3k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/10/uaf/" itemprop="url" title="uaf">uaf</a></h3>
+    <div class="excerpt">
+        # PWN uaf 了解学习
+刚刚接触堆，发现在看题的时候，对与 C 语言要求还挺高，需要了解指针是怎么一回事。所以我决定，下面一道例题要好好分析源代码，了解各个函数调用的意义。
+# 首先先声明一下什么叫 uaf：
+参考 ctfwiki
+原理 ¶
+简单的说，Use After Free 就是其字面所表达的意思，当一个内存块被释放之后再次被使用。但是其实这里有以下几种情况
+
+内存块被释放后，其对应的指针被设置为 NULL ， 然后再次使用，自然程序会崩溃。
+内存块被释放后，其对应的指针没有被设置为 NULL...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" itemprop="url" title="技巧"><i class="ic i-flag"></i>技巧</a>
+      </span>
+    </div>
+    <a href="/2023/08/10/uaf/" itemprop="url" title="uaf" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/09/bins/" itemprop="url" title="bins"><img data-src="https://s2.loli.net/2023/08/03/NsekliFKc53mr67.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-09 10:57:17">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-09T10:57:17+08:00">2023-08-09</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>11k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>10 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/09/bins/" itemprop="url" title="bins">bins</a></h3>
+    <div class="excerpt">
+        # pwn 堆 bins 学习。
+# 一、bin 链的介绍
+bin 是一个由 struct chunk 结构体组成的链表。
+前面介绍过，不同的 chunk 根据特点不同分为不同的 chunk，为了将这些 chunk 进行分类的管理，glibc 采用了 bin 链这种方式管理不同的 chunk。
+不同的 bin 链是由 arena 管理的。
+bin 链中的 chunk 均为 free chunk。
+# 二、bin 链分类
+
+根据 bin 链成员的大小不同，分为以下几类：
+
+fast bin 是单链表，其他都是双向链表。
+Fast bin。
+Unsorted bin。
+Small...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" itemprop="url" title="知识"><i class="ic i-flag"></i>知识</a>
+      </span>
+    </div>
+    <a href="/2023/08/09/bins/" itemprop="url" title="bins" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/04/b-canary/" itemprop="url" title="b_canary"><img data-src="https://s2.loli.net/2023/08/04/qoxySlnh7UTYwsD.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-04 12:02:09">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-04T12:02:09+08:00">2023-08-04</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>10k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>9 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/04/b-canary/" itemprop="url" title="b_canary">b_canary</a></h3>
+    <div class="excerpt">
+        # canary 介绍：
+
+在函数调用发生时，向栈帧内压入一个额外的随机 DWORD，这个随机数被称为 “Canary”
+如果使用 IDA 反汇编的话，您可能会看到 IDA 会将这个随机数标注为 “Security Cookie”，在部分书籍的叙述中会用 Security Cookie 来引用这种随机数
+Canary 位于 EBP 之前，系统还将在内存区域中存放一个 Canary 的副本
+当栈中发生溢出时，Canary 将被首先淹没，之后才是 EBP 和返回地址
+在函数返回之前，系统将执行一个额外的安全验证操作，被称作 “Security check” 在 Security check...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" itemprop="url" title="技巧"><i class="ic i-flag"></i>技巧</a>
+      </span>
+    </div>
+    <a href="/2023/08/04/b-canary/" itemprop="url" title="b_canary" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/03/srop/" itemprop="url" title="srop"><img data-src="https://s2.loli.net/2023/08/03/AZcIyhXYgxDa36f.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-03 22:51:25">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-03T22:51:25+08:00">2023-08-03</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>5.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>5 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/03/srop/" itemprop="url" title="srop">srop</a></h3>
+    <div class="excerpt">
+        # srop
+# srop 原理
+# signal 机制 ¶
+signal 机制是类 unix 系统中进程之间相互传递信息的一种方法。一般，我们也称其为软中断信号，或者软中断。比如说，进程之间可以通过系统调用 kill 来发送软中断信号。一般来说，信号机制常见的步骤如下图所示：
+
+内核向某个进程发送 signal 机制，该进程会被暂时挂起，进入内核态。
+内核会为该进程保存相应的上下文，主要是将所有寄存器压入栈中，以及压入 signal 信息，以及指向 sigreturn 的系统调用地址。此时栈的结构如下图所示，我们称 ucontext 以及 siginfo 这一段为 Signal...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" itemprop="url" title="技巧"><i class="ic i-flag"></i>技巧</a>
+      </span>
+    </div>
+    <a href="/2023/08/03/srop/" itemprop="url" title="srop" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/03/csu/" itemprop="url" title="csu"><img data-src="https://s2.loli.net/2023/08/04/Me2Cmi6yuWvhqKF.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-03 19:47:18">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-03T19:47:18+08:00">2023-08-03</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>4.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>4 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/03/csu/" itemprop="url" title="csu">csu</a></h3>
+    <div class="excerpt">
+        # 中级 ROP_CSU
+ret2csu 泄露 libc 地址之后利用 libc 中的 gadget getshell. ret2csu 配合 pop rax; syscall; 等 gadget 直接 GetShell. 开启 PIE 的情况下，利用 offset2lib 进行 ret2csu, 或者直接利用 libc 中的 gadget getshell.
+只要动态连接都会有 _libc_csu_init 函数
+# 原理 ¶
+在 64 位程序中，函数的前 6 个参数是通过寄存器传递的，但是大多数时候，我们很难找到每一个寄存器对应的 gadgets。 这时候，我们可以利用 x64 下的...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" itemprop="url" title="技巧"><i class="ic i-flag"></i>技巧</a>
+      </span>
+    </div>
+    <a href="/2023/08/03/csu/" itemprop="url" title="csu" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" itemprop="url" title="国赛复现"><img data-src="https://s2.loli.net/2023/08/03/8XHxYgIEC6JWoSP.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-03 17:17:58">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-03T17:17:58+08:00">2023-08-03</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>4.6k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>4 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" itemprop="url" title="国赛复现">国赛复现</a></h3>
+    <div class="excerpt">
+        # 国赛题复现
+不同地区的国赛题，进行复现。— 简单 pwn 题
+# 华北赛区：
+# RELRO 保护机制
+1.RELRO 的保护机制可用于防护 GOT hijacking ，其全名为 Relocation Read-Only 。
+2. 本题中 checksec 中为 Partial RELRO ，这种情况下， GOT 可写，即存在 GOT hijacking 的漏洞
+3. 而保护的方式是设置为 Full RELRO ，这种情况下不会出现 lazy binding ，因为在 Load time 时会将所有 funciton resolve 完毕，并设置 GOT...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" itemprop="url" title="复现"><i class="ic i-flag"></i>复现</a>
+      </span>
+    </div>
+    <a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" itemprop="url" title="国赛复现" class="btn">more...</a>
+  </div>
+</article>
+
+    </div>
+
+  </div>
+
+  
+  <nav class="pagination">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
+    </div>
+  </nav>
+
+
+
+        </div>
+        <div id="sidebar">
+          
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yhuanhuan"
+      data-src="/images/huanhuan.png">
+  <p class="name" itemprop="name">yhuanhuan</p>
+  <div class="description" itemprop="description">欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">11</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">7</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">13</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lodWFuaHVhbjAx" title="https:&#x2F;&#x2F;github.com&#x2F;yhuanhuan01"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/page/2/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/11/unlink/" title="unlink">unlink</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
+</div>
+
+    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yhuanhuan @ yhuanhuan</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">74k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:07</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"bottom","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

