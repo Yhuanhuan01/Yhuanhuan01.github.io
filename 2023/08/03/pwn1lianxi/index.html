@@ -117,12 +117,12 @@ yhuanhuan =  = 不在能知，乃在能行</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/qoxySlnh7UTYwsD.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/HAYmvDsoGfbIVl3.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/FCzU6mcGnbJZH2S.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/6zF8ewj7Zn4pJIg.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/wD8Kc2Y5Iu4mEk1.png"></li>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/04/FM6hYgf7eHbLO4o.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/KXvdO79oYyh2ZI5.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/caejg5tYskU186E.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PeCrlT1WzSygfaB.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jDNXms1oWOKuYIM.png"></li>
         </ul>
       </div>
     </header>
@@ -180,18 +180,18 @@ yhuanhuan =  = 不在能知，乃在能行</title>
 </ul>
 <h2 id="nisactf-2022shop_pwn"><a class="markdownIt-Anchor" href="#nisactf-2022shop_pwn">#</a> [NISACTF 2022]shop_pwn</h2>
 <p>题目标签：</p>
-<p><img data-src="/img/pwnlianxiimage-20230922180317483.png" alt="image-20230922180317483"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922180317483.png" alt="image-20230922180317483"></p>
 <blockquote>
 <p>pthread_create 多线程竞争</p>
 </blockquote>
-<p><img data-src="/img/pwnlianxiimage-20230922180537307.png" alt="image-20230922180537307"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922180537307.png" alt="image-20230922180537307"></p>
 <p><strong>执行程序如下：</strong></p>
-<p><img data-src="/img/pwnlianxiimage-20230922180732045.png" alt="image-20230922180732045"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922180732045.png" alt="image-20230922180732045"></p>
 <p><strong>放入 IDA 看一下具体的函数：</strong></p>
-<p><img data-src="/img/pwnlianxiimage-20230922180849649.png" alt="image-20230922180849649"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922180849649.png" alt="image-20230922180849649"></p>
 <p><strong>看一下主要的函数</strong></p>
-<p><img data-src="/img/pwnlianxiimage-20230922181202034.png" alt="image-20230922181202034"></p>
-<p><img data-src="/img/pwnlianxiimage-20230922181325444.png" alt="image-20230922181325444"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922181202034.png" alt="image-20230922181202034"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922181325444.png" alt="image-20230922181325444"></p>
 <p><strong>脚本如下：</strong></p>
 <blockquote>
 <p>这里利用了 pthread_create 创建进程，那么如果我们指令发送得快的话，那么就可以实现第一次售卖功能执行的时候正在 unsleep，接着执行第二次售卖功能，那么就能卖出两次得到可以购买 flag 的金钱了</p>
@@ -209,7 +209,7 @@ r.sendline(&quot;0&quot;)
 r.interactive()
 </code></pre>
 <p><strong>结果如下：</strong></p>
-<p><img data-src="/img/pwnlianxiimage-20230922181643187.png" alt="image-20230922181643187"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922181643187.png" alt="image-20230922181643187"></p>
 <ul>
 <li>two</li>
 </ul>
@@ -223,27 +223,27 @@ r.interactive()
 <blockquote>
 <p>当程序出现格式化字符串漏洞，但是需要写两次才能完成攻击，这个时候可以考虑改写 <code>fini.array</code>  中的函数指针为 <code>main</code>  函数地址，可以再执行一次 <code>main</code>  函数。一般来说，这个数组的长度为 <code>1</code> ，也就是说只能写一个地址。</p>
 </blockquote>
-<p><img data-src="/img/pwnlianxiimage-20230922182614061.png" alt="image-20230922182614061"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922182614061.png" alt="image-20230922182614061"></p>
 <p>32 位程序修改 got 表。</p>
 <p><strong>执行程序参看偏移：</strong></p>
-<p><img data-src="/img/pwnlianxiimage-20230922183714065.png" alt="image-20230922183714065"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922183714065.png" alt="image-20230922183714065"></p>
 <p><strong>看一下 IDA:</strong></p>
-<p><img data-src="/img/pwnlianxiimage-20230922184018564.png" alt="image-20230922184018564"></p>
-<p><img data-src="/img/pwnlianxiimage-20230922184142420.png" alt="image-20230922184142420"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922184018564.png" alt="image-20230922184018564"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922184142420.png" alt="image-20230922184142420"></p>
 <p><strong>利用思路：</strong></p>
 <p>通过格式化字符串漏洞去修改 printf_got，修改为 system。但是程序只能执行一次，所以修改完后，程序会退出。</p>
 <p>但是如果如下图所示</p>
-<p><img data-src="/img/pwnlianxiimage-20230922184525768.png" alt="image-20230922184525768"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922184525768.png" alt="image-20230922184525768"></p>
 <p>我们就可以去修改 <code>fini.array</code> , 将其参数 1，给覆写成 main，那么程序在退出后就会再次执行 main 函数。</p>
 <p><strong>payload：</strong></p>
 <blockquote>
 <p>payload = b&quot;%2052c%13<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">hn%31692c%14</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal">n</span></span></span></span>hn%356c%15$hn&quot; + p32(0x804989c + 2) + p32(0x804989c) + p32(0x804979c)</p>
 </blockquote>
 <p>通过 gdb 去看一眼 payload 进入程序的情况：</p>
-<p><img data-src="/img/pwnlianxiimage-20230922185014496.png" alt="image-20230922185014496"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922185014496.png" alt="image-20230922185014496"></p>
 <p>当读入 pyload 时的情况</p>
 <p>这时程序读入 payload。现在 got 表项指向的还是 printf_plt。</p>
-<p><img data-src="/img/pwnlianxiimage-20230922191625014.png" alt="image-20230922191625014"></p>
+<p><img data-src="/img/pwnlianxi/image-20230922191625014.png" alt="image-20230922191625014"></p>
 <p>当执行到 printf 函数时，printf_got 修改为 system  fini_array 的第一个参数修改为 main</p>
 <p>当我们程序结束时，就会再次跳转到 main 函数入口，在读入 /bin/sh，接着会在调用 printf 函数，会执行 system (/bin/sh)，从而获取 shell</p>
 <p><strong>exp 如下：</strong></p>
@@ -275,7 +275,7 @@ r.interactive()
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-09-22 19:41:49" itemprop="dateModified" datetime="2023-09-22T19:41:49+08:00">2023-09-22</time>
+    <time title="修改时间：2023-09-22 19:46:42" itemprop="dateModified" datetime="2023-09-22T19:46:42+08:00">2023-09-22</time>
   </span>
   <span id="2023/08/03/pwn1lianxi/" class="item leancloud_visitors" data-flag-title="srop" title="阅读次数">
       <span class="icon">
@@ -315,20 +315,20 @@ r.interactive()
     <div class="item left">
       
 
-  <a href="/2023/08/03/csu/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;PeCrlT1WzSygfaB.png" title="csu">
+  <a href="/2023/08/03/srop/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;PavyAqzTMBH8QjR.png" title="srop">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> 技巧</span>
-  <h3>csu</h3>
+  <h3>srop</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/08/03/srop/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;PeCrlT1WzSygfaB.png" title="srop">
+  <a href="/2023/08/04/b-canary/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;8XHxYgIEC6JWoSP.png" title="b_canary">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> 技巧</span>
-  <h3>srop</h3>
+  <h3>b_canary</h3>
   </a>
 
     </div>
@@ -351,7 +351,7 @@ r.interactive()
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li><a href="/2023/08/03/csu/" rel="bookmark" title="csu">csu</a></li><li><a href="/2023/08/03/srop/" rel="bookmark" title="srop">srop</a></li><li class="active"><a href="/2023/08/03/pwn1lianxi/" rel="bookmark" title="srop">srop</a></li><li><a href="/2023/08/04/b-canary/" rel="bookmark" title="b_canary">b_canary</a></li><li><a href="/2023/08/10/uaf/" rel="bookmark" title="uaf">uaf</a></li><li><a href="/2023/08/11/unlink/" rel="bookmark" title="unlink">unlink</a></li>
+          <li><a href="/2023/08/03/csu/" rel="bookmark" title="csu">csu</a></li><li class="active"><a href="/2023/08/03/pwn1lianxi/" rel="bookmark" title="srop">srop</a></li><li><a href="/2023/08/03/srop/" rel="bookmark" title="srop">srop</a></li><li><a href="/2023/08/04/b-canary/" rel="bookmark" title="b_canary">b_canary</a></li><li><a href="/2023/08/10/uaf/" rel="bookmark" title="uaf">uaf</a></li><li><a href="/2023/08/11/unlink/" rel="bookmark" title="unlink">unlink</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -429,12 +429,12 @@ r.interactive()
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2023/08/03/csu/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+        <a href="/2023/08/03/srop/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2023/08/03/srop/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+        <a href="/2023/08/04/b-canary/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -452,64 +452,6 @@ r.interactive()
 <div class="rpost pjax">
   <h2>随机文章</h2>
   <ul>
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
-</div>
-
-    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/03/pwn1lianxi/" title="srop">srop</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
-</div>
-
-    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
-  </li>
-
       
   <li class="item">
     
@@ -538,6 +480,42 @@ r.interactive()
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
+</div>
+
+    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
 </div>
 
@@ -548,12 +526,34 @@ r.interactive()
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
   </li>
 
       
