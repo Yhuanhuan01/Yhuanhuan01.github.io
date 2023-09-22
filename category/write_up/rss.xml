@@ -7,19 +7,19 @@
         <language>zh-CN</language>
         <pubDate>Sun, 10 Sep 2023 19:48:34 +0800</pubDate>
         <lastBuildDate>Sun, 10 Sep 2023 19:48:34 +0800</lastBuildDate>
-        <category>canary</category>
         <category>wp</category>
+        <category>canary</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
+        <category>堆</category>
         <category>pie</category>
         <category>格式化字符串漏洞</category>
-        <category>堆</category>
         <category>srop</category>
-        <category>unlink</category>
         <category>uaf</category>
         <category>got改写</category>
         <category>随机数检查</category>
+        <category>unlink</category>
         <item>
             <guid isPermalink="true">http://example.com/2023/09/10/sictf-wp/</guid>
             <title>sictf_wp</title>

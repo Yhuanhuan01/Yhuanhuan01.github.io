@@ -4,19 +4,19 @@
     <title> • Posts by &#34;write_up&#34; category</title>
     <link href="http://example.com" />
     <updated>2023-09-10T11:48:34.000Z</updated>
-    <category term="canary" />
     <category term="wp" />
+    <category term="canary" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="堆" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
-    <category term="堆" />
     <category term="srop" />
-    <category term="unlink" />
     <category term="uaf" />
     <category term="got改写" />
     <category term="随机数检查" />
+    <category term="unlink" />
     <entry>
         <id>http://example.com/2023/09/10/sictf-wp/</id>
         <title>sictf_wp</title>
