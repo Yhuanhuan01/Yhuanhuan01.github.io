@@ -117,12 +117,12 @@ yhuanhuan =  = 不在能知，乃在能行</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/oM5TSDBwfh1Oa9r.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/c8LzaYO7NRj2Gmi.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/nUh9xrjosZA6KBg.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/7DTqSyKlBc5e1Ir.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/KwJG42PtjmEyikW.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/joXBNHK1fvpxLkY.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/pxCY3PlNUAW5GTn.png"></li>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/03/HRiVouaTdMFQCYP.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/NsekliFKc53mr67.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/7DTqSyKlBc5e1Ir.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/n1j3BiVI9UMyxYf.png"></li>
         </ul>
       </div>
     </header>
@@ -170,7 +170,7 @@ yhuanhuan =  = 不在能知，乃在能行</title>
 
     <h1 id="fsctf"><a class="markdownIt-Anchor" href="#fsctf">#</a> FSCTF</h1>
 <p>RAND:12</p>
-<p><img data-src="%5Cimg%5Cfsctfwppic%5Cimage-20231024075145656.png" alt="image-20231024075145656"></p>
+<p><img data-src="/img/fsctfwppic/1.png" alt="image-20231024075145656"></p>
 <h2 id="web"><a class="markdownIt-Anchor" href="#web">#</a> web</h2>
 <h3 id="源码启动"><a class="markdownIt-Anchor" href="#源码启动">#</a> 源码！启动！</h3>
 <p>CTRL+U 查看源码</p>
@@ -205,7 +205,7 @@ e=65537
 <figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> bytes_to_long</pre></td></tr><tr><td data-num="2"></td><td><pre>m<span class="token operator">=</span>bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>n<span class="token operator">=</span> <span class="token number">12308543373374311860115195114269947739026255098864232126071500623399852788903738569949462616714391748269539072128882946132686996592089735285396762634029371785959865779256901123369306119124563405765293657606975290441243965513640680841871955014230301486214824204887945375140818283280272607903500556306646445508386218951500563603482945071727344737690804338144982687000734071274618240408238519378280819162796749148066754028700125846348589164721591354555019608871411236973606149388257533629388508942271702742078883636357856776193846813894734271905070538713351614750057245897158615891962167410053552739441195871000310777649</span></pre></td></tr><tr><td data-num="4"></td><td><pre>e<span class="token operator">=</span> <span class="token number">65537</span></pre></td></tr><tr><td data-num="5"></td><td><pre>dp<span class="token operator">=</span> <span class="token number">28196759050232165736649945458463681080421101473761579424309687746007021074159564720195299959516638110870101025657932732247788828322476803386736345945717104030991724584628153257976163663460034720811420324255626233108130037584679035250792445830510130682783638394418531763109219293027733347554816808577799709553</span></pre></td></tr><tr><td data-num="6"></td><td><pre>c<span class="token operator">=</span> <span class="token number">1855798257044238280327042455832785889763141234883180404158555071443088630113034033050409259513632343742665544043437830959750873431928980910236398026670945184328950692568113819821699696418438157336263799808404698795433243968536256780396910914692949484556950491722527661706255009863481905590371725089587377065000354109396062360440021447607401687082247775453369117424848927386857425051097931983703966253652921113920387008048024308793686643944404541941182997963873579988680965558581885273185721576668001462817150245955628293258512024323515581063235248627223179117549540541642185815489978089367061102920114395871329023208</span></pre></td></tr></table></figure><blockquote>
 <p>dp 泄露</p>
 </blockquote>
-<p><img data-src="%5Cimg%5Cfsctfwppic%5Cimage-20231024081420584.png" alt="image-20231024081420584"></p>
+<p><img data-src="/img/fsctfwppic/2.png" alt="image-20231024081420584"></p>
 <h3 id="big_e"><a class="markdownIt-Anchor" href="#big_e">#</a> Big_e</h3>
 <pre><code>n = 12238605063252292170613110607692779326628090745751955692266649177882959231822580682548279800443278979485092243645806337103841086023159482786712759291169541633901936290854044069486201989034158882661270017305064348254800318759062921744741432214818915527537124001063995865927527037625277330117588414586505635959411443039463168463608235165929831344586283875119363703480280602514451713723663297066810128769907278246434745483846869482536367912810637275405943566734099622063142293421936734750356828712268385319217225803602442033960930413469179550331907541244416573641309943913383658451409219852933526106735587605884499707827
 e=  11850552481503020257392808424743510851763548184936536180317707155841959788151862976445957810691568475609821000653594584717037528429828330763571556164988619635320288125983463358648887090031957900011546300841211712664477474767941406651977784177969001025954167441377912326806132232375497798238928464025466905201977180541053129691501120197010080001677260814313906843670652972019631997467352264392296894192998971542816081534808106792758008676039929763345402657578681818891775091140555977382868531202964486261123748663752490909455324860302967636149379567988941803701512680099398021640317868259975961261408500449965277690517
@@ -217,7 +217,7 @@ c=421888454188771183956861541667392348088960446187447507133322538907577009872633
 <blockquote>
 <p>维纳攻击</p>
 </blockquote>
-<p><img data-src="%5Cimg%5Cfsctfwppic%5Cimage-20231024081609249.png" alt="image-20231024081609249"></p>
+<p><img data-src="/img/fsctfwppic/3.png" alt="image-20231024081609249"></p>
 <h3 id="do-you-know-gcd"><a class="markdownIt-Anchor" href="#do-you-know-gcd">#</a> Do you know gcd</h3>
 <figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">from</span> secret <span class="token keyword">import</span> flag</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre>m1<span class="token operator">=</span>bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>m2<span class="token operator">=</span>bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre>p<span class="token operator">=</span>getPrime<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>q1<span class="token operator">=</span>getPrime<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>q2<span class="token operator">=</span>getPrime<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>n1<span class="token operator">=</span>p<span class="token operator">*</span>q1</pre></td></tr><tr><td data-num="10"></td><td><pre>n2<span class="token operator">=</span>p<span class="token operator">*</span>q2</pre></td></tr><tr><td data-num="11"></td><td><pre>e<span class="token operator">=</span><span class="token number">65537</span></pre></td></tr><tr><td data-num="12"></td><td><pre>c1<span class="token operator">=</span><span class="token builtin">pow</span><span class="token punctuation">(</span>m1<span class="token punctuation">,</span>e<span class="token punctuation">,</span>n1<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre>c2<span class="token operator">=</span><span class="token builtin">pow</span><span class="token punctuation">(</span>m2<span class="token punctuation">,</span>e<span class="token punctuation">,</span>n2<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"n1="</span><span class="token punctuation">,</span>n1<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"n2="</span><span class="token punctuation">,</span>n2<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c1="</span><span class="token punctuation">,</span>c1<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c2="</span><span class="token punctuation">,</span>c2<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token triple-quoted-string string">'''</pre></td></tr><tr><td data-num="19"></td><td><pre>n1= 18680935400842120133090782991548100098299141114788036098274292600814484762178879421175852824971602717084073867867453382415307589970440719890918576225495401632854107018246844209327118177917122236073227158593514362850629722223228335334773008682775987859295083444638923726449899310854161394586430943134469559429878238769266114132469166535509030877235272476877484918308883799496627699789051809542538091061550107526246728583019140703765888157806778516567048103700384849598143249322109207879381251223776896702362630437178664824125387477797876186939235800859102380783259361745143574493440078787931593394188675093506492640857</pre></td></tr><tr><td data-num="20"></td><td><pre>n2= 16308523133405725830120564525574438512803584148781960516042054284309437381876822602134185065101371986717984978566359252072738078020261823966208153922611063201149105749778596739692554295573408850719208215646167050188830459343054219856901871953140988948482577813730729085764541988120049026971705499798003225755018687242522370406495429425494022876627543617474873929054728724093702291448754458748923218635900061398716191201846139296921753782690468189409101899415028480878296408735247604084627019116374444335509072590669239349212479592499426230525792270750612371117196200786891891430446212938482959351978202358044864822577</pre></td></tr><tr><td data-num="21"></td><td><pre>c1= 534518909595318304521410713148076850830155521838755402438490325620155197496935820831936109252194297244161393310730073882257949954815312409974998733265641354273665213856408848764503848122264972023143474923678585167025591255034150826271791019266426616987355463111138963331008761826310757292765842789380409826387579098421126952331558360737102888876551724241978020305977032047901621477384392409864427091911872691182528938458750707982564581322551517287491916691010743390992018974168703956622998928457142606354825714033609199676987795174032254878017883605565760275857658822315970522114838062469258676628619381342357632179</pre></td></tr><tr><td data-num="22"></td><td><pre>c2= 10248394002302905069278122013496854496130190499518622376819239887579692634750808499513497018453473232140518824608976734237637842228035017757831938865937098325684711995382081489403971465596662585196007547659143066184546400992333479193424580690897692586491475768279754939199148642035267049092880715299621206567123356521609120801306358100326600900326310677054810032471472266402660807205675696110133573150125117412696328434523507708110949743705536889950671778501402435457354251761692098671783596194430798692942013503015764266392551048702428063161786512924608239609802040937400619384828550050291094616346317726139970219621</pre></td></tr><tr><td data-num="23"></td><td><pre>'''</span></pre></td></tr></table></figure><figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre>n1<span class="token operator">=</span> <span class="token number">18680935400842120133090782991548100098299141114788036098274292600814484762178879421175852824971602717084073867867453382415307589970440719890918576225495401632854107018246844209327118177917122236073227158593514362850629722223228335334773008682775987859295083444638923726449899310854161394586430943134469559429878238769266114132469166535509030877235272476877484918308883799496627699789051809542538091061550107526246728583019140703765888157806778516567048103700384849598143249322109207879381251223776896702362630437178664824125387477797876186939235800859102380783259361745143574493440078787931593394188675093506492640857</span></pre></td></tr><tr><td data-num="2"></td><td><pre>n2<span class="token operator">=</span> <span class="token number">16308523133405725830120564525574438512803584148781960516042054284309437381876822602134185065101371986717984978566359252072738078020261823966208153922611063201149105749778596739692554295573408850719208215646167050188830459343054219856901871953140988948482577813730729085764541988120049026971705499798003225755018687242522370406495429425494022876627543617474873929054728724093702291448754458748923218635900061398716191201846139296921753782690468189409101899415028480878296408735247604084627019116374444335509072590669239349212479592499426230525792270750612371117196200786891891430446212938482959351978202358044864822577</span></pre></td></tr><tr><td data-num="3"></td><td><pre>c1<span class="token operator">=</span> <span class="token number">534518909595318304521410713148076850830155521838755402438490325620155197496935820831936109252194297244161393310730073882257949954815312409974998733265641354273665213856408848764503848122264972023143474923678585167025591255034150826271791019266426616987355463111138963331008761826310757292765842789380409826387579098421126952331558360737102888876551724241978020305977032047901621477384392409864427091911872691182528938458750707982564581322551517287491916691010743390992018974168703956622998928457142606354825714033609199676987795174032254878017883605565760275857658822315970522114838062469258676628619381342357632179</span></pre></td></tr><tr><td data-num="4"></td><td><pre>c2<span class="token operator">=</span> <span class="token number">10248394002302905069278122013496854496130190499518622376819239887579692634750808499513497018453473232140518824608976734237637842228035017757831938865937098325684711995382081489403971465596662585196007547659143066184546400992333479193424580690897692586491475768279754939199148642035267049092880715299621206567123356521609120801306358100326600900326310677054810032471472266402660807205675696110133573150125117412696328434523507708110949743705536889950671778501402435457354251761692098671783596194430798692942013503015764266392551048702428063161786512924608239609802040937400619384828550050291094616346317726139970219621</span></pre></td></tr><tr><td data-num="5"></td><td><pre>e<span class="token operator">=</span><span class="token number">65537</span></pre></td></tr><tr><td data-num="6"></td><td><pre>p <span class="token operator">=</span> gcd<span class="token punctuation">(</span>n1<span class="token punctuation">,</span>n2<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>q1 <span class="token operator">=</span> n1<span class="token operator">//</span>p</pre></td></tr><tr><td data-num="9"></td><td><pre>q2 <span class="token operator">=</span> n2<span class="token operator">//</span>p</pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre>phi1<span class="token operator">=</span><span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q1<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre>phi2<span class="token operator">=</span><span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q2<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre>d1<span class="token operator">=</span>gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi1<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre>d2<span class="token operator">=</span>gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi2<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span><span class="token builtin">pow</span><span class="token punctuation">(</span>c1<span class="token punctuation">,</span>d1<span class="token punctuation">,</span>n1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> long_to_bytes<span class="token punctuation">(</span><span class="token builtin">pow</span><span class="token punctuation">(</span>c2<span class="token punctuation">,</span>d2<span class="token punctuation">,</span>n2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr></table></figure><h3 id="埃塞克的秘密"><a class="markdownIt-Anchor" href="#埃塞克的秘密">#</a> 埃塞克的秘密</h3>
 <pre><code>埃塞克先生将自己的秘密藏在盒子里并交给了ROT保管，埃塞克先生在盒子上留下了这样一串数字：
@@ -266,7 +266,7 @@ doEs_not_re@d_t
 <h3 id="为什么不换换思路捏"><a class="markdownIt-Anchor" href="#为什么不换换思路捏">#</a> 为什么不换换思路捏</h3>
 <pre><code>密文：3956305A7652305877676D656E3532626F395664776B3358723557596F52335835423055375A4556444E6C52
 </code></pre>
-<p><img data-src="%5Cimg%5Cfsctfwppic%5Cimage-20231024083859306.png" alt="image-20231024083859306"></p>
+<p><img data-src="/img/fsctfwppic/4.png" alt="image-20231024083859306"></p>
 <h3 id="最终试炼hhh"><a class="markdownIt-Anchor" href="#最终试炼hhh">#</a> 最终试炼 hhh</h3>
 <p>压缩包文件逆序，写脚本修改一下</p>
 <figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">def</span> <span class="token function">reverse_hex</span><span class="token punctuation">(</span>file_path<span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span></pre></td></tr><tr><td data-num="3"></td><td><pre>        hex_data <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    reversed_hex <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token builtin">reversed</span><span class="token punctuation">(</span><span class="token punctuation">[</span>hex_data<span class="token punctuation">[</span>i<span class="token punctuation">:</span> i<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>hex_data<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'1.zip'</span><span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span></pre></td></tr><tr><td data-num="6"></td><td><pre>        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">bytes</span><span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span>reversed_hex<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>reverse_hex<span class="token punctuation">(</span><span class="token string">'flag'</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>得到 1.zip</p>
@@ -288,7 +288,7 @@ doEs_not_re@d_t
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-10-24 09:33:49" itemprop="dateModified" datetime="2023-10-24T09:33:49+08:00">2023-10-24</time>
+    <time title="修改时间：2023-10-24 09:42:52" itemprop="dateModified" datetime="2023-10-24T09:42:52+08:00">2023-10-24</time>
   </span>
   <span id="2023/10/24/FSCTF-wp/" class="item leancloud_visitors" data-flag-title="FSCTF_wp" title="阅读次数">
       <span class="icon">
@@ -328,7 +328,7 @@ doEs_not_re@d_t
     <div class="item left">
       
 
-  <a href="/2023/09/22/new-pwn/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;04&#x2F;wD8Kc2Y5Iu4mEk1.png" title="new_pwn">
+  <a href="/2023/09/22/new-pwn/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;HAYmvDsoGfbIVl3.png" title="new_pwn">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> 技巧</span>
   <h3>new_pwn</h3>
@@ -464,6 +464,90 @@ doEs_not_re@d_t
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
+    <span><a href="/2023/09/22/picture/new-pwn/" title="new_pwn">new_pwn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/02/find-flag/" title="find_flag">find_flag</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/09/22/new-pwn/" title="new_pwn">new_pwn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
     <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
   </li>
 
@@ -483,92 +567,10 @@ doEs_not_re@d_t
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
-</div>
-
-    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
-</div>
-
-    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
 </div>
 
     <span><a href="/2023/10/24/FSCTF-wp/" title="FSCTF_wp">FSCTF_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
-</div>
-
-    <span><a href="/2023/08/02/find-flag/" title="find_flag">find_flag</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/09/22/picture/new-pwn/" title="new_pwn">new_pwn</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
-</div>
-
-    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
   </li>
 
   </ul>
