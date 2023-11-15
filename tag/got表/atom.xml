@@ -5,20 +5,20 @@
     <link href="http://example.com" />
     <updated>2023-09-22T12:04:31.000Z</updated>
     <category term="wp" />
+    <category term="canary" />
+    <category term="堆" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
-    <category term="pie" />
-    <category term="canary" />
-    <category term="格式化字符串漏洞" />
-    <category term="堆" />
-    <category term="格式化字符串" />
-    <category term="got表" />
     <category term="uaf" />
     <category term="srop" />
     <category term="unlink" />
     <category term="got改写" />
+    <category term="pie" />
     <category term="随机数检查" />
+    <category term="格式化字符串" />
+    <category term="got表" />
+    <category term="格式化字符串漏洞" />
     <entry>
         <id>http://example.com/2023/09/22/new-pwn/</id>
         <title>new_pwn</title>

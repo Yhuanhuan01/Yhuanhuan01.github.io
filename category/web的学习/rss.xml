@@ -8,20 +8,20 @@
         <pubDate>Thu, 24 Aug 2023 23:55:12 +0800</pubDate>
         <lastBuildDate>Thu, 24 Aug 2023 23:55:12 +0800</lastBuildDate>
         <category>wp</category>
+        <category>canary</category>
+        <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
-        <category>pie</category>
-        <category>canary</category>
-        <category>格式化字符串漏洞</category>
-        <category>堆</category>
-        <category>格式化字符串</category>
-        <category>got表</category>
         <category>uaf</category>
         <category>srop</category>
         <category>unlink</category>
         <category>got改写</category>
+        <category>pie</category>
         <category>随机数检查</category>
+        <category>格式化字符串</category>
+        <category>got表</category>
+        <category>格式化字符串漏洞</category>
         <item>
             <guid isPermalink="true">http://example.com/2023/08/24/web-new/</guid>
             <title>web_new</title>
