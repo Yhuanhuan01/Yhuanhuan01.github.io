@@ -7,18 +7,18 @@
         <language>zh-CN</language>
         <pubDate>Wed, 15 Nov 2023 08:01:08 +0800</pubDate>
         <lastBuildDate>Wed, 15 Nov 2023 08:01:08 +0800</lastBuildDate>
-        <category>canary</category>
         <category>wp</category>
+        <category>canary</category>
         <category>堆</category>
         <category>pie</category>
         <category>格式化字符串漏洞</category>
-        <category>格式化字符串</category>
-        <category>got表</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
-        <category>srop</category>
+        <category>格式化字符串</category>
+        <category>got表</category>
         <category>uaf</category>
+        <category>srop</category>
         <category>unlink</category>
         <category>got改写</category>
         <category>随机数检查</category>
@@ -89,6 +89,24 @@ MSAyIDkgMTcgMjMgMzAgMjk=
 &lt;p&gt;&lt;img data-src=&#34;/img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/5.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
 &lt;p&gt;拼起来得到 flag&lt;/p&gt;
 &lt;p DATESO=&#34;&#34;&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;赛后复现&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#赛后复现&#34;&gt;#&lt;/a&gt; ** 赛后复现 **&lt;/h3&gt;
+&lt;h4 id=&#34;未知的加密&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#未知的加密&#34;&gt;#&lt;/a&gt; 未知的加密&lt;/h4&gt;
+&lt;p&gt;密码用 010 打开，掩码   Password SiertingXXXX, where X is a pure number…&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sierting2023&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;给了一个 Virtual，容器文件。使用取证大师。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/22.png&#34; alt=&#34;image-20231115085341435&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用 VeraCrypt 挂在 enc 密码仍然是 Sierting2023 找到文件 flag.swp&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/23.png&#34; alt=&#34;image-20231115085923465&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;ic-card&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ic-card&#34;&gt;#&lt;/a&gt; IC-Card&lt;/h4&gt;
+&lt;p&gt;两个文件.&lt;/p&gt;
+&lt;p&gt;一个 IC 的 bin 文件，一共镜像层文件。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/24.png&#34; alt=&#34;image-20231115090413292&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/25.png&#34; alt=&#34;image-20231115090503188&#34;&gt;&lt;/p&gt;
+&lt;p&gt;得到压缩包密码。&lt;/p&gt;
+&lt;p&gt;找到 decrypted_string 文件&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./img/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81pic/26.png&#34; alt=&#34;image-20231115090654275&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;web&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#web&#34;&gt;#&lt;/a&gt; &lt;strong&gt;Web&lt;/strong&gt;&lt;/h2&gt;
 &lt;h3 id=&#34;日志里的flag&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#日志里的flag&#34;&gt;#&lt;/a&gt; &lt;strong&gt;日志里的 FLAG&lt;/strong&gt;&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Java&#34;&gt;  &amp;lt;?php
