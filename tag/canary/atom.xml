@@ -6,15 +6,15 @@
     <updated>2023-08-04T04:02:09.000Z</updated>
     <category term="wp" />
     <category term="canary" />
+    <category term="格式化字符串" />
+    <category term="got表" />
     <category term="堆" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="srop" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
-    <category term="格式化字符串" />
-    <category term="got表" />
-    <category term="srop" />
     <category term="uaf" />
     <category term="unlink" />
     <category term="got改写" />
