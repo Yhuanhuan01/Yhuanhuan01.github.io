@@ -4,12 +4,12 @@
     <title></title>
     <link href="http://example.com" />
     <updated>2024-02-21T04:46:27.000Z</updated>
-    <category term="canary" />
     <category term="wp" />
     <category term="堆" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="canary" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="格式化字符串" />
