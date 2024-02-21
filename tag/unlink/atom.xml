@@ -14,8 +14,8 @@
     <category term="格式化字符串漏洞" />
     <category term="格式化字符串" />
     <category term="got表" />
-    <category term="srop" />
     <category term="uaf" />
+    <category term="srop" />
     <category term="unlink" />
     <category term="got改写" />
     <category term="随机数检查" />
