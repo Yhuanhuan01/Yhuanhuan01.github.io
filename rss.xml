@@ -8,17 +8,17 @@
         <pubDate>Wed, 21 Feb 2024 12:46:27 +0800</pubDate>
         <lastBuildDate>Wed, 21 Feb 2024 12:46:27 +0800</lastBuildDate>
         <category>wp</category>
+        <category>pie</category>
+        <category>canary</category>
+        <category>格式化字符串漏洞</category>
         <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
-        <category>pie</category>
-        <category>canary</category>
-        <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
-        <category>srop</category>
         <category>unlink</category>
+        <category>srop</category>
         <category>uaf</category>
         <category>got改写</category>
         <category>随机数检查</category>
@@ -27,13 +27,13 @@
             <title>FLAG_TEST</title>
             <link>http://example.com/2024/02/21/FLAG-TEST/</link>
             <pubDate>Wed, 21 Feb 2024 12:46:27 +0800</pubDate>
-            <description><![CDATA[ &lt;div class=&#34;hbe hbe-container&#34; id=&#34;hexo-blog-encrypt&#34; data-wpm=&#34;Oh, this is an invalid password. Check and try again, please.&#34; data-whm=&#34;OOPS, these decrypted content may changed, but you can still have a look.&#34;&gt;
-  &lt;script id=&#34;hbeData&#34; type=&#34;hbeData&#34; data-hmacdigest=&#34;e1a81976191c8e6eb021fbc9e7ad666f044f32a369f256494c040c60b3d42fc3&#34;&gt;bd25ed9264b080267271e137e33d0ce18f3dbb41a8a4203af98a09ddcdccf6d3&lt;/script&gt;
+            <description><![CDATA[ &lt;div class=&#34;hbe hbe-container&#34; id=&#34;hexo-blog-encrypt&#34; data-wpm=&#34;抱歉, 这个密码看着不太对, 请再试试.&#34; data-whm=&#34;抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.&#34;&gt;
+  &lt;script id=&#34;hbeData&#34; type=&#34;hbeData&#34; data-hmacdigest=&#34;abda894ac83d475d173cb3386acd447eaf098773cd8132f7f1d2bbb3902bbebd&#34;&gt;0461fee658d425548b2d6811c031f2c85e4abba44ddfe20154b9a8721147bc5efbd7e2942ecddce804f3223ee0d528ba8923bd2b9d25681d8cc8d59a641105ff662bee542e9cf4bad4202ccef731d679&lt;/script&gt;
   &lt;div class=&#34;hbe hbe-content&#34;&gt;
     &lt;div class=&#34;hbe hbe-input hbe-input-default&#34;&gt;
       &lt;input class=&#34;hbe hbe-input-field hbe-input-field-default&#34; type=&#34;password&#34; id=&#34;hbePass&#34;&gt;
       &lt;label class=&#34;hbe hbe-input-label hbe-input-label-default&#34; for=&#34;hbePass&#34;&gt;
-        &lt;span class=&#34;hbe hbe-input-label-content hbe-input-label-content-default&#34;&gt;You must enter the password to read.&lt;/span&gt;
+        &lt;span class=&#34;hbe hbe-input-label-content hbe-input-label-content-default&#34;&gt;FLAG就在里面哟！！&lt;/span&gt;
       &lt;/label&gt;
     &lt;/div&gt;
   &lt;/div&gt;

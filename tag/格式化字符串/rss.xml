@@ -8,17 +8,17 @@
         <pubDate>Fri, 22 Sep 2023 20:04:31 +0800</pubDate>
         <lastBuildDate>Fri, 22 Sep 2023 20:04:31 +0800</lastBuildDate>
         <category>wp</category>
+        <category>pie</category>
+        <category>canary</category>
+        <category>格式化字符串漏洞</category>
         <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
-        <category>pie</category>
-        <category>canary</category>
-        <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
-        <category>srop</category>
         <category>unlink</category>
+        <category>srop</category>
         <category>uaf</category>
         <category>got改写</category>
         <category>随机数检查</category>
