@@ -5,11 +5,11 @@
         <link>http://example.com</link>
         <description>欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸</description>
         <language>zh-CN</language>
-        <pubDate>Mon, 19 Feb 2024 12:33:34 +0800</pubDate>
-        <lastBuildDate>Mon, 19 Feb 2024 12:33:34 +0800</lastBuildDate>
+        <pubDate>Wed, 21 Feb 2024 12:46:27 +0800</pubDate>
+        <lastBuildDate>Wed, 21 Feb 2024 12:46:27 +0800</lastBuildDate>
         <category>wp</category>
-        <category>canary</category>
         <category>堆</category>
+        <category>canary</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
@@ -22,6 +22,13 @@
         <category>unlink</category>
         <category>got改写</category>
         <category>随机数检查</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2024/02/21/FLAG-TEST/</guid>
+            <title>FLAG_TEST</title>
+            <link>http://example.com/2024/02/21/FLAG-TEST/</link>
+            <pubDate>Wed, 21 Feb 2024 12:46:27 +0800</pubDate>
+            <description><![CDATA[  ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2024/02/19/Sictf-round3-wp/</guid>
             <title>Sictf-round3-wp</title>

@@ -5,8 +5,8 @@
     <link href="http://example.com" />
     <updated>2024-02-19T04:33:34.000Z</updated>
     <category term="wp" />
-    <category term="canary" />
     <category term="堆" />
+    <category term="canary" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
