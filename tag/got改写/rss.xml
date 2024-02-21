@@ -7,8 +7,8 @@
         <language>zh-CN</language>
         <pubDate>Thu, 03 Aug 2023 17:17:58 +0800</pubDate>
         <lastBuildDate>Thu, 03 Aug 2023 17:17:58 +0800</lastBuildDate>
-        <category>wp</category>
         <category>canary</category>
+        <category>wp</category>
         <category>堆</category>
         <category>csu</category>
         <category>rop</category>
@@ -17,8 +17,8 @@
         <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
-        <category>uaf</category>
         <category>srop</category>
+        <category>uaf</category>
         <category>unlink</category>
         <category>got改写</category>
         <category>随机数检查</category>
