@@ -3,17 +3,17 @@
     <channel>
         <title> • Posts by &#34;技巧&#34; category</title>
         <link>http://example.com</link>
-        <description>欢迎来到Huan的笔记空间~这里主要会记录pwn笔记🌸</description>
+        <description>欢迎来到Huan的笔记空间~~~~~~🌸</description>
         <language>zh-CN</language>
         <pubDate>Fri, 22 Sep 2023 20:04:31 +0800</pubDate>
         <lastBuildDate>Fri, 22 Sep 2023 20:04:31 +0800</lastBuildDate>
         <category>wp</category>
-        <category>canary</category>
         <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
         <category>pie</category>
+        <category>canary</category>
         <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
