@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://example.com</id>
+    <title> • Posts by &#34;靶机渗透&#34; tag</title>
+    <link href="http://example.com" />
+    <updated>2024-02-24T14:35:04.000Z</updated>
+    <category term="wp" />
+    <category term="canary" />
+    <category term="堆" />
+    <category term="csu" />
+    <category term="rop" />
+    <category term="gdb" />
+    <category term="pie" />
+    <category term="格式化字符串漏洞" />
+    <category term="格式化字符串" />
+    <category term="got表" />
+    <category term="srop" />
+    <category term="uaf" />
+    <category term="unlink" />
+    <category term="got改写" />
+    <category term="随机数检查" />
+    <category term="靶机渗透" />
+    <category term="vulnHUB" />
+    <entry>
+        <id>http://example.com/2024/02/24/The-attacker-used-an-0day/</id>
+        <title>The attacker used an 0day</title>
+        <link rel="alternate" href="http://example.com/2024/02/24/The-attacker-used-an-0day/"/>
+        <content type="html">&lt;h1 id=&#34;tiki-1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tiki-1&#34;&gt;#&lt;/a&gt; TIKI: 1&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Download&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudnVsbmh1Yi5jb20vZW50cnkvdGlraS0xLDUyNS8jdG9w&#34;&gt;Back to the Top&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Please remember that VulnHub is a free community resource so we are unable to check the machines that are provided to us. Before you download, please read our FAQs sections dealing with the dangers of running unknown VMs and our suggestions for “protecting yourself and your network. If you understand the risks, please download!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tiki.ova&lt;/strong&gt; (Size: 4.3GB)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xRDg1M0dtWTJwdUt3N2Z4Ql9oSVlWamMyS1M1WVR6MTkvdmlldz91c3A9c2hhcmluZw==&#34;&gt;https://drive.google.com/file/d/1D853GmY2puKw7fxB_hIYVjc2KS5YTz19/view?usp=sharing&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Download (Mirror)&lt;/strong&gt;: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kb3dubG9hZC52dWxuaHViLmNvbS90aWtpL1Rpa2kub3Zh&#34;&gt;https://download.vulnhub.com/tiki/Tiki.ova&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;description&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#description&#34;&gt;#&lt;/a&gt; Description&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Oh no our webserver got compromised. The attacker used an 0day, so we dont know how he got into the admin panel. Investigate that.&lt;/p&gt;
+&lt;p&gt;This is an OSCP Prep Box, its based on a CVE I recently found. Its on the OSCP lab machines level.&lt;/p&gt;
+&lt;p&gt;If you need hints contact me on Twitter: S1lky_1337, should work on VirtualBox and Vmware.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;信息收集&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#信息收集&#34;&gt;#&lt;/a&gt; 信息收集&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;┌──(root ㉿ yhuanhuan)-[/home/kali]&lt;br&gt;
+└─# nmap 192.168.85.145 -p 1-65535&lt;br&gt;
+Starting Nmap 7.94 ( &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ubWFwLm9yZw==&#34;&gt;https://nmap.org&lt;/span&gt; ) at 2024-02-24 06:39 EST&lt;br&gt;
+Nmap scan report for 192.168.85.145&lt;br&gt;
+Host is up (0.00025s latency).&lt;br&gt;
+Not shown: 65531 closed tcp ports (reset)&lt;br&gt;
+PORT    STATE SERVICE&lt;br&gt;
+22/tcp  open  ssh&lt;br&gt;
+80/tcp  open  http&lt;br&gt;
+139/tcp open  netbios-ssn&lt;br&gt;
+445/tcp open  microsoft-ds&lt;br&gt;
+MAC Address: 00:0C:29:74:35:F1 (VMware)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;nmap 报告，开了 22，80，139 和 445 端口&lt;/p&gt;
+&lt;p&gt;445 端口&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[+] IP: 192.168.85.145:445	Name: 192.168.85.145      	Status: [32mAuthenticated[0m&lt;br&gt;
+Disk                                                  	Permissions	Comment&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;​	print$                                            	[31mNO ACCESS[0m	Printer Drivers&lt;br&gt;
+​	Notes (目录)                                             	[33mREAD ONLY[0m	My Notes&lt;br&gt;
+​	./Notes&lt;br&gt;
+​	dr–r--r--                0 Wed Jul 29 09:52:09 2020	.&lt;br&gt;
+​	dr–r--r--                0 Thu Jul 30 15:32:11 2020	…&lt;br&gt;
+​	fr–r--r--              244 Wed Jul 29 09:52:05 2020	Mail.txt&lt;br&gt;
+​	IPC$                                              	[31mNO ACCESS[0m	IPC Service (ubuntu server (Samba, Ubuntu))&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;存在 Mail.txt 文件&lt;/p&gt;
+&lt;p&gt;80 端口&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;200      GET      469l     1513w    49414c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGlraS1pbmRleC5waHA=&#34;&gt;http://192.168.85.145/tiki/tiki-index.php&lt;/span&gt;&lt;br&gt;
+200      GET       15l       74w     6147c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L2ljb25zL3VidW50dS1sb2dvLnBuZw==&#34;&gt;http://192.168.85.145/icons/ubuntu-logo.png&lt;/span&gt;&lt;br&gt;
+200      GET      375l      964w    10918c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1Lw==&#34;&gt;http://192.168.85.145/&lt;/span&gt;&lt;br&gt;
+200      GET      375l      964w    10918c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L2luZGV4Lmh0bWw=&#34;&gt;http://192.168.85.145/index.html&lt;/span&gt;&lt;br&gt;
+&lt;strong&gt;200      GET        3l        5w       42c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3JvYm90cy50eHQ=&#34;&gt;http://192.168.85.145/robots.txt&lt;/span&gt;&lt;/strong&gt;&lt;br&gt;
+200      GET     1105l     3225w    29168c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL2NvbG9yYm94L2pxdWVyeS5jb2xvcmJveC5qcw==&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/colorbox/jquery.colorbox.js&lt;/span&gt;&lt;br&gt;
+200      GET        1l      163w     1533c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2Jhc2VfZmlsZXMvZmF2aWNvbnMvc2FmYXJpLXBpbm5lZC10YWIuc3Zn&#34;&gt;http://192.168.85.145/tiki/themes/base_files/favicons/safari-pinned-tab.svg&lt;/span&gt;&lt;br&gt;
+200      GET       72l      237w     1692c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL2pxdWVyeV90aWtpL2ljb25zZXRzLmpz&#34;&gt;http://192.168.85.145/tiki/lib/jquery_tiki/iconsets.js&lt;/span&gt;&lt;br&gt;
+200      GET      214l      697w     6583c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL2FqYXgvYXV0b3NhdmUuanM=&#34;&gt;http://192.168.85.145/tiki/lib/ajax/autosave.js&lt;/span&gt;&lt;br&gt;
+200      GET       24l       80w     2159c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvaW1nL3NwaW5uZXIuZ2lm&#34;&gt;http://192.168.85.145/tiki/img/spinner.gif&lt;/span&gt;&lt;br&gt;
+200      GET     1311l     3479w    36444c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2NvbXBvbmVudHMvanF1ZXJ5dWkvdGhlbWVzL2ZsaWNrL2pxdWVyeS11aS5jc3M=&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/components/jqueryui/themes/flick/jquery-ui.css&lt;/span&gt;&lt;br&gt;
+200      GET     2280l     8947w    66245c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL3RhZ2NhbnZhcy9qcXVlcnkudGFnY2FudmFzLmpz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/tagcanvas/jquery.tagcanvas.js&lt;/span&gt;&lt;br&gt;
+200      GET     4305l    12949w   123816c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL2pxdWVyeV90aWtpL3Rpa2ktanF1ZXJ5Lmpz&#34;&gt;http://192.168.85.145/tiki/lib/jquery_tiki/tiki-jquery.js&lt;/span&gt;&lt;br&gt;
+200      GET       45l      270w     1536c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGFuZy9lbi9sYW5ndWFnZS5qcw==&#34;&gt;http://192.168.85.145/tiki/lang/en/language.js&lt;/span&gt;&lt;br&gt;
+200      GET       17l       28w      436c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL2NhcHRjaGEvY2FwdGNoYWxpYi5qcw==&#34;&gt;http://192.168.85.145/tiki/lib/captcha/captchalib.js&lt;/span&gt;&lt;br&gt;
+200      GET      357l     1792w    13839c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL2pxdWVyeV90aWtpL3Rpa2ktY29uZmlybS5qcw==&#34;&gt;http://192.168.85.145/tiki/lib/jquery_tiki/tiki-confirm.js&lt;/span&gt;&lt;br&gt;
+200      GET     2291l     8530w    78475c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS9qcXVlcnktdGltZXBpY2tlci1hZGRvbi9kaXN0L2pxdWVyeS11aS10aW1lcGlja2VyLWFkZG9uLmpz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery/jquery-timepicker-addon/dist/jquery-ui-timepicker-addon.js&lt;/span&gt;&lt;br&gt;
+200      GET     4556l     7744w    72670c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2Jvd2VyLWFzc2V0L2ZvbnRhd2Vzb21lL2Nzcy9hbGwuY3Nz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/bower-asset/fontawesome/css/all.css&lt;/span&gt;&lt;br&gt;
+200      GET    18706l    71547w   520714c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2NvbXBvbmVudHMvanF1ZXJ5dWkvanF1ZXJ5LXVpLmpz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/components/jqueryui/jquery-ui.js&lt;/span&gt;&lt;br&gt;
+200      GET     8065l    26342w   265027c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2RhcmtseS9jc3MvZGFya2x5LmNzcw==&#34;&gt;http://192.168.85.145/tiki/themes/darkly/css/darkly.css&lt;/span&gt;&lt;br&gt;
+200      GET        6l       19w     1384c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2Jhc2VfZmlsZXMvZmF2aWNvbnMvZmF2aWNvbi0xNngxNi5wbmc=&#34;&gt;http://192.168.85.145/tiki/themes/base_files/favicons/favicon-16x16.png&lt;/span&gt;&lt;br&gt;
+403      GET      393l     1324w    46811c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGlraS1hZG1pbi5waHA=&#34;&gt;http://192.168.85.145/tiki/tiki-admin.php&lt;/span&gt;&lt;br&gt;
+404      GET      393l     1316w    46786c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGlraS1hamF4X3NlcnZpY2VzLnBocA==&#34;&gt;http://192.168.85.145/tiki/tiki-ajax_services.php&lt;/span&gt;&lt;br&gt;
+200      GET      289l      995w     8317c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL2pxdWVyeV90aWtpL3BsdWdpbmVkaXQuanM=&#34;&gt;http://192.168.85.145/tiki/lib/jquery_tiki/pluginedit.js&lt;/span&gt;&lt;br&gt;
+200      GET       19l       76w     6061c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvaW1nL3Rpa2kvVGlraV9XQ0cucG5n&#34;&gt;http://192.168.85.145/tiki/img/tiki/Tiki_WCG.png&lt;/span&gt;&lt;br&gt;
+200      GET       70l      332w     4474c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL2NvbG9yYm94L2V4YW1wbGUxL2NvbG9yYm94LmNzcw==&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/colorbox/example1/colorbox.css&lt;/span&gt;&lt;br&gt;
+200      GET     2624l    11633w    88740c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL25wbS1hc3NldC9wb3BwZXIuanMvZGlzdC91bWQvcG9wcGVyLmpz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/npm-asset/popper.js/dist/umd/popper.js&lt;/span&gt;&lt;br&gt;
+200      GET       77l      293w     1848c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL2FzeW5jL2pxdWVyeS5hc3luYy5qcw==&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/async/jquery.async.js&lt;/span&gt;&lt;br&gt;
+200      GET      200l      803w     5256c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL2pxdWVyeS1qc29uL3NyYy9qcXVlcnkuanNvbi5qcw==&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/jquery-json/src/jquery.json.js&lt;/span&gt;&lt;br&gt;
+200      GET       50l      267w    18969c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2Jhc2VfZmlsZXMvZmF2aWNvbnMvYXBwbGUtdG91Y2gtaWNvbi5wbmc=&#34;&gt;http://192.168.85.145/tiki/themes/base_files/favicons/apple-touch-icon.png&lt;/span&gt;&lt;br&gt;
+200      GET      130l      436w     5366c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2N3c3BlYXIvYm9vdHN0cmFwLWhvdmVyLWRyb3Bkb3duL2Jvb3RzdHJhcC1ob3Zlci1kcm9wZG93bi5qcw==&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/cwspear/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js&lt;/span&gt;&lt;br&gt;
+200      GET      935l     2838w    27000c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL2pxdWVyeV90aWtpL2ZpbGVzLmpz&#34;&gt;http://192.168.85.145/tiki/lib/jquery_tiki/files.js&lt;/span&gt;&lt;br&gt;
+200      GET       11l       16w      443c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2Jhc2VfZmlsZXMvZmF2aWNvbnMvYnJvd3NlcmNvbmZpZy54bWw=&#34;&gt;http://192.168.85.145/tiki/themes/base_files/favicons/browserconfig.xml&lt;/span&gt;&lt;br&gt;
+200      GET       21l       37w      552c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2Jhc2VfZmlsZXMvZmF2aWNvbnMvc2l0ZS53ZWJtYW5pZmVzdA==&#34;&gt;http://192.168.85.145/tiki/themes/base_files/favicons/site.webmanifest&lt;/span&gt;&lt;br&gt;
+200      GET    10872l    44287w   287630c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2NvbXBvbmVudHMvanF1ZXJ5L2pxdWVyeS5qcw==&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/components/jquery/jquery.js&lt;/span&gt;&lt;br&gt;
+200      GET        8l       45w     3046c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2Jhc2VfZmlsZXMvZmF2aWNvbnMvZmF2aWNvbi0zMngzMi5wbmc=&#34;&gt;http://192.168.85.145/tiki/themes/base_files/favicons/favicon-32x32.png&lt;/span&gt;&lt;br&gt;
+200      GET       30l      187w     1945c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS9qcXVlcnktdGltZXBpY2tlci1hZGRvbi9kaXN0L2pxdWVyeS11aS10aW1lcGlja2VyLWFkZG9uLmNzcw==&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery/jquery-timepicker-addon/dist/jquery-ui-timepicker-addon.css&lt;/span&gt;&lt;br&gt;
+200      GET       28l       67w      652c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL3RyZWV0YWJsZS9jc3MvanF1ZXJ5LnRyZWV0YWJsZS5jc3M=&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/treetable/css/jquery.treetable.css&lt;/span&gt;&lt;br&gt;
+200      GET       24l       90w      945c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL2pxdWVyeV90aWtpL3Rpa2ktYm9vdHN0cmFwbW9kYWxmaXguanM=&#34;&gt;http://192.168.85.145/tiki/lib/jquery_tiki/tiki-bootstrapmodalfix.js&lt;/span&gt;&lt;br&gt;
+200      GET      114l      597w     4938c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL3N1cGVyZmlzaC9kaXN0L2pzL2hvdmVySW50ZW50Lmpz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/superfish/dist/js/hoverIntent.js&lt;/span&gt;&lt;br&gt;
+200      GET       61l      379w    24354c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2Jhc2VfZmlsZXMvZmF2aWNvbnMvZmF2aWNvbi5pY28=&#34;&gt;http://192.168.85.145/tiki/themes/base_files/favicons/favicon.ico&lt;/span&gt;&lt;br&gt;
+200      GET     1372l     5516w    42878c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL2pxdWVyeS12YWxpZGF0aW9uL2Rpc3QvanF1ZXJ5LnZhbGlkYXRlLmpz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/jquery-validation/dist/jquery.validate.js&lt;/span&gt;&lt;br&gt;
+200      GET     4420l    11447w   136323c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL3R3YnMvYm9vdHN0cmFwL2Rpc3QvanMvYm9vdHN0cmFwLmpz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/twbs/bootstrap/dist/js/bootstrap.js&lt;/span&gt;&lt;br&gt;
+200      GET      228l      866w     8083c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL3ZhbGlkYXRvcnMvdmFsaWRhdG9yX3Rpa2kuanM=&#34;&gt;http://192.168.85.145/tiki/lib/validators/validator_tiki.js&lt;/span&gt;&lt;br&gt;
+200      GET      540l     2164w    14923c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2NvbXBvbmVudHMvanF1ZXJ5LW1pZ3JhdGUvanF1ZXJ5LW1pZ3JhdGUuanM=&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/components/jquery-migrate/jquery-migrate.js&lt;/span&gt;&lt;br&gt;
+200      GET      629l     1606w    16611c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdmVuZG9yX2J1bmRsZWQvdmVuZG9yL2pxdWVyeS1wbHVnaW5zL3RyZWV0YWJsZS9qcXVlcnkudHJlZXRhYmxlLmpz&#34;&gt;http://192.168.85.145/tiki/vendor_bundled/vendor/jquery-plugins/treetable/jquery.treetable.js&lt;/span&gt;&lt;br&gt;
+200      GET      421l     1343w    47118c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGlraS1yZW1pbmRfcGFzc3dvcmQucGhw&#34;&gt;http://192.168.85.145/tiki/tiki-remind_password.php&lt;/span&gt;&lt;br&gt;
+200      GET     5026l    13357w   119973c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvdGhlbWVzL2Jhc2VfZmlsZXMvY3NzL3Rpa2lfYmFzZS5jc3M=&#34;&gt;http://192.168.85.145/tiki/themes/base_files/css/tiki_base.css&lt;/span&gt;&lt;br&gt;
+200      GET     1654l     5876w    47509c &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1L3Rpa2kvbGliL3Rpa2ktanMuanM=&#34;&gt;http://192.168.85.145/tiki/lib/tiki-js.js&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;关于 robot.txt 内容为&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;HTTP/1.1 200 OK&lt;br&gt;
+Date: Sat, 24 Feb 2024 12:32:51 GMT&lt;br&gt;
+Server: Apache/2.4.41 (Ubuntu)&lt;br&gt;
+Last-Modified: Wed, 29 Jul 2020 11:21:37 GMT&lt;br&gt;
+ETag: “2a-5ab92c25233cd”&lt;br&gt;
+Accept-Ranges: bytes&lt;br&gt;
+Content-Length: 42&lt;br&gt;
+Content-Type: text/plain&lt;/p&gt;
+&lt;p&gt;User-Agent: *&lt;br&gt;
+Disallow:&lt;br&gt;
+Disallow: /tiki/(可访问)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;收集smb端口信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#收集smb端口信息&#34;&gt;#&lt;/a&gt; 收集 SMB 端口信息&lt;/h4&gt;
+&lt;p&gt;SMB(445// &lt;code&gt;SMB端口139或445&lt;/code&gt; ) 可以读到 Mail.txt&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SMB 端口由于 autorecon 可以直接读到一些有用的信息，那么我们可以考虑用波 smbclient 进行连接密码为空登录成功以后可以用 get 下载到本地&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;命令:smbclient [\\ip\](file:///\\ip\) 目录&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224211218129.png&#34; alt=&#34;image-20240224211218129&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;挖掘80端口信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#挖掘80端口信息&#34;&gt;#&lt;/a&gt; 挖掘 80 端口信息&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;robots.txt 下禁止的 tiki 是能够被访问的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224211603341.png&#34; alt=&#34;image-20240224211603341&#34;&gt;&lt;/p&gt;
+&lt;p&gt;一个 CMS&lt;/p&gt;
+&lt;p&gt;用前面得到的密码去登陆&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224212003782.png&#34; alt=&#34;image-20240224212003782&#34;&gt;&lt;/p&gt;
+&lt;p&gt;登陆成功&lt;/p&gt;
+&lt;h4 id=&#34;收集cms信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#收集cms信息&#34;&gt;#&lt;/a&gt; 收集 CMS 信息&lt;/h4&gt;
+&lt;p&gt;既然我们目前知道了 CMS 的名字是 tiki wiki, 我们首先需要确定版本才能找到相关漏洞根据 CMS 官网和靶机发布时间为 20207 月大概推断该 CMS 版本为 21&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224212749163.png&#34; alt=&#34;image-20240224212749163&#34;&gt;&lt;/p&gt;
+&lt;p&gt;也可以加上 changelog.txt&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224212958681.png&#34; alt=&#34;image-20240224212958681&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;搜索相关payload&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#搜索相关payload&#34;&gt;#&lt;/a&gt; 搜索相关 payload&lt;/h4&gt;
+&lt;p&gt;确定完版本号后得找找相关漏洞可以在 kali 本地下直接搜关键词 searchsploit Tiki Wiki 21 找到一个相关的绕过漏洞&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;┌──(root ㉿ kali)-[/home/kali/Desktop/Tools/AutoRecon]&lt;br&gt;
+└─# searchsploit Tiki Wiki 21&lt;/p&gt;
+&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;Exploit Title                                                                                                                                                                   |  Path&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Tiki Wiki CMS Groupware - ‘url’ Open Redirection                                                                                                                                 | php/webapps/36848.txt&lt;br&gt;
+Tiki Wiki CMS Groupware 21.1 - Authentication Bypass                                                                                                                             | php/webapps/48927.py&lt;br&gt;
+TikiWiki jhot - Remote Command Execution (Metasploit)                                                                                                                            | php/webapps/16885.rb&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-browse_categories.php?sort_mode’ SQL Injection                                                                                                      | php/webapps/23966.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-directory_ranking.php?sort_mode’ SQL Injection                                                                                                      | php/webapps/23965.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-directory_search.php?sort_mode’ SQL Injection                                                                                                       | php/webapps/23973.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-file_galleries.php?sort_mode’ SQL Injection                                                                                                         | php/webapps/23974.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-index.php?comments_offset &amp;amp; offset’ SQL Injections                                                                                                  | php/webapps/23971.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-list_file_gallery.php?sort_mode’ SQL Injection                                                                                                      | php/webapps/23964.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-list_trackers.php?sort_mode’ SQL Injection                                                                                                          | php/webapps/23976.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-usermenu.php?sort_mode’ SQL Injection                                                                                                               | php/webapps/23963.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-user_tasks.php?offset &amp;amp; sort_mode’ SQL Injections                                                                                                   | php/webapps/23972.txt&lt;br&gt;
+TikiWiki Project 1.8 - ‘tiki-view_chart.php?chartId’ Cross-Site Scripting                                                                                                        | php/webapps/23962.txt&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Shellcodes: No Results&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224214218291.png&#34; alt=&#34;image-20240224214218291&#34;&gt;&lt;/p&gt;
+&lt;p&gt;接着就按照脚本的方法在登录处用 admin 登录然后用 Burp 抓包就可&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224220259251.png&#34; alt=&#34;image-20240224220259251&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224220316300.png&#34; alt=&#34;image-20240224220316300&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224220334412.png&#34; alt=&#34;image-20240224220334412&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提权&#34;&gt;#&lt;/a&gt; 提权&lt;/h4&gt;
+&lt;p&gt;发现 Credentials&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224220751042.png&#34; alt=&#34;image-20240224220751042&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点进去有个账号后面的字符串明显不同于前面的 Mail.txt 的内容&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224220944680.png&#34; alt=&#34;image-20240224220944680&#34;&gt;&lt;/p&gt;
+&lt;p&gt;有个不同于 silky 的账号&lt;/p&gt;
+&lt;p&gt;使用 ssh 连接&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ssh   silky@&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovLzE5Mi4xNjguODUuMTQ1&#34;&gt;http://192.168.85.145&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;用 SSH 连接以后输入账号密码成功登录。用 sudo -l 查看权限跟 root 一样高直接 su 就可。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224221412482.png&#34; alt=&#34;image-20240224221412482&#34;&gt;&lt;/p&gt;
+</content>
+        <category term="靶机渗透" />
+        <category term="vulnHUB" />
+        <updated>2024-02-24T14:35:04.000Z</updated>
+    </entry>
+</feed>
