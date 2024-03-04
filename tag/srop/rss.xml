@@ -8,22 +8,22 @@
         <pubDate>Thu, 03 Aug 2023 22:51:25 +0800</pubDate>
         <lastBuildDate>Thu, 03 Aug 2023 22:51:25 +0800</lastBuildDate>
         <category>wp</category>
-        <category>canary</category>
+        <category>靶机渗透</category>
+        <category>vulnHUB</category>
         <category>堆</category>
+        <category>canary</category>
+        <category>pie</category>
+        <category>格式化字符串漏洞</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
-        <category>pie</category>
-        <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
         <category>srop</category>
         <category>uaf</category>
-        <category>unlink</category>
         <category>got改写</category>
         <category>随机数检查</category>
-        <category>靶机渗透</category>
-        <category>vulnHUB</category>
+        <category>unlink</category>
         <item>
             <guid isPermalink="true">http://example.com/2023/08/03/srop/</guid>
             <title>srop</title>

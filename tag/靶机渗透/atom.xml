@@ -5,22 +5,22 @@
     <link href="http://example.com" />
     <updated>2024-02-24T14:35:04.000Z</updated>
     <category term="wp" />
-    <category term="canary" />
+    <category term="靶机渗透" />
+    <category term="vulnHUB" />
     <category term="堆" />
+    <category term="canary" />
+    <category term="pie" />
+    <category term="格式化字符串漏洞" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
-    <category term="pie" />
-    <category term="格式化字符串漏洞" />
     <category term="格式化字符串" />
     <category term="got表" />
     <category term="srop" />
     <category term="uaf" />
-    <category term="unlink" />
     <category term="got改写" />
     <category term="随机数检查" />
-    <category term="靶机渗透" />
-    <category term="vulnHUB" />
+    <category term="unlink" />
     <entry>
         <id>http://example.com/2024/02/24/The-attacker-used-an-0day/</id>
         <title>The attacker used an 0day</title>
@@ -57,7 +57,10 @@ PORT    STATE SERVICE&lt;br&gt;
 445/tcp open  microsoft-ds&lt;br&gt;
 MAC Address: 00:0C:29:74:35:F1 (VMware)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;nmap 报告，开了 22，80，139 和 445 端口&lt;/p&gt;
+&lt;p&gt;nmap, 开了 22，80，139 和 445 端口&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1hdXRvcmVjb24tOWM5bnA3OXJvYzlhM3A2YS5weQ==&#34;&gt;使用脚本 autorecon.py&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;445 端口&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[+] IP: 192.168.85.145:445	Name: 192.168.85.145      	Status: [32mAuthenticated[0m&lt;br&gt;
@@ -203,6 +206,10 @@ TikiWiki Project 1.8 - ‘tiki-view_chart.php?chartId’ Cross-Site Scripting   
 &lt;/blockquote&gt;
 &lt;p&gt;用 SSH 连接以后输入账号密码成功登录。用 sudo -l 查看权限跟 root 一样高直接 su 就可。&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;/img/TIKI_1/image-20240224221412482.png&#34; alt=&#34;image-20240224221412482&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;心得：&lt;/p&gt;
+&lt;p&gt;学习了不少工具方法和端口协议，坚持坚持！！！&lt;/p&gt;
+&lt;/blockquote&gt;
 </content>
         <category term="靶机渗透" />
         <category term="vulnHUB" />
