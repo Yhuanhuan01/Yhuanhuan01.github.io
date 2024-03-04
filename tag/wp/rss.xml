@@ -10,20 +10,20 @@
         <category>wp</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
-        <category>堆</category>
         <category>canary</category>
-        <category>pie</category>
-        <category>格式化字符串漏洞</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
+        <category>堆</category>
+        <category>pie</category>
+        <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
         <category>srop</category>
         <category>uaf</category>
+        <category>unlink</category>
         <category>got改写</category>
         <category>随机数检查</category>
-        <category>unlink</category>
         <item>
             <guid isPermalink="true">http://example.com/2024/02/05/hgame-week1-wp/</guid>
             <title>hgame-week1-wp</title>

