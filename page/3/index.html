@@ -27,11 +27,11 @@
   <meta name="keywords" content="java,git,springcloud" />
 
 
-<link rel="canonical" href="http://example.com/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0%E6%A3%80%E6%9F%A5/">
+<link rel="canonical" href="http://example.com/page/3/">
 
 
 
-  <title>标签：随机数检查 | yhuanhuan =  = 不在能知，乃在能行</title>
+  <title>yhuanhuan =  = 不在能知，乃在能行</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
   <div id="loading">
@@ -58,10 +58,11 @@
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
-    包含标签"随机数检查"的文章
-  </h1>
-
+            <a href="/" class="logo" rel="start"><p class="artboard">yhuanhuan</p>
+              <h1 itemprop="name headline" class="title"></h1>
+            </a>
+            <p class="meta" itemprop="description">= 不在能知，乃在能行 =</p>
+          
           </div>
         </div>
         <nav id="nav">
@@ -90,12 +91,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/n1j3BiVI9UMyxYf.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/c8LzaYO7NRj2Gmi.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/FM6hYgf7eHbLO4o.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/7DTqSyKlBc5e1Ir.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/vuBAH4kaJFtdgoC.png"></li>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/04/ibKkDqfNwIytXUL.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/FCzU6mcGnbJZH2S.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/lbtKpgZadE1LwfD.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/nUh9xrjosZA6KBg.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/KXvdO79oYyh2ZI5.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PeCrlT1WzSygfaB.png"></li>
         </ul>
       </div>
     </header>
@@ -116,33 +117,73 @@
       <div class="inner">
         <div id="main" class="pjax">
           
-  <div class="collapse wrap">
-    <h2 class="item header">
-      <a href="/tags">全部</a>
-      <small>/</small>
-      随机数检查
-      <small>标签</small>
-    </h2>
+  <div class="index wrap">
+    <div class="segments posts">
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/02/find-flag/" itemprop="url" title="find_flag"><img data-src="https://s2.loli.net/2023/08/03/pxCY3PlNUAW5GTn.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-02 18:44:10">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-02T18:44:10+08:00">2023-08-02</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
 
-        <article class="item normal" itemscope itemtype="http://schema.org/Article">
-          <div class="meta">
-            <time itemprop="dateCreated"
-                  datetime="2023-08-03T17:17:58+08:00"
-                  content="2023-08-03">
-              2023-08-03
-            </time>
-                <span><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/">复现</a></span>
-          </div>
+    <h3><a href="/2023/08/02/find-flag/" itemprop="url" title="find_flag">find_flag</a></h3>
+    <div class="excerpt">
+        # 题目复现 ——[深育杯 2021] find_flag
+pie 与 canary 同时开启，并且有格式化字符串。
+# 检查程序：
 
-          <div class="title">
-              <a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" itemprop="url">
-                <span itemprop="name">国赛复现</span>
-              </a>
-          </div>
-        </article>
+保护很全面。
+
+可以看的出，在第一处有格式化字符串漏洞。
+# IDA 分析：
+
+看了一下 mian 函数，将函数重命名，pwn 是我们有漏洞的地方。
+
+可以看到 gets 函数可以进行栈溢出，但是有 canary 保护，所以我们需要泄露 canary，可以利用格式化字符串去泄露 canary 并覆写在栈上。
+
+发现 backdoor。但是开了 pie，我们应该无法利用后们，但是好在只读变量（const 修饰的）和字符串变量放入 rodata...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" itemprop="url" title="复现"><i class="ic i-flag"></i>复现</a>
+      </span>
+    </div>
+    <a href="/2023/08/02/find-flag/" itemprop="url" title="find_flag" class="btn">more...</a>
+  </div>
+</article>
+
+    </div>
+
   </div>
 
   
+  <nav class="pagination">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </div>
+  </nav>
 
 
 
@@ -233,6 +274,7 @@
 
   <ul id="quick">
     <li class="prev pjax">
+        <a href="/page/2/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
@@ -253,58 +295,6 @@
 <div class="rpost pjax">
   <h2>随机文章</h2>
   <ul>
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/10/24/FSCTF-wp/" title="FSCTF_wp">FSCTF_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2024/03/04/qsnctf-round1-wp/" title="qsnctf_round1_wp">qsnctf_round1_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/10/24/%E6%9E%81%E5%AE%A2wp/" title="极客wp">极客wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
-  </li>
-
       
   <li class="item">
     
@@ -330,12 +320,10 @@
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
 </div>
 
-    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
+    <span><a href="/2024/03/04/qsnctf-round1-wp/" title="qsnctf_round1_wp">qsnctf_round1_wp</a></span>
   </li>
 
       
@@ -347,7 +335,49 @@
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+    <span><a href="/2023/09/22/picture/new-pwn/" title="new_pwn">new_pwn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/10/24/%E6%9E%81%E5%AE%A2wp/" title="极客wp">极客wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/10/24/FSCTF-wp/" title="FSCTF_wp">FSCTF_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
   </li>
 
       
@@ -358,6 +388,18 @@
 </div>
 
     <span><a href="/2024/02/05/hgame-week1-wp/" title="hgame-week1-wp">hgame-week1-wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/02/find-flag/" title="find_flag">find_flag</a></span>
   </li>
 
   </ul>
@@ -400,7 +442,7 @@
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'tags/随机数检查/',
+    path: 'page/3/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"
