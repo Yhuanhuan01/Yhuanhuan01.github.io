@@ -3,24 +3,107 @@
     <id>http://example.com</id>
     <title></title>
     <link href="http://example.com" />
-    <updated>2024-03-17T01:00:00.000Z</updated>
+    <updated>2024-04-15T08:04:30.000Z</updated>
     <category term="wp" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
     <category term="canary" />
-    <category term="堆" />
+    <category term="pie" />
+    <category term="格式化字符串漏洞" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
-    <category term="pie" />
-    <category term="格式化字符串漏洞" />
+    <category term="堆" />
     <category term="格式化字符串" />
     <category term="got表" />
-    <category term="uaf" />
     <category term="srop" />
+    <category term="uaf" />
     <category term="unlink" />
     <category term="got改写" />
     <category term="随机数检查" />
+    <entry>
+        <id>http://example.com/2024/04/15/%E5%8C%97%E5%8C%BA-%E6%95%B0%E4%BF%A1%E6%9D%AFWP/</id>
+        <title>北区-数信杯WP</title>
+        <link rel="alternate" href="http://example.com/2024/04/15/%E5%8C%97%E5%8C%BA-%E6%95%B0%E4%BF%A1%E6%9D%AFWP/"/>
+        <content type="html">&lt;h1 id=&#34;第二届数据安全大赛暨首届数信杯_wp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#第二届数据安全大赛暨首届数信杯_wp&#34;&gt;#&lt;/a&gt; 第二届数据安全大赛暨首届 “数信杯”_WP&lt;/h1&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414163012378.png&#34; alt=&#34;image-20240414163012378&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;magic-audio&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#magic-audio&#34;&gt;#&lt;/a&gt; Magic Audio&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SSTV 解密：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/30A50ACF8D6CFF45F112140CE485F4B5.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;binwalk 分离&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/691BCBB7B8BE2A80F88467915DB7A84A.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;将菜就多练当作密钥输入压缩包得到 flag&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;rrrrcccc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rrrrcccc&#34;&gt;#&lt;/a&gt; rrrrcccc&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;upx 去壳后打开程序，分析就是两次异或，一次 rc4 一次异或 key，我 patch 密文让他异或 rc4 后，手动异或一下 key 即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0x57&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x68&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x61&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x74&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x61&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x72&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x65&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x79&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x6F&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x75&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token number&#34;&gt;0x72&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x65&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x6E&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x63&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x72&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x79&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x70&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x74&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x69&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x6F&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token number&#34;&gt;0x6E&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x26&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x64&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x65&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x63&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x72&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x79&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x70&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x74&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x69&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token number&#34;&gt;0x6F&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x6E&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x62&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x61&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x73&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x69&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x63&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x73&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;b &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0x31&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x04&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x13&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x1A&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x16&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x56&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x1D&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x0D&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x43&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token number&#34;&gt;0x4B&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x04&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x5D&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x57&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x13&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x4C&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x41&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x5E&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x0A&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token number&#34;&gt;0x5F&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x42&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x56&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x56&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x07&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x44&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x4B&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x41&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x41&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x50&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token number&#34;&gt;0x5F&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x56&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x50&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x56&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x59&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x52&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x0E&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# print(len(a))&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# print(len(b))&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;token keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;chr&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;^&lt;/span&gt;b&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;end&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;classic_image_steganography&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#classic_image_steganography&#34;&gt;#&lt;/a&gt; Classic_image_steganography&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414161818188.png&#34; alt=&#34;image-20240414161818188&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;修改文件头&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414161928432.png&#34; alt=&#34;image-20240414161928432&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给了一张空白的图片，修改高度即可看到下方 flag&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414162012262.png&#34; alt=&#34;image-20240414162012262&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414162019739.png&#34; alt=&#34;image-20240414162019739&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;不安全的u盘1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#不安全的u盘1&#34;&gt;#&lt;/a&gt; 不安全的 U 盘.1&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414162247434.png&#34; alt=&#34;image-20240414162247434&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;不安全的u盘2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#不安全的u盘2&#34;&gt;#&lt;/a&gt; 不安全的 U 盘.2&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414162334045.png&#34; alt=&#34;image-20240414162334045&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;不安全的u盘3&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#不安全的u盘3&#34;&gt;#&lt;/a&gt; 不安全的 U 盘.3&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414162449852.png&#34; alt=&#34;image-20240414162449852&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;不安全的u盘4&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#不安全的u盘4&#34;&gt;#&lt;/a&gt; 不安全的 U 盘.4&lt;/h2&gt;
+&lt;p&gt;题目提到了后渗透，同时涉及到了远程 IP 和端口，肯定是搭建代理了，直接检索最常用的代理软件 frp 配置文件默认参数名 remote_port 之类的 ，得到答案 118.180.126.13_6770&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/8c5c8716-0941-4c3a-a785-eecc7a252691.png&#34; alt=&#34;image-20240414161028946&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;网站的数据绝对安全1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网站的数据绝对安全1&#34;&gt;#&lt;/a&gt; 网站的数据绝对安全.1&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;流量包 11 流&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414161028946.png&#34; alt=&#34;image-20240414161028946&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;得到用户名&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;网站的数据绝对安全2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网站的数据绝对安全2&#34;&gt;#&lt;/a&gt; 网站的数据绝对安全.2&lt;/h2&gt;
+&lt;p&gt;导出所有的 http 文件。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414161118780.png&#34; alt=&#34;image-20240414161118780&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bitcoin4&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bitcoin4&#34;&gt;#&lt;/a&gt; Bitcoin.4&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;gpt 秒了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/image-20240414161313115.png&#34; alt=&#34;image-20240414161313115&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;easyjava&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#easyjava&#34;&gt;#&lt;/a&gt; easyjava&lt;/h2&gt;
+&lt;p&gt;某个精通百家姓的开发者把自己的小秘密藏在了附件中，来查查他有什么秘密。&lt;/p&gt;
+&lt;p&gt;给的附件为.hprof 文件&lt;/p&gt;
+&lt;p&gt;用 java 自带的 VisualIVM 去查看。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/bcf9782e-73eb-4df1-b92d-aec244c0c628.png&#34; alt=&#34;image-20240414161028946&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/a09f3c0c-3456-4b27-bd4c-ad27518a4361.png&#34; alt=&#34;image-20240414161028946&#34;&gt;&lt;/p&gt;
+&lt;p&gt;大概翻阅几下，找到几串百家姓密文&lt;/p&gt;
+&lt;p&gt;解密得到&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/0d4c10f9-3d7d-4d68-981b-685b70c111e6.png&#34; alt=&#34;image-20240414161028946&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%95%B0%E4%BF%A1%E6%9D%AFwp/9a84f1ed-4bb2-4046-b6dd-66f71ad72897.png&#34; alt=&#34;image-20240414161028946&#34;&gt;&lt;/p&gt;
+&lt;blockquote aa534ac5-2f1a-466c-baf7-1ad7edb6adb2=&#34;&#34;&gt;
+&lt;p&gt;一串 base64 密文和类似码表的东西&lt;/p&gt;
+&lt;p&gt;观测 base64 码表长度小于 64，进行补齐，发现缺的为 A Z 两个大写字母（下面有用 悲！&lt;/p&gt;
+&lt;p&gt;密文的 UVWXY 很明显是瞎填充的。。。删除即可&lt;/p&gt;
+&lt;p&gt;此时密文为：pCNxpTJxojkPd65zdiQOpz5xbjgSdCcJoC5CdOQNomgTpmhydC5oz9&lt;/p&gt;
+&lt;p&gt;而解密结果为：flag {aa534ac5-2f1a-466c-baf7-1ad7edb6aX.&lt;/p&gt;
+&lt;p&gt;此时要用到 A Z 两个字母，进行尝试后&lt;/p&gt;
+&lt;p&gt;pCNxpTJxojkPd65zdiQOpz5xbjgSdCcJoC5CdOQNomgTpmhydC5Aoz9Z&lt;/p&gt;
+&lt;p&gt;发现此时能的够正确的得到明文&lt;/p&gt;
+&lt;p&gt;flag&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="wp" />
+        <updated>2024-04-15T08:04:30.000Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2024/03/17/FLAG/</id>
         <title>FLAG</title>
