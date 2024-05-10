@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://example.com</id>
+    <title> • Posts by &#34;技巧&#34; tag</title>
+    <link href="http://example.com" />
+    <updated>2024-05-10T08:12:12.000Z</updated>
+    <category term="wp" />
+    <category term="靶机渗透" />
+    <category term="vulnHUB" />
+    <category term="CVE-复现系列" />
+    <category term="canary" />
+    <category term="堆" />
+    <category term="pie" />
+    <category term="格式化字符串漏洞" />
+    <category term="csu" />
+    <category term="rop" />
+    <category term="gdb" />
+    <category term="格式化字符串" />
+    <category term="got表" />
+    <category term="srop" />
+    <category term="uaf" />
+    <category term="unlink" />
+    <category term="技巧" />
+    <category term="got改写" />
+    <category term="随机数检查" />
+    <entry>
+        <id>http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</id>
+        <title>关于恢复符号表这件事</title>
+        <link rel="alternate" href="http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/"/>
+        <content type="html">&lt;p&gt;目标文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-file&#34;&gt;typo: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, for GNU/Linux 2.6.32, BuildID[sha1]=211877f58b5a0e8774b8a3a72c83890f8cd38e63, stripped
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;32 位 ARM 架构，静态连接。内核版本 GUN/Linux 2.6.32 | 去符号表&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于修复程序我们首先要准备一个拥有完全符号的程序，使用一些方法给他导出符号表。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此，我们需要去编译一个与其类似的程序，用 ida 插件 rizzo，去生成其符号表内容&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 文件名: hello_arm.c&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&amp;lt;stdio.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;Hello, ARM World!\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;编译内容如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;arm-linux-gnueabihf-gcc -static -march=armv7-a -mfloat-abi=hard -o myapp hello_arm.c&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;myapp: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, for GNU/Linux 2.6.31, BuildID[sha1]=da2d1220742527123cd7cfeb41bbc4d2facbb3d5, with debug_info, not stripped&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下来我们需要将其用 ida 打开。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/gccarm/image-20240510152016835.png&#34; alt=&#34;image-20240510152016835&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点击此处去生成符号表 (.riz)&lt;/p&gt;
+&lt;p&gt;接下来就需要再次用 ida 装载我们要恢复符号表的程序。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/gccarm/image-20240510152245888.png&#34; alt=&#34;image-20240510152245888&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/gccarm/image-20240510152301219.png&#34; alt=&#34;image-20240510152301219&#34;&gt;&lt;/p&gt;
+&lt;p&gt;部分函数恢复成功。但是因为两个程序的内核版本不同，或者将 rizzo 识别能力有限的原因。没有恢复的很好，但是确实也是恢复了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特殊状况：arm 的栈底指针不一定为 R11, 也有可能是其他寄存器。&lt;/p&gt;
+&lt;p&gt;​		 因为我自己编出的程序的栈底指针为 R7&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="技巧" />
+        <updated>2024-05-10T08:12:12.000Z</updated>
+    </entry>
+</feed>

