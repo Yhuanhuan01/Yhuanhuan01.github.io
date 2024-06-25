@@ -26,6 +26,9 @@
     <category term="技巧" />
     <category term="got改写" />
     <category term="随机数检查" />
+    <category term="栈" />
+    <category term="shellcode" />
+    <category term="rw" />
     <entry>
         <id>http://example.com/2024/03/04/qsnctf-round1-wp/</id>
         <title>qsnctf_round1_wp</title>

