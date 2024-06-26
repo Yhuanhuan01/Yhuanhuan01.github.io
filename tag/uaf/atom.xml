@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>https://yhuanhuan01.github.io</id>
     <title> • Posts by &#34;uaf&#34; tag</title>
-    <link href="http://example.com" />
+    <link href="https://yhuanhuan01.github.io" />
     <updated>2023-08-10T01:18:39.000Z</updated>
+    <category term="CVE-复现系列" />
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
-    <category term="CVE-复现系列" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
     <category term="wp" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
-    <category term="canary" />
     <category term="堆" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="canary" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="格式化字符串" />
@@ -30,9 +30,9 @@
     <category term="got改写" />
     <category term="随机数检查" />
     <entry>
-        <id>http://example.com/2023/08/10/uaf/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/10/uaf/</id>
         <title>uaf</title>
-        <link rel="alternate" href="http://example.com/2023/08/10/uaf/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/10/uaf/"/>
         <content type="html">&lt;h1 id=&#34;pwn-uaf了解学习&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwn-uaf了解学习&#34;&gt;#&lt;/a&gt; PWN uaf 了解学习&lt;/h1&gt;
 &lt;p&gt;刚刚接触堆，发现在看题的时候，对与 C 语言要求还挺高，需要了解指针是怎么一回事。所以我决定，下面一道例题要好好分析源代码，了解各个函数调用的意义。&lt;/p&gt;
 &lt;h2 id=&#34;首先先声明一下什么叫uaf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#首先先声明一下什么叫uaf&#34;&gt;#&lt;/a&gt; 首先先声明一下什么叫 uaf：&lt;/h2&gt;

@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>https://yhuanhuan01.github.io</id>
     <title> • Posts by &#34;pwn的学习&#34; category</title>
-    <link href="http://example.com" />
+    <link href="https://yhuanhuan01.github.io" />
     <updated>2024-06-25T13:17:42.000Z</updated>
+    <category term="CVE-复现系列" />
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
-    <category term="CVE-复现系列" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
     <category term="wp" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
-    <category term="canary" />
     <category term="堆" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="canary" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="格式化字符串" />
@@ -30,9 +30,9 @@
     <category term="got改写" />
     <category term="随机数检查" />
     <entry>
-        <id>http://example.com/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/</id>
+        <id>https://yhuanhuan01.github.io/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/</id>
         <title>2024Ciscn国赛心得</title>
-        <link rel="alternate" href="http://example.com/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/"/>
         <content type="html">&lt;h1 id=&#34;2024ciscn国赛心得&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2024ciscn国赛心得&#34;&gt;#&lt;/a&gt; 2024Ciscn 国赛心得&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;前言&lt;/p&gt;
@@ -88,9 +88,9 @@
         <updated>2024-06-25T13:17:42.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/06/21/Ciscn-2022-blue/</id>
+        <id>https://yhuanhuan01.github.io/2024/06/21/Ciscn-2022-blue/</id>
         <title>Ciscn_2022_blue</title>
-        <link rel="alternate" href="http://example.com/2024/06/21/Ciscn-2022-blue/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2024/06/21/Ciscn-2022-blue/"/>
         <content type="html">&lt;h1 id=&#34;ciscn_2022-blue&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ciscn_2022-blue&#34;&gt;#&lt;/a&gt; Ciscn_2022 blue&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;前言：一道 2.31 的 glibc 堆题（国赛将至，复现一下吧&lt;/p&gt;
@@ -144,9 +144,9 @@
         <updated>2024-06-21T08:46:04.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/09/22/new-pwn/</id>
+        <id>https://yhuanhuan01.github.io/2023/09/22/new-pwn/</id>
         <title>new_pwn</title>
-        <link rel="alternate" href="http://example.com/2023/09/22/new-pwn/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/09/22/new-pwn/"/>
         <content type="html">&lt;h1 id=&#34;记录两道pwn题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#记录两道pwn题&#34;&gt;#&lt;/a&gt; 记录两道 PWN 题&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;给新生出题，出累了，随便看了两个 PWN 题，发现这两个 PWN 都值得记录一下&lt;/p&gt;
@@ -241,9 +241,9 @@ r.interactive()
         <updated>2023-09-22T12:04:31.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/09/22/picture/new-pwn/</id>
+        <id>https://yhuanhuan01.github.io/2023/09/22/picture/new-pwn/</id>
         <title>new_pwn</title>
-        <link rel="alternate" href="http://example.com/2023/09/22/picture/new-pwn/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/09/22/picture/new-pwn/"/>
         <content type="html">&lt;h1 id=&#34;记录两道pwn题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#记录两道pwn题&#34;&gt;#&lt;/a&gt; 记录两道 PWN 题&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;给新生出题，出累了，随便看了两个 PWN 题，发现这两个 PWN 都值得记录一下&lt;/p&gt;
@@ -338,9 +338,9 @@ r.interactive()
         <updated>2023-09-22T11:51:06.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/08/11/unlink/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/11/unlink/</id>
         <title>unlink</title>
-        <link rel="alternate" href="http://example.com/2023/08/11/unlink/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/11/unlink/"/>
         <content type="html">&lt;h1 id=&#34;pwn_unlink了解学习&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwn_unlink了解学习&#34;&gt;#&lt;/a&gt; PWN_unlink 了解学习&lt;/h1&gt;
 &lt;h2 id=&#34;原理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#原理&#34;&gt;#&lt;/a&gt; 原理：&lt;/h2&gt;
 &lt;p&gt;我们在利用 unlink 所造成的漏洞时，其实就是对 chunk 进行内存布局，然后借助 unlink 操作来达成修改指针的效果。&lt;/p&gt;
@@ -448,9 +448,9 @@ r.interactive()
         <updated>2023-08-11T05:56:52.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/08/10/uaf/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/10/uaf/</id>
         <title>uaf</title>
-        <link rel="alternate" href="http://example.com/2023/08/10/uaf/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/10/uaf/"/>
         <content type="html">&lt;h1 id=&#34;pwn-uaf了解学习&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwn-uaf了解学习&#34;&gt;#&lt;/a&gt; PWN uaf 了解学习&lt;/h1&gt;
 &lt;p&gt;刚刚接触堆，发现在看题的时候，对与 C 语言要求还挺高，需要了解指针是怎么一回事。所以我决定，下面一道例题要好好分析源代码，了解各个函数调用的意义。&lt;/p&gt;
 &lt;h2 id=&#34;首先先声明一下什么叫uaf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#首先先声明一下什么叫uaf&#34;&gt;#&lt;/a&gt; 首先先声明一下什么叫 uaf：&lt;/h2&gt;
@@ -550,9 +550,9 @@ r.interactive()
         <updated>2023-08-10T01:18:39.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/08/09/bins/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/09/bins/</id>
         <title>bins</title>
-        <link rel="alternate" href="http://example.com/2023/08/09/bins/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/09/bins/"/>
         <content type="html">&lt;h1 id=&#34;pwn堆-bins学习&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwn堆-bins学习&#34;&gt;#&lt;/a&gt; pwn 堆 bins 学习。&lt;/h1&gt;
 &lt;h2 id=&#34;一-bin链的介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-bin链的介绍&#34;&gt;#&lt;/a&gt; 一、bin 链的介绍&lt;/h2&gt;
 &lt;p&gt;bin 是一个由 struct chunk 结构体组成的链表。&lt;br&gt;
@@ -819,9 +819,9 @@ bins 数组存储 small bin 链时：第一个 small bin 链中 chunk 的大小�
         <updated>2023-08-09T02:57:17.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/08/04/b-canary/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/04/b-canary/</id>
         <title>b_canary</title>
-        <link rel="alternate" href="http://example.com/2023/08/04/b-canary/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/04/b-canary/"/>
         <content type="html">&lt;h1 id=&#34;canary介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#canary介绍&#34;&gt;#&lt;/a&gt; canary 介绍：&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;在函数调用发生时，向栈帧内压入一个额外的随机 DWORD，这个随机数被称为 “Canary”&lt;/li&gt;
@@ -980,9 +980,9 @@ bins 数组存储 small bin 链时：第一个 small bin 链中 chunk 的大小�
         <updated>2023-08-04T04:02:09.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/08/03/srop/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/03/srop/</id>
         <title>srop</title>
-        <link rel="alternate" href="http://example.com/2023/08/03/srop/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/03/srop/"/>
         <content type="html">&lt;h1 id=&#34;srop&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#srop&#34;&gt;#&lt;/a&gt; srop&lt;/h1&gt;
 &lt;h2 id=&#34;srop原理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#srop原理&#34;&gt;#&lt;/a&gt; srop 原理&lt;/h2&gt;
 &lt;h3 id=&#34;signal-机制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#signal-机制&#34;&gt;#&lt;/a&gt; signal 机制 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jdGYtd2lraS5vcmcvcHduL2xpbnV4L3VzZXItbW9kZS9zdGFja292ZXJmbG93L3g4Ni9hZHZhbmNlZC1yb3Avc3JvcC8jc2lnbmFs&#34;&gt;¶&lt;/span&gt;&lt;/h3&gt;
@@ -1085,9 +1085,9 @@ bins 数组存储 small bin 链时：第一个 small bin 链中 chunk 的大小�
         <updated>2023-08-03T14:51:25.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/08/03/csu/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/03/csu/</id>
         <title>csu</title>
-        <link rel="alternate" href="http://example.com/2023/08/03/csu/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/03/csu/"/>
         <content type="html">&lt;h1 id=&#34;中级rop_csu&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#中级rop_csu&#34;&gt;#&lt;/a&gt; 中级 ROP_CSU&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;ret2csu&lt;/strong&gt; 泄露 libc 地址之后利用 libc 中的 gadget getshell. &lt;strong&gt;ret2csu&lt;/strong&gt; 配合 pop rax; syscall; 等 gadget 直接 GetShell. 开启 PIE 的情况下，利用 offset2lib 进行&lt;strong&gt; ret2csu&lt;/strong&gt;, 或者直接利用 libc 中的 gadget getshell.&lt;/p&gt;
 &lt;p&gt;只要动态连接都会有 _libc_csu_init 函数&lt;/p&gt;
@@ -1239,9 +1239,9 @@ i 显示汇编指令。
         <updated>2023-08-03T11:47:18.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/</id>
         <title>国赛复现</title>
-        <link rel="alternate" href="http://example.com/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/"/>
         <content type="html">&lt;h1 id=&#34;国赛题复现&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#国赛题复现&#34;&gt;#&lt;/a&gt; 国赛题复现&lt;/h1&gt;
 &lt;p&gt;不同地区的国赛题，进行复现。— 简单 pwn 题&lt;/p&gt;
 &lt;h3 id=&#34;华北赛区&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#华北赛区&#34;&gt;#&lt;/a&gt; 华北赛区：&lt;/h3&gt;
@@ -1307,9 +1307,9 @@ i 显示汇编指令。
         <updated>2023-08-03T09:17:58.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/08/02/find-flag/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/02/find-flag/</id>
         <title>find_flag</title>
-        <link rel="alternate" href="http://example.com/2023/08/02/find-flag/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/02/find-flag/"/>
         <content type="html">&lt;h1 id=&#34;题目复现深育杯-2021find_flag&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#题目复现深育杯-2021find_flag&#34;&gt;#&lt;/a&gt; 题目复现 ——[深育杯 2021] find_flag&lt;/h1&gt;
 &lt;p&gt;pie 与 canary 同时开启，并且有格式化字符串。&lt;/p&gt;
 &lt;h3 id=&#34;检查程序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#检查程序&#34;&gt;#&lt;/a&gt; 检查程序：&lt;/h3&gt;

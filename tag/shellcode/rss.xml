@@ -2,26 +2,26 @@
 <rss version="2.0">
     <channel>
         <title> • Posts by &#34;shellcode&#34; tag</title>
-        <link>http://example.com</link>
+        <link>https://yhuanhuan01.github.io</link>
         <description>欢迎来到Huan的笔记空间~~~~~~🌸</description>
         <language>zh-CN</language>
         <pubDate>Tue, 25 Jun 2024 21:17:42 +0800</pubDate>
         <lastBuildDate>Tue, 25 Jun 2024 21:17:42 +0800</lastBuildDate>
+        <category>CVE-复现系列</category>
         <category>栈</category>
         <category>shellcode</category>
         <category>rw</category>
-        <category>CVE-复现系列</category>
         <category>堆拓展攻击</category>
         <category>orw</category>
         <category>堆栈结合</category>
         <category>wp</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
-        <category>canary</category>
         <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
+        <category>canary</category>
         <category>pie</category>
         <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
@@ -33,9 +33,9 @@
         <category>got改写</category>
         <category>随机数检查</category>
         <item>
-            <guid isPermalink="true">http://example.com/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/</guid>
+            <guid isPermalink="true">https://yhuanhuan01.github.io/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/</guid>
             <title>2024Ciscn国赛心得</title>
-            <link>http://example.com/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/</link>
+            <link>https://yhuanhuan01.github.io/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/</link>
             <category>栈</category>
             <category>shellcode</category>
             <category>rw</category>

@@ -2,26 +2,26 @@
 <rss version="2.0">
     <channel>
         <title> • Posts by &#34;技巧&#34; tag</title>
-        <link>http://example.com</link>
+        <link>https://yhuanhuan01.github.io</link>
         <description>欢迎来到Huan的笔记空间~~~~~~🌸</description>
         <language>zh-CN</language>
         <pubDate>Fri, 10 May 2024 16:12:12 +0800</pubDate>
         <lastBuildDate>Fri, 10 May 2024 16:12:12 +0800</lastBuildDate>
+        <category>CVE-复现系列</category>
         <category>栈</category>
         <category>shellcode</category>
         <category>rw</category>
-        <category>CVE-复现系列</category>
         <category>堆拓展攻击</category>
         <category>orw</category>
         <category>堆栈结合</category>
         <category>wp</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
-        <category>canary</category>
         <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
+        <category>canary</category>
         <category>pie</category>
         <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
@@ -33,9 +33,9 @@
         <category>got改写</category>
         <category>随机数检查</category>
         <item>
-            <guid isPermalink="true">http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</guid>
+            <guid isPermalink="true">https://yhuanhuan01.github.io/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</guid>
             <title>关于恢复符号表这件事</title>
-            <link>http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</link>
+            <link>https://yhuanhuan01.github.io/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</link>
             <category>技巧</category>
             <pubDate>Fri, 10 May 2024 16:12:12 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;目标文件：&lt;/p&gt;

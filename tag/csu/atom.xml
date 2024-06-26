@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>https://yhuanhuan01.github.io</id>
     <title> • Posts by &#34;csu&#34; tag</title>
-    <link href="http://example.com" />
+    <link href="https://yhuanhuan01.github.io" />
     <updated>2023-08-03T11:47:18.000Z</updated>
+    <category term="CVE-复现系列" />
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
-    <category term="CVE-复现系列" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
     <category term="wp" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
-    <category term="canary" />
     <category term="堆" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="canary" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="格式化字符串" />
@@ -30,9 +30,9 @@
     <category term="got改写" />
     <category term="随机数检查" />
     <entry>
-        <id>http://example.com/2023/08/03/csu/</id>
+        <id>https://yhuanhuan01.github.io/2023/08/03/csu/</id>
         <title>csu</title>
-        <link rel="alternate" href="http://example.com/2023/08/03/csu/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/08/03/csu/"/>
         <content type="html">&lt;h1 id=&#34;中级rop_csu&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#中级rop_csu&#34;&gt;#&lt;/a&gt; 中级 ROP_CSU&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;ret2csu&lt;/strong&gt; 泄露 libc 地址之后利用 libc 中的 gadget getshell. &lt;strong&gt;ret2csu&lt;/strong&gt; 配合 pop rax; syscall; 等 gadget 直接 GetShell. 开启 PIE 的情况下，利用 offset2lib 进行&lt;strong&gt; ret2csu&lt;/strong&gt;, 或者直接利用 libc 中的 gadget getshell.&lt;/p&gt;
 &lt;p&gt;只要动态连接都会有 _libc_csu_init 函数&lt;/p&gt;

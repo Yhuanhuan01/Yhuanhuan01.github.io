@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>https://yhuanhuan01.github.io</id>
     <title> • Posts by &#34;技巧&#34; tag</title>
-    <link href="http://example.com" />
+    <link href="https://yhuanhuan01.github.io" />
     <updated>2024-05-10T08:12:12.000Z</updated>
+    <category term="CVE-复现系列" />
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
-    <category term="CVE-复现系列" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
     <category term="wp" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
-    <category term="canary" />
     <category term="堆" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="canary" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="格式化字符串" />
@@ -30,9 +30,9 @@
     <category term="got改写" />
     <category term="随机数检查" />
     <entry>
-        <id>http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</id>
+        <id>https://yhuanhuan01.github.io/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</id>
         <title>关于恢复符号表这件事</title>
-        <link rel="alternate" href="http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/"/>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/"/>
         <content type="html">&lt;p&gt;目标文件：&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-file&#34;&gt;typo: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, for GNU/Linux 2.6.32, BuildID[sha1]=211877f58b5a0e8774b8a3a72c83890f8cd38e63, stripped
 &lt;/code&gt;&lt;/pre&gt;
