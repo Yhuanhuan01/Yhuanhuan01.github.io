@@ -14,19 +14,19 @@
     <category term="wp" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
-    <category term="canary" />
-    <category term="堆" />
     <category term="pie" />
+    <category term="canary" />
     <category term="格式化字符串漏洞" />
+    <category term="堆" />
+    <category term="格式化字符串" />
+    <category term="got表" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
-    <category term="格式化字符串" />
-    <category term="got表" />
-    <category term="srop" />
-    <category term="uaf" />
     <category term="unlink" />
+    <category term="srop" />
     <category term="技巧" />
+    <category term="uaf" />
     <category term="got改写" />
     <category term="随机数检查" />
     <entry>
