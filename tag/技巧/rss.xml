@@ -7,6 +7,9 @@
         <language>zh-CN</language>
         <pubDate>Fri, 10 May 2024 16:12:12 +0800</pubDate>
         <lastBuildDate>Fri, 10 May 2024 16:12:12 +0800</lastBuildDate>
+        <category>栈</category>
+        <category>shellcode</category>
+        <category>rw</category>
         <category>堆拓展攻击</category>
         <category>orw</category>
         <category>堆栈结合</category>
@@ -14,24 +17,21 @@
         <category>wp</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
+        <category>canary</category>
+        <category>堆</category>
+        <category>pie</category>
+        <category>格式化字符串漏洞</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
-        <category>canary</category>
-        <category>pie</category>
-        <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
         <category>srop</category>
-        <category>堆</category>
         <category>uaf</category>
         <category>unlink</category>
-        <category>技巧</category>
         <category>got改写</category>
         <category>随机数检查</category>
-        <category>栈</category>
-        <category>shellcode</category>
-        <category>rw</category>
+        <category>技巧</category>
         <item>
             <guid isPermalink="true">http://example.com/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</guid>
             <title>关于恢复符号表这件事</title>
