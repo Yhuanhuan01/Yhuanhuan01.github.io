@@ -2233,12 +2233,6 @@ main >.inner {
 .social .item.github i {
   color: #191717;
 }
-.social .item.about::before {
-  background-color: #3b5998;
-}
-.social .item.about i {
-  color: #3b5998;
-}
 .social .item.email::before {
   background-color: #55acd5;
 }

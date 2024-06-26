@@ -15,14 +15,14 @@
         <category>orw</category>
         <category>堆栈结合</category>
         <category>wp</category>
+        <category>靶机渗透</category>
+        <category>vulnHUB</category>
+        <category>canary</category>
+        <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
-        <category>靶机渗透</category>
-        <category>vulnHUB</category>
-        <category>堆</category>
         <category>pie</category>
-        <category>canary</category>
         <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
