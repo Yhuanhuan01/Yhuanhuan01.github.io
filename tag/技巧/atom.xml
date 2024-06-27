@@ -3,32 +3,96 @@
     <id>https://yhuanhuan01.github.io</id>
     <title> • Posts by &#34;技巧&#34; tag</title>
     <link href="https://yhuanhuan01.github.io" />
-    <updated>2024-05-10T08:12:12.000Z</updated>
+    <updated>2024-06-27T10:35:30.000Z</updated>
+    <category term="栈" />
+    <category term="shellcode" />
+    <category term="rw" />
     <category term="CVE-复现系列" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
-    <category term="栈" />
-    <category term="shellcode" />
-    <category term="rw" />
     <category term="wp" />
-    <category term="canary" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
+    <category term="canary" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
     <category term="堆" />
-    <category term="pie" />
-    <category term="格式化字符串漏洞" />
     <category term="格式化字符串" />
     <category term="got表" />
+    <category term="pie" />
+    <category term="格式化字符串漏洞" />
     <category term="srop" />
     <category term="uaf" />
-    <category term="技巧" />
     <category term="unlink" />
+    <category term="技巧" />
     <category term="got改写" />
     <category term="随机数检查" />
+    <entry>
+        <id>https://yhuanhuan01.github.io/2024/06/27/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B2/</id>
+        <title>关于恢复符号表这件事2</title>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2024/06/27/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B2/"/>
+        <content type="html">&lt;h1 id=&#34;关于恢复符号表这件事2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#关于恢复符号表这件事2&#34;&gt;#&lt;/a&gt; 关于恢复符号表这件事 2&lt;/h1&gt;
+&lt;p&gt;前言&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于 rizzo 恢复符号表真滴一言难尽，于是重拾之前如何恢复符号表这个任务&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在这个阶段，鄙人确实找到了一个办法去进行符号表恢复&lt;/p&gt;
+&lt;p&gt;使用 FLAIR，由于网上的资料晦涩难懂，于是鄙人打算亲自写一篇去自己去理解&lt;/p&gt;
+&lt;h2 id=&#34;flair&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flair&#34;&gt;#&lt;/a&gt; FLAIR&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;flair 通过对库文件中的函数生成签名，并生成对应的签名文件，然后和程序中的函数进行签名匹配找到匹配的函数来帮助我们还原库函数。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627180330677.png&#34; alt=&#34;image-20240627180330677&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这是此项目需要用到的 linux 文件，因为鄙人习惯使用 linux 系统，所以会用 linux 系统下的 elf 文件用法去讲解&lt;/p&gt;
+&lt;p&gt;先给出一篇网上的&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly94ei5hbGl5dW4uY29tL3QvNDQ4ND90aW1lX18xMzExPW40JTJCeG5EMEQ5RGdEdUQwMkJpRCUyRmplMCUzRGVJb3ZhaVFEbXhSckQmYW1wO2FsaWNobGdyZWY9aHR0cHMlM0ElMkYlMkZ3d3cuZ29vZ2xlLmNvbSUyRg==&#34;&gt;文章&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627180549231.png&#34; alt=&#34;image-20240627180549231&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这篇文章使用的是 libc.a，鄙人在使用这个文件时，会生成 pat 文件，但是并不是 pat 文件。也就是说它生成 pat 的文件是错误的 pat 文件，而且它也是使用的 libc.a 文件，说明你需要网上去找（不好寻找，另一种方法是下载此类系统，我想是个聪明人都会觉得这是小题大作了吧。&lt;/p&gt;
+&lt;p&gt;由此鄙人寻找另外一种办法去配合 sigmake 文件去生成 sig 文件&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL21hbmRpYW50L2ZsYXJlLWlkYS90cmVlL21hc3Rlcg==&#34;&gt;https://github.com/mandiant/flare-ida/tree/master&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;项目连接在上面&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627181108547.png&#34; alt=&#34;image-20240627181108547&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用的 ida 脚本如上，只需要将 libc.so.6 文件拖入 IDA 只用，然后使用 IDA 脚本，就会生成 pat 程序。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627181227878.png&#34; alt=&#34;image-20240627181227878&#34;&gt;&lt;/p&gt;
+&lt;p&gt;接下来在使用 sigmake 生成符号表即可&lt;/p&gt;
+&lt;p&gt;如果生成 err 文件，我们需要在 exc 删除前面几句话再次执行一次 sigmake 即可&lt;/p&gt;
+&lt;h2 id=&#34;效果演示&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#效果演示&#34;&gt;#&lt;/a&gt; 效果演示&lt;/h2&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;gcc &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;s &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; a&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;c &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;o test&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&amp;lt;stdio.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;Hello, World!\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;未加符号表之前&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#未加符号表之前&#34;&gt;#&lt;/a&gt; 未加符号表之前&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627181833052.png&#34; alt=&#34;image-20240627181833052&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过程&#34;&gt;#&lt;/a&gt; 过程&lt;/h3&gt;
+&lt;h5 id=&#34;生成pat文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#生成pat文件&#34;&gt;#&lt;/a&gt; 生成 pat 文件&lt;/h5&gt;
+&lt;p&gt;首先拿到相关程序版本的 libc.so.6 文件，放入 ida 中&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182157239.png&#34; alt=&#34;image-20240627182157239&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182240476.png&#34; alt=&#34;image-20240627182240476&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;生成sig文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#生成sig文件&#34;&gt;#&lt;/a&gt; 生成 sig 文件&lt;/h5&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182335363.png&#34; alt=&#34;image-20240627182335363&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;./sigmake libc-2.27.pat libc-2.27.sig&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182446012.png&#34; alt=&#34;image-20240627182446012&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182511242.png&#34; alt=&#34;image-20240627182511242&#34;&gt;&lt;/p&gt;
+&lt;p&gt;删掉所选内容&lt;/p&gt;
+&lt;p&gt;再次生成 sigmake 文件&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182556888.png&#34; alt=&#34;image-20240627182556888&#34;&gt;&lt;/p&gt;
+&lt;p&gt;此时就生成了 sig。&lt;/p&gt;
+&lt;h5 id=&#34;恢复符号表&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#恢复符号表&#34;&gt;#&lt;/a&gt; 恢复符号表&lt;/h5&gt;
+&lt;p&gt;将其放进 sig 下的 pc 下&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182712207.png&#34; alt=&#34;image-20240627182712207&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在要恢复符号的程序下按下 &lt;code&gt;shift + F5&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182830901.png&#34; alt=&#34;image-20240627182830901&#34;&gt;&lt;/p&gt;
+&lt;p&gt;导入符号表&lt;/p&gt;
+&lt;p&gt;双击即可&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182920891.png&#34; alt=&#34;image-20240627182920891&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627182950032.png&#34; alt=&#34;image-20240627182950032&#34;&gt;&lt;/p&gt;
+&lt;p&gt;加符号表之后&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8/image-20240627183127161.png&#34; alt=&#34;image-20240627183127161&#34;&gt;&lt;/p&gt;
+&lt;p&gt;可见恢复的还是比较多&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3B1c2gwZWJwL3NpZy1kYXRhYmFzZQ==&#34;&gt;https://github.com/push0ebp/sig-database&lt;/span&gt;&lt;/p&gt;
+</content>
+        <category term="技巧" />
+        <updated>2024-06-27T10:35:30.000Z</updated>
+    </entry>
     <entry>
         <id>https://yhuanhuan01.github.io/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/</id>
         <title>关于恢复符号表这件事</title>
