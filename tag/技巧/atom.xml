@@ -19,18 +19,18 @@
     <category term="rop" />
     <category term="gdb" />
     <category term="堆" />
-    <category term="格式化字符串" />
-    <category term="got表" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
+    <category term="格式化字符串" />
+    <category term="got表" />
+    <category term="栈劫持" />
+    <category term="protocol" />
     <category term="srop" />
     <category term="uaf" />
     <category term="unlink" />
     <category term="技巧" />
     <category term="got改写" />
     <category term="随机数检查" />
-    <category term="栈劫持" />
-    <category term="protocol" />
     <entry>
         <id>https://yhuanhuan01.github.io/2024/06/27/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B2/</id>
         <title>关于恢复符号表这件事2</title>
