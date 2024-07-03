@@ -5,35 +5,93 @@
         <link>https://yhuanhuan01.github.io</link>
         <description>欢迎来到Huan的笔记空间~~~~~~🌸</description>
         <language>zh-CN</language>
-        <pubDate>Thu, 27 Jun 2024 18:35:30 +0800</pubDate>
-        <lastBuildDate>Thu, 27 Jun 2024 18:35:30 +0800</lastBuildDate>
+        <pubDate>Wed, 03 Jul 2024 10:19:52 +0800</pubDate>
+        <lastBuildDate>Wed, 03 Jul 2024 10:19:52 +0800</lastBuildDate>
         <category>栈</category>
         <category>shellcode</category>
         <category>rw</category>
-        <category>CVE-复现系列</category>
         <category>堆拓展攻击</category>
         <category>orw</category>
         <category>堆栈结合</category>
+        <category>CVE-复现系列</category>
+        <category>技巧</category>
         <category>wp</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
         <category>canary</category>
-        <category>csu</category>
-        <category>rop</category>
-        <category>gdb</category>
-        <category>堆</category>
-        <category>pie</category>
-        <category>格式化字符串漏洞</category>
         <category>格式化字符串</category>
         <category>got表</category>
         <category>栈劫持</category>
         <category>protocol</category>
-        <category>srop</category>
+        <category>csu</category>
+        <category>rop</category>
+        <category>gdb</category>
+        <category>pie</category>
+        <category>格式化字符串漏洞</category>
+        <category>堆</category>
         <category>uaf</category>
+        <category>srop</category>
         <category>unlink</category>
-        <category>技巧</category>
         <category>got改写</category>
         <category>随机数检查</category>
+        <item>
+            <guid isPermalink="true">https://yhuanhuan01.github.io/2024/07/03/Dockerfile%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/</guid>
+            <title>Dockerfile书写规范</title>
+            <link>https://yhuanhuan01.github.io/2024/07/03/Dockerfile%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/</link>
+            <category>技巧</category>
+            <pubDate>Wed, 03 Jul 2024 10:19:52 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;dockerfile书写规范&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dockerfile书写规范&#34;&gt;#&lt;/a&gt; Dockerfile 书写规范&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;dockerfile 书写目的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;尽量构建的镜像尽可能小，提高部署速度，提高效率。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;dockerfile 书写格式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;from&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#from&#34;&gt;#&lt;/a&gt; FROM&lt;/h4&gt;
+&lt;p&gt;指定基础镜像，若想去搭建 ubuntu22.04 镜像。则格式应为下面&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;FROM ubuntu:22.04&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;run&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#run&#34;&gt;#&lt;/a&gt; RUN&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在镜像中执行命令，通常用于安装软件或配置环境。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;cmd&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cmd&#34;&gt;#&lt;/a&gt; CMD&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;容器启动时执行的命令。通常写入 &lt;code&gt;.sh&lt;/code&gt;  文件内&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;label&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#label&#34;&gt;#&lt;/a&gt; LABEL&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为镜像添加元数据标签。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;env&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#env&#34;&gt;#&lt;/a&gt; ENV&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;设置环境变量。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;copy&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#copy&#34;&gt;#&lt;/a&gt; COPY&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;将本地文件或目录复制到镜像中。&lt;/p&gt;
+&lt;p&gt;如果想要持久保留化，配合 RUN cp filename 保留在容器内，否则 COPY 完之后，开启容器是就会自动销毁&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;add&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#add&#34;&gt;#&lt;/a&gt; ADD&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;类似于 COPY，但支持从 URL 下载文件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;volume&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#volume&#34;&gt;#&lt;/a&gt; VOLUME&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;创建一个挂载点，用于数据持久化。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;expose&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#expose&#34;&gt;#&lt;/a&gt; EXPOSE&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;指定容器运行时监听的端口。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;workdir&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#workdir&#34;&gt;#&lt;/a&gt; WORKDIR&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;设置容器的工作目录。&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://yhuanhuan01.github.io/2024/06/27/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B2/</guid>
             <title>关于恢复符号表这件事2</title>

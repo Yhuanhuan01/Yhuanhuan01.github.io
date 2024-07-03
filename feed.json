@@ -5,6 +5,16 @@
     "home_page_url": "https://yhuanhuan01.github.io",
     "items": [
         {
+            "id": "https://yhuanhuan01.github.io/2024/07/03/Dockerfile%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/",
+            "url": "https://yhuanhuan01.github.io/2024/07/03/Dockerfile%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/",
+            "title": "Dockerfile书写规范",
+            "date_published": "2024-07-03T02:19:52.000Z",
+            "content_html": "<h1 id=\"dockerfile书写规范\"><a class=\"markdownIt-Anchor\" href=\"#dockerfile书写规范\">#</a> Dockerfile 书写规范</h1>\n<blockquote>\n<p>dockerfile 书写目的</p>\n</blockquote>\n<p>尽量构建的镜像尽可能小，提高部署速度，提高效率。</p>\n<blockquote>\n<p>dockerfile 书写格式</p>\n</blockquote>\n<h4 id=\"from\"><a class=\"markdownIt-Anchor\" href=\"#from\">#</a> FROM</h4>\n<p>指定基础镜像，若想去搭建 ubuntu22.04 镜像。则格式应为下面</p>\n<blockquote>\n<p>FROM ubuntu:22.04</p>\n</blockquote>\n<h4 id=\"run\"><a class=\"markdownIt-Anchor\" href=\"#run\">#</a> RUN</h4>\n<blockquote>\n<p>在镜像中执行命令，通常用于安装软件或配置环境。</p>\n</blockquote>\n<h4 id=\"cmd\"><a class=\"markdownIt-Anchor\" href=\"#cmd\">#</a> CMD</h4>\n<blockquote>\n<p>容器启动时执行的命令。通常写入 <code>.sh</code>  文件内</p>\n</blockquote>\n<h4 id=\"label\"><a class=\"markdownIt-Anchor\" href=\"#label\">#</a> LABEL</h4>\n<blockquote>\n<p>为镜像添加元数据标签。</p>\n</blockquote>\n<h4 id=\"env\"><a class=\"markdownIt-Anchor\" href=\"#env\">#</a> ENV</h4>\n<blockquote>\n<p>设置环境变量。</p>\n</blockquote>\n<h4 id=\"copy\"><a class=\"markdownIt-Anchor\" href=\"#copy\">#</a> COPY</h4>\n<blockquote>\n<p>将本地文件或目录复制到镜像中。</p>\n<p>如果想要持久保留化，配合 RUN cp filename 保留在容器内，否则 COPY 完之后，开启容器是就会自动销毁</p>\n</blockquote>\n<h4 id=\"add\"><a class=\"markdownIt-Anchor\" href=\"#add\">#</a> ADD</h4>\n<blockquote>\n<p>类似于 COPY，但支持从 URL 下载文件。</p>\n</blockquote>\n<h4 id=\"volume\"><a class=\"markdownIt-Anchor\" href=\"#volume\">#</a> VOLUME</h4>\n<blockquote>\n<p>创建一个挂载点，用于数据持久化。</p>\n</blockquote>\n<h4 id=\"expose\"><a class=\"markdownIt-Anchor\" href=\"#expose\">#</a> EXPOSE</h4>\n<blockquote>\n<p>指定容器运行时监听的端口。</p>\n</blockquote>\n<h4 id=\"workdir\"><a class=\"markdownIt-Anchor\" href=\"#workdir\">#</a> WORKDIR</h4>\n<blockquote>\n<p>设置容器的工作目录。</p>\n</blockquote>\n",
+            "tags": [
+                "技巧"
+            ]
+        },
+        {
             "id": "https://yhuanhuan01.github.io/2024/06/28/protocol%E5%AD%A6%E4%B9%A0/",
             "url": "https://yhuanhuan01.github.io/2024/06/28/protocol%E5%AD%A6%E4%B9%A0/",
             "title": "protocol学习",
