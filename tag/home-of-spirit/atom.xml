@@ -8,29 +8,30 @@
     <category term="shellcode" />
     <category term="rw" />
     <category term="CVE-复现系列" />
+    <category term="技巧" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
-    <category term="技巧" />
     <category term="wp" />
-    <category term="canary" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
+    <category term="canary" />
     <category term="堆" />
-    <category term="pie" />
-    <category term="格式化字符串漏洞" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="pie" />
+    <category term="格式化字符串漏洞" />
     <category term="home系列" />
+    <category term="home-of-einherjar" />
     <category term="home-of-spirit" />
     <category term="格式化字符串" />
     <category term="got表" />
     <category term="栈劫持" />
     <category term="protocol" />
     <category term="uaf" />
-    <category term="srop" />
     <category term="unlink" />
+    <category term="srop" />
     <category term="got改写" />
     <category term="随机数检查" />
     <entry>
@@ -38,6 +39,10 @@
         <title>home-of-spirit</title>
         <link rel="alternate" href="https://yhuanhuan01.github.io/2024/07/12/home-of-spirit/"/>
         <content type="html">&lt;h1 id=&#34;home-of-spirit&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#home-of-spirit&#34;&gt;#&lt;/a&gt; home-of-spirit&lt;/h1&gt;
+&lt;p&gt;漏洞成因&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;堆溢出写&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;适用范围&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
