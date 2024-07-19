@@ -32,8 +32,8 @@
     <category term="got表" />
     <category term="栈劫持" />
     <category term="protocol" />
-    <category term="uaf" />
     <category term="srop" />
+    <category term="uaf" />
     <category term="unlink" />
     <category term="got改写" />
     <category term="随机数检查" />
