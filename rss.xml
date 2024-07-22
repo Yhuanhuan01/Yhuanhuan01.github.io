@@ -11,16 +11,16 @@
         <category>栈</category>
         <category>shellcode</category>
         <category>rw</category>
+        <category>技巧</category>
         <category>堆拓展攻击</category>
         <category>orw</category>
         <category>堆栈结合</category>
         <category>CVE-复现系列</category>
         <category>wp</category>
-        <category>技巧</category>
         <category>IO_FILE</category>
+        <category>canary</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
-        <category>canary</category>
         <category>堆</category>
         <category>pie</category>
         <category>格式化字符串漏洞</category>
@@ -30,16 +30,16 @@
         <category>house系列</category>
         <category>house-of-einherjar</category>
         <category>house-of-force</category>
-        <category>house-of-spirit</category>
         <category>house-of-orange</category>
         <category>格式化字符串</category>
         <category>got表</category>
+        <category>house-of-spirit</category>
         <category>栈劫持</category>
         <category>protocol</category>
-        <category>srop</category>
-        <category>uaf</category>
         <category>house-of-lore</category>
         <category>tcache-stashing-unlink-attack</category>
+        <category>uaf</category>
+        <category>srop</category>
         <category>unlink</category>
         <category>got改写</category>
         <category>随机数检查</category>
@@ -82,7 +82,7 @@
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;例题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#例题&#34;&gt;#&lt;/a&gt; 例题：&lt;/h3&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1lodWFuaHVhbjAxL0NURl9Qd25fR2FtZS90cmVlL21haW4vdGNhY2hlLXN0YXNoaW5nLXVubGluay1hdHRhY2soaG91c2Utb2YtbG9yZSk=&#34;&gt;https://github.com/Yhuanhuan01/CTF_Pwn_Game/tree/main/tcache-stashing-unlink-attack(house-of-lore)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/picture/house-of-lore/image-20240722143535687.png&#34; alt=&#34;image-20240722143535687&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/house-of-lore/image-20240722143535687.png&#34; alt=&#34;image-20240722143535687&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;还是先申代码吧&lt;/p&gt;
 &lt;/blockquote&gt;

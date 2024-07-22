@@ -8,16 +8,16 @@
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
+    <category term="技巧" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
     <category term="CVE-复现系列" />
     <category term="wp" />
-    <category term="技巧" />
     <category term="IO_FILE" />
+    <category term="canary" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
-    <category term="canary" />
     <category term="堆" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
@@ -27,16 +27,16 @@
     <category term="house系列" />
     <category term="house-of-einherjar" />
     <category term="house-of-force" />
-    <category term="house-of-spirit" />
     <category term="house-of-orange" />
     <category term="格式化字符串" />
     <category term="got表" />
+    <category term="house-of-spirit" />
     <category term="栈劫持" />
     <category term="protocol" />
-    <category term="srop" />
-    <category term="uaf" />
     <category term="house-of-lore" />
     <category term="tcache-stashing-unlink-attack" />
+    <category term="uaf" />
+    <category term="srop" />
     <category term="unlink" />
     <category term="got改写" />
     <category term="随机数检查" />
@@ -75,7 +75,7 @@
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;例题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#例题&#34;&gt;#&lt;/a&gt; 例题：&lt;/h3&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1lodWFuaHVhbjAxL0NURl9Qd25fR2FtZS90cmVlL21haW4vdGNhY2hlLXN0YXNoaW5nLXVubGluay1hdHRhY2soaG91c2Utb2YtbG9yZSk=&#34;&gt;https://github.com/Yhuanhuan01/CTF_Pwn_Game/tree/main/tcache-stashing-unlink-attack(house-of-lore)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/picture/house-of-lore/image-20240722143535687.png&#34; alt=&#34;image-20240722143535687&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/house-of-lore/image-20240722143535687.png&#34; alt=&#34;image-20240722143535687&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;还是先申代码吧&lt;/p&gt;
 &lt;/blockquote&gt;
