@@ -8,16 +8,16 @@
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
-    <category term="技巧" />
+    <category term="CVE-复现系列" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
-    <category term="CVE-复现系列" />
+    <category term="技巧" />
     <category term="wp" />
     <category term="IO_FILE" />
-    <category term="canary" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
+    <category term="canary" />
     <category term="堆" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
@@ -28,15 +28,15 @@
     <category term="house-of-einherjar" />
     <category term="house-of-force" />
     <category term="house-of-orange" />
+    <category term="house-of-spirit" />
     <category term="格式化字符串" />
     <category term="got表" />
-    <category term="house-of-spirit" />
     <category term="栈劫持" />
     <category term="protocol" />
+    <category term="srop" />
     <category term="house-of-lore" />
     <category term="tcache-stashing-unlink-attack" />
     <category term="uaf" />
-    <category term="srop" />
     <category term="unlink" />
     <category term="got改写" />
     <category term="随机数检查" />
@@ -133,6 +133,7 @@
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90dHRhbmcuY29tL2FyY2hpdmUvMTM2Mi8jdG9jXzB4MDA=&#34;&gt;https://tttang.com/archive/1362/#toc_0x00&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Ric3FpZ29uZ3ppL2FydGljbGUvZGV0YWlscy8xMjYyOTM5MzI=&#34;&gt;https://blog.csdn.net/tbsqigongzi/article/details/126293932&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9uaWNob2xhcy13ZWkuZ2l0aHViLmlvLzIwMjIvMDIvMDcvdGNhY2hlLXN0YXNoaW5nLXVubGluay1hdHRhY2sv&#34;&gt;https://nicholas-wei.github.io/2022/02/07/tcache-stashing-unlink-attack/&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://yhuanhuan01.github.io/2024/07/22/tcache-stashing-unlink-attack(house-of-lore)/&#34;&gt;https://yhuanhuan01.github.io/2024/07/22/tcache-stashing-unlink-attack(house-of-lore)/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </content>
         <category term="house系列" />
