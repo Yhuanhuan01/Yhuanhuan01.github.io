@@ -7,20 +7,20 @@
         <language>zh-CN</language>
         <pubDate>Fri, 04 Aug 2023 12:02:09 +0800</pubDate>
         <lastBuildDate>Fri, 04 Aug 2023 12:02:09 +0800</lastBuildDate>
+        <category>Game</category>
         <category>栈</category>
         <category>shellcode</category>
         <category>rw</category>
-        <category>Game</category>
         <category>堆拓展攻击</category>
         <category>orw</category>
         <category>堆栈结合</category>
         <category>CVE-复现系列</category>
         <category>技巧</category>
-        <category>wp</category>
         <category>IO_FILE</category>
-        <category>canary</category>
+        <category>wp</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
+        <category>canary</category>
         <category>堆</category>
         <category>csu</category>
         <category>rop</category>
@@ -31,8 +31,8 @@
         <category>house-of-einherjar</category>
         <category>house-of-force</category>
         <category>house-of-orange</category>
-        <category>house-of-spirit</category>
         <category>house-of-rabbit</category>
+        <category>house-of-spirit</category>
         <category>格式化字符串</category>
         <category>got表</category>
         <category>栈劫持</category>
@@ -44,6 +44,8 @@
         <category>unlink</category>
         <category>got改写</category>
         <category>随机数检查</category>
+        <category>堆——格式化字符串</category>
+        <category>栈迁移</category>
         <item>
             <guid isPermalink="true">https://yhuanhuan01.github.io/2023/08/04/b-canary/</guid>
             <title>b_canary</title>
