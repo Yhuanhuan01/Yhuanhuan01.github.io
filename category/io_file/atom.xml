@@ -8,16 +8,16 @@
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
+    <category term="技巧" />
+    <category term="CVE-复现系列" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
-    <category term="CVE-复现系列" />
-    <category term="技巧" />
-    <category term="IO_FILE" />
     <category term="wp" />
+    <category term="IO_FILE" />
+    <category term="canary" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
-    <category term="canary" />
     <category term="堆" />
     <category term="csu" />
     <category term="rop" />
@@ -39,10 +39,10 @@
     <category term="tcache-stashing-unlink-attack" />
     <category term="uaf" />
     <category term="unlink" />
-    <category term="got改写" />
-    <category term="随机数检查" />
     <category term="堆——格式化字符串" />
     <category term="栈迁移" />
+    <category term="got改写" />
+    <category term="随机数检查" />
     <entry>
         <id>https://yhuanhuan01.github.io/2024/07/15/IO-FILE/</id>
         <title>IO_FILE</title>

@@ -11,16 +11,16 @@
         <category>栈</category>
         <category>shellcode</category>
         <category>rw</category>
+        <category>技巧</category>
+        <category>CVE-复现系列</category>
         <category>堆拓展攻击</category>
         <category>orw</category>
         <category>堆栈结合</category>
-        <category>CVE-复现系列</category>
-        <category>技巧</category>
-        <category>IO_FILE</category>
         <category>wp</category>
+        <category>IO_FILE</category>
+        <category>canary</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
-        <category>canary</category>
         <category>堆</category>
         <category>csu</category>
         <category>rop</category>
@@ -42,10 +42,10 @@
         <category>tcache-stashing-unlink-attack</category>
         <category>uaf</category>
         <category>unlink</category>
-        <category>got改写</category>
-        <category>随机数检查</category>
         <category>堆——格式化字符串</category>
         <category>栈迁移</category>
+        <category>got改写</category>
+        <category>随机数检查</category>
         <item>
             <guid isPermalink="true">https://yhuanhuan01.github.io/2023/08/03/srop/</guid>
             <title>srop</title>
