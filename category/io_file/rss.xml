@@ -12,21 +12,21 @@
         <category>shellcode</category>
         <category>rw</category>
         <category>CVE-复现系列</category>
+        <category>技巧</category>
         <category>堆拓展攻击</category>
         <category>orw</category>
         <category>堆栈结合</category>
-        <category>技巧</category>
-        <category>IO_FILE</category>
         <category>wp</category>
+        <category>IO_FILE</category>
+        <category>canary</category>
         <category>靶机渗透</category>
         <category>vulnHUB</category>
-        <category>canary</category>
+        <category>堆</category>
         <category>csu</category>
         <category>rop</category>
         <category>gdb</category>
         <category>pie</category>
         <category>格式化字符串漏洞</category>
-        <category>堆</category>
         <category>house系列</category>
         <category>house-of-einherjar</category>
         <category>house-of-force</category>
@@ -42,10 +42,10 @@
         <category>tcache-stashing-unlink-attack</category>
         <category>uaf</category>
         <category>unlink</category>
-        <category>堆——格式化字符串</category>
-        <category>栈迁移</category>
         <category>got改写</category>
         <category>随机数检查</category>
+        <category>堆——格式化字符串</category>
+        <category>栈迁移</category>
         <item>
             <guid isPermalink="true">https://yhuanhuan01.github.io/2024/07/15/IO-FILE/</guid>
             <title>IO_FILE</title>
