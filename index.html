@@ -91,12 +91,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jdv5X4QVKxMklgB.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PavyAqzTMBH8QjR.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/NsekliFKc53mr67.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/KXvdO79oYyh2ZI5.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/7d2TnbNruofPsl1.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/joXBNHK1fvpxLkY.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/c8LzaYO7NRj2Gmi.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/AZcIyhXYgxDa36f.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/wD8Kc2Y5Iu4mEk1.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/FM6hYgf7eHbLO4o.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/ibKkDqfNwIytXUL.png"></li>
         </ul>
       </div>
     </header>
@@ -123,7 +123,72 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/08/06/TFCCTF_PWN/" itemprop="url" title="TFCCTF_PWN"><img data-src="https://s2.loli.net/2023/08/03/c8LzaYO7NRj2Gmi.png"></a>
+    <a href="/2024/08/30/house-of-apple/" itemprop="url" title="house-of-apple"><img data-src="https://s2.loli.net/2023/08/03/KwJG42PtjmEyikW.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-08-30 15:50:08">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-08-30T15:50:08+08:00">2024-08-30</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>16k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>14 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2024/08/30/house-of-apple/" itemprop="url" title="house-of-apple">house-of-apple</a></h3>
+    <div class="excerpt">
+        # house-of-apple
+
+前言:
+正好打 24 年羊城杯做了看了一道 house-of-apple 的题目，拿来水水 blog。
+
+漏洞成因
+
+堆溢出写，uaf
+
+适用范围
+
+2.23 —— 至今
+程序从 main 函数返回或能调用 exit 函数
+能泄露出 heap 地址和 libc 地址
+能使用一次 largebin attack （一次即可）
+
+接下来直接去将这道题的做题手法
+
+# TravelGraph
+
+利用手法
+
+通过构造合理堆块，free 后残留指针泄露 libc 和 heap
+利用堆风水，构造 1 次 largebin attack ，替换 _IO_list_all...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E5%A0%86%E6%94%BB%E5%87%BB/" itemprop="url" title="堆攻击"><i class="ic i-flag"></i>堆攻击</a>
+      </span>
+    </div>
+    <a href="/2024/08/30/house-of-apple/" itemprop="url" title="house-of-apple" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/08/06/TFCCTF_PWN/" itemprop="url" title="TFCCTF_PWN"><img data-src="https://s2.loli.net/2023/08/03/AZcIyhXYgxDa36f.png"></a>
   </div>
   <div class="info">
     
@@ -172,7 +237,7 @@ Note: If you successfully create a working exploit in the provided Docker, ensur
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/07/29/%E5%A0%86%E4%B8%8A%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E5%88%A9%E7%94%A8/" itemprop="url" title="堆上格式化字符利用"><img data-src="https://s2.loli.net/2023/08/03/3QaAkKnrb4hzo58.png"></a>
+    <a href="/2024/07/29/%E5%A0%86%E4%B8%8A%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E5%88%A9%E7%94%A8/" itemprop="url" title="堆上格式化字符利用"><img data-src="https://s2.loli.net/2023/08/03/jDNXms1oWOKuYIM.png"></a>
   </div>
   <div class="info">
     
@@ -217,7 +282,7 @@ Note: If you successfully create a working exploit in the provided Docker, ensur
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/07/26/house-of-rabbit/" itemprop="url" title="house-of-rabbit"><img data-src="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></a>
+    <a href="/2024/07/26/house-of-rabbit/" itemprop="url" title="house-of-rabbit"><img data-src="https://s2.loli.net/2023/08/04/7DTqSyKlBc5e1Ir.png"></a>
   </div>
   <div class="info">
     
@@ -273,7 +338,7 @@ Note: If you successfully create a working exploit in the provided Docker, ensur
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/07/22/tcache-stashing-unlink-attack(house-of-lore)/" itemprop="url" title="tcache-stashing-unlink-attack(house-of-lore)"><img data-src="https://s2.loli.net/2023/08/04/FCzU6mcGnbJZH2S.png"></a>
+    <a href="/2024/07/22/tcache-stashing-unlink-attack(house-of-lore)/" itemprop="url" title="tcache-stashing-unlink-attack(house-of-lore)"><img data-src="https://s2.loli.net/2023/08/04/lbtKpgZadE1LwfD.png"></a>
   </div>
   <div class="info">
     
@@ -331,7 +396,7 @@ if (__glibc_unlikely (bck-&gt;fd != victim))...
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/07/22/0720-DASCTF-pwn/" itemprop="url" title="0720_DASCTF_pwn"><img data-src="https://s2.loli.net/2023/08/03/xjtAgruqnc43m1Q.png"></a>
+    <a href="/2024/07/22/0720-DASCTF-pwn/" itemprop="url" title="0720_DASCTF_pwn"><img data-src="https://s2.loli.net/2023/08/03/jDNXms1oWOKuYIM.png"></a>
   </div>
   <div class="info">
     
@@ -386,7 +451,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)&amp;#123; int i
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/07/19/house-of-force/" itemprop="url" title="house-of-force"><img data-src="https://s2.loli.net/2023/08/04/7DTqSyKlBc5e1Ir.png"></a>
+    <a href="/2024/07/19/house-of-force/" itemprop="url" title="house-of-force"><img data-src="https://s2.loli.net/2023/08/03/xABdev7CEF4h3sR.png"></a>
   </div>
   <div class="info">
     
@@ -442,7 +507,7 @@ victim = av-&gt;top;// 获取当前 top chunk 的地址 size = chunksize (victim
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/07/15/house-of-orange/" itemprop="url" title="house-of-orange"><img data-src="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></a>
+    <a href="/2024/07/15/house-of-orange/" itemprop="url" title="house-of-orange"><img data-src="https://s2.loli.net/2023/08/03/pxCY3PlNUAW5GTn.png"></a>
   </div>
   <div class="info">
     
@@ -502,7 +567,7 @@ victim = av-&gt;top;// 获取当前 top chunk 的地址 size = chunksize (victim
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/07/15/IO-FILE/" itemprop="url" title="IO_FILE"><img data-src="https://s2.loli.net/2023/08/03/HAYmvDsoGfbIVl3.png"></a>
+    <a href="/2024/07/15/IO-FILE/" itemprop="url" title="IO_FILE"><img data-src="https://s2.loli.net/2023/08/03/jDNXms1oWOKuYIM.png"></a>
   </div>
   <div class="info">
     
@@ -550,7 +615,7 @@ FILE 在 Linux 系统的标准 IO 库中是用于描述文件的结构，称为�
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/07/13/house-of-einherjar/" itemprop="url" title="house-of-einherjar"><img data-src="https://s2.loli.net/2023/08/04/lbtKpgZadE1LwfD.png"></a>
+    <a href="/2024/07/13/house-of-einherjar/" itemprop="url" title="house-of-einherjar"><img data-src="https://s2.loli.net/2023/08/04/ibKkDqfNwIytXUL.png"></a>
   </div>
   <div class="info">
     
@@ -603,64 +668,6 @@ free 的后向合并机制
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2024/07/12/house-of-spirit/" itemprop="url" title="house-of-spirit"><img data-src="https://s2.loli.net/2023/08/03/joXBNHK1fvpxLkY.png"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-07-12 09:18:27">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-07-12T09:18:27+08:00">2024-07-12</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>4.7k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>4 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/2024/07/12/house-of-spirit/" itemprop="url" title="house-of-spirit">house-of-spirit</a></h3>
-    <div class="excerpt">
-        # house-of-spirit
-漏洞成因
-
-堆溢出写
-
-适用范围
-
-2.23 —— 至今
-
-# 概要：
-该技术的核心在于在目标位置处伪造 fastbin chunk，并将其释放，从而达到分配指定地址的 chunk 的目的。
-# 绕过检测：
-
-fake chunk 的 ISMMAP 位不能为 1, 因为 free 时，如果是 mmap 的 chunk, 会单独处理
-fake chunk 地址需要对齐， MALLOC_ALIGN_MASK
-fake chunk 的 size 大小需要满足对应的 fastbin 的需求，同时也得对齐
-fake chunk 的 next chunk 的大小不能小于...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E5%A0%86%E6%94%BB%E5%87%BB/" itemprop="url" title="堆攻击"><i class="ic i-flag"></i>堆攻击</a>
-      </span>
-    </div>
-    <a href="/2024/07/12/house-of-spirit/" itemprop="url" title="house-of-spirit" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -696,7 +703,7 @@ fake chunk 的 next chunk 的大小不能小于...
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">39</span>
+        <span class="count">40</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -708,7 +715,7 @@ fake chunk 的 next chunk 的大小不能小于...
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">39</span>
+        <span class="count">40</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -791,6 +798,70 @@ fake chunk 的 next chunk 的大小不能小于...
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/10/24/FSCTF-wp/" title="FSCTF_wp">FSCTF_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/09/22/new-pwn/" title="new_pwn">new_pwn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2024/08/06/TFCCTF_PWN/" title="TFCCTF_PWN">TFCCTF_PWN</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A0%86%E6%94%BB%E5%87%BB/" title="分类于 堆攻击">堆攻击</a>
+</div>
+
+    <span><a href="/2024/07/22/tcache-stashing-unlink-attack(house-of-lore)/" title="tcache-stashing-unlink-attack(house-of-lore)">tcache-stashing-unlink-attack(house-of-lore)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2024/02/19/Sictf-round3-wp/" title="Sictf-round3-wp">Sictf-round3-wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
 <i class="ic i-angle-right"></i>
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
@@ -803,10 +874,12 @@ fake chunk 的 next chunk 的大小不能小于...
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/10/24/%E6%9E%81%E5%AE%A2wp/" title="极客wp">极客wp</a></span>
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
   </li>
 
       
@@ -823,73 +896,10 @@ fake chunk 的 next chunk 的大小不能小于...
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/05/10/CVE-2023-27021/" title="CVE-2023-27021">CVE-2023-27021</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/10/24/FSCTF-wp/" title="FSCTF_wp">FSCTF_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
 </div>
 
     <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
-</div>
-
-    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%A0%86%E6%94%BB%E5%87%BB/" title="分类于 堆攻击">堆攻击</a>
-</div>
-
-    <span><a href="/2024/07/15/house-of-orange/" title="house-of-orange">house-of-orange</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2024/03/04/qsnctf-round1-wp/" title="qsnctf_round1_wp">qsnctf_round1_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
-</div>
-
-    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
   </li>
 
   </ul>
@@ -914,13 +924,13 @@ fake chunk 的 next chunk 的大小不能小于...
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">342k 字</span>
+    <span title="站点总字数">357k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:11</span>
+    <span title="站点阅读时长">5:25</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

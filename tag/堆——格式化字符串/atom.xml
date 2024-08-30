@@ -15,9 +15,9 @@
     <category term="堆栈结合" />
     <category term="wp" />
     <category term="IO_FILE" />
-    <category term="canary" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
+    <category term="canary" />
     <category term="堆" />
     <category term="csu" />
     <category term="rop" />
@@ -25,8 +25,9 @@
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="house系列" />
-    <category term="house-of-einherjar" />
+    <category term="house-of-apple" />
     <category term="house-of-force" />
+    <category term="house-of-einherjar" />
     <category term="house-of-orange" />
     <category term="house-of-rabbit" />
     <category term="house-of-spirit" />
@@ -35,9 +36,9 @@
     <category term="栈劫持" />
     <category term="protocol" />
     <category term="srop" />
+    <category term="uaf" />
     <category term="house-of-lore" />
     <category term="tcache-stashing-unlink-attack" />
-    <category term="uaf" />
     <category term="unlink" />
     <category term="got改写" />
     <category term="随机数检查" />
