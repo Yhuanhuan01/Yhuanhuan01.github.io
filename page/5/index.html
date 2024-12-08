@@ -91,12 +91,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PavyAqzTMBH8QjR.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/pxCY3PlNUAW5GTn.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/wD8Kc2Y5Iu4mEk1.png"></li>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/03/HAYmvDsoGfbIVl3.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jdv5X4QVKxMklgB.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/c8LzaYO7NRj2Gmi.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/nUh9xrjosZA6KBg.png"></li>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/03/PeCrlT1WzSygfaB.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/xABdev7CEF4h3sR.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/joXBNHK1fvpxLkY.png"></li>
         </ul>
       </div>
     </header>
@@ -122,7 +122,55 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/08/03/csu/" itemprop="url" title="csu"><img data-src="https://s2.loli.net/2023/08/03/6zF8ewj7Zn4pJIg.png"></a>
+    <a href="/2023/08/03/srop/" itemprop="url" title="srop"><img data-src="https://s2.loli.net/2023/08/03/joXBNHK1fvpxLkY.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-08-03 22:51:25">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-03T22:51:25+08:00">2023-08-03</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>5.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>5 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/08/03/srop/" itemprop="url" title="srop">srop</a></h3>
+    <div class="excerpt">
+        # srop
+# srop 原理
+# signal 机制 ¶
+signal 机制是类 unix 系统中进程之间相互传递信息的一种方法。一般，我们也称其为软中断信号，或者软中断。比如说，进程之间可以通过系统调用 kill 来发送软中断信号。一般来说，信号机制常见的步骤如下图所示：
+
+内核向某个进程发送 signal 机制，该进程会被暂时挂起，进入内核态。
+内核会为该进程保存相应的上下文，主要是将所有寄存器压入栈中，以及压入 signal 信息，以及指向 sigreturn 的系统调用地址。此时栈的结构如下图所示，我们称 ucontext 以及 siginfo 这一段为 Signal...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" itemprop="url" title="技巧"><i class="ic i-flag"></i>技巧</a>
+      </span>
+    </div>
+    <a href="/2023/08/03/srop/" itemprop="url" title="srop" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/08/03/csu/" itemprop="url" title="csu"><img data-src="https://s2.loli.net/2023/08/04/caejg5tYskU186E.png"></a>
   </div>
   <div class="info">
     
@@ -168,7 +216,7 @@ ret2csu 泄露 libc 地址之后利用 libc 中的 gadget getshell. ret2csu 配�
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" itemprop="url" title="国赛复现"><img data-src="https://s2.loli.net/2023/08/03/3QaAkKnrb4hzo58.png"></a>
+    <a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" itemprop="url" title="国赛复现"><img data-src="https://s2.loli.net/2023/08/03/nUh9xrjosZA6KBg.png"></a>
   </div>
   <div class="info">
     
@@ -216,7 +264,7 @@ ret2csu 泄露 libc 地址之后利用 libc 中的 gadget getshell. ret2csu 配�
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/08/02/find-flag/" itemprop="url" title="find_flag"><img data-src="https://s2.loli.net/2023/08/03/PavyAqzTMBH8QjR.png"></a>
+    <a href="/2023/08/02/find-flag/" itemprop="url" title="find_flag"><img data-src="https://s2.loli.net/2023/08/03/tNd3AzOayGcXsCk.png"></a>
   </div>
   <div class="info">
     
@@ -303,7 +351,7 @@ pie 与 canary 同时开启，并且有格式化字符串。
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">43</span>
+        <span class="count">44</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -398,9 +446,10 @@ pie 与 canary 同时开启，并且有格式化字符串。
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
 </div>
 
-    <span><a href="/2024/07/03/Dockerfile%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/" title="Dockerfile书写规范">Dockerfile书写规范</a></span>
+    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
   </li>
 
       
@@ -416,10 +465,63 @@ pie 与 canary 同时开启，并且有格式化字符串。
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%A0%86%E6%94%BB%E5%87%BB/" title="分类于 堆攻击">堆攻击</a>
+</div>
+
+    <span><a href="/2024/08/30/house-of-apple/" title="house-of-apple">house-of-apple</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
 </div>
 
-    <span><a href="/2023/08/13/Nep-wp/" title="Nep__wp">Nep__wp</a></span>
+    <span><a href="/2024/03/04/qsnctf-round1-wp/" title="qsnctf_round1_wp">qsnctf_round1_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/08/03/csu/" title="csu">csu</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/05/10/CVE-2023-27021/" title="CVE-2023-27021">CVE-2023-27021</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 web的学习">web的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/web%E7%9A%84%E5%AD%A6%E4%B9%A0/wp/" title="分类于 wp">wp</a>
+</div>
+
+    <span><a href="/2023/08/24/web-new/" title="web_new">web_new</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+</div>
+
+    <span><a href="/2023/10/24/FSCTF-wp/" title="FSCTF_wp">FSCTF_wp</a></span>
   </li>
 
       
@@ -438,65 +540,10 @@ pie 与 canary 同时开启，并且有格式化字符串。
 <div class="breadcrumb">
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
-</div>
-
-    <span><a href="/2023/08/03/%E5%9B%BD%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="国赛复现">国赛复现</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/10/24/%E6%9E%81%E5%AE%A2wp/" title="极客wp">极客wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/11/30/24%E5%8F%A4%E5%89%91%E5%B1%B1/" title="未命名">未命名</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
 <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
 </div>
 
-    <span><a href="/2023/09/22/new-pwn/" title="new_pwn">new_pwn</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/04/b-canary/" title="b_canary">b_canary</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
-</div>
-
-    <span><a href="/2024/06/28/protocol%E5%AD%A6%E4%B9%A0/" title="protocol学习">protocol学习</a></span>
+    <span><a href="/2023/08/10/uaf/" title="uaf">uaf</a></span>
   </li>
 
   </ul>
@@ -521,13 +568,13 @@ pie 与 canary 同时开启，并且有格式化字符串。
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">376k 字</span>
+    <span title="站点总字数">385k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:42</span>
+    <span title="站点阅读时长">5:50</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
